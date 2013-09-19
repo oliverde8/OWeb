@@ -1,0 +1,20 @@
+SetEnv PHP_VER 5_TEST
+SetEnv SESSION_USE_TRANS_SID 0
+
+Options +FollowSymlinks
+RewriteEngine On
+
+##########################################################################################
+# Redirection permanente de www.oliver-decramer.com a oliver-decramer.com
+# Permet aux moteurs de recherche de ne pas voir 2 sites differents
+##########################################################################################
+
+RewriteCond % ^www.oliver-decramer.com [NC]
+RewriteRule ^(.*)$ http://oliver-decramer.com/$1 [L,R=301]
+
+RewriteRule ^Page.(.+).html index.php?page=Page&name=$1 [L,QSA]
+
+RewriteRule ^(.+).html(.*) index.php?page=$1$2 [L,QSA]
+
+
+

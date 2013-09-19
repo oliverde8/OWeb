@@ -1,0 +1,49 @@
+
+
+div.allprogsLink{
+	padding-top: 25px;
+	margin-bottom: -15px;
+}
+
+div.bars{
+	overflow: hidden;
+}
+
+div.bars > div.bar{
+	float : left;
+	width : 250px;
+	border-color : #AAAAAA;
+	border-style : solid;
+	border-width : 1px;
+	
+	
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	-webkit-top-bottom-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	
+	
+	padding-bottom: 500em;
+    margin-bottom: -500em;
+	margin-right: 5px;
+	
+	
+	
+}
+
+div.bars > div.clean{
+	clear : both;
+}
+
+div.bars > div.bar > ul > li > h3 {
+	margin : 0px;
+	padding: 0px;
+	margin-top : 10px;
+}
+
+div.ca-icon > img{
+	max-height: 200px;
+	max-width: 220px;
+}

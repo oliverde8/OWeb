@@ -1,0 +1,133 @@
+
+/***************************************************
+		#	Le Style Pour les Articles	#
+****************************************************/
+
+div.block > div.article{
+	padding : 5px 15px;
+}
+
+div.block > div.article > div.titre{
+	width : 100%;
+	height : 27px;
+	border-color : #AAAAAA;
+	border-style : solid;
+	border-width : 1px;
+	
+	border-top-right-radius: 15px;
+	-webkit-border-top-right-radius: 15px;
+	-moz-border-radius-topright: 15px;
+	border-top-left-radius: 15px;
+	-webkit-border-top-left-radius: 15px;
+	-moz-border-radius-topleft: 15px;
+}
+
+div.block > div.article > div.titre > p{
+	float : left;
+	margin : 2px;
+	padding : 0px;
+	padding-left : 10px;
+	font-size : 1.6em;
+
+}
+
+div.block > div.article > div.titre > div.detailles{
+	float : right;
+}
+
+div.block > div.article > div.titre > div.detailles > p{
+	margin : 0px;
+	padding : 2px;
+	color : #666666;
+	font-size : 1.3em;
+}
+
+div.block > div.article > img.titre{
+	float : left;
+	
+	border-color : #AAAAAA;
+	border-style : solid;
+	border-width : 1px;
+	border-top-style : none;
+	
+	border-bottom-right-radius: 25px;
+	-webkit-border-bottom-right-radius: 25px;
+	-moz-border-radius-bottomright: 25px;
+	
+	border-bottom-left-radius: 15px;
+	-webkit-border-bottom-left-radius: 15px;
+	-moz-border-radius-bottomleft: 15px;
+	
+	margin-right: 5px;
+}
+
+div.block > div.article > div.text{
+	width : 100%;
+	
+	margin-top : 0px;
+	padding : 5px 5px;
+}
+
+div.block > div.article > div.text > p{
+	margin : 5px 15px;
+}
+
+div.block > div.article > div.foot{
+	height : 20px;
+	
+	border-color : #AAAAAA;
+	border-style : solid;
+	border-width : 1px;
+	border-top-style : none;
+	
+	border-bottom-right-radius: 15px;
+	-webkit-border-bottom-right-radius: 15px;
+	-moz-border-radius-bottomright: 15px;
+	
+	border-bottom-left-radius: 15px;
+	-webkit-border-bottom-left-radius: 15px;
+	-moz-border-radius-bottomleft: 15px;
+	
+	margin-right: 5px;
+}
+
+div.block > div.article > div.foot > p{
+	float : right;
+	height : 100%;
+	margin : 0px;
+	padding-left : 10px;
+	padding-right : 10px;
+	
+	background-size: 100% 100%; /* w3c spec */ 
+	-moz-background-size: 100% 100%; /* firefox css*/ 
+	-webkit-background-size: 100% 100%; /* safari/chrome */ 
+	-o-background-size: 100% 100%; /* opera css */  
+	
+	background-image: -moz-linear-gradient(left, right, 
+                         from(#FFFFFF), 
+						 to(#5555FF)); 
+						  
+	background-image: -webkit-gradient(linear, left top, left bottom, 
+								color-stop(0.00, #5555FF),    
+								color-stop(1.00, #FFFFFF)); 
+								
+	/* IE le vieux code - GradientType=1 pour horizontal, 0 pour vertical */ 
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled='true', 
+					startColorstr=#5555FF,  
+					endColorstr=#FFFFFF,  
+				   GradientType=0);
+				   
+	border-bottom-right-radius: 15px;
+	-webkit-border-bottom-right-radius: 15px;
+	-moz-border-radius-bottomright: 15px;
+	
+	border-top-left-radius: 15px;
+	-webkit-top-bottom-left-radius: 15px;
+	-moz-border-radius-topleft: 15px;
+}
+
+
+
+
+
+

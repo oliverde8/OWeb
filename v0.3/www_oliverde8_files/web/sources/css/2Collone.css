@@ -1,0 +1,89 @@
+
+#twoCollone{
+	width : 1024px;
+	margin-left : auto;
+	margin-right : auto;
+
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	-moz-border-radius-bottomleft: 8px;
+	-moz-border-radius-bottomright: 8px;
+	
+	border-color : #AAAAAA;
+	border-style : solid;
+	border-width : 1px;
+	border-top-style : none;
+
+	box-shadow			: -3px 0px 3px rgba(040,040,040,0.4);
+	-moz-box-shadow		: -3px 0px 3px rgba(040,040,040,0.4);
+	-webkit-box-shadow	: -3px 0px 3px rgba(040,040,040,0.4);
+}
+
+#twoCollone > div.contenuMain{
+	margin : 10px;
+}
+
+#twoCollone > div > .ColloneGauche{
+	float : left;
+	width : 780px;
+	margin-left : 0px;
+}
+
+#twoCollone > div > .ColloneGauche > div{
+	margin : 4px;
+}
+
+#twoCollone > div > .ColloneDroite{
+	float : right;
+	width : 240px;
+
+	border-left-color : #AAAAAA;
+	border-left-style : solid;
+	border-left-width : 1px;
+	box-shadow			: -3px 0px 3px rgba(040,040,040,0.4);
+	-moz-box-shadow		: -3px 0px 3px rgba(040,040,040,0.4);
+	-webkit-box-shadow	: -3px 0px 3px rgba(040,040,040,0.4);
+}
+
+div.ColloneClean{
+	clear : both;
+}
+
+@media (min-width: 1440px) {
+	#publicity{
+		position: absolute;
+		top: 110px;
+		width : 1300px;
+		clear: both;
+		visibility: visible;
+		left: 50%; 
+		margin-left: -650px;
+		z-index: -10000;
+		clear: both;
+	}
+
+	#leftpublicity{
+		float : left;
+		width: 120px;
+		border-color : #AAAAAA;
+		border-style : solid;
+		border-width : 1px;
+		visibility: visible;
+	}
+
+	#rightpublicity{
+		float : right;
+		width: 120px;
+		left : 0px;
+		border-color : #AAAAAA;
+		border-style : solid;
+		border-width : 1px;
+		visibility: visible;
+	}
+}
+/***************************************************
+			   	#	Le Contenu 	#
+****************************************************/
+

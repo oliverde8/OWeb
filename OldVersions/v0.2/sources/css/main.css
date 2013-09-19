@@ -1,0 +1,232 @@
+
+body{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	/*background:			url("images/fond.png") #ffffff repeat-x;*/
+	margin:				0;
+}
+
+body a{
+	font-weight:		bold;
+	text-decoration:	none;
+	color:				#789abc;
+	font-size : 13px;
+}
+a:hover{
+	color: #0105AA;	
+}
+
+/***************************************************
+		#	Block a plusieur utilisation	#
+****************************************************/
+
+/* Un block Simple */
+.simple_block{
+	/* Ajout de l'ombre et la bordure arrondi */
+	box-shadow: -5px -5px 5px rgba(0,0,0,0.5);
+	-moz-box-shadow: -5px -5px 5px rgba(0,0,0,0.5);
+	-webkit-box-shadow: -5px -5px 5px rgba(0,0,0,0.5);
+	
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	
+	border-color : #AAAAAA;
+	border-style : solid;
+	border-width : 1px;
+	background-color : #FFFFFF;
+}
+
+/* Le block avec titre etc */
+div.block{
+	margin-top : 12px;
+	
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	
+	box-shadow: 1px -5px 5px rgba(0,0,0,0.5);
+	-moz-box-shadow: -5px -5px 5px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	
+	border-color : #AAAAAA;
+	border-style : solid;
+	border-width : 1px;
+	border-top : none;
+
+}
+
+div.block > div.titre{
+	
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	-webkit-border-top-left-radius: 15px;
+	-webkit-border-top-right-radius: 15px;
+	-moz-border-radius-topleft: 15px;
+	-moz-border-radius-topright: 15px;
+	
+	font-size:			1.7em;
+	height:				30px;
+	
+	background-size: 100% 100%; /* w3c spec */ 
+	-moz-background-size: 100% 100%; /* firefox css*/ 
+	-webkit-background-size: 100% 100%; /* safari/chrome */ 
+	-o-background-size: 100% 100%; /* opera css */  
+	
+	background-image: -moz-linear-gradient(left, right, 
+                          from(#0000FF), 
+                          to(#000088)); 
+						  
+	background-image: -webkit-gradient(linear, left top, left bottom, 
+								 color-stop(0.00, #0000FF),    
+								color-stop(1.00, #000088)); 
+								
+	/* IE le vieux code - GradientType=1 pour horizontal, 0 pour vertical */ 
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled='true', 
+					startColorstr=#0000FF,  
+					endColorstr=#000088,  
+				   GradientType=0);  
+	
+	margin-bottom : 0px;
+	
+}
+
+/* Class ++ le titre. Faut pas l'utiliser a lui tout seul */
+div.block > div.titre2{
+	
+	font-size:			1.5em;
+	height:				25px;
+	
+}
+
+div.block > div.titre > p{
+	width : 100%;
+	text-align:			center;
+	color : #FFFFFF;
+
+}
+
+div.block > div.text{
+	
+	margin-top : 0px;
+	position : relative;
+	top : -10px;
+	
+	padding : 5px;
+}
+
+div.block > div.text > ul{
+	padding:0px;
+	margin-left:18px;
+}
+
+div.block > div.foot{
+	
+}
+
+/***************************************************
+				#	Le Header	#
+****************************************************/
+div#header{
+	clear: both;
+	width : 100%;
+	height : 110px;
+	margin-top : 0px;
+	margin-bottom : 0px;
+	
+	background: url(images/header_bg.png) repeat-x;	
+	/* Ajout du Padding */
+
+}
+
+div#header > div{
+	width : 1100px;
+	margin-left : auto;
+	margin-right : auto;
+}
+div#header > div >.logo{
+	background-image : url('images/logo_oliver.png');
+	background-repeat:no-repeat;
+	
+	height : 120px;
+	width : 120px;
+	
+	float : left;
+	position:relative;
+	left : 5px;
+	top : -1px;
+}
+
+/***************************************************
+				#	Le Panel Login	#
+****************************************************/
+div#header  > div > div.login_panel{
+
+	float : right;	
+	margin : 15px;
+	height : 28px;
+	margin-top : 0px;
+	
+	background-color : #FFFFFF;
+	
+	padding-left : 15px;
+	padding-right : 15px;
+	
+	border-bottom-left-radius: 28px;
+	border-bottom-right-radius: 28px;
+	-webkit-border-bottom-left-radius: 28px;
+	-webkit-border-bottom-right-radius: 28px;
+	-moz-border-radius-bottomleft: 28px;
+	-moz-border-radius-bottomright: 28px;
+	
+	box-shadow			: -3px 3px 3px rgba(255,255,255,0.4);
+	-moz-box-shadow		: -3px 3px 3px rgba(255,255,255,0.4);
+	-webkit-box-shadow	: -3px 3px 3px rgba(255,255,255,0.4);
+}
+
+div#header  > div > div.login_panel > form{
+	margin : 0px;
+	font-size : 11px;
+}
+
+div#header  > div > div.login_panel > form > input{
+	font-size : 11px;
+	width : 80px;
+	padding-top : 2px;
+}
+
+div#header  > div > div.login_panel > form > input.bouton{
+	font-size : 8px;
+	width : 25px;
+}
+
+
+/***************************************************
+			#	Le Contenu Principale	#
+****************************************************/
+div#contenu {
+	clear: both;
+	margin-left : auto;
+	margin-right : auto;
+	width : 1050px;
+	padding : 0px;
+}
+
+div#contenu_gauche{
+	float : left;
+	width : 76%;
+	margin-left : 0px;
+}
+
+div#contenu_droite{
+	float : right;
+	width : 23%;
+}
+
+
+
+
+
+
+
+
+
+

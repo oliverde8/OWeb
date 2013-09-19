@@ -1,0 +1,86 @@
+
+
+form.OWebForm{
+	
+
+}
+
+form.OWebForm > div.OWebForm{
+	padding-left : 		15px;
+	padding-right :		15px;
+
+}
+
+form.OWebForm > div.OWebForm > label{
+	display:			block;
+	width:				40%;
+	float:				left;
+	
+	text-align: 		right;
+	padding-top : 		3px;
+	padding-right : 	5px;
+	
+}
+
+form.OWebForm > div.OWebForm > input{
+	display:			block;
+	width:				40%;
+}
+
+form.OWebForm > div.OWebForm > span.OWebForm_images{
+	display:			block;
+	width:				18%;
+	float:				right;
+	margin-top:			-25px;
+}
+
+form.OWebForm > div.OWebForm > span.OWebForm_images > img{
+	
+	width:				22px;
+	height: 			22px;
+	padding: 			0px;
+	margin:				0px;
+}
+
+form.OWebForm > div.OWebForm > span.OWebForm_description{
+	display:			block;
+	border:				solid 1px orange;
+	padding:			10px;
+	margin-bottom:		5px; 
+	
+	background:			#fffedc;
+}
+
+form.OWebForm > div.OWebForm > div.OWebForm_erreur{
+	display:			block;
+	border:				solid 1px red;
+	padding:			6px;
+	margin-bottom:		5px; 
+	
+	background:			#fffedc;
+}
+
+form.OWebForm > div.OWebForm > div.OWebForm_erreur >ul{
+	display:			inline;
+	float:				none;
+}
+form.OWebForm > div.OWebForm > div.OWebForm_erreur >ul > li{
+	display:			inline;
+	float:				none;
+}
+
+form.OWebForm > div.OWebForm_bouton > input.OWebForm_bouton{
+	border:						none;
+	background-color:			#eee;
+	color:						#456789;
+	width:						90px;
+	height:						23px;
+	margin:						0;
+	float:						right;
+	box-shadow: 				inset 0px -10px 20px -5px #ccc;
+	-moz-box-shadow: 			inset 0px -10px 20px -5px #ccc;
+	-webkit-box-shadow: 		inset 0px -10px 20px -5px #ccc;
+	border-radius:				5px;
+	-moz-border-radius:			5px;
+	-webkit-border-radius:		5px;
+}

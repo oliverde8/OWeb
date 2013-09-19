@@ -1,0 +1,90 @@
+
+h3.categoryDescription{
+	margin-bottom : -22px;
+}
+
+h1.categoryDescription{
+	padding-left : 50px;
+}
+img.categoryDescription{
+	float : right;
+}
+
+div.ArticleTitle > div{
+	display: block;
+}
+
+div.ArticleTitle > div > p.date{
+	margin : 0px;
+	float : left;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	background-color: #FF0000;
+	
+	padding: 5px;
+	margin-right: 5px;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;	
+}
+
+div.ArticleTitle > div > p.by{
+	font-weight: bold;
+}
+	
+
+div.ArticleTitle > div > h2{
+	margin-bottom: 5px;
+	font-size: 20px;
+}
+
+div.ArticleTitle > div > h2 > a{
+	margin-bottom: 5px;
+	font-size: 20px;
+	color: #229922;
+}
+
+div.articleContent > div img.article_logo{
+	float : right;
+}
+
+div.articleContent > div img.article_image_short{
+	max-height: 200px;
+}
+
+div.pros_cons{
+    font-size : 12px;
+    font-weight:		bold;
+}
+
+div.pros_cons > div.Pros{
+    width : 300px;
+    float : left;
+}
+
+div.pros_cons > div.Cons{
+    width : 300px;
+    float : right;
+}
+div.pros_cons ul{
+    margin-left : 30px;
+}
+
+div.pros_cons  li{
+    min-height : 27px;
+    min-line-height:27px;
+    vertical-align: middle;
+    list-style:none;
+    padding-left: 30px;
+}
+
+
+div.pros_cons  > div.Pros li{
+    background: url('images/plus.jpg')  no-repeat left center;
+}
+
+div.pros_cons  > div.Cons li{
+    background: url('images/minus.jpg')  no-repeat left center;
+}

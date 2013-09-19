@@ -1,0 +1,59 @@
+		###############################################
+		** Better Exception handling for Templates **
+		###############################################
+We need to catch the Errors send when a Template is showned. To be able to do this correctly we need 
+first to block the output. We will save all the ouptout in a variable and show it after. If 
+there is a error we will then show another simple template that show the error. 
+
+		###############################################
+		**    Better Exception handling for Pages    **
+		###############################################
+If there is a error in the page that we wan't to display then we wan't the template to show correctly
+But with an error in the center of the page. To do this we will load the page at the begining of the template.
+And as with the Template we will catch the display and show it later on. IF there is a error we will display the 
+Error instead of the Page content.
+This will also allow us in the views to add css and js files that will be displayed in the header. 
+
+		###############################################
+		** Parameter Input automation for Controlers **
+		###############################################
+This will allow controllers to be used as subViews Without needing any modification. 
+When a controller is called by the PageMode, Main controller manager will pass in parameter
+all the GET or POST arguments. The choice between the GET and the POST will be done accordingly to 
+the programers choice done in the init of the controller. 
+If the controller is just called by another controller as a sub controller then the parameters will 
+be set at the declaration of the controller. 
+
+		###############################################
+		** 		  Temporary Files Management         **
+		###############################################
+This will allow to save in Files data that are hard to be calculated and doesen't need to be 100%
+up to date. This may just be a resized jpeg image or other data. 
+	What We need : 
+		-a Data abstract OWeb/types/Data
+			*getData()->string (returns the string to save)
+			
+		-Abstract Temporary File updater OWeb\types\TemporaryFile\Updater : This will decide if the File needs to be updated
+			*isUpToDate()->boolean
+			
+		-Temporary File updater OWeb\types\TemporaryFile\Time : This will decide if the file needs to be updated according to the time allepsed since it's creation
+			*setTime($seconds);
+			
+		-a Temporary File : OWeb\types\TemporaryFile
+			*constructor($fileName, $Path, $data, new OWeb\types\TemporaryFile\Updater())
+			*getCreationDate()->int : Time on which the file was created
+			*updated() : Was the file updated at this load
+		
+		-a Temporary File Manager : OWeb/manager/TemporaryFiles
+			*GetTempFile($fileName, $Path | $asker, $data)->OWeb\types\TemporaryFile
+			
+	Settings : 
+		[OWeb\types\TemporaryFile]
+			active = true	;Default value
+			reset = false	;Activationg this will delete all Temporary files. 
+			
+			
+	Notes : 
+		-Files will be place in a /tmp folder.
+
+		

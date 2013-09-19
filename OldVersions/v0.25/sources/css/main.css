@@ -1,0 +1,124 @@
+
+body{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	/*background:			url("images/fond.png") #ffffff repeat-x;*/
+	margin:				0;
+}
+
+body a{
+	font-weight:		bold;
+	text-decoration:	none;
+	color:				#789abc;
+	font-size : 11px;
+}
+a:hover{
+	color: #0105AA;	
+}
+
+/***************************************************
+				#	Le Header	#
+****************************************************/
+div#header{
+	clear: both;
+	width : 100%;
+	height : 86px;
+	margin-top : 0px;
+	margin-bottom : 0px;
+	
+	background: url(images/header_bg.png) repeat-x;	
+	/* Ajout du Padding */
+
+}
+
+div#header > div{
+	width : 1100px;
+	margin-left : auto;
+	margin-right : auto;
+}
+div#header > div >.logo{
+	background-image : url('images/logo_oliver.png');
+	background-repeat:no-repeat;
+	
+	height : 76px;
+	width : 120px;
+	
+	float : left;
+	position:relative;
+	left : 5px;
+	top : -1px;
+}
+
+/***************************************************
+				#	Le Panel Login	#
+****************************************************/
+div#header  > div > div.login_panel{
+
+	float : right;	
+	margin : 15px;
+	height : 28px;
+	margin-top : 0px;
+	
+	background-color : #FFFFFF;
+	
+	padding-left : 15px;
+	padding-right : 15px;
+	
+	border-bottom-left-radius: 28px;
+	border-bottom-right-radius: 28px;
+	-webkit-border-bottom-left-radius: 28px;
+	-webkit-border-bottom-right-radius: 28px;
+	-moz-border-radius-bottomleft: 28px;
+	-moz-border-radius-bottomright: 28px;
+	
+	box-shadow			: -3px 3px 3px rgba(255,255,255,0.4);
+	-moz-box-shadow		: -3px 3px 3px rgba(255,255,255,0.4);
+	-webkit-box-shadow	: -3px 3px 3px rgba(255,255,255,0.4);
+}
+
+div#header  > div > div.login_panel > form{
+	margin : 0px;
+	font-size : 11px;
+}
+
+div#header  > div > div.login_panel > form > input{
+	font-size : 11px;
+	width : 80px;
+	padding-top : 2px;
+}
+
+div#header  > div > div.login_panel > form > input.bouton{
+	font-size : 8px;
+	width : 25px;
+}
+
+
+/***************************************************
+			#	Le Contenu Principale	#
+****************************************************/
+
+
+div#contenuFull{
+	clear: both;
+	width : 100%
+}
+
+
+/***************************************************
+			#	Le Sytles par default	#
+****************************************************/
+
+h1{
+	font-size: 18px;
+	color: #229922;
+	background-color: #55DD55;
+	margin-left : -4px;
+	padding-left : 8px;
+}
+
+
+
+
+
+
+
