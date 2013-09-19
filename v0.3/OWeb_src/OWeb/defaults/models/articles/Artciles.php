@@ -19,10 +19,7 @@ class Artciles {
 		$this->categories = $cat;
 	}
 	
-	/**
-	 * 
-	 * @param type $id
-	 */
+
 	public function getArticle($id){
 		
 		if(isset($this->articles[$id]))
@@ -223,7 +220,7 @@ class Artciles {
 
 				return $articles;
 			}else{
-				throw new \Model\articles\exception\ArticleNotFound("Couldn't get Articles of Category : ".$cat->getId()." . SQL ERROR2", 0, $ex);
+				throw new \Model\articles\exception\ArticleNotFound("Couldn't get Articles of Category : ".$cat->getId()." . SQL ERROR2", 0);
 			}
 			
 		}catch(\Exception $ex){
