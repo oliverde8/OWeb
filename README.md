@@ -7,10 +7,10 @@ OWeb is a simple to use PHP FrameWork based on MVC principles that has in mind t
 * Re use existing codes : Usualy for each website you build you need a special directory. and you will rarely mix up the code of 2 completely different website. Well if using OWeb you may do so. I would even say I recomend it. Why? well you may have 1 forum on www.site1.com and 1 blog on www.site2.com. Normally they should have nothing to do, but they actually have many elements in commun.
 * All the Database Connection & User connection and persmissions part.
 
-    > A BBCode parser for forum post's and Blog comments
-    > A Javasript page changing tool so that all the page isn't refreshed.
-    > A live Chat.
-    > Many more exemples can be found. You may be asking "but all this files it will be a nightmare". Well no, because OWeb differentiate what the developer see from what the user see. So you can organize all your files as you wish as a developper and then using Page's display it with a simple link. You will just use different Page's for your different websites to reorganize stuff according to the website.
+    * A BBCode parser for forum post's and Blog comments
+    * A Javasript page changing tool so that all the page isn't refreshed.
+    * A live Chat.
+    * Many more exemples can be found. You may be asking "but all this files it will be a nightmare". Well no, because OWeb differentiate what the developer see from what the user see. So you can organize all your files as you wish as a developper and then using Page's display it with a simple link. You will just use different Page's for your different websites to reorganize stuff according to the website.
 * Extending without Changing : OWeb comes with a bunch of Extensions that allows DB connections, user connections and more. If you decide to re-wrte any of those, extensions because you would like to use OpenConection for users to connect you may do so without changing a single line in the existing controllers, pages and extensions. If you extend the existing user/connection extension and in the config ask the usage of your own connection extension, OWeb will make it work. When an old Controller asks for the user\connection extension the framework will give him the newer user\YourExtendedConnection.
 
 ## Key Features
