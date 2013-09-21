@@ -51,8 +51,9 @@ class Controller extends \OWeb\utils\Singleton{
 	 * Will automaticlly set up the initialisation sequence for the Controller.
 	 * The Controller will be initialized once OWeb has finished initialisation.
 	 * 
-	 * @param type $name of the Controller to load.
-	 * @throws \OWeb\manage\exceptions\Controller If there is a error to the loading of the COntroller
+	 * @param \String $name of the Controller to load.
+     * @return \OWeb\types\Controller Loaded Controller
+     * @throws \OWeb\manage\exceptions\Controller If there is a error to the loading of the COntroller
 	 */
 	public function loadController($name){
 		

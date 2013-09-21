@@ -96,6 +96,14 @@ abstract class Controller extends NamedClass {
 		return $this->language->getLang();
 	}
 
+    protected function disableProtectParams(){
+        $this->auto_protectParams = false;
+    }
+
+    protected function enableProtectedParams(){
+        $this->auto_protectParams = true;
+    }
+
 	public function display($ctr = null) {
 		if ($ctr == null)
 			$ctr = get_class($this);

@@ -164,10 +164,10 @@ class OWeb {
 	
 	/**
 	 * Will load the extensions passed in Paramater.
-	 * 
-	 * @param type $extensions The list of expensions as recoverd by the setting file
+	 *
+	 * @param array $extensions The list of expensions as recoverd by the setting file
 	 */
-	private function loadExtensions($extensions=array()){
+    private function loadExtensions($extensions=array()){
 		
 		foreach($extensions as $ex){
 			$this->manage_extensions->getExtension($ex);

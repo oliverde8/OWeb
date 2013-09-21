@@ -140,7 +140,7 @@ class Artciles {
 														WHERE acm.category_id IN ($cat_parents))
 								OR category_id IN ($cat_parents)
 						ORDER BY pdate DESC
-						LIMIT $start, $nbELement";
+						LIMIT :start, :nbElement";
 				//return;
 			}else
 				$sql = "SELECT id_article
@@ -150,10 +150,10 @@ class Artciles {
 													WHERE acm.category_id = ".$cat->getId()." )
 							OR category_id = ".$cat->getId()."
 						ORDER BY pdate DESC
-						LIMIT $start, $nbELement";
+						LIMIT :start, :nbElement";
 			
-			
-			if($sql = $connection->query($sql)){
+			$sql = $connection->prepare($sql);
+			if($sql = $connection->execute($sql)){
 				
 				$articles = array();
 				$article_ids = "";
@@ -236,7 +236,7 @@ class Artciles {
 		$sql = "SELECT *
 				FROM " . $prefix . "article_article aa, " . $prefix . "article_content ac
 				WHERE ac.article_id = id_article 
-				AND ac.title = '".$name."'
+				AND ac.title = ".$connection->quote($name)."
 				AND (aa.category_id = ".$cat->getId()."
 					OR id_article IN (SELECT acm.article_id 
 													FROM " . $prefix . "article_category_more acm 
