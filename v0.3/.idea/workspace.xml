@@ -6,7 +6,14 @@
     <ignored path=".idea/workspace.xml" />
     <file path="/Categorie.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1379611832737" ignored="false" />
     <file path="/Controller.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1379685879574" ignored="false" />
-    <file path="/Artciles.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1379768636032" ignored="false" />
+    <file path="/Artciles.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1379780082208" ignored="false" />
+    <file path="/MozillaPersona.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1379779759882" ignored="false" />
+    <file path="/TypeConnection.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1379775102049" ignored="false" />
+    <file path="/SimpleConnection.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1379779876197" ignored="false" />
+    <file path="/main.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1379779969172" ignored="false" />
+    <file path="/config.ini" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1379776196298" ignored="false" />
+    <file path="/a.dummy" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1379776321627" ignored="false" />
+    <file path="/Persona.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1379778516811" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +32,84 @@
     <favorites_list name="v0.3" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="Artciles.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/articles/Artciles.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="157" column="22" selection-start="5131" selection-end="5131" vertical-scroll-proportion="0.6114865">
+              <folding>
+                <element signature="e#390#2331#0" expanded="false" />
+                <element signature="e#2335#3764#0" expanded="false" />
+                <element signature="e#7619#9409#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MozillaPersona.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/extensions/user/connection/MozillaPersona.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="24" selection-start="578" selection-end="578" vertical-scroll-proportion="-15.038462">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Persona.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/extensions/user/connection/MozillaPersona/Persona.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="59" column="52" selection-start="1743" selection-end="1743" vertical-scroll-proportion="-19.76923">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.ini" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www_oliverde8/config.ini">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="49" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SimpleConnection.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/extensions/user/connection/SimpleConnection.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="65" column="50" selection-start="1862" selection-end="1862" vertical-scroll-proportion="-42.5">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TypeConnection.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/extensions/user/connection/TypeConnection.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="88" column="47" selection-start="2506" selection-end="2511" vertical-scroll-proportion="-26.153847">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www_oliverde8/templates/main.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="59" column="22" selection-start="2122" selection-end="2122" vertical-scroll-proportion="-17.0">
+              <folding>
+                <marker date="1379779971733" expanded="true" signature="2247:2358" placeholder="..." />
+                <marker date="1379779971733" expanded="true" signature="2288:2327" placeholder="{...}" />
+                <marker date="1379779971733" expanded="true" signature="3293:3369" placeholder="..." />
+                <marker date="1379779971733" expanded="true" signature="3299:3369" placeholder="..." />
+                <marker date="1379779971733" expanded="true" signature="3322:3369" placeholder="..." />
+                <marker date="1379779971733" expanded="true" signature="3333:3369" placeholder="..." />
+                <marker date="1379779971733" expanded="true" signature="3549:3640" placeholder="..." />
+                <marker date="1379779971733" expanded="true" signature="3924:4697" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -40,16 +124,23 @@
         <option value="$PROJECT_DIR$/OWeb_src/OWeb/manage/Controller.php" />
         <option value="$PROJECT_DIR$/OWeb_src/OWeb/OWeb.php" />
         <option value="$PROJECT_DIR$/OWeb_src/OWeb/types/Controller.php" />
+        <option value="$PROJECT_DIR$/OWeb_src/OWeb/defaults/extensions/user/connection/TypeConnection.php" />
+        <option value="$PROJECT_DIR$/www_oliverde8/config.ini" />
+        <option value="$PROJECT_DIR$/OWeb_src/OWeb/defaults/extensions/user/connection/MozillaPersona/Personna.php" />
+        <option value="$PROJECT_DIR$/OWeb_src/OWeb/defaults/extensions/user/connection/MozillaPersona/Persona.php" />
+        <option value="$PROJECT_DIR$/www_oliverde8/templates/main.php" />
+        <option value="$PROJECT_DIR$/OWeb_src/OWeb/defaults/extensions/user/connection/SimpleConnection.php" />
+        <option value="$PROJECT_DIR$/OWeb_src/OWeb/defaults/extensions/user/connection/MozillaPersona.php" />
         <option value="$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/articles/Artciles.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="Unnamed" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1374" />
-    <option name="y" value="405" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="54" />
+    <option name="y" value="-8" />
+    <option name="width" value="1874" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -224,6 +315,134 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="v0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="v0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OWeb_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OWeb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="defaults" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="articles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="v0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="v0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OWeb_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OWeb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="defaults" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extensions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="connection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="v0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="v0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OWeb_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OWeb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="defaults" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extensions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="connection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MozillaPersona" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="v0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="v0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OWeb_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OWeb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="defaults" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extensions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -294,14 +513,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1374" y="405" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20833333" sideWeight="0.6705757" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17439294" sideWeight="0.6705757" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294702" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -375,7 +594,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
@@ -391,36 +610,6 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/OWeb.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="194" column="32" selection-start="5790" selection-end="5790" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/manage/modes/CtrAction.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="14" selection-start="461" selection-end="461" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/manage/modes/Page.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="61" selection-start="675" selection-end="675" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/controllers/articles/Categorie.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="41" selection-start="698" selection-end="698" vertical-scroll-proportion="-17.153847" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ToDO.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="424" selection-end="424" vertical-scroll-proportion="0.111597374" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www_oliverde8/.htaccess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="43" selection-start="464" selection-end="464" vertical-scroll-proportion="0.2045952" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www_oliverde8/sitemap.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="9" selection-start="494" selection-end="494" vertical-scroll-proportion="0.2647386">
@@ -445,7 +634,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/OWeb.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="206" column="34" selection-start="5971" selection-end="5971" vertical-scroll-proportion="-61.46154" />
+        <state line="206" column="34" selection-start="5971" selection-end="5971" vertical-scroll-proportion="-61.46154">
+          <folding>
+            <element signature="e#8#854#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/types/Controller.php">
@@ -458,11 +651,6 @@
         <state line="60" column="38" selection-start="1789" selection-end="1789" vertical-scroll-proportion="1.066202" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www_oliverde8/templates/main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="298" selection-end="299" vertical-scroll-proportion="0.029616725" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/articles/Categories.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="51" column="29" selection-start="1218" selection-end="1218" vertical-scroll-proportion="1.2600383">
@@ -470,12 +658,71 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/downloads/Download.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="24" selection-start="592" selection-end="599" vertical-scroll-proportion="-19.615385">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/extensions/user/connection/TypeConnection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="47" selection-start="2506" selection-end="2511" vertical-scroll-proportion="-26.153847">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www_oliverde8/config.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="49" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/extensions/user/connection/MozillaPersona/Persona.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="52" selection-start="1743" selection-end="1743" vertical-scroll-proportion="-19.76923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www_oliverde8/templates/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="22" selection-start="2122" selection-end="2122" vertical-scroll-proportion="-17.0">
+          <folding>
+            <marker date="1379779971733" expanded="true" signature="2247:2358" placeholder="..." />
+            <marker date="1379779971733" expanded="true" signature="2288:2327" placeholder="{...}" />
+            <marker date="1379779971733" expanded="true" signature="3293:3369" placeholder="..." />
+            <marker date="1379779971733" expanded="true" signature="3299:3369" placeholder="..." />
+            <marker date="1379779971733" expanded="true" signature="3322:3369" placeholder="..." />
+            <marker date="1379779971733" expanded="true" signature="3333:3369" placeholder="..." />
+            <marker date="1379779971733" expanded="true" signature="3549:3640" placeholder="..." />
+            <marker date="1379779971733" expanded="true" signature="3924:4697" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/extensions/user/connection/SimpleConnection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="50" selection-start="1862" selection-end="1862" vertical-scroll-proportion="-42.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/extensions/user/connection/MozillaPersona.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="24" selection-start="578" selection-end="578" vertical-scroll-proportion="-15.038462">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/articles/Artciles.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="238" column="60" selection-start="8009" selection-end="8009" vertical-scroll-proportion="-0.7629063">
+        <state line="157" column="22" selection-start="5131" selection-end="5131" vertical-scroll-proportion="0.6114865">
           <folding>
             <element signature="e#390#2331#0" expanded="false" />
             <element signature="e#2335#3764#0" expanded="false" />
+            <element signature="e#7619#9409#0" expanded="false" />
           </folding>
         </state>
       </provider>

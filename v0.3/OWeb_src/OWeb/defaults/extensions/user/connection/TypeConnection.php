@@ -135,6 +135,24 @@ abstract class TypeConnection extends \OWeb\types\Extension{
 	public function getLang(){
 		return $this->lang;
 	}
+
+    public  function createkey($length) {
+        $key = '';
+        for ($i = 0; $i < $length; $i++) {
+            switch (rand(1, 3)) {
+                case 1:
+                    $key.=chr(rand(48, 57));
+                    break;
+                case 2:
+                    $key.=chr(rand(65, 90));
+                    break;
+                case 3:
+                    $key.=chr(rand(97, 122));
+                    break;
+            }
+        }
+        return $key;
+    }
 	
 	public abstract function getLogin();
 	

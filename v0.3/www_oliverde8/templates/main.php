@@ -7,13 +7,13 @@
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
         <?php
 			$this->InitLanguageFile();
-			$this->addHeader('main.css',\OWeb\manage\Headers::css); 
-			$this->addHeader('main.js',\OWeb\manage\Headers::javascript); 
-			$this->addHeader('menu.css',\OWeb\manage\Headers::css); 
+			$this->addHeader('main.css',\OWeb\manage\Headers::css);
+			$this->addHeader('main.js',\OWeb\manage\Headers::javascript);
+			$this->addHeader('menu.css',\OWeb\manage\Headers::css);
 
 			$this->headers();
 		?>
-		
+
 		<script type="text/javascript">
 
 			var _gaq = _gaq || [];
@@ -27,6 +27,8 @@
 			})();
 
 		  </script>
+
+
 
     </head>
 
@@ -42,23 +44,37 @@
                 <div class="login_panel ">
 					<?php
 						$connection = \OWeb\manage\Extensions::getInstance()->getExtension('user\connection\TypeConnection');
-						
-						if(!$connection->isConnected())
-							echo '<form method="post" action="" />
-                    <label>Login : </label>
-                    <input type="text" name="login"/>
 
-                    <label>Password : </label>
-                    <input type="password" name="pwd"/>
-					
+						if(!$connection->isConnected()){
+							echo '<form  id="login-form" method="post" action="" />
+                    <input type="hidden" name="login" value="null"/>
+
+                    <input  id="pwd-field"  type="hidden" name="pwd" value=""/>
+
 					<input type="hidden" name="ext_a" value="connect"/>
 
-                    <input type="submit" value="Ok" class="bouton" />
               </form>';
-						else
-							echo '<p>Welcome Test. <a href="?ext_a=disconnect">Disconnect</a></p>';/**/
+                            echo '<p><a class="persona-button" href="javascript:navigator.id.request()"><span>Login with Persona</span></a></p>';
+                        }else
+							echo '<p>Welcome '.$connection->getLogin().'. <a href="?ext_a=disconnect">Disconnect</a></p>';/**/
 					?>
                 </div>
+
+                <script src="https://login.persona.org/include.js"></script>
+                <script>
+                    navigator.id.watch({
+                        loggedInUser: <?= $connection->getEmail() ? "'$connection->getEmail()'" : 'null' ?>,
+                        onlogin: function (assertion) {
+                            var assertion_field = document.getElementById("pwd-field");
+                            assertion_field.value = assertion;
+                            var login_form = document.getElementById("login-form");
+                            login_form.submit();
+                        },
+                        onlogout: function () {
+                            window.location = '?logout=1';
+                        }
+                    });
+                </script>
 
             </div>
         </div>
@@ -69,7 +85,7 @@
 			$img_fr = OWEB_HTML_URL_IMG.'/flags/fr.png';
 			$img_eng = OWEB_HTML_URL_IMG.'/flags/gb.png';
 		?>
-		
+
         <!-- Le Menu -->
         <div id="menu" ><div>
 				<div class="lang">
@@ -85,8 +101,8 @@
                     <li><a href="#"><?php echo $this->l('more'); ?></a></li>
                 </ul>
         </div></div>
-		
-		
+
+
 		<div id="publicity"><div>
 			<div id="leftpublicity">
 				<script type="text/javascript"><!--
@@ -115,14 +131,14 @@
 				</script>
 			</div>
 		</div></div>
-		
+
         <!-- Le Contenu -->
         <div id="contenuFull"><div id="contenuFullJS">
-				
+
                 <?php
                 $this->display();
                 ?>
-				
+
         </div></div><!-- Fin du Contenu -->
 
 		 <div id="foot" ><div>
@@ -133,6 +149,6 @@
 				| <a href="articles.Categorie.html?catId=10">About The Website</a>
 			</p>
         </div></div>
-		
+
     </body>
 </html>

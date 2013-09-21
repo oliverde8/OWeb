@@ -9,8 +9,9 @@ namespace Extension\user\connection;
  */
 class SimpleConnection extends TypeConnection{
 	
-	private $login;
-	
+	protected $login;
+	protected $mail;
+
 	public function __construct() {
 		$this->addDependance("db\absConnect");
 	}
@@ -40,16 +41,38 @@ class SimpleConnection extends TypeConnection{
 		$connection = $this->ext_db_absConnect->get_Connection();
 		$prefix = $this->ext_db_absConnect->get_Prefix();
 		
-		$sql = "SELECT * FROM ".$prefix."users WHERE Login = '$login' 
-			AND pwd = '".$pwd."'";
-		if($sql = $connection->query($sql)){
+		$sql = $connection->prepare("SELECT * FROM ".$prefix."users WHERE Login = :login");
+		if($sql->execute(array(':login'=>$login))){
 			if ($sql->rowCount()>0){
-				$obj = $sql->fetchObject();
-				$this->login = $obj->Login;
-				$this->lang = $obj->lang;
-				return true;
+                $obj = $sql->fetchObject();
+                if(md5($obj->pwd) == $pwd){
+                    $this->login = $obj->Login;
+                    $this->lang = $obj->lang;
+                    $f = 'e-mail';
+                    $this->mail = $obj->$f;
+                    return true;
+                }
 			}
 		}
+		return false;
+	}
+
+    protected function getMailPwd($mail){
+        $connection = $this->ext_db_absConnect->get_Connection();
+        $prefix = $this->ext_db_absConnect->get_Prefix();
+
+        $sql = $connection->prepare("SELECT * FROM ".$prefix."users WHERE `e-mail` = :email");
+
+        if($sql->execute(array(':email'=>$mail))){
+            if ($sql->rowCount()>0){
+                $obj = $sql->fetchObject();
+                $this->login = $obj->Login;
+                $this->lang = $obj->lang;
+                return $obj->pwd;
+            }
+        }else{
+            print_r($sql->errorInfo());
+        }
 		return false;
 	}
 	
@@ -91,6 +114,13 @@ class SimpleConnection extends TypeConnection{
 		else
 			return "";
 	}
+
+    public function getEmail(){
+        if($this->isConnected())
+            return $this->mail;
+        else
+            return "";
+    }
 }
 
 ?>

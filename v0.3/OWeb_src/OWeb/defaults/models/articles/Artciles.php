@@ -119,7 +119,7 @@ class Artciles {
 		}
 	}
 	
-	public function getCategoryArticles(\Model\articles\CategorieElement $cat, $start, $nbELement, $rec = true){
+	public function getCategoryArticles(\Model\articles\CategorieElement $cat, $start, $nbElement, $rec = true){
 		
 		try{
 			$connection = $this->ext_connection->get_Connection();
@@ -150,13 +150,12 @@ class Artciles {
 													WHERE acm.category_id = ".$cat->getId()." )
 							OR category_id = ".$cat->getId()."
 						ORDER BY pdate DESC
-						LIMIT :start, :nbElement";
+						LIMIT $start, $nbElement";
 			
-			$sql = $connection->prepare($sql);
-			if($sql = $connection->execute($sql)){
-				
-				$articles = array();
-				$article_ids = "";
+			//$sql = $connection->prepare($sql);
+            $article_ids = "";
+
+            if($sql = $connection->query($sql)){
 				while($result = $sql->fetchObject()){
 					$article_ids .= $result->id_article." ,";
 				}
