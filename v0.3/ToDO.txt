@@ -8,52 +8,88 @@ there is a error we will then show another simple template that show the error.
 		###############################################
 		**    Better Exception handling for Pages    **
 		###############################################
-If there is a error in the page that we wan't to display then we wan't the template to show correctly
-But with an error in the center of the page. To do this we will load the page at the begining of the template.
-And as with the Template we will catch the display and show it later on. IF there is a error we will display the 
-Error instead of the Page content.
-This will also allow us in the views to add css and js files that will be displayed in the header. 
+Is done but needs a debug mode to make stuff easier to debug :D
 
 		###############################################
-		** Parameter Input automation for Controlers **
+		**          Parametreble classes           **
 		###############################################
-This will allow controllers to be used as subViews Without needing any modification. 
-When a controller is called by the PageMode, Main controller manager will pass in parameter
-all the GET or POST arguments. The choice between the GET and the POST will be done accordingly to 
-the programers choice done in the init of the controller. 
-If the controller is just called by another controller as a sub controller then the parameters will 
-be set at the declaration of the controller. 
+At the moment only Controllers can be parametreble, this should change.
+A more basic type should allow the create easily parametreble classes
+
+		###############################################
+		** 		     A Permission Agent              **
+		###############################################
+In some cases we might have a OWeb API that works the same for multiple expansion or Controllers In this case it might be hard
+ to know whatever the user that made the API request has the correct permissions.
+We can use a simple PermissionAgent Abstract class that will be used by those controller extension in order to let them know
+if they should allow the data to be sent, saved etc.
+	What We need :
+		-a Abstract PermissionAgent
+		    *hasPermission(int $actionId)->boolean;
+
+		###############################################
+		** 		     A Simple Identified Data        **
+		###############################################
+Will work as a limited storage saving system. The main purpose is to use this when we won't to limit database acceses.
+It dosen't need to be perfect, it just need to save some limited number of information for each id given. This can be used
+for a live chat purpose for exemple. It needs to be enchanced with the Permission Agent.
 
 		###############################################
 		** 		  Temporary Files Management         **
 		###############################################
 This will allow to save in Files data that are hard to be calculated and doesen't need to be 100%
-up to date. This may just be a resized jpeg image or other data. 
-	What We need : 
+up to date. This may just be a resize jpeg image or other data.
+	What We need :
 		-a Data abstract OWeb/types/Data
 			*getData()->string (returns the string to save)
-			
+
 		-Abstract Temporary File updater OWeb\types\TemporaryFile\Updater : This will decide if the File needs to be updated
 			*isUpToDate()->boolean
-			
+
 		-Temporary File updater OWeb\types\TemporaryFile\Time : This will decide if the file needs to be updated according to the time allepsed since it's creation
 			*setTime($seconds);
-			
+
 		-a Temporary File : OWeb\types\TemporaryFile
 			*constructor($fileName, $Path, $data, new OWeb\types\TemporaryFile\Updater())
 			*getCreationDate()->int : Time on which the file was created
 			*updated() : Was the file updated at this load
-		
+
 		-a Temporary File Manager : OWeb/manager/TemporaryFiles
 			*GetTempFile($fileName, $Path | $asker, $data)->OWeb\types\TemporaryFile
-			
-	Settings : 
+
+	Settings :
 		[OWeb\types\TemporaryFile]
 			active = true	;Default value
-			reset = false	;Activationg this will delete all Temporary files. 
-			
-			
-	Notes : 
+			reset = false	;Activationg this will delete all Temporary files.
+
+
+	Notes :
 		-Files will be place in a /tmp folder.
 
-		
+        ###############################################
+        ** 		            Tasks                    **
+        ###############################################
+Tasks is a list of a synchrone works that needs to be done by the frame work withoud affectiong the user in any way.
+    What we need
+        -a Task abstract
+            *constructor($className, array() $params)
+        - a Task manager
+            *auto initialised on need
+            *doATask(); //will just find a task and do it(if there is any)
+            *saveTask(Task $task); //Saves the task to the tasks that needs to be done.
+    !!WE need to lokout for 2 different instances of the FrameWork doesn't do the same work at the same time.
+    Tasks will be saved in files and we will place a lock on the file of the ongoing task in order to prevent this.
+
+		###############################################
+		** 		        A image resize Tool          **
+		###############################################
+In many articles I might put big images, it would be nice if this images could be aproximatally resized to the needed size
+In order to make loading faster. The system should work step by step, if a 700*500px image needed it shoul use a 800*600 resize.
+This way you might use the image in any size. We will use the Temporart File Management system to save these images
+    What we need
+        -a Image resize Tool, that will auto initialise it self if needed only. (We might make an extension so that it can be easily replaced)
+            *getImage(String $url, $width, $height) -> String
+                This will just take in parameter the url of the image to resize, It will do the resize(add it to the todo list)
+                And will send the new URL.
+    The tricky part is if there is a lot if images in one page it can't resize all of them at once. In this case knowing it didn't resize it
+    it will return the old image url and add the image resize process to the quee of Tasks.
