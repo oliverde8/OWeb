@@ -41,19 +41,19 @@
       <file leaf-file-name="SimpleIdentifiedArrays.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/utils/dataManagers/SimpleIdentifiedArrays.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="0" selection-start="2362" selection-end="2362" vertical-scroll-proportion="-8.588235">
+            <state line="88" column="0" selection-start="2362" selection-end="2362" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ToDO.txt" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ToDO.txt" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ToDO.txt">
           <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="35" selection-start="1510" selection-end="1510" vertical-scroll-proportion="0.49718785">
+            <state line="52" column="55" selection-start="2870" selection-end="2870" vertical-scroll-proportion="-18.36">
               <folding />
             </state>
           </provider>
@@ -62,7 +62,7 @@
       <file leaf-file-name="Settings.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/utils/dataManagers/simpleIdentifiedArrays/Settings.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="56" selection-start="222" selection-end="222" vertical-scroll-proportion="-1.9615384">
+            <state line="9" column="56" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -71,19 +71,17 @@
       <file leaf-file-name="PermisionAgent.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/utils/PermisionAgent.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="272" selection-end="272" vertical-scroll-proportion="-5.8846154">
+            <state line="15" column="0" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OWeb.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="OWeb.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/OWeb.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="206" column="34" selection-start="5971" selection-end="5971" vertical-scroll-proportion="-134.6923">
-              <folding>
-                <element signature="e#8#854#0" expanded="true" />
-              </folding>
+            <state line="45" column="23" selection-start="2248" selection-end="2248" vertical-scroll-proportion="0.6126126">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -91,7 +89,7 @@
       <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www_oliverde8/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="25" selection-start="361" selection-end="374" vertical-scroll-proportion="-5.8846154">
+            <state line="9" column="25" selection-start="361" selection-end="374" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -175,7 +173,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -392,6 +389,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -400,8 +398,8 @@
     <property name="options.lastSelected" value="editor.preferences.appearance" />
     <property name="last_opened_file_path" value="C:/wamp/bin/php/php5.4.3" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -467,7 +465,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17439294" sideWeight="0.6705757" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17660044" sideWeight="0.6705757" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294702" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -559,16 +557,12 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/articles/Categories.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="29" selection-start="1218" selection-end="1218" vertical-scroll-proportion="1.2600383">
-          <folding />
-        </state>
+        <state line="51" column="29" selection-start="1218" selection-end="1218" vertical-scroll-proportion="1.2600383" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/downloads/Download.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="24" selection-start="592" selection-end="599" vertical-scroll-proportion="-19.615385">
-          <folding />
-        </state>
+        <state line="30" column="24" selection-start="592" selection-end="599" vertical-scroll-proportion="-19.615385" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/extensions/user/connection/TypeConnection.php">
@@ -581,16 +575,7 @@
     <entry file="file://$PROJECT_DIR$/www_oliverde8/templates/main.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="59" column="22" selection-start="2122" selection-end="2122" vertical-scroll-proportion="-17.0">
-          <folding>
-            <marker date="1379779971733" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1379779971733" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1379779971733" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1379779971733" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1379779971733" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1379779971733" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1379779971733" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1379779971733" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -640,39 +625,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/OWeb.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="206" column="34" selection-start="5971" selection-end="5971" vertical-scroll-proportion="-134.6923">
-          <folding>
-            <element signature="e#8#854#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www_oliverde8/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="25" selection-start="361" selection-end="374" vertical-scroll-proportion="-5.8846154">
+        <state line="9" column="25" selection-start="361" selection-end="374" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/utils/PermisionAgent.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="272" selection-end="272" vertical-scroll-proportion="-5.8846154">
+        <state line="15" column="0" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/utils/dataManagers/simpleIdentifiedArrays/Settings.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="56" selection-start="222" selection-end="222" vertical-scroll-proportion="-1.9615384">
+        <state line="9" column="56" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/utils/dataManagers/SimpleIdentifiedArrays.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="0" selection-start="2362" selection-end="2362" vertical-scroll-proportion="-8.588235">
+        <state line="88" column="0" selection-start="2362" selection-end="2362" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -682,7 +658,14 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="35" selection-start="1510" selection-end="1510" vertical-scroll-proportion="0.49718785">
+        <state line="52" column="55" selection-start="2870" selection-end="2870" vertical-scroll-proportion="-18.36">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/OWeb.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="23" selection-start="2248" selection-end="2248" vertical-scroll-proportion="0.6126126">
           <folding />
         </state>
       </provider>
