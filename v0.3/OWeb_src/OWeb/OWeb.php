@@ -43,7 +43,7 @@ if(!defined('OWEB_HTML_DIR_JS')) define('OWEB_HTML_DIR_JS','sources/js');
 
 if(!defined('OWEB_HTML_URL_IMG')) define('OWEB_HTML_URL_IMG','sources/files');
 
-define('OWEB_VERSION','0.3.0b');
+define('OWEB_VERSION','0.3.1');
 
 require_once OWEB_DIR_MAIN.'/autoLoader.php';
 
