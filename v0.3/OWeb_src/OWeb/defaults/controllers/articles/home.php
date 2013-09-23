@@ -1,6 +1,7 @@
 <?php
 
 namespace Controller\articles;
+use OWeb\types\PermisionAgent;
 
 /**
  * Description of home
@@ -21,6 +22,10 @@ class home extends Categorie{
 		$this->view->showCatHeader = false;
 		parent::onDisplay();
 	}
+
+    public function hasPermission($action = 0){
+        return false;
+    }
 }
 
 ?>

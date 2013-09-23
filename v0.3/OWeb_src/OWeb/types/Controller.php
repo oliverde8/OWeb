@@ -7,7 +7,7 @@ namespace OWeb\types;
  *
  * @author De Cramer Oliver
  */
-abstract class Controller extends NamedClass {
+abstract class Controller extends NamedClass implements Configurable {
 
 	const ACTION_GET = 1;
 	const ACTION_POST = 2;

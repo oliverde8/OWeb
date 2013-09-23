@@ -11,23 +11,6 @@ there is a error we will then show another simple template that show the error.
 Is done but needs a debug mode to make stuff easier to debug :D
 
 		###############################################
-		**          Parametreble classes           **
-		###############################################
-At the moment only Controllers can be parametreble, this should change.
-A more basic type should allow the create easily parametreble classes
-
-		###############################################
-		** 		     A Permission Agent              **
-		###############################################
-In some cases we might have a OWeb API that works the same for multiple expansion or Controllers In this case it might be hard
- to know whatever the user that made the API request has the correct permissions.
-We can use a simple PermissionAgent Abstract class that will be used by those controller extension in order to let them know
-if they should allow the data to be sent, saved etc.
-	What We need :
-		-a Abstract PermissionAgent
-		    *hasPermission(int $actionId)->boolean;
-
-		###############################################
 		** 		     A Simple Identified Data        **
 		###############################################
 Will work as a limited storage saving system. The main purpose is to use this when we won't to limit database acceses.
