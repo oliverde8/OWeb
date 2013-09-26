@@ -10,7 +10,7 @@
 namespace OWeb\types\data;
 
 
-abstract class Data {
+class Data {
 
     private $dataCategorie;
     private $dataId;
@@ -26,10 +26,23 @@ abstract class Data {
         if($fileName == null)
             $this->fileName = $md5.'.odata';
 
+        $this->path = \OWEB_DIR_DATA."/tmp/".$dataCategorie."/".self::generatePathFromId($md5);
+
+        if(!is_dir($this->path))
+            mkdir($this->path, 0, true);
     }
 
     public static function generatePathFromId($id){
 
+        $path = "";
+
+        for($i = 1; $i < strlen($id); $i = $i+2){
+
+            $path .= $id[$i-1].$id[$i].'/';
+
+        }
+
+        return $path;
     }
 
 
