@@ -1,6 +1,9 @@
 <?php
 
 namespace Model\programs;
+use Model\articles\Artciles;
+use Model\programs\exception\ProgramNotFound;
+use OWeb\manage\Extensions;
 
 /**
  * Description of Programs
@@ -16,8 +19,8 @@ class Programs {
 	
 	private $programs = array();
 	
-	function __construct(\Model\programs\Categories $cat, \Model\articles\Artciles $art) {
-		$this->ext_connection = \OWeb\manage\Extensions::getInstance()->getExtension('db\Connection');
+	function __construct(Categories $cat, Artciles $art) {
+		$this->ext_connection = Extensions::getInstance()->getExtension('db\Connection');
 		$this->categories = $cat;
 		$this->articles = $art;
 	}
@@ -33,18 +36,14 @@ class Programs {
 				$prefix = $this->ext_connection->get_prefix();
 				
 				$sql = $connection->prepare("SELECT * 
-						FROM " . $prefix . "program p, 
-						WHERE id_prog = :id");
+						FROM " . $prefix . "program p," . $prefix . "program_description d
+						WHERE id_prog = :id
+						    AND prog_id = id_prog");
 				
 				if($sql->execute(array(':id'=>$id))){
 					$result = $sql->fetchObject();
-					
+
 					$article = null;
-					try{
-						
-					}catch(\Exception $ex){
-						$article = $this->articles->getArticle($result->desc_id);
-					}
 					
 					$program = 
 						new \Model\programs\Program	(
@@ -54,24 +53,27 @@ class Programs {
 										$result->front_page == 1, 
 										$this->categories->getElement($result->cat_id), 
 										$article, 
-										$result->date, 
-										$result->short_desc,
-										$result->short_desc2
+										$result->date
 						); 
-					$this->programs[$id] = $article;
-					
-					return $program;
+					$this->programs[$id] = $program;
+
+                    do{
+                        $program->addLanguage($result->lang, $result->short_desc, $result->vshort_desc);
+
+                    }while($result = $sql->fetchObject());
+
+                    return $program;
 				}else{
-					throw new \Model\articles\exception\ArticleNotFound("Couldn't get Article with id : $id . SQL ERROR2", 0, $ex);
+					throw new ProgramNotFound("Couldn't get Program with id : $id . SQL ERROR2", 0);
 				}
 				
 			}catch(\Exception $ex){
-				throw new \Model\articles\exception\ArticleNotFound("Couldn't get Article with id : $id . SQL ERROR", 0, $ex);
+				throw new ProgramNotFound("Couldn't get Program with id : $id . SQL ERROR", 0, $ex);
 			}
 		}
 	}
 	
-	public function getProgramArticles(\Model\programs\CategorieElement $cat, $start, $nbELement, $rec = true){
+	public function getPrograms(\Model\programs\CategorieElement $cat, $start, $nbELement, $rec = true){
 		try{
 			$connection = $this->ext_connection->get_Connection();
 			$prefix = $this->ext_connection->get_prefix();
@@ -148,11 +150,11 @@ class Programs {
 				
 				return $programs;
 			}else{
-				throw new \Model\articles\exception\ArticleNotFound("Couldn't get Articles of Category : ".$cat->getId()." . SQL ERROR2", 0, $ex);
+				throw new ProgramNotFound("Couldn't get Program of Category : ".$cat->getId()." . SQL ERROR2", 0, $ex);
 			}
 			
 		}catch(\Exception $ex){
-			throw new \Model\articles\exception\ArticleNotFound("Couldn't get Articles of Category : ".$cat->getId()." . SQL ERROR", 0, $ex);
+			throw new ProgramNotFound("Couldn't get Program of Category : ".$cat->getId()." . SQL ERROR", 0, $ex);
 		}
 	
 	}

@@ -16,13 +16,14 @@ class Program {
 	protected $category;
 	protected $desc_article;
 	protected $date;
-	protected $desc;
-	protected $desc2;
-	
+
+    protected $short = array();
+    protected $vshort = array();
+
 	protected $versions = array();
 	protected $complementary = array();
 	
-	function __construct($id, $name, $img, $front_page, $category, $desc_article, $date, $desc, $desc2) {
+	function __construct($id, $name, $img, $front_page, $category, $desc_article, $date) {
 		$this->id = $id;
 		$this->name = $name;
 		$this->img = $img;
@@ -30,8 +31,6 @@ class Program {
 		$this->category = $category;
 		$this->desc_article = $desc_article;
 		$this->date = $date;
-		$this->desc = $desc;
-		$this->desc2 = $desc2;
 	}
 	
 	public function getId() {
@@ -90,24 +89,22 @@ class Program {
 		$this->date = $date;
 	}
 
-	public function getDesc() {
-		return $this->desc;
-	}
+    public function addLanguage($lang, $short, $vshort){
+        $this->short[$lang] = $short;
+        $this->vshort[$lang] = $vshort;
+    }
 
-	public function setDesc($desc) {
-		$this->desc = $desc;
-	}
+    public function getShortDescription($lang){
+        return isset($this->short[$lang]) ? $this->short[$lang] : "";
+    }
 
-	public function getDesc2() {
-		return $this->desc2;
-	}
+    public function getVeryShortDescription($lang){
+        return isset($this->vshort[$lang]) ? $this->vshort[$lang] : "";
+    }
 
-	public function setDesc2($desc2) {
-		$this->desc2 = $desc2;
-	}
-
-
-	
+    public function checkLang($lang){
+        return (isset($this->vshort[$lang]));
+    }
 }
 
 ?>

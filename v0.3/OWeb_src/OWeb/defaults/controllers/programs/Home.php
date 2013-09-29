@@ -35,14 +35,11 @@ class Home extends \OWeb\types\Controller{
 		$this->view->previews_title[] = '<img src="'.OWEB_HTML_URL_IMG.'/page/programing/tm-logo_small.jpg" /> 
 					<img src="'.OWEB_HTML_URL_IMG.'/page/programing/mp-logo_small.png" />
 					Related Projects';
-		$this->view->previews[] =  $this->programs->getProgramArticles($this->categories->getElement(1), 0, 100);
+		$this->view->previews[] =  $this->programs->getPrograms($this->categories->getElement(1), 0, 100);
 		
 		$this->view->previews_title[] = 'Some interesting University Projects';
-		$this->view->previews[] =  $this->programs->getProgramArticles($this->categories->getElement(2), 0, 100);
-		
-		/*foreach($this->view->articles as $article){
-			echo $article->getId().", ";
-		}*/
+		$this->view->previews[] =  $this->programs->getPrograms($this->categories->getElement(2), 0, 100);
+
 	}
 }
 
