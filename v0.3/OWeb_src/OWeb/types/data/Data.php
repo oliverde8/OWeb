@@ -10,6 +10,13 @@
 namespace OWeb\types\data;
 
 
+/**
+ * Represent a data that can be saved in a file
+ *
+ * Class Data
+ * @package OWeb\types\data
+ * @author oliverde8
+ */
 class Data {
 
     private $dataCategorie;
@@ -79,6 +86,13 @@ class Data {
     public function getPath()
     {
         return \OWEB_DIR_DATA.$this->path;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFile(){
+        return \OWEB_DIR_DATA.$this->path.$this->fileName;
     }
 
     /**

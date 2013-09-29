@@ -16,4 +16,6 @@
     $Oweb = new OWeb\Oweb($_GET, $_POST, $_FILES, $_COOKIE, $_SERVER, $_SERVER['REMOTE_ADDR']);
 
 	$Oweb->display();
+
+    //new \OWeb\types\TemporaryData("test","test");
 ?>

@@ -3,7 +3,9 @@
 namespace OWeb\types;
 
 /**
- * Description of Controller
+ * Is among the main bricks of OWeb,
+ * It can be used as subView or as a main Page. Never create a Controller by yourself, OWeb will create them for you.
+ * To use a Controller as a sub view just use the SubViews manager!
  *
  * @author De Cramer Oliver
  */
@@ -29,28 +31,57 @@ abstract class Controller extends NamedClass implements Configurable {
 		$this->language = new \OWeb\types\Language();
 	}
 
-	protected function addAction($action, $nom_func) {
+    /**
+     * Registers an action that the controller might do
+     *
+     * @param $action string the name of the action
+     * @param $nom_func The function to call when the action is executed
+     */
+    protected function addAction($action, $nom_func) {
 		$this->actions[$action] = $nom_func;
 	}
 
-	protected function resetActionsAll() {
+    /**
+     * Resets all actions
+     */
+    protected function resetActionsAll() {
 		$this->actions = array();
 	}
 
-	protected function resetAction($actioName) {
-		if (isset($this->actions[$actioName]))
-			unset($this->actions[$actioName]);
+    /**
+     * Removes an action from the action list
+     *
+     * @param $actionName string The action name to be removed
+     */
+    protected function removeAction($actionName) {
+		if (isset($this->actions[$actionName]))
+			unset($this->actions[$actionName]);
 	}
 
-	public function doAction($actionName) {
+    /**
+     * Executes the action
+     * This will call the function registered earlier
+     *
+     * @param $actionName String the name of the action to execute
+     */
+    public function doAction($actionName) {
 		call_user_func_array(array($this, $this->actions[$actionName]), array());
 	}
 
-	protected function registerEvent($eventName, $funcName) {
+    /**
+     * Registers an event to whom this controller needs to respond
+     *
+     * @param $eventName String THe name of the event to whom it will respond
+     * @param $funcName The name of the function to call when the event happens
+     */
+    protected function registerEvent($eventName, $funcName) {
 		\OWeb\manage\events::getInstance()->registerEvent($eventName, $this, $funcName);
 	}
 
-	public function loadParams() {
+    /**
+     * Automatically loads parameters throught PHP get and Post variables
+     */
+    public function loadParams() {
 		switch ($this->action_mode) {
 			case self::ACTION_DOUBLE :
 				$a = array_merge(\OWeb\OWeb::getInstance()->get_post(), \OWeb\OWeb::getInstance()->get_get());
@@ -58,19 +89,32 @@ abstract class Controller extends NamedClass implements Configurable {
 			case self::ACTION_GET :
 				$a = \OWeb\OWeb::getInstance()->get_get();
 				break;
-			case self::ACTION_GET :
+			case self::ACTION_POST :
 				$a = \OWeb\OWeb::getInstance()->get_post();
 				break;
 		}
 		$this->params = $a;
 	}
 
-	public function addParams($paramName, $value) {
+    /**
+     * Adds a parameter manually to the Controller. This is used if the controller is used as a SubView
+     *
+     * @param $paramName String The name of the parameter
+     * @param $value mixed THe value of the parameter
+     * @return $this
+     */
+    public function addParams($paramName, $value) {
 		$this->params[$paramName] = $value;
 		return $this;
 	}
 
-	public function getParam($paramName) {
+    /**
+     * Gets the value of a parameter
+     *
+     * @param $paramName String The name of the parameter of whom the value is asked
+     * @return mixed The value of the parameter or if parameter doesn't exist Null
+     */
+    public function getParam($paramName) {
 		if (isset($this->params[$paramName]))
 			return $this->params[$paramName];
 		else
@@ -79,35 +123,50 @@ abstract class Controller extends NamedClass implements Configurable {
 
 	/**
 	 * This will activate the usage of the language file
+     * This means the controller will support multi language.
 	 */
 	protected function InitLanguageFile() {
 		$this->language->init($this);
 	}
 
-	protected function getLangString($name) {
+    /**
+     * If LanguageFile is initialised then this will return the text in the current language
+     *
+     * @param $name String The name of the text demanded
+     * @return string The text demanded in the correct language
+     */
+    protected function getLangString($name) {
 		return $this->language->get($name);
 	}
 
+    /**
+     * If LanguageFile is initialised then this will return the text in the current language
+     *
+     * @param $name String The name of the text demanded
+     * @return string The text demanded in the correct language
+     */
 	protected function l($name) {
 		return $this->language->get($name);
 	}
 
-	protected function getLang() {
+    /**
+     * @return String The current language
+     */
+    protected function getLang() {
 		return $this->language->getLang();
 	}
 
-    protected function disableProtectParams(){
-        $this->auto_protectParams = false;
-    }
-
-    protected function enableProtectedParams(){
-        $this->auto_protectParams = true;
-    }
-
-	public function display($ctr = null) {
+    /**
+     * Displays the controllers view
+     *
+     * @param null $ctr The name the controller that made the call. It might be an parent controller
+     * @throws \OWeb\manage\exceptions\Controller
+     */
+    public function display($ctr = null) {
 		if ($ctr == null)
 			$ctr = get_class($this);
 
+        //Getting the path to the controller
 		$path = self::get_relative_pathOf($ctr);
 
 		$path1 = OWEB_DIR_VIEWS . '/' . $this->get_exploded_numOf($ctr, 0);
@@ -119,6 +178,7 @@ abstract class Controller extends NamedClass implements Configurable {
 			$path = $path2 . $path;
 		} else {
 			if ($ctr != '\OWeb\types\Controller') {
+                //Well this controller doesn't have a View let's see if the parent has a nice view to display
 				$this->display(get_parent_class($ctr));
 				return;
 			} else {
