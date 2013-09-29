@@ -1,4 +1,5 @@
 <?php
+
 $this->addHeader('2Collone.css', \OWeb\manage\Headers::css);
 $this->addHeader('articles.css', \OWeb\manage\Headers::css);
 $this->addHeader('onprogress.css', \OWeb\manage\Headers::css);
