@@ -26,7 +26,7 @@
     <file path="/Data.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380445341202" ignored="false" />
     <file path="/TemporaryData.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380448686610" ignored="false" />
     <file path="/TemporaryDataGeneretor.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380448251322" ignored="false" />
-    <file path="/Home.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380465044477" ignored="false" />
+    <file path="/Home.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380468174689" ignored="false" />
     <file path="/ProgramNotFound.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380465852436" ignored="false" />
     <file path="/Programs.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380467754784" ignored="false" />
     <file path="/Program.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380466856067" ignored="false" />
@@ -70,13 +70,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Programs.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Programs.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/programs/Programs.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="90" selection-start="1126" selection-end="1126" vertical-scroll-proportion="0.3490991">
+            <state line="45" column="90" selection-start="1126" selection-end="1126" vertical-scroll-proportion="-11.923077">
               <folding>
                 <element signature="e#33#61#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Home.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/views/Controller/programs/Home.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="95" column="18" selection-start="2742" selection-end="2742" vertical-scroll-proportion="0.5596847">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -93,7 +102,7 @@
       <file leaf-file-name="Program.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/programs/Program.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="37" selection-start="2012" selection-end="2012" vertical-scroll-proportion="-68.0">
+            <state line="100" column="43" selection-start="1864" selection-end="1887" vertical-scroll-proportion="-23.692308">
               <folding />
             </state>
           </provider>
@@ -109,7 +118,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/OWeb_src/OWeb/OWeb.php" />
         <option value="$PROJECT_DIR$/ToDO.txt" />
         <option value="$PROJECT_DIR$/OWeb_src/OWeb/types/Configurable.php" />
         <option value="$PROJECT_DIR$/OWeb_src/OWeb/types/PermisionAgent.php" />
@@ -125,6 +133,7 @@
         <option value="$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/programs/Program.php" />
         <option value="$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/programs/Programs.php" />
         <option value="$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/articles/Artciles.php" />
+        <option value="$PROJECT_DIR$/OWeb_src/OWeb/defaults/views/Controller/programs/Home.php" />
       </list>
     </option>
   </component>
@@ -307,96 +316,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="OWeb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="v0.3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="v0.3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OWeb_src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OWeb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="defaults" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="v0.3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="v0.3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OWeb_src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OWeb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="defaults" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="programs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="v0.3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="v0.3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OWeb_src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OWeb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="defaults" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -807,20 +726,6 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/www_oliverde8/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="4" selection-start="724" selection-end="724" vertical-scroll-proportion="-11.115385">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/types/data/Data.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="47" selection-start="246" selection-end="246" vertical-scroll-proportion="-4.576923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/types/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="180" column="109" selection-start="5232" selection-end="5232" vertical-scroll-proportion="-15.846154">
@@ -859,13 +764,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/views/Controller/programs/Home.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="58" selection-start="1107" selection-end="1107" vertical-scroll-proportion="-3.9230769">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/controllers/programs/Home.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="33" selection-start="564" selection-end="564" vertical-scroll-proportion="0.49774775">
@@ -899,7 +797,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/articles/Article.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="4" selection-start="1295" selection-end="1371" vertical-scroll-proportion="0.15315315">
+        <state line="77" column="4" selection-start="1295" selection-end="1371" vertical-scroll-proportion="1.0191442">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/views/Controller/articles/Article.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="34" selection-start="510" selection-end="510" vertical-scroll-proportion="0.28716215">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/views/Controller/articles/widgets/Article_Title.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="8" selection-end="139" vertical-scroll-proportion="0.05743243">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/programs/Program.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="100" column="43" selection-start="1864" selection-end="1887" vertical-scroll-proportion="-23.692308">
           <folding />
         </state>
       </provider>
@@ -911,19 +830,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/programs/Program.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="37" selection-start="2012" selection-end="2012" vertical-scroll-proportion="-68.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/programs/Programs.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="90" selection-start="1126" selection-end="1126" vertical-scroll-proportion="0.3490991">
+        <state line="45" column="90" selection-start="1126" selection-end="1126" vertical-scroll-proportion="-11.923077">
           <folding>
             <element signature="e#33#61#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/views/Controller/programs/Home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="18" selection-start="2742" selection-end="2742" vertical-scroll-proportion="0.5596847">
+          <folding />
         </state>
       </provider>
     </entry>

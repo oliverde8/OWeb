@@ -13,6 +13,8 @@ $this->addHeader('jquery.contentcarousel.js', \OWeb\manage\Headers::javascript);
 
 $carousel_id = 0;
 
+
+
 ?>
 <div id="twoCollone">
 	<div>
@@ -50,6 +52,10 @@ $carousel_id = 0;
 							$num++;
 							if(!$prog->getFront_page())
 								continue;
+                            if(!$prog->checkLang($this->getLang()))
+                                $lang = \OWeb\types\Language::$default_language;
+                            else
+                                $lang = $this->getLang();
 						?>
 						
 						<div class="ca-item ca-item-<?php echo $nbT."-".$num; ?>">
@@ -59,7 +65,7 @@ $carousel_id = 0;
 								</div>
 								<h3><?php echo $prog->getName(); ?></h3>
 								<h4>
-									<span><?php echo $prog->getDesc2(); ?></span>
+									<span><?php echo $prog->getVeryShortDescription($lang); ?></span>
 								</h4>
 								<a href="#" class="ca-more">more...</a>
 							</div>
@@ -67,7 +73,7 @@ $carousel_id = 0;
 								<div class="ca-content">
 									<a href="#" class="ca-close">close</a>
 									<div class="ca-content-text">
-									<?php echo $prog->getDesc(); ?>
+									<?php echo $prog->getShortDescription($lang); ?>
 									</div>
 									<p><a href="http://www.tm-teams.com" class="ca-content-more">More Information &/| Download</a></p>
 								</div>
