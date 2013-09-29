@@ -35,24 +35,24 @@ class Artciles {
 						WHERE ac.article_id = id_article 
 						AND id_article = :id");
 				
-				if($sql->execute(array(':id'=>$id))){
-					$result = $sql->fetchObject();
-					$article = 
+				if($sql->execute(array(':id'=>$id)) && $result = $sql->fetchObject()){
+
+					$article =
 						new \Model\articles\Article	(
-										$result->id_article, 
-										$result->type, 
-										$result->img, 
-										$result->published == 1, 
-										$result->pdate, 
+										$result->id_article,
+										$result->type,
+										$result->img,
+										$result->published == 1,
+										$result->pdate,
 										$this->categories->getElement($result->category_id)
-						); 
+						);
 					$this->articles[$id] = $article;
-					
+
 					$article->addLanguage($result->article_lang, $result->title,  $result->content);
 					while($result = $sql->fetchObject()){
 						$article->addLanguage($result->article_lang, $result->title,  $result->content);
 					}
-					
+
 					$sql = "SELECT * FROM " . $prefix . "article_category_more
 								WHERE article_id = $id";
 					if($sql = $connection->query($sql)){
@@ -70,7 +70,7 @@ class Artciles {
 					$article->setisDOne(true);
 					return $article;
 				}else{
-					throw new \Model\articles\exception\ArticleNotFound("Couldn't get Article with id : $id . SQL ERROR2", 0, $ex);
+					throw new \Model\articles\exception\ArticleNotFound("Couldn't get Article with id : $id . SQL ERROR2", 0);
 				}
 				
 			}catch(\Exception $ex){
