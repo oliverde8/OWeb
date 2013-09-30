@@ -33,6 +33,7 @@ class Program {
 	protected $img;
 	protected $front_page;
 	protected $category;
+	protected $categories = array();
 	protected $desc_article;
 	protected $date;
 
@@ -119,6 +120,10 @@ class Program {
 
     public function getVeryShortDescription($lang){
         return isset($this->vshort[$lang]) ? $this->vshort[$lang] : "";
+    }
+
+    function addCategory(CategorieElement $categorie){
+        $this->categories[] = $categorie;
     }
 
     public function checkLang($lang){

@@ -161,9 +161,9 @@ class Programs
                         AND prog_id = id_prog
                 ORDER BY date DESC";
 
+            $programs = array();
             if ($sql = $connection->query($sql)) {
 
-                $programs = array();
                 while ($result = $sql->fetchObject()) {
 
                     if (isset($this->programs[$result->id_prog])) {
@@ -190,11 +190,29 @@ class Programs
                         $programs[$result->id_prog]->addLanguage($result->lang, $result->short_desc, $result->vshort_desc);
                     }
                 }
-                //$this->programs[$result->id_prog] = $programs[$result->id_prog] ;
-                return $programs;
             } else {
                 throw new ProgramNotFound("Couldn't get Program of List : ".$idString." SQL ERROR2", 0);
             }
+
+            //Main program component gather, now let's get the rest of it.
+            //First second categories
+
+            $sql = "SELECT * FROM ".$prefix."program_category_category
+                        WHERE id_prog IN (".$idString.")";
+
+            if ($sql = $connection->query($sql)) {
+
+                while ($result = $sql->fetchObject()) {
+                    if(isset($programs[$result->id_prog])){
+                        $programs[$result->id_prog]->addCategory($this->categories->getElement($result->id_category));
+                    }
+                }
+            } else {
+                //throw new ProgramNotFound("Couldn't get Program of List : ".$idString." Error gathering secondary Categories", 0);
+            }
+
+
+            return $programs;
 
         } catch (\Exception $ex) {
             throw new ProgramNotFound("Couldn't get Program of List : ".$idString." . SQL ERROR", 0, $ex);

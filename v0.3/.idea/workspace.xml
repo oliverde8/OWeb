@@ -28,8 +28,8 @@
     <file path="/TemporaryDataGeneretor.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380448251322" ignored="false" />
     <file path="/Home.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380468174689" ignored="false" />
     <file path="/ProgramNotFound.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380465852436" ignored="false" />
-    <file path="/Programs.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380525919903" ignored="false" />
-    <file path="/Program.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380466856067" ignored="false" />
+    <file path="/Programs.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380527817260" ignored="false" />
+    <file path="/Program.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380527601749" ignored="false" />
     <file path="/Exception.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380472202381" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +53,25 @@
       <file leaf-file-name="Programs.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/programs/Programs.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="151" column="62" selection-start="5006" selection-end="5006" vertical-scroll-proportion="0.5680581">
+            <state line="205" column="59" selection-start="7393" selection-end="7393" vertical-scroll-proportion="0.73977697">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Program.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/programs/Program.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="124" column="24" selection-start="2877" selection-end="2888" vertical-scroll-proportion="-16.923077">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Article.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/articles/Article.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="63" column="4" selection-start="1647" selection-end="1753" vertical-scroll-proportion="-3.2692308">
               <folding />
             </state>
           </provider>
@@ -78,7 +96,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/OWeb_src/OWeb/utils/link/Generator.php" />
         <option value="$PROJECT_DIR$/OWeb_src/OWeb/utils/Link.php" />
         <option value="$PROJECT_DIR$/OWeb_src/OWeb/utils/Singleton.php" />
         <option value="$PROJECT_DIR$/OWeb_src/OWeb/autoLoader.php" />
@@ -93,6 +110,7 @@
         <option value="$PROJECT_DIR$/www_oliverde8/pages/programs/home.php" />
         <option value="$PROJECT_DIR$/www_oliverde8/pages/Page.php" />
         <option value="$PROJECT_DIR$/www_oliverde8/templates/main.php" />
+        <option value="$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/programs/Program.php" />
         <option value="$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/programs/Programs.php" />
       </list>
     </option>
@@ -312,7 +330,7 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="fileTemplates" />
+    <property name="options.lastSelected" value="editor.preferences.folding" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/www" />
     <property name="FullScreen" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -481,16 +499,6 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/autoLoader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/Exception.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/OWeb.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="-2.5033784" />
@@ -563,9 +571,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/articles/Article.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="4" selection-start="1647" selection-end="1753" vertical-scroll-proportion="-3.2692308">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/programs/Program.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="124" column="24" selection-start="2877" selection-end="2888" vertical-scroll-proportion="-16.923077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/programs/Programs.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="151" column="62" selection-start="5006" selection-end="5006" vertical-scroll-proportion="0.5680581">
+        <state line="205" column="59" selection-start="7393" selection-end="7393" vertical-scroll-proportion="0.73977697">
           <folding />
         </state>
       </provider>
