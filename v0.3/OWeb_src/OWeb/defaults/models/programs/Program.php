@@ -21,6 +21,7 @@
  */
 namespace Model\programs;
 use Model\articles\Article;
+use Page\programs\Categorie;
 
 /**
  * Description of Programs
@@ -44,8 +45,17 @@ class Program {
 
 	protected $versions = array();
 	protected $complementary = array();
-	
-	function __construct($id, $name, $img, $front_page, $category, $desc_article, $date) {
+
+    /**
+     * @param int $id The id of the program
+     * @param string $name The name of the program
+     * @param string $img The logo of the program
+     * @param bool $front_page should it be showed in the carousel
+     * @param Categorie $category The category of the program
+     * @param Article $desc_article L'article qui decrit le program
+     * @param $date La date de creation du program
+     */
+    function __construct($id, $name, $img, $front_page, $category, $desc_article, $date) {
 		$this->id = $id;
 		$this->name = $name;
 		$this->img = $img;
@@ -54,28 +64,47 @@ class Program {
 		$this->desc_article = $desc_article;
 		$this->date = $date;
 	}
-	
-	public function getId() {
+
+    /**
+     * Returns the programs id
+     * @return int
+     */
+    public function getId() {
 		return $this->id;
 	}
 
-	public function setId($id) {
+    /**
+     * @param int $id The new id of the program
+     */
+    public function setId($id) {
 		$this->id = $id;
 	}
 
-	public function getName() {
+    /**
+     * @return string The name of the Program
+     */
+    public function getName() {
 		return $this->name;
 	}
 
-	public function setName($name) {
+    /**
+     * @param string $name The new name of the program
+     */
+    public function setName($name) {
 		$this->name = $name;
 	}
-	
-	public function getImg() {
+
+    /**
+     * @return string the image logo of the program
+     */
+    public function getImg() {
 		return $this->img;
 	}
 
-	public function setImg($img) {
+    /**
+     * @param string $img The new logo of the program
+      */
+    public function setImg($img) {
 		$this->img = $img;
 	}
 

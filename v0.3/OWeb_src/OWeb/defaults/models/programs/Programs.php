@@ -39,6 +39,11 @@ class Programs
 
     private $programs = array();
 
+    /**
+     *
+     * @param Categories $cat
+     * @param Artciles $art
+     */
     function __construct(Categories $cat, Artciles $art)
     {
         $this->ext_connection = Extensions::getInstance()->getExtension('db\Connection');
@@ -46,6 +51,12 @@ class Programs
         $this->articles = $art;
     }
 
+    /**
+     * Recovers the Program with the demanded ID
+     * @param $id
+     * @return Program
+     * @throws exception\ProgramNotFound thrown if this program doesn't exist or there is a problem with the DB
+     */
     public function getprogram($id)
     {
 
@@ -69,7 +80,14 @@ class Programs
         }
     }
 
-
+    /**
+     * @param CategorieElement $cat The category of the program wanted
+     * @param int $start
+     * @param int $nbELement Maximum number of elements to return
+     * @param bool $rec Should the program search be recursive in the categories
+     * @return array(Program) Array of the programs found
+     * @throws exception\ProgramNotFound If there is a SQL error
+     */
     public function getPrograms(\Model\programs\CategorieElement $cat, $start, $nbELement, $rec = true){
 
         try {
@@ -114,6 +132,13 @@ class Programs
         return array();
     }
 
+    /**
+     * Recovers the Progams of the Array of id.
+     *
+     * @param array(int) $ids The array of id.
+     * @return array(Program) The programs that was found
+     * @throws exception\ProgramNotFound If there is a SQL error
+     */
     public function getProgramsArray($ids){
 
         $idString = "";
