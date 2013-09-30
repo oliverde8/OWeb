@@ -20,6 +20,7 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 namespace Model\programs;
+use Model\articles\Article;
 
 /**
  * Description of Programs
@@ -35,6 +36,7 @@ class Program {
 	protected $category;
 	protected $categories = array();
 	protected $desc_article;
+	protected $desc_articles = array();
 	protected $date;
 
     protected $short = array();
@@ -97,7 +99,7 @@ class Program {
 		return $this->desc_article;
 	}
 
-	public function setDesc_article($desc_article) {
+	public function setDesc_article(Article $desc_article) {
 		$this->desc_article = $desc_article;
 	}
 
@@ -124,6 +126,10 @@ class Program {
 
     function addCategory(CategorieElement $categorie){
         $this->categories[] = $categorie;
+    }
+
+    function addArticle(Article $article){
+        $this->desc_articles[] = $article;
     }
 
     public function checkLang($lang){

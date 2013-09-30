@@ -54,46 +54,17 @@ class Programs
         else {
 
             try {
-                $connection = $this->ext_connection->get_Connection();
-                $prefix = $this->ext_connection->get_prefix();
 
-                $sql = $connection->prepare("SELECT *
-						FROM " . $prefix . "program p," . $prefix . "program_description d
-						WHERE id_prog = :id
-						    AND prog_id = id_prog");
+                $programs = $this->getProgramsArray(array($id));
 
-                if ($sql->execute(array(':id' => $id)) && $result = $sql->fetchObject()) {
-
-                    $article = null;
-                    try {
-                        $article = $this->articles->getArticle($result->desc_id);
-                    } catch (\Exception $ex) {
-                    }
-
-                    $program =
-                        new \Model\programs\Program    (
-                            $result->id_prog,
-                            $result->name,
-                            $result->img,
-                            $result->front_page == 1,
-                            $this->categories->getElement($result->article_id),
-                            $article,
-                            $result->date
-                        );
-                    $this->programs[$id] = $program;
-
-                    do {
-                        $program->addLanguage($result->lang, $result->short_desc, $result->vshort_desc);
-
-                    } while ($result = $sql->fetchObject());
-
-                    return $program;
-                } else {
-                    throw new ProgramNotFound("Couldn't get Program with id : $id . SQL ERROR2", 0);
+                if(!isset($programs[$id])){
+                    return $programs[$id];
+                }else{
+                    throw new ProgramNotFound("Couldn't get Program with id : $id . NO such program", 0);
                 }
 
             } catch (\Exception $ex) {
-                throw new ProgramNotFound("Couldn't get Program with id : $id . SQL ERROR", 0, $ex);
+                throw new ProgramNotFound("Couldn't get Program with id : $id . ERROR", 0, $ex);
             }
         }
     }
@@ -195,20 +166,41 @@ class Programs
             }
 
             //Main program component gather, now let's get the rest of it.
-            //First second categories
 
+            //First second categories
             $sql = "SELECT * FROM ".$prefix."program_category_category
-                        WHERE id_prog IN (".$idString.")";
+                        WHERE prog_id IN (".$idString.")";
 
             if ($sql = $connection->query($sql)) {
 
                 while ($result = $sql->fetchObject()) {
-                    if(isset($programs[$result->id_prog])){
-                        $programs[$result->id_prog]->addCategory($this->categories->getElement($result->id_category));
+                    if(isset($programs[$result->prog_id])){
+                        $programs[$result->prog_id]->addCategory($this->categories->getElement($result->category_id));
                     }
                 }
             } else {
-                //throw new ProgramNotFound("Couldn't get Program of List : ".$idString." Error gathering secondary Categories", 0);
+                throw new ProgramNotFound("Couldn't get Program of List : ".$idString." Error gathering secondary Categories", 0);
+            }
+
+            //Second secondary articles
+            $sql2 = "SELECT * FROM ".$prefix."program_article
+                        WHERE prog_id IN (".$idString.")";
+
+            if ($sql = $connection->query($sql2)) {
+
+                while ($result = $sql->fetchObject()) {
+                    if(isset($programs[$result->prog_id])){
+                        $programs[$result->prog_id]->addCategory($this->articles->getArticle($result->category_id));
+                    }
+                }
+            } else {
+                throw new ProgramNotFound("Couldn't get Program of List : ".$idString." Error gathering secondary Articles. ".$sql2, 0);
+            }
+
+
+            //Lest register the new programs in to the buffer
+            foreach($programs as $id=>$program){
+                $this->programs[$id] = $program;
             }
 
 
