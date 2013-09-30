@@ -98,29 +98,68 @@ class Programs
         }
     }
 
-    public function getPrograms(\Model\programs\CategorieElement $cat, $start, $nbELement, $rec = true)
-    {
+
+    public function getPrograms(\Model\programs\CategorieElement $cat, $start, $nbELement, $rec = true){
+
         try {
             $connection = $this->ext_connection->get_Connection();
             $prefix = $this->ext_connection->get_prefix();
 
             $cs = $cat->getChildrens();
+
+
             if ($rec && !empty($cs)) {
                 $cat_parents = $cat->getRecuriveChildrensIds();
 
-                $sql = "SELECT *
-						FROM " . $prefix . "program p," . $prefix . "program_description d
-						WHERE cat_id IN ($cat_parents)
-						    AND prog_id = id_prog
-					ORDER BY date DESC
-					LIMIT $start, $nbELement";
+                $sql = "SELECT id_prog
+                            FROM " . $prefix . "program p
+                            WHERE cat_id IN ($cat_parents)
+                        ORDER BY date DESC
+                        LIMIT $start, $nbELement";
             } else
-                $sql = "SELECT *
-						FROM " . $prefix . "program p," . $prefix . "program_description d
-						WHERE cat_id = " . $cat->getId() . "
-						    AND prog_id = id_prog
-					ORDER BY pdate DESC
-					LIMIT $start, $nbELement";
+                $sql = "SELECT id_prog
+                            FROM " . $prefix . "program p
+                            WHERE cat_id = " . $cat->getId() . "
+                        ORDER BY date DESC
+                        LIMIT $start, $nbELement";
+
+
+            if ($sql = $connection->query($sql)) {
+
+                $programs = array();
+                while ($result = $sql->fetchObject()) {
+                    $programs[] = $result->id_prog;
+                }
+
+                return $this->getProgramsArray($programs);
+
+            }else{
+                throw new ProgramNotFound("Couldn't get Program of Category : " . $cat->getId() . " . SQL ERROR2", 0);
+            }
+
+        }catch (\Exception $ex) {
+            throw new ProgramNotFound("Couldn't get Program of Category : " . $cat->getId() . " . SQL ERROR", 0, $ex);
+        }
+        return array();
+    }
+
+    public function getProgramsArray($ids){
+
+        $idString = "";
+        foreach($ids as $id){
+            $idString .=$id.',';
+        }
+        $idString = substr($idString, 0, strlen($idString)-1);
+
+        try {
+            $connection = $this->ext_connection->get_Connection();
+            $prefix = $this->ext_connection->get_prefix();
+
+            $sql = "SELECT *
+                    FROM " . $prefix . "program p," . $prefix . "program_description d
+                    WHERE prog_id IN (" . $idString . ")
+                        AND prog_id = id_prog
+                ORDER BY date DESC";
 
             if ($sql = $connection->query($sql)) {
 
@@ -154,11 +193,11 @@ class Programs
                 //$this->programs[$result->id_prog] = $programs[$result->id_prog] ;
                 return $programs;
             } else {
-                throw new ProgramNotFound("Couldn't get Program of Category : " . $cat->getId() . " . SQL ERROR2", 0, $ex);
+                throw new ProgramNotFound("Couldn't get Program of List : ".$idString." SQL ERROR2", 0);
             }
 
         } catch (\Exception $ex) {
-            throw new ProgramNotFound("Couldn't get Program of Category : " . $cat->getId() . " . SQL ERROR", 0, $ex);
+            throw new ProgramNotFound("Couldn't get Program of List : ".$idString." . SQL ERROR", 0, $ex);
         }
 
     }

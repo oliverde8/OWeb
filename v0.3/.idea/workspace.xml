@@ -28,7 +28,7 @@
     <file path="/TemporaryDataGeneretor.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380448251322" ignored="false" />
     <file path="/Home.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380468174689" ignored="false" />
     <file path="/ProgramNotFound.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380465852436" ignored="false" />
-    <file path="/Programs.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380467754784" ignored="false" />
+    <file path="/Programs.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380525919903" ignored="false" />
     <file path="/Program.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380466856067" ignored="false" />
     <file path="/Exception.php" changelist="036b61eb-5891-4bad-b2ec-3eee18709424" time="1380472202381" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -50,13 +50,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ToDO.txt" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ToDO.txt">
-          <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-            <state />
-          </provider>
+      <file leaf-file-name="Programs.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/programs/Programs.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="67" selection-start="1096" selection-end="1096" vertical-scroll-proportion="0.32508436">
+            <state line="151" column="62" selection-start="5006" selection-end="5006" vertical-scroll-proportion="0.5680581">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Artciles.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/articles/Artciles.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="181" column="31" selection-start="6108" selection-end="6156" vertical-scroll-proportion="-15.692307">
               <folding />
             </state>
           </provider>
@@ -72,7 +78,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/OWeb_src/OWeb/utils/link/Default_generator.php" />
         <option value="$PROJECT_DIR$/OWeb_src/OWeb/utils/link/Generator.php" />
         <option value="$PROJECT_DIR$/OWeb_src/OWeb/utils/Link.php" />
         <option value="$PROJECT_DIR$/OWeb_src/OWeb/utils/Singleton.php" />
@@ -88,6 +93,7 @@
         <option value="$PROJECT_DIR$/www_oliverde8/pages/programs/home.php" />
         <option value="$PROJECT_DIR$/www_oliverde8/pages/Page.php" />
         <option value="$PROJECT_DIR$/www_oliverde8/templates/main.php" />
+        <option value="$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/programs/Programs.php" />
       </list>
     </option>
   </component>
@@ -95,8 +101,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="54" />
     <option name="y" value="-8" />
-    <option name="width" value="1874" />
-    <option name="height" value="1096" />
+    <option name="width" value="1320" />
+    <option name="height" value="784" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -140,7 +146,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -173,8 +178,135 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="v0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="v0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OWeb_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OWeb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="v0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="v0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OWeb_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OWeb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="defaults" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="v0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="v0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OWeb_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OWeb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="defaults" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="programs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="v0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="v0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OWeb_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OWeb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="defaults" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="v0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="v0.3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OWeb_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OWeb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="defaults" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="articles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -183,8 +315,8 @@
     <property name="options.lastSelected" value="fileTemplates" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/www" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -251,27 +383,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+    <frame x="54" y="-8" width="1320" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294702" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23013245" sideWeight="0.67021275" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23052464" sideWeight="0.67021275" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294702" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -349,136 +481,69 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/utils/Link.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829">
-          <folding>
-            <element signature="e#6#861#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/utils/Singleton.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829">
-          <folding>
-            <element signature="e#6#861#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/autoLoader.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829">
-          <folding>
-            <element signature="e#6#861#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/Exception.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829">
-          <folding>
-            <element signature="e#6#861#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/OWeb.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="-2.5033784">
-          <folding>
-            <element signature="e#6#861#0" expanded="true" />
-            <element signature="e#863#1709#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="-2.5033784" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www_oliverde8/pages/articles/Article.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829">
-          <folding>
-            <element signature="e#6#861#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www_oliverde8/pages/articles/Categorie.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829">
-          <folding>
-            <element signature="e#6#861#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www_oliverde8/pages/articles/home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829">
-          <folding>
-            <element signature="e#6#861#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www_oliverde8/pages/downloads/Download.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829">
-          <folding>
-            <element signature="e#6#861#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www_oliverde8/pages/programs/Categorie.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829">
-          <folding>
-            <element signature="e#6#861#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www_oliverde8/pages/programs/home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829">
-          <folding>
-            <element signature="e#6#861#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www_oliverde8/pages/Page.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829">
-          <folding>
-            <element signature="e#6#861#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="20" column="3" selection-start="861" selection-end="861" vertical-scroll-proportion="0.3828829" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www_oliverde8/templates/main.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="34" selection-start="1592" selection-end="1592" vertical-scroll-proportion="0.7657658">
-          <folding>
-            <element signature="e#6#861#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="40" column="34" selection-start="1592" selection-end="1592" vertical-scroll-proportion="0.7657658" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www_oliverde8/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="645" selection-end="645" vertical-scroll-proportion="0.31619257">
-          <folding />
-        </state>
+        <state line="17" column="0" selection-start="645" selection-end="645" vertical-scroll-proportion="0.31619257" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www_oliverde8/sitemap.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="38" selection-start="588" selection-end="588" vertical-scroll-proportion="0.3018868">
-          <folding />
-        </state>
+        <state line="16" column="38" selection-start="588" selection-end="588" vertical-scroll-proportion="0.3018868" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ToDO.txt">
@@ -486,7 +551,21 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="67" selection-start="1096" selection-end="1096" vertical-scroll-proportion="0.32508436">
+        <state line="17" column="67" selection-start="1096" selection-end="1096" vertical-scroll-proportion="0.030141843">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/articles/Artciles.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="181" column="31" selection-start="6108" selection-end="6156" vertical-scroll-proportion="-15.692307">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OWeb_src/OWeb/defaults/models/programs/Programs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="151" column="62" selection-start="5006" selection-end="5006" vertical-scroll-proportion="0.5680581">
           <folding />
         </state>
       </provider>
