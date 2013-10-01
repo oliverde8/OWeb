@@ -39,5 +39,7 @@ class Box extends Controller{
         $this->view->class = $class != null ? $class : "";
 
         $this->view->ctr = $this->getParam('ctr');
+
+        $this->view->desc = $this->getParam('description');
     }
 }

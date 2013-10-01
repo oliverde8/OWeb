@@ -20,22 +20,24 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
+
+
 ?>
 
 
-<div class="box_start <?= $this->class; ?>">
+    <div class="box <?= $this->class; ?>">
 
-    <div class="box_content">
+        <div class="box_content">
 
-        <p class="open">TEXT ....</p>
+            <p class="open">TEXT ....</p>
 
-    </div>
-
-    <div class="box_description">
-        <div class="box_description_content">
-            <p>More TEXT .....</p>
         </div>
+
+        <div class="box_description">
+            <div class="box_description_content">
+                <p>More TEXT .....</p>
+            </div>
+        </div>
+
+
     </div>
-
-
-</div>

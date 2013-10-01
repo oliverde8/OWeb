@@ -27,7 +27,7 @@ div.programBox > .box_content{
 
 div.programBox > .box_description{
     background-color : #FFFFFF;
-    height : 15px;
+    height : -1px;
 
     margin-right: 4px;
     margin-left: 4px;
