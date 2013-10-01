@@ -23,7 +23,7 @@
 namespace OWeb\manage;
 
 /**
- * Subviews are just controllers not used as Pages. Any controller can be used as a SubView. 
+ * Subviews are just controllers not used as pages. Any controller can be used as a SubView.
  * This class will allow you to load and use them easily. 
  * 
  * notes :
