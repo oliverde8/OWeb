@@ -38,4 +38,4 @@ $this->addHeader('<script type="text/javascript" src="http://127.0.0.1/oliverde8
 		<div class="ColloneClean"></div>
 	</div>
 </div>
-?>
+

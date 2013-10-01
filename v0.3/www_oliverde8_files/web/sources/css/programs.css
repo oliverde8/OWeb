@@ -49,5 +49,5 @@ div.programBox > .box_description{
 }
 
 div.programBox > .box_description > div{
-    visibility: hidden;
+    display: none;
 }

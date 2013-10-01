@@ -23,7 +23,7 @@
 ?>
 
 
-<div class="box_start <?= $this->class ?>">
+<div class="box_start <?= $this->class; ?>">
 
     <div class="box_content">
 
@@ -32,7 +32,7 @@
     </div>
 
     <div class="box_description">
-        <div class ="box_description_content">
+        <div class="box_description_content">
             <p>More TEXT .....</p>
         </div>
     </div>
