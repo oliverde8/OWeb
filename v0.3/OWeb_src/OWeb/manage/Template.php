@@ -57,7 +57,7 @@ class Template {
 			ob_end_clean();
 			
 			if($tmp == 'main'){
-				$ctr = \OWeb\manage\Controller::getInstance()->loadException($e);
+				$ctr = \OWeb\manage\Controller::getInstance()->loadException($ex);
 				$ctr->Init();
 				$ctr->addParams("exception",$ex);
 				\OWeb\manage\Controller::getInstance()->display();

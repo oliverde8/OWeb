@@ -20,6 +20,7 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 namespace OWeb\manage;
+use OWeb\types\Header;
 
 /**
  * Manages the header files included to your web page. 
@@ -50,7 +51,7 @@ class Headers extends \OWeb\utils\Singleton{
 	
 	//List of the headers
 	private $headers = array();
-	
+
 	/**
 	 * Allows you to add a header to the we bpage
 	 * 
@@ -59,6 +60,8 @@ class Headers extends \OWeb\utils\Singleton{
 	 * @param type $type The type of the Header you want to add.
 	 */
 	public function addHeader($code, $type){
+
+
 		switch ($type){
 			case self::javascript : 
 				$code =$this->getPath(OWEB_HTML_DIR_JS, $code);
@@ -67,7 +70,9 @@ class Headers extends \OWeb\utils\Singleton{
 				$code =$this->getPath(OWEB_HTML_DIR_CSS, $code);
 			
 		}
-		$this->headers[] = new \OWeb\types\Header($code, $type);
+        $header = new Header($code, $type);
+        $code = md5($header->getCode());
+		$this->headers[$code] = $header;
 	}
 	
 	

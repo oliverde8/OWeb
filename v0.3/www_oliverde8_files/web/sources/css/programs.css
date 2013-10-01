@@ -4,48 +4,15 @@ div.programBox{
     float : left;
     margin : 5px;
     width : 370px;
-
-
 }
 
 div.programBox > .box_content{
     height : 150px;
-
-    background-color : #FFFFFF;
-
-    padding-left : 7px;
-    padding-right : 7px;
-
-    border-color : #AAAAAA;
-    border-style : solid;
-    border-width : 1px;
-
-    border-radius: 2px;
-    -webkit-borderradius: 2px;
-    -moz-border-radius: 2px;
 }
 
 div.programBox > .box_description{
-    background-color : #FFFFFF;
     height : -1px;
 
-    margin-right: 4px;
-    margin-left: 4px;
-    margin-top: -1px;
-
-    padding-left : 7px;
-    padding-right : 7px;
-
-    border-color : #AAAAAA;
-    border-style : solid;
-    border-width : 1px;
-
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-    -webkit-border-bottom-left-radius: 2px;
-    -webkit-border-bottom-right-radius: 2px;
-    -moz-border-radius-bottomleft: 2px;
-    -moz-border-radius-bottomright: 2px;
 }
 
 div.programBox > .box_description > div{
