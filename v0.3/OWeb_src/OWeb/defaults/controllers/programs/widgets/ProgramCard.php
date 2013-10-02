@@ -19,34 +19,20 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
-namespace Controller\programs;
-use Model\articles\Artciles;
-use Model\articles\Categories;
-use Model\programs\Programs;
 
-/**
- * Description of Categorie
- *
- * @author oliverde8
- */
-class Categorie  extends \OWeb\types\Controller{
-	
-	private $categories;
-    private $programs;
-	
-	public function init() {
-		$this->InitLanguageFile();
-		$this->categories = new \Model\programs\Categories();
-        $this->programs = new Programs($this->categories, new Artciles(new Categories()));
+namespace Controller\programs\widgets;
 
-	}
 
-	public function onDisplay() {
-		$this->view->cats = $this->categories;
-		$this->view->category = $this->categories->getElement($this->getParam('catId'));
-        $this->view->programs = $this->programs->getPrograms($this->view->category, 0, 100, true);
-	}
-	
+use OWeb\types\Controller;
+
+class ProgramCard extends Controller {
+
+    public function init()
+    {
+
+    }
+
+    public function onDisplay(){
+        $this->view->program = $this->getParam('prog');
+    }
 }
-
-?>

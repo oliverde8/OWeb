@@ -67,7 +67,7 @@ $this->addHeader('widget_box.css', \OWeb\manage\Headers::css);
 
         <div class="box_content">
 
-            <p class="open">TEXT ....</p>
+            <?php $this->ctr->display() ?>
 
         </div>
 

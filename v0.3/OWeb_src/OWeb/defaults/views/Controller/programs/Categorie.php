@@ -11,18 +11,26 @@ $this->addHeader('programs.css', \OWeb\manage\Headers::css);
 	<div>
 		<div class="ColloneGauche">
 			<div>
-				<h1>Whats new?, Whats going On?</h1>
+               <p> <?php
+                    \OWeb\manage\SubViews::getInstance()->getSubView('Controller\articles\widgets\Category_Parents')
+                        ->addParams('cat', $this->category)
+                        ->display();
+                ?></p>
+                <h1><?= $this->category->getName() ?> </h1>
                     <div  class="programs">
 <?php
 
-    $box = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Box');
-    $box->addParams('ctr', null)
-        ->addParams('Html Class', 'programBox')
-        ->display();
-    $box->display();
-    $box->display();
-    $box->display();
-    $box->display();
+    $prog_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\programs\widgets\ProgramCard');
+
+    $box_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Box');
+    $box_display->addParams('ctr', $prog_display)
+        ->addParams('Html Class', 'programBox');
+
+    foreach($this->programs as $program){
+        $prog_display->addParams('prog', $program);
+        $box_display->display();
+    }
+
 ?>
 
                     </div>
