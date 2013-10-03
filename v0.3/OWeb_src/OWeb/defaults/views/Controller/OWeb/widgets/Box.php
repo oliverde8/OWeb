@@ -20,18 +20,24 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
+if(!empty($this->clickClass)){
+    $jsClass = $this->clickClass;
+}else{
+    $jsClass = "box_content";
+}
+
 $js = '<script type="text/javascript">
 $(document).ready(function () {
 
-    $(".box_content").click(function () {
+    $(".'.$jsClass.'").click(function () {
 
         if (!$(this).parent().find(".box_description_content").is(":visible")) {
 
-            $(this).parent().find(".box_description").animate({height: "500px"}, 0);
+            $(this).parent().find(".box_description").animate({height: "'.$this->SecondBoxHeight.'"}, 0);
             applyMasonary();
             $(this).parent().find(".box_description").animate({height: "0px"}, 0);
 
-            $(this).parent().find(".box_description").animate({height: "200px"}, 500, function () {
+            $(this).parent().find(".box_description").animate({height: "'.$this->SecondBoxHeight.'"}, 500, function () {
                 applyMasonary();
                 $(this).parent().find(".box_description_content").show(0);
             });
@@ -73,9 +79,8 @@ $this->addHeader('widget_box.css', \OWeb\manage\Headers::css);
 
         <div class="box_description">
             <div class="box_description_content">
-                <p>More TEXT .....</p>
+                <?= $this->SecondBoxContent ?>
             </div>
         </div>
-
 
     </div>

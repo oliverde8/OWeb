@@ -35,10 +35,16 @@ class Box extends Controller{
 
     public function onDisplay()
     {
-        $class = $this->getParam('Html Class');
-        $this->view->class = $class != null ? $class : "";
+        $temp = $this->getParam('Html Class');
+        $this->view->class = $temp != null ? $temp : "";
+
+        $temp = $this->getParam('SecondBoxHeight');
+        $this->view->SecondBoxHeight = $temp != null ? $temp.'px' : "300px";
 
         $this->view->ctr = $this->getParam('ctr');
+        $this->view->SecondBoxContent = $this->getParam('SecondBoxContent');
+
+        $this->view->clickClass = $this->getParam('clickClass');
 
         $this->view->desc = $this->getParam('description');
     }

@@ -25,6 +25,7 @@ namespace Controller\programs;
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+use OWeb\manage\Extensions;
 
 /**
  * Description of Home
@@ -44,6 +45,8 @@ class Home extends \OWeb\types\Controller{
 	}
 
 	public function onDisplay() {
+
+
 		$this->view->cats = $this->categories;
 		
 		$this->categories->getAll();

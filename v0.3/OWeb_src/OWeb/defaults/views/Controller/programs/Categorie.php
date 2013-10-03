@@ -24,10 +24,12 @@ $this->addHeader('programs.css', \OWeb\manage\Headers::css);
 
     $box_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Box');
     $box_display->addParams('ctr', $prog_display)
+        ->addParams('SecondBoxHeight', 500)
         ->addParams('Html Class', 'programBox');
 
     foreach($this->programs as $program){
         $prog_display->addParams('prog', $program);
+        $box_display->addParams('SecondBoxContent', $program->getShortDescription("eng"));
         $box_display->display();
     }
 
