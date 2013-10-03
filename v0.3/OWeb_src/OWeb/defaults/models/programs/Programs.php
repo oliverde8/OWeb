@@ -100,20 +100,26 @@ class Programs
             if ($rec && !empty($cs)) {
                 $cat_parents = $cat->getRecuriveChildrensIds();
 
-                $sql = "SELECT id_prog
+                $sql2 = "SELECT id_prog
                             FROM " . $prefix . "program p
                             WHERE cat_id IN ($cat_parents)
+                                OR id_prog IN (SELECT pcm.category_id
+														FROM " . $prefix . "program_category_category pcm
+														WHERE pcm.category_id = ".$cat->getId()." )
                         ORDER BY date DESC
                         LIMIT $start, $nbELement";
             } else
-                $sql = "SELECT id_prog
+                $sql2 = "SELECT id_prog
                             FROM " . $prefix . "program p
                             WHERE cat_id = " . $cat->getId() . "
+                                OR id_prog IN (SELECT pcm.prog_id
+														FROM " . $prefix . "program_category_category pcm
+														WHERE pcm.category_id = ".$cat->getId()." )
                         ORDER BY date DESC
                         LIMIT $start, $nbELement";
 
 
-            if ($sql = $connection->query($sql)) {
+            if ($sql = $connection->query($sql2)) {
 
                 $programs = array();
                 while ($result = $sql->fetchObject()) {
@@ -123,7 +129,7 @@ class Programs
                 return $this->getProgramsArray($programs);
 
             }else{
-                throw new ProgramNotFound("Couldn't get Program of Category : " . $cat->getId() . " . SQL ERROR2", 0);
+                throw new ProgramNotFound("Couldn't get Program of Category : " . $cat->getId() . " . SQL ERROR2 => ".$sql2, 0);
             }
 
         }catch (\Exception $ex) {

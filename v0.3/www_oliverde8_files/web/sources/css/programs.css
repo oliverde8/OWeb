@@ -23,15 +23,12 @@ div.programBox >  .box_content > div.program_img{
     float : left;
     width: 100px;
     height: 100px;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-    display: block;
+    margin-left : -5px;
 }
 
 div.programBox >  .box_content > div.program_img > img{
-    max-height: 90px;
-    max-width: 90px;
+    max-height: 95px;
+    max-width: 95px;
     vertical-align: middle;
 }
 
