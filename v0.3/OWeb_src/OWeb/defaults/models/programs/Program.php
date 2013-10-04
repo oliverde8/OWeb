@@ -44,6 +44,7 @@ class Program {
     protected $vshort = array();
 
 	protected $versions = array();
+    protected $masterVersion;
 	protected $complementary = array();
 
     /**
@@ -164,6 +165,31 @@ class Program {
     public function checkLang($lang){
         return (isset($this->vshort[$lang]));
     }
+
+    public function addVersion(Version $version){
+        $this->versions[] = $version;
+        if($version->getName() == 'main'){
+            $this->masterVersion = $version;
+        }
+    }
+
+    /**
+     * @return array
+     */
+    public function getVersions()
+    {
+        return $this->versions;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMasterVersion()
+    {
+        return $this->masterVersion;
+    }
+
+
 }
 
 ?>

@@ -32,7 +32,6 @@ $this->addHeader('programs.css', \OWeb\manage\Headers::css);
         $box_display->addParams('SecondBoxContent', $program->getShortDescription("eng"));
         $box_display->display();
     }
-
 ?>
 
                     </div>

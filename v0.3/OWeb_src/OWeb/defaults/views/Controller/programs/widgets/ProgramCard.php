@@ -20,14 +20,22 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
+    $publish_date = "No Realeses";
+    $last_realese_name = "No Realeses";
+
+    if($this->program->getMasterVersion() != null && $this->program->getMasterVersion()->getLastRealese() != null){
+        $publish_date = date("d/m/Y",$this->program->getMasterVersion()->getLastRealese()->getDate());
+        $last_realese_name = $this->program->getMasterVersion()->getLastRealese()->getRevisionName();
+    }
+
 ?>
 
 <div class="program_img">
     <img class="program_img" src="<?= OWEB_HTML_URL_IMG.$this->program->getImg(); ?>" />
 </div>
 
-<p class="program_name"><span class="title">Program Name : </span><?=$this->program->getName();?></p>
-<p class="program_lversion_name"><span class="title">Last Version Name: </span>notCoded</p>
-<p class="program_lupdate"><span class="title">Last Update : </span>notCoded</p>
+<p class="program_name"><span class="title">Name : </span><?=$this->program->getName();?></p>
+<p class="program_lversion_name"><span class="title">Last Version : </span><?=$last_realese_name?></p>
+<p class="program_lupdate"><span class="title">Last Update : </span><?= $publish_date ?></p>
 <p class="program_pdate"><span class="title">Publish Date : </span><?=date("d/m/Y",$this->program->getDate());?></p>
 <p class="program_desc"><?=$this->program->getVeryShortDescription('eng');?></p>

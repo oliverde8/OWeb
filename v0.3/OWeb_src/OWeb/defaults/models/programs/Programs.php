@@ -228,6 +228,29 @@ class Programs
                 throw new ProgramNotFound("Couldn't get Program of List : ".$idString." Error gathering secondary Articles. ".$sql2, 0);
             }
 
+            //Third loading versions
+            $sql2 = "SELECT * FROM ".$prefix."program_version, ".$prefix."program_revision r
+                        WHERE prog_id IN (".$idString.")
+                            AND id_version = r.version_id";
+
+            if ($sql = $connection->query($sql2)) {
+
+                $versions = array();
+
+                while ($result = $sql->fetchObject()) {
+                    if(isset($programs[$result->prog_id])){
+
+                        if(!isset($versions[$result->id_version])){
+                            $versions[$result->id_version] = new Version($result->id_version, $result->name, $result->desc);
+                            $programs[$result->prog_id]->addVersion($versions[$result->id_version]);
+                        }
+                        $version = $versions[$result->id_version];
+                        $version->addRevision(new Revision($result->revision_name, $result->date, $result->description, $result->dwld, $result->isBeta == 1));
+                    }
+                }
+            } else {
+                throw new ProgramNotFound("Couldn't get Program of List : ".$idString." Error gathering Revisions and Versions. ".$sql2, 0);
+            }
 
             //Lest register the new programs in to the buffer
             foreach($programs as $id=>$program){
