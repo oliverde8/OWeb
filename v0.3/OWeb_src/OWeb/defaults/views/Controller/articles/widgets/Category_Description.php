@@ -4,8 +4,9 @@
 	<p>
 		<h3 class="categoryDescription">
 			<?php
-			\OWeb\manage\SubViews::getInstance()->getSubView('\Controller\articles\widgets\Category_Parents')
-			->addParams('cat', $this->mcat)	
+			\OWeb\manage\SubViews::getInstance()->getSubView('\Controller\OWeb\widgets\Category_Parents')
+			->addParams('cat', $this->mcat)
+            ->addParams('link', new OWeb\utils\Link(array('page' => 'articles\Categorie', "catId"=>"")))
 			->display();?>
 		</h3>
 		<h1 class="categoryDescription">

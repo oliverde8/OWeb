@@ -12,8 +12,9 @@ $this->addHeader('programs.css', \OWeb\manage\Headers::css);
 		<div class="ColloneGauche">
 			<div>
                <p> <?php
-                    \OWeb\manage\SubViews::getInstance()->getSubView('Controller\articles\widgets\Category_Parents')
+                    \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Category_Parents')
                         ->addParams('cat', $this->category)
+                        ->addParams('link', new OWeb\utils\Link(array('page' => 'programs\Categorie', "catId"=>"")))
                         ->display();
                 ?></p>
                 <h1><?= $this->category->getName() ?> </h1>
