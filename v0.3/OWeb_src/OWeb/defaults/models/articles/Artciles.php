@@ -159,7 +159,7 @@ class Artciles {
 														WHERE acm.category_id IN ($cat_parents))
 								OR category_id IN ($cat_parents)
 						ORDER BY pdate DESC
-						LIMIT :start, :nbElement";
+						LIMIT $start, $nbElement";
 				//return;
 			}else
 				$sql = "SELECT id_article
