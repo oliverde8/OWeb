@@ -77,7 +77,7 @@ $carousel_id = 0;
 									<?php echo $prog->getShortDescription($lang); ?>
 									</div>
                                     <?php
-                                        $link = new \OWeb\utils\Link(array('page'=>'programs\program', 'prgid'=>$prog->getId()));
+                                        $link = new \OWeb\utils\Link(array('page'=>'programs\Program', 'prgId'=>$prog->getId()));
                                         echo '<p><a href="'.$link.'" class="ca-content-more">More Information & Download</a></p>';
                                     ?>
 

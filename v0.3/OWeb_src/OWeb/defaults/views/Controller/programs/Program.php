@@ -33,13 +33,28 @@ $this->addHeader('programs.css', \OWeb\manage\Headers::css);
             <div>
                 <p> <?php
                     \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Category_Parents')
-                        ->addParams('cat', $this->category)
+                        ->addParams('cat', $this->program->getCategory())
                         ->addParams('link', new OWeb\utils\Link(array('page' => 'programs\Categorie', "catId"=>"")))
                         ->display();
                     ?></p>
-                <h1><?= $this->category->getName() ?> </h1>
+                <h1><?= $this->program->getName() ?> </h1>
+
+
                 <div  class="program">
-                   
+
+                    <?php
+                    $prog_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\programs\widgets\ProgramCard');
+
+                    $box_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Box');
+                    $box_display->addParams('ctr', $prog_display)
+                        ->addParams('SecondBoxHeight', 500)
+                        ->addParams('Html Class', 'programBox');
+                    $prog_display->addParams('prog', $this->program);
+                    $box_display->display();
+
+                    ?>
+
+
                 </div>
             </div>
         </div>

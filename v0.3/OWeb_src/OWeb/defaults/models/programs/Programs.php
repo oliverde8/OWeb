@@ -68,7 +68,7 @@ class Programs
 
                 $programs = $this->getProgramsArray(array($id));
 
-                if(!isset($programs[$id])){
+                if(isset($programs[$id])){
                     return $programs[$id];
                 }else{
                     throw new ProgramNotFound("Couldn't get Program with id : $id . NO such program", 0);

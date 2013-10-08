@@ -22,15 +22,24 @@
 
 namespace Controller\programs;
 
+use Model\articles\Artciles;
+use Model\articles\Categories;
+use Model\programs\Programs;
+
 class Program extends \OWeb\types\Controller{
+
+    private $programs;
 
     public function init()
     {
-        // TODO: Implement init() method.
+        $this->InitLanguageFile();
+        $this->categories = new \Model\programs\Categories();
+        $this->programs = new Programs($this->categories, new Artciles(new Categories()));
     }
 
     public function onDisplay()
     {
-        // TODO: Implement onDisplay() method.
+        $this->view->cats = $this->categories;
+        $this->view->program =  $this->programs->getprogram($this->getParam('prgId'));
     }
 }
