@@ -105,7 +105,7 @@ class Programs
                             WHERE cat_id IN ($cat_parents)
                                 OR id_prog IN (SELECT pcm.category_id
 														FROM " . $prefix . "program_category_category pcm
-														WHERE pcm.category_id = ".$cat->getId()." )
+								 						WHERE pcm.category_id = ".$cat->getId()." )
                         ORDER BY date DESC
                         LIMIT $start, $nbELement";
             } else

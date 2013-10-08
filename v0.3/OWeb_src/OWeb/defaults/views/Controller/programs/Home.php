@@ -76,7 +76,11 @@ $carousel_id = 0;
 									<div class="ca-content-text">
 									<?php echo $prog->getShortDescription($lang); ?>
 									</div>
-									<p><a href="http://www.tm-teams.com" class="ca-content-more">More Information &/| Download</a></p>
+                                    <?php
+                                        $link = new \OWeb\utils\Link(array('page'=>'programs\program', 'prgid'=>$prog->getId()));
+                                        echo '<p><a href="'.$link.'" class="ca-content-more">More Information & Download</a></p>';
+                                    ?>
+
 								</div>
 							</div>
 						</div>
