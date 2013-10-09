@@ -117,7 +117,9 @@ class Version {
         return $this->lastRealese;
     }
 
-
+    public function getAllRevisions(){
+        return $this->revisions;
+    }
 
 
 }

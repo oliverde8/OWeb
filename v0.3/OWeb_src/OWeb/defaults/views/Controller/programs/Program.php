@@ -45,14 +45,24 @@ $this->addHeader('programs.css', \OWeb\manage\Headers::css);
                     <?php
                     $prog_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\programs\widgets\ProgramCard');
 
-                    $box_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Box');
-                    $box_display->addParams('ctr', $prog_display)
+                    $box_program = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Box');
+                    $box_program->addParams('ctr', $prog_display)
                         ->addParams('SecondBoxHeight', 500)
                         ->addParams('Html Class', 'programBox');
                     $prog_display->addParams('prog', $this->program);
-                    $box_display->display();
+                    $box_program->display();
 
+
+
+                    $box_download = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Box');
+                    $dwld_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\programs\widgets\Downloads');
+                    $dwld_display->addParams('prog', $this->program);
+                    $box_download->addParams('ctr', $dwld_display)
+                        ->addParams('Html Class', 'DwldBox');
+                    $box_download->display();
                     ?>
+
+
 
 
                 </div>

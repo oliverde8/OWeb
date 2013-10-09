@@ -62,7 +62,28 @@ $(document).ready(function () {
 });
 </script>';
 
-$this->addHeader($js, \OWeb\manage\Headers::code);
+if(!empty($this->SecondBoxContent))
+    $this->addHeader($js, \OWeb\manage\Headers::code);
+
+$js = '<script type="text/javascript">
+$(document).ready(function () {
+
+    $(".'.$jsClass.'").mouseover(function () {
+        $(this).css("background-image", "radial-gradient(#EEEEFF, white)");
+        $("body").css("cursor", "pointer");
+    })
+    .mouseout(function(){
+        $(this).css("background-image", "none");
+        $("body").css("cursor", "default");
+    });
+
+});
+</script>';
+
+if(!empty($this->SecondBoxContent))
+    $this->addHeader($js, \OWeb\manage\Headers::code);
+
+
 $this->addHeader('masonry.pkgd.min.js', \OWeb\manage\Headers::javascript);
 $this->addHeader('widget_box.css', \OWeb\manage\Headers::css);
 
@@ -77,10 +98,11 @@ $this->addHeader('widget_box.css', \OWeb\manage\Headers::css);
 
         </div>
 
+        <?php if(!empty($this->SecondBoxContent)){ ?>
         <div class="box_description">
             <div class="box_description_content">
                 <?= $this->SecondBoxContent ?>
             </div>
         </div>
-
+        <?php } ?>
     </div>

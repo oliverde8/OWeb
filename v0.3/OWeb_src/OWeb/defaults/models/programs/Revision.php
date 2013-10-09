@@ -99,7 +99,7 @@ class Revision {
     /**
      * @return mixed
      */
-    public function getIsBeta()
+    public function IsBeta()
     {
         return $this->isBeta;
     }

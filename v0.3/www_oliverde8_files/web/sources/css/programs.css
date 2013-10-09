@@ -1,42 +1,54 @@
 
 
-div.programBox{
+div.box{
     float : left;
     margin : 5px;
     width : 370px;
 }
 
-div.programBox > .box_content{
+div.box > .box_content{
     height : 100px;
     padding: 15px;
 }
 
-div.programBox > .box_description{
+div.box > .box_description{
     height : -1px;
 }
 
-div.programBox > .box_description > div{
+div.box > .box_description > div{
     display: none;
 }
 
-div.programBox >  .box_content > div.program_img{
+div.box >  .box_content > div.program_img{
     float : left;
     width: 100px;
     height: 100px;
     margin-left : -5px;
 }
 
-div.programBox >  .box_content > div.program_img > img{
+div.box >  .box_content > div.program_img > img{
     max-height: 95px;
     max-width: 95px;
     vertical-align: middle;
 }
 
-div.programBox >  .box_content > p{
+div.box >  .box_content > p{
     margin-top: 0px;
     margin-bottom: 2px;
 }
 
-div.programBox >  .box_content > p > span.title{
+div.box >  .box_content > p > span.title{
     font-weight: bold;
+}
+
+div.program > h3.version{
+    margin-top : 0px;
+    margin-bottom : 0px;
+    padding-top : 0px;
+    padding-bottom : 0px;
+}
+
+div.program > ul{
+    margin-top : 4px;
+    padding-top : 0px;
 }
