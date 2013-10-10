@@ -52,3 +52,7 @@ div.program > ul{
     margin-top : 4px;
     padding-top : 0px;
 }
+
+div.program > ul > li > span.release_name{
+    font-weight: bold;
+}

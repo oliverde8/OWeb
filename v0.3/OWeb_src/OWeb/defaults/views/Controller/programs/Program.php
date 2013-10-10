@@ -40,7 +40,7 @@ $this->addHeader('programs.css', \OWeb\manage\Headers::css);
                 <h1><?= $this->program->getName() ?> </h1>
 
 
-                <div  class="program">
+                <div  class="program_info">
 
                     <?php
                     $prog_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\programs\widgets\ProgramCard');
@@ -63,9 +63,12 @@ $this->addHeader('programs.css', \OWeb\manage\Headers::css);
                     ?>
 
 
-
+                    <div class="ColloneClean"></div>
 
                 </div>
+
+
+
             </div>
         </div>
         <?php

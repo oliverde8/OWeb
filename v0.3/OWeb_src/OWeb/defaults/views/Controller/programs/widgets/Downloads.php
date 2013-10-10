@@ -21,7 +21,6 @@
  */
 
 if($this->program->getMasterVersion() != null){
-
 ?>
 
 <div class="program">
@@ -33,30 +32,72 @@ if($this->program->getMasterVersion() != null){
         <?php
             $lRelease = $this->program->getMasterVersion()->getLastRealese();
             if($lRelease != null){
-                echo '<li>V'.$lRelease->getRevisionName();
-
-                if($lRelease->IsBeta())
-                    echo '<span class="realese_beta"> BETA</span>';
-                echo '</li>';
-
-                if($lRelease->IsBeta()){
-                    //Try to find other realeses;
-                    $realeses = $this->program->getMasterVersion()->getAllRevisions();
-                    foreach($realeses as $r){
-                        if(!$r->IsBeta()){
-                            echo '<li>V'.$r->getRevisionName().'</li>';
-                            break;
-                        }
-                    }
-                }
+                showRealese($lRelease, $this->program->getMasterVersion());
+            }else{
+                echo '<li>'.$this->l('noRelease').'</li>';
             }
         ?>
     </ul>
 
+    <?php
+    foreach($this->program->getVersions() as $version){
+        if($version->getName() != 'main'){
+            ?>
+            <h3 class="version version_master">
+                <span class="name">Version : <?=$version->getName()?></span>
+            </h3>
+
+            <ul>
+                <?php
+                $lRelease = $version->getLastRealese();
+                if($lRelease != null){
+                    showRealese($lRelease, $version);
+                }else{
+                    echo '<li>'.$this->l('noRelease').'</li>';
+                }
+                ?>
+            </ul>
+
+            <?php
+        }
+    }
 
 
+    ?>
+
+<p>More Information Soon</p>
 </div>
 
 <?php
 }
+
+function showRealese(\Model\programs\Revision $rev, \Model\programs\Version $ver){
+
+    $more = "";
+    if(is_numeric($rev->getDownloadLink())){
+        $dwld = new \Model\downloads\Download($rev->getDownloadLink());
+        $link = $dwld->getUrl();
+        $more = "(nbDownload : ".$dwld->getNbDownload().')';
+    }else{
+        $link = $rev->getDownloadLink();
+    }
+
+    echo '<li><span class="release_name">V'.$rev->getRevisionName().'</span> -<a href="'.$link.'"><span class="release_dwld">Download</span></a>-  '.$more.'';
+
+    if($rev->IsBeta())
+        echo '<span class="realese_beta"> BETA</span>';
+    echo '</li>';
+
+    if($rev->IsBeta()){
+        //Try to find other realeses;
+        $realeses = $ver->getAllRevisions();
+        foreach($realeses as $r){
+            if(!$r->IsBeta()){
+                echo '<li>V'.$r->getRevisionName().' -<span class="release_dwld">Download</span></li>-';
+                break;
+            }
+        }
+    }
+}
+
 ?>
