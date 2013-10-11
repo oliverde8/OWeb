@@ -2,8 +2,9 @@
 
 div.box{
     float : left;
-    margin : 5px;
-    width : 370px;
+    margin-right : 5px;
+    margin-bottom : 5px;
+    width : 381px;
 }
 
 div.box > .box_content{
