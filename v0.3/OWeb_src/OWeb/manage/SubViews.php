@@ -50,7 +50,7 @@ class SubViews extends \OWeb\utils\Singleton{
 	public function getSubView($name){
 		try{
 			$controller = new $name();
-			
+
 			if(! ($controller instanceof \OWeb\types\Controller))
 				throw new \OWeb\manage\exceptions\Controller("A Controller needs to be an instance of \OWeb\Types\Controller");	
 			

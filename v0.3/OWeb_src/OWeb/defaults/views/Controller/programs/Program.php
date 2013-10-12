@@ -27,18 +27,21 @@ $this->addHeader('programs.css', \OWeb\manage\Headers::css);
 $this->addHeader('jquery_theme/jquery-ui-1.9.2.custom.min.css', \OWeb\manage\Headers::css);
 $this->addHeader('jquery-ui-1.9.2.custom.min', \OWeb\manage\Headers::javascript);
 
+
 $this->addHeader('  <script>
   $(function() {
     $( ".Description > .tabs" ).tabs();
   });
   </script>', \OWeb\manage\Headers::code);
-
 ?>
+
+
 
 <div id="twoCollone">
     <div>
         <div class="ColloneGauche">
             <div>
+               
                 <p> <?php
                     \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Category_Parents')
                         ->addParams('cat', $this->program->getCategory())
@@ -89,7 +92,7 @@ $this->addHeader('  <script>
                                     else{
 
                                         $article_show = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\articles\widgets\show_article\Def');
-                                        $article_show->addParam('article', $this->program->getDesc_article());
+                                        $article_show->s('article', $this->program->getDesc_article());
                                         $article_show->display();
 
                                     }
@@ -98,7 +101,12 @@ $this->addHeader('  <script>
 
                             </div>
                             <div id="tabs-2">
-                                <p>Coming Soon </p></div>
+                                <?php
+                                $gallery_show = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\OWeb\widgets\jquery\plugins\GalleryView');
+                                $gallery_show->addParams('path', 'images');
+                                $gallery_show->display();
+                                ?>
+                            </div>
                             <div id="tabs-3">
                                 <p> Coming Soon</p></div>
                         </div>
