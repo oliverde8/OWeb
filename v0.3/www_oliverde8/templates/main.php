@@ -82,7 +82,7 @@
 					?>
                 </div>
 
-                <script src="https://login.persona.org/include.js"></script>
+                <script src="http://login.persona.org/include.js"></script>
                 <script>
                     navigator.id.watch({
                         loggedInUser: <?= $connection->getEmail() ? "'$connection->getEmail()'" : 'null' ?>,
@@ -125,11 +125,10 @@
         </div></div>
 
 
-		<div id="publicity"><div>
+        <?php /*<div id="publicity"><div>
 			<div id="leftpublicity">
 				<script type="text/javascript"><!--
 				google_ad_client = "ca-pub-4916277382923083";
-				/* oliver2 */
 				google_ad_slot = "8441719598";
 				google_ad_width = 120;
 				google_ad_height = 600;
@@ -142,7 +141,6 @@
 			<div id="rightpublicity">
 				<script type="text/javascript"><!--
 				google_ad_client = "ca-pub-4916277382923083";
-				/* oliver2 */
 				google_ad_slot = "8441719598";
 				google_ad_width = 120;
 				google_ad_height = 600;
@@ -152,7 +150,7 @@
 				src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 				</script>
 			</div>
-		</div></div>
+		</div></div> */ ?>
 
         <!-- Le Contenu -->
         <div id="contenuFull"><div id="contenuFullJS">

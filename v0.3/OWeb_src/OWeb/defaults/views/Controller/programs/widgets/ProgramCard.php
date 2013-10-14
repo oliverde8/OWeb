@@ -37,6 +37,6 @@
 
 <p class="program_name"><span class="title">Name : </span><a href="<?= $link ?>"><?=$this->program->getName();?></a></p>
 <p class="program_lversion_name"><span class="title">Last Version : </span><?=$last_realese_name?></p>
-<p class="program_lupdate"><span class="title">Last Update : </span><?= $publish_date ?></p>
+<p class="program_lupdate"><span class="title">Last Update : </span><?= $this->program->getDate() ?></p>
 <p class="program_pdate"><span class="title">Publish Date : </span><?=date("d/m/Y",$this->program->getDate());?></p>
 <p class="program_desc"><?=$this->program->getVeryShortDescription('eng');?></p>

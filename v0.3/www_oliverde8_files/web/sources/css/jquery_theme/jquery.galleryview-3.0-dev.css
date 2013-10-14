@@ -29,7 +29,7 @@
 .gv_frame-loading { background: url(img-loader.gif) 50% 50% no-repeat #aaa; }
 
 /* GALLERY PANELS */
-.gv_panel { filter: inherit; position: absolute; top: 0; left: 0; overflow: hidden; z-index: 100; }
+.gv_panel { filter: inherit; position: absolute; top: 0; left: 0; overflow: hidden; z-index: 0; }
 .gv_panel img { position: absolute; }
 
 .gv_overlay { position: absolute; background: #222; color: white; z-index: 200; }

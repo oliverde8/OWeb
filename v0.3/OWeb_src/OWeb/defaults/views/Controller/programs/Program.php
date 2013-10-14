@@ -41,7 +41,7 @@ $this->addHeader('  <script>
     <div>
         <div class="ColloneGauche">
             <div>
-               
+
                 <p> <?php
                     \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Category_Parents')
                         ->addParams('cat', $this->program->getCategory())
@@ -80,11 +80,14 @@ $this->addHeader('  <script>
 
                         <div class="tabs">
                             <ul>
-                                <li><a href="#tabs-1">Description</a></li>
-                                <li><a href="#tabs-2">Gallery</a></li>
-                                <li><a href="#tabs-3">ChangeLog</a></li>
+                                <li><a href="#tabs_prg_description">Description</a></li>
+                                <?php
+                                    $galleryPath = $this->program->getGalleryPath();
+                                    if(!empty($galleryPath)) echo '<li><a href="#tabs_prg_gallery">Gallery</a></li>';
+                                ?>
+                                <li><a href="#tabs_prg_changelog">ChangeLog</a></li>
                             </ul>
-                            <div id="tabs-1">
+                            <div id="tabs_prg_description">
 
                                 <?php
                                     if($this->program->getDesc_article() == null)
@@ -100,15 +103,24 @@ $this->addHeader('  <script>
                                 ?>
 
                             </div>
-                            <div id="tabs-2">
-                                <?php
-                                $gallery_show = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\OWeb\widgets\jquery\plugins\GalleryView');
-                                $gallery_show->addParams('path', 'images');
-                                $gallery_show->display();
-                                ?>
+
+                            <?php
+                            if(!empty($galleryPath)){
+                                echo '<div id="tabs_prg_gallery">';
+
+                                    $gallery_show = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\OWeb\widgets\jquery\plugins\GalleryView');
+                                    $gallery_show->addParams('path', $galleryPath);
+                                    $gallery_show->display();
+
+                                echo '</div>';
+                            }
+                            ?>
+
+                            <div id="tabs_prg_changelog">
+
+                                <p> Coming Soon</p>
+
                             </div>
-                            <div id="tabs-3">
-                                <p> Coming Soon</p></div>
                         </div>
 
 

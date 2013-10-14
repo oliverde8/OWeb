@@ -27,10 +27,18 @@ use OWeb\types\Controller;
 class GalleryView extends Controller{
 
     public function init(){
-        echo 'gogoGOGOGOGOGOG';
     }
 
     public function onDisplay(){
+
         $this->view->path = $this->getParam('path');
+        $this->view->panel_width = $this->getParam("panel_width") == null ? 720 : $this->getParam("panel_width");
+        $this->view->panel_height = $this->getParam("panel_height") == null ? 600 : $this->getParam("panel_height");
+        $this->view->panel_scale = $this->getParam("panel_scale") == null ? 'fit' : $this->getParam("panel_scale");
+        $this->view->pan_images = $this->getParam("panel_scale") == null ? 'true' : $this->getParam("pan_images");
+        $this->view->show_infobar = $this->getParam("show_infobar") == null ? 'true' : $this->getParam("show_infobar");
+        $this->view->infobar_opacity = $this->getParam("infobar_opacity") == null ? 1 : $this->getParam("infobar_opacity");
+
+
     }
 }

@@ -62,6 +62,11 @@ class Home extends \OWeb\types\Controller{
 		$this->view->previews_title[] = 'Some interesting University Projects';
 		$this->view->previews[] =  $this->programs->getPrograms($this->categories->getElement(2), 0, 100);
 
+        //We need the latest elements
+        $this->view->newest = $this->programs->getNewestPrograms(0,4);
+
+        //The latest updated programs
+        $this->view->updated = $this->programs->getLatestUpdatedPrograms(0,4);
 	}
 }
 

@@ -1,7 +1,7 @@
 
 <div class="ColloneDroite">
 	<div>
-		<p>
+
 			<h3>Categories</h3>
 			<?php
 			$catTree = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\OWeb\widgets\TreeList');
@@ -12,6 +12,5 @@
 							//->addParams('link', 'test'); 
 			$catTree->display();
 ?>
-	</p>
 	</div>
 </div>

@@ -31,7 +31,14 @@ $gallery_id = (String)(new \OWeb\utils\IdGenerator());
 $js = "
 <script>
     $(document).ready(function () {
-        $('#".$gallery_id."').galleryView();
+        $('#".$gallery_id."').galleryView({
+            panel_width: ".$this->panel_width.",
+            panel_height: ".$this->panel_height.",
+            panel_scale: '".$this->panel_scale."',
+            pan_images: '".$this->pan_images."',
+            show_infobar: '".$this->show_infobar."',
+            infobar_opacity: ".$this->infobar_opacity."
+        });
     });
 </script>";
 $this->addHeader($js, \OWeb\manage\Headers::code);
@@ -47,7 +54,7 @@ foreach($files as $file){
         $exps = explode('.',$file);
 
         echo '<li>';
-        echo '<img src="'.OWEB_WWW_DATA.'/'.$this->path.'/'.$file.'" alt="'.$exps[0].'" />';
+        echo '<img src="'.OWEB_WWW_DATA.'/'.$this->path.'/'.$file.'" title="'.$exps[0].'"  data-description="'.$exps[0].'"/>';
         echo '</li>';
 
     }

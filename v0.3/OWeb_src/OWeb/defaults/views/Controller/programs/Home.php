@@ -2,6 +2,7 @@
 
 $this->addHeader('2Collone.css', \OWeb\manage\Headers::css);
 $this->addHeader('articles.css', \OWeb\manage\Headers::css);
+$this->addHeader('programs.css', \OWeb\manage\Headers::css);
 $this->addHeader('onprogress.css', \OWeb\manage\Headers::css);
 
 $this->addHeader('Page.Programing.css', \OWeb\manage\Headers::css);
@@ -21,21 +22,31 @@ $carousel_id = 0;
 	<div>
 		<div class="ColloneGauche">
 			<div>
-				<h1>Whats new?, Whats going On?</h1>
-				<div class="content">
+				<h1>Newest Programs</h1>
+                <?php
 
-					<img src="<?php echo OWEB_HTML_URL_IMG; ?>/theTardis2.jpg" />
-					<h2><?php echo $this->l('onProgress_Title'); ?></h2>
+                $prog_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\programs\widgets\ProgramCard');
 
-					<p><?php echo $this->l('onProgress_desc'); ?></p>
+                $box_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Box');
+                $box_display->addParams('ctr', $prog_display)
+                    ->addParams('SecondBoxHeight', 500)
+                    ->addParams('Html Class', 'programBox');
 
-					<hr>
+                foreach($this->newest as $program){
+                    $prog_display->addParams('prog', $program);
+                    $box_display->addParams('SecondBoxContent', $program->getShortDescription("eng"));
+                    $box_display->display();
+                }
+?>
+                <h1>Last Updated</h1>
+                <?php
 
-				</div>
-				
-				<h1>Projects Overview</h1>
-				
-				<?php
+                foreach($this->updated as $program){
+                    $prog_display->addParams('prog', $program);
+                    $box_display->addParams('SecondBoxContent', $program->getShortDescription("eng"));
+                    $box_display->display();
+                }
+
 				$nbT = 0;
 				while(isset($this->previews_title[$nbT])){
 				?>

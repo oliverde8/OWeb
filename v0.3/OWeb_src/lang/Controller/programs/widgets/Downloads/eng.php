@@ -20,20 +20,5 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-namespace Controller\programs\widgets;
 
-
-use OWeb\types\Controller;
-
-class Downloads extends Controller{
-
-    public function init()
-    {
-        $this->InitLanguageFile();
-    }
-
-    public function onDisplay()
-    {
-        $this->view->program = $this->getParam('prog');
-    }
-}
+$_L['noRelease']	= 'There is No Realeses of this program available';

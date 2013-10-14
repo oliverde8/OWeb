@@ -39,6 +39,7 @@ class Program {
 	protected $desc_article;
 	protected $desc_articles = array();
 	protected $date;
+    protected $galleryPath;
 
     protected $short = array();
     protected $vshort = array();
@@ -55,8 +56,9 @@ class Program {
      * @param Categorie $category The category of the program
      * @param Article $desc_article L'article qui decrit le program
      * @param $date La date de creation du program
+     * @param $galleryPath Path to the images of the gallery.
      */
-    function __construct($id, $name, $img, $front_page, $category, $desc_article, $date) {
+    function __construct($id, $name, $img, $front_page, $category, $desc_article, $date, $galleryPath) {
 		$this->id = $id;
 		$this->name = $name;
 		$this->img = $img;
@@ -64,6 +66,7 @@ class Program {
 		$this->category = $category;
 		$this->desc_article = $desc_article;
 		$this->date = $date;
+		$this->galleryPath = $galleryPath;
 	}
 
     /**
@@ -188,6 +191,16 @@ class Program {
     {
         return $this->masterVersion;
     }
+
+    /**
+     * @return \Model\programs\Path
+     */
+    public function getGalleryPath()
+    {
+        return $this->galleryPath;
+    }
+
+
 
 
 }

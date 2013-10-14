@@ -69,7 +69,10 @@ if($this->program->getMasterVersion() != null){
 </div>
 
 <?php
+}else{
+    echo '<p>'.$this->l('noRelease').'</p>';
 }
+
 
 function showRealese(\Model\programs\Revision $rev, \Model\programs\Version $ver){
 

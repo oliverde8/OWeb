@@ -80,6 +80,68 @@ class Programs
         }
     }
 
+    public function getNewestPrograms($start, $nbElement){
+
+        try {
+            $connection = $this->ext_connection->get_Connection();
+            $prefix = $this->ext_connection->get_prefix();
+
+            $sql2 = "SELECT id_prog
+                        FROM " . $prefix . "program p
+                    ORDER BY date DESC
+                    LIMIT $start, $nbElement";
+
+            if ($sql = $connection->query($sql2)) {
+
+                $programs = array();
+                while ($result = $sql->fetchObject()) {
+                    $programs[] = $result->id_prog;
+                }
+
+                return $this->getProgramsArray($programs);
+
+            }else{
+                throw new ProgramNotFound("Couldn't get Newest Programs. SQL ERROR2 => ".$sql2, 0);
+            }
+
+        }catch (\Exception $ex) {
+            throw new ProgramNotFound("Couldn't get Newest Programs. SQL ERROR", 0, $ex);
+        }
+        return array();
+    }
+
+    public function getLatestUpdatedPrograms($start, $nbElement){
+
+        try {
+            $connection = $this->ext_connection->get_Connection();
+            $prefix = $this->ext_connection->get_prefix();
+
+            $sql2 = "SELECT DISTINCT id_prog
+                        FROM ".$prefix."program p, ".$prefix."program_version v, ".$prefix."program_revision r
+                        WHERE p.id_prog = v.prog_id
+                        AND v.id_version = r.version_id
+                        ORDER BY r.date DESC
+                        LIMIT $start, $nbElement";
+
+            if ($sql = $connection->query($sql2)) {
+
+                $programs = array();
+                while ($result = $sql->fetchObject()) {
+                    $programs[] = $result->id_prog;
+                }
+
+                return $this->getProgramsArray($programs);
+
+            }else{
+                throw new ProgramNotFound("Couldn't get Latest Updated Programs : " . $cat->getId() . " . SQL ERROR2 => ".$sql2, 0);
+            }
+
+        }catch (\Exception $ex) {
+            throw new ProgramNotFound("Couldn't get Newest Program : " . $cat->getId() . " . SQL ERROR", 0, $ex);
+        }
+        return array();
+    }
+
     /**
      * @param CategorieElement $cat The category of the program wanted
      * @param int $start
@@ -157,14 +219,14 @@ class Programs
             $connection = $this->ext_connection->get_Connection();
             $prefix = $this->ext_connection->get_prefix();
 
-            $sql = "SELECT *
+            $sql2 = "SELECT *
                     FROM " . $prefix . "program p," . $prefix . "program_description d
                     WHERE prog_id IN (" . $idString . ")
                         AND prog_id = id_prog
                 ORDER BY date DESC";
 
             $programs = array();
-            if ($sql = $connection->query($sql)) {
+            if ($sql = $connection->query($sql2)) {
 
                 while ($result = $sql->fetchObject()) {
 
@@ -187,13 +249,14 @@ class Programs
                                 $result->front_page == 1,
                                 $this->categories->getElement($result->cat_id),
                                 $article,
-                                $result->date
+                                $result->date,
+                                $result->gallery_path
                             );
                         $programs[$result->id_prog]->addLanguage($result->lang, $result->short_desc, $result->vshort_desc);
                     }
                 }
             } else {
-                throw new ProgramNotFound("Couldn't get Program of List : ".$idString." SQL ERROR2", 0);
+                throw new ProgramNotFound("Couldn't get Program of List : ".$idString." SQL ERROR2 "+$sql2, 0);
             }
 
             //Main program component gather, now let's get the rest of it.
