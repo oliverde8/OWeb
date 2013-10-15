@@ -20,45 +20,24 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-namespace OWeb\utils;
+namespace OWeb\types;
 
-abstract class Singleton
-{
-	protected static $instances = array();
 
-	static function getInstance()
-	{
-		$class = get_called_class();
-		if(!isset(self::$instances[$class]))
-		{
-			self::$instances[$class] = new $class();
-		}
-		return self::$instances[$class];
-	}
+abstract class TemplateController extends Controller{
 
-	/**
-	 * Force a singleton object to be instanciated with the given instance
-	 * Use with care!
-	 */
-	static function forceInstance(Singleton $object, $class = null)
-	{
-		if($class == null)
-			$class = get_class($object);
-		
-		if(!isset(self::$instances[$class]))
-		{
-			self::$instances[$class] = $object;
-		}
-		else
-		{
-			throw new \Exception(sprintf('Object of class %s was previously instanciated', $class));
-		}
-	}
+    private $ctrToShow;
 
-	protected function __construct() {}
+    protected function getView($path){
+        return new \OWeb\types\TemplateView(get_class($this), $path, $this->getLang(), $this->ctrToShow);
+    }
 
-	final protected function __clone() {}
+    public function display(){
+
+    }
+
+    public function templatedisplay($ctr){
+        $this->ctrToShow = $ctr;
+        $this->forceDisplay();
+    }
+
 }
-
-
-?>

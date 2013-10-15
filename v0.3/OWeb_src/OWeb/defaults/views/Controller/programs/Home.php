@@ -18,10 +18,7 @@ $carousel_id = 0;
 
 
 ?>
-<div id="twoCollone">
-	<div>
-		<div class="ColloneGauche">
-			<div>
+
 				<h1>Newest Programs</h1>
                 <?php
 
@@ -111,16 +108,6 @@ $carousel_id = 0;
 				}
 				?>
 				
-			</div>
-		</div>
-		<?php
-		$catTree = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\programs\widgets\ColloneDroite');
-		$catTree->addParams('cats', $this->cats)
-				->display();
-		?>
-		<div class="ColloneClean"></div>
-	</div>
-</div>
 
 
 <script type="text/javascript">

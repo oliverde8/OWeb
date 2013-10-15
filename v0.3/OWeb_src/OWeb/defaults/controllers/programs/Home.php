@@ -25,6 +25,7 @@ namespace Controller\programs;
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+use Model\programs\Categories;
 use OWeb\manage\Extensions;
 
 /**
@@ -39,8 +40,9 @@ class Home extends \OWeb\types\Controller{
 	private $programs;
 	
 	public function init() {
+        $this->applyTemplateController('Controller\programs\Template');
 		$this->InitLanguageFile();
-		$this->categories = new \Model\programs\Categories();
+		$this->categories = Categories::getInstance();
 		$this->programs = new \Model\programs\Programs($this->categories, new \Model\articles\Artciles(new \Model\articles\Categories()));
 	}
 

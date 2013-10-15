@@ -21,12 +21,14 @@
  */
 namespace Model\articles;
 
+use OWeb\utils\Singleton;
+
 /**
  * Description of Categories
  *
  * @author De Cramer Oliver
  */
-class Categories implements \Model\OWeb\treeElement\TreeManager{
+class Categories extends Singleton implements \Model\OWeb\treeElement\TreeManager{
 
 	private $ext_connection;
 	

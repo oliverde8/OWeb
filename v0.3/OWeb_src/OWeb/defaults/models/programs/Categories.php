@@ -20,13 +20,14 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 namespace Model\programs;
+use OWeb\utils\Singleton;
 
 /**
  * Description of Categories
  *
  * @author De Cramer Oliver
  */
-class Categories implements \Model\OWeb\treeElement\TreeManager{
+class Categories extends Singleton implements \Model\OWeb\treeElement\TreeManager{
 
 	private $ext_connection;
 	

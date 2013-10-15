@@ -20,6 +20,7 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 namespace OWeb\types;
+use OWeb\manage\SubViews;
 
 /**
  * Is among the main bricks of OWeb,
@@ -41,6 +42,8 @@ abstract class Controller extends NamedClass implements Configurable {
 	private $language;
 	protected $view = null;
 
+    protected $templateController = null;
+
 	abstract public function init();
 
 	abstract public function onDisplay();
@@ -49,6 +52,14 @@ abstract class Controller extends NamedClass implements Configurable {
 		$this->action_mode = self::ACTION_GET;
 		$this->language = new \OWeb\types\Language();
 	}
+
+    protected function applyTemplateController($ctr){
+        if($ctr instanceof TemplateController){
+            $this->templateController = $ctr;
+        }else{
+            $this->templateController = SubViews::getInstance()->getSubView($ctr);
+        }
+    }
 
     /**
      * Registers an action that the controller might do
@@ -181,7 +192,7 @@ abstract class Controller extends NamedClass implements Configurable {
      * @param null $ctr The name the controller that made the call. It might be an parent controller
      * @throws \OWeb\manage\exceptions\Controller
      */
-    public function display($ctr = null) {
+    public function forceDisplay($ctr = null) {
 		if ($ctr == null)
 			$ctr = get_class($this);
 
@@ -198,14 +209,14 @@ abstract class Controller extends NamedClass implements Configurable {
 		} else {
 			if ($ctr != '\OWeb\types\Controller') {
                 //Well this controller doesn't have a View let's see if the parent has a nice view to display
-				$this->display(get_parent_class($ctr));
+				$this->forceDisplay(get_parent_class($ctr));
 				return;
 			} else {
 				throw new \OWeb\manage\exceptions\Controller('Couldn\'t Find View of controller in : \'' . $path1 . $path . '\' , \'' . $path2 . $path . '\'.');
 			}
 		}
 		//First we create the Default view
-		$this->view = new \OWeb\types\View(get_class($this), $path, $this->language);
+		$this->view = $this->getView($path);
 
 		//Second we ask our controller to prepare anything needed to be show in the page
 		$this->onDisplay();
@@ -214,7 +225,16 @@ abstract class Controller extends NamedClass implements Configurable {
 		$this->view->display();
 	}
 
+    public function display(){
+        if($this->templateController == null)
+            $this->forceDisplay();
+        else
+            $this->templateController->templatedisplay($this);
+    }
 
+    protected function getView($path){
+        return new \OWeb\types\View(get_class($this), $path, $this->language);
+    }
 
 }
 
