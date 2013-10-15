@@ -36,8 +36,12 @@
 			$this->headers();
 		?>
 
-		<script type="text/javascript">
 
+        <?php
+        $connection = \OWeb\manage\Extensions::getInstance()->getExtension('user\connection\TypeConnection');
+        if(!$connection->isConnected()){
+        ?>
+		<script type="text/javascript">
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-36653464-1']);
 			_gaq.push(['_trackPageview']);
@@ -47,10 +51,11 @@
 			  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 			  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 			})();
-
 		  </script>
 
-
+        <?php
+        }
+        ?>
 
     </head>
 
@@ -65,17 +70,16 @@
                 <!-- Login Panel -->
                 <div class="login_panel ">
 					<?php
-						$connection = \OWeb\manage\Extensions::getInstance()->getExtension('user\connection\TypeConnection');
 
 						if(!$connection->isConnected()){
 							echo '<form  id="login-form" method="post" action="" />
-                    <input type="hidden" name="login" value="null"/>
+                                    <input type="hidden" name="login" value="null"/>
 
-                    <input  id="pwd-field"  type="hidden" name="pwd" value=""/>
+                                    <input  id="pwd-field"  type="hidden" name="pwd" value=""/>
 
-					<input type="hidden" name="ext_a" value="connect"/>
+                                    <input type="hidden" name="ext_a" value="connect"/>
 
-              </form>';
+                              </form>';
                             echo '<p><a class="persona-button" href="javascript:navigator.id.request()"><span>Login with Persona</span></a></p>';
                         }else
 							echo '<p>Welcome '.$connection->getLogin().'. <a href="?ext_a=disconnect">Disconnect</a></p>';/**/
