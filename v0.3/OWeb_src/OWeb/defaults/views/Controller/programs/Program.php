@@ -20,7 +20,6 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-$this->addHeader('2Collone.css', \OWeb\manage\Headers::css);
 $this->addHeader('articles.css', \OWeb\manage\Headers::css);
 $this->addHeader('onprogress.css', \OWeb\manage\Headers::css);
 $this->addHeader('programs.css', \OWeb\manage\Headers::css);
@@ -36,109 +35,94 @@ $this->addHeader('  <script>
 ?>
 
 
-
-<div id="twoCollone">
-    <div>
-        <div class="ColloneGauche">
-            <div>
-
-                <p> <?php
-                    \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Category_Parents')
-                        ->addParams('cat', $this->program->getCategory())
-                        ->addParams('link', new OWeb\utils\Link(array('page' => 'programs\Categorie', "catId"=>"")))
-                        ->display();
-                    ?></p>
-                <h1><?= $this->program->getName() ?> </h1>
+<p> <?php
+    \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Category_Parents')
+        ->addParams('cat', $this->program->getCategory())
+        ->addParams('link', new OWeb\utils\Link(array('page' => 'programs\Categorie', "catId"=>"")))
+        ->display();
+    ?></p>
+<h1><?= $this->program->getName() ?> </h1>
 
 
-                <div  class="program_info">
+<div  class="program_info">
 
-                    <?php
-                    $prog_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\programs\widgets\ProgramCard');
+    <?php
+    $prog_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\programs\widgets\ProgramCard');
 
-                    $box_program = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Box');
-                    $box_program->addParams('ctr', $prog_display)
-                        ->addParams('SecondBoxHeight', 500)
-                        ->addParams('Html Class', 'programBox');
-                    $prog_display->addParams('prog', $this->program);
-                    $box_program->display();
+    $box_program = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Box');
+    $box_program->addParams('ctr', $prog_display)
+        ->addParams('SecondBoxHeight', 500)
+        ->addParams('Html Class', 'programBox');
+    $prog_display->addParams('prog', $this->program);
+    $box_program->display();
 
 
 
-                    $box_download = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Box');
-                    $dwld_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\programs\widgets\Downloads');
-                    $dwld_display->addParams('prog', $this->program);
-                    $box_download->addParams('ctr', $dwld_display)
-                        ->addParams('Html Class', 'DwldBox');
-                    $box_download->display();
-                    ?>
+    $box_download = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Box');
+    $dwld_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\programs\widgets\Downloads');
+    $dwld_display->addParams('prog', $this->program);
+    $box_download->addParams('ctr', $dwld_display)
+        ->addParams('Html Class', 'DwldBox');
+    $box_download->display();
+    ?>
 
 
-                    <div class="ColloneClean"></div>
+    <div class="ColloneClean"></div>
 
-                    <div class="Description">
+    <div class="Description">
 
-                        <div class="tabs">
-                            <ul>
-                                <li><a href="#tabs_prg_description">Description</a></li>
-                                <?php
-                                    $galleryPath = $this->program->getGalleryPath();
-                                    if(!empty($galleryPath)) echo '<li><a href="#tabs_prg_gallery">Gallery</a></li>';
-                                ?>
-                                <li><a href="#tabs_prg_changelog">ChangeLog</a></li>
-                            </ul>
-                            <div id="tabs_prg_description">
+        <div class="tabs">
+            <ul>
+                <li><a href="#tabs_prg_description">Description</a></li>
+                <?php
+                    $galleryPath = $this->program->getGalleryPath();
+                    if(!empty($galleryPath)) echo '<li><a href="#tabs_prg_gallery">Gallery</a></li>';
+                ?>
+                <li><a href="#tabs_prg_changelog">ChangeLog</a></li>
+            </ul>
+            <div id="tabs_prg_description">
 
-                                <?php
-                                    if($this->program->getDesc_article() == null)
-                                        echo '<p>'.$this->program->getShortDescription('eng').'</p>';
-                                    else{
+                <?php
+                    if($this->program->getDesc_article() == null)
+                        echo '<p>'.$this->program->getShortDescription('eng').'</p>';
+                    else{
 
-                                        $article_show = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\articles\widgets\show_article\Def');
-                                        $article_show->s('article', $this->program->getDesc_article());
-                                        $article_show->display();
+                        $article_show = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\articles\widgets\show_article\Def');
+                        $article_show->s('article', $this->program->getDesc_article());
+                        $article_show->display();
 
-                                    }
+                    }
 
-                                ?>
+                ?>
 
-                            </div>
+            </div>
 
-                            <?php
-                            if(!empty($galleryPath)){
-                                echo '<div id="tabs_prg_gallery">';
+            <?php
+            if(!empty($galleryPath)){
+                echo '<div id="tabs_prg_gallery">';
 
-                                    $gallery_show = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\OWeb\widgets\jquery\plugins\GalleryView');
-                                    $gallery_show->addParams('path', $galleryPath);
-                                    $gallery_show->display();
+                    $gallery_show = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\OWeb\widgets\jquery\plugins\GalleryView');
+                    $gallery_show->addParams('path', $galleryPath);
+                    $gallery_show->display();
 
-                                echo '</div>';
-                            }
-                            ?>
+                echo '</div>';
+            }
+            ?>
 
-                            <div id="tabs_prg_changelog">
+            <div id="tabs_prg_changelog">
 
-                                <p> Coming Soon</p>
-
-                            </div>
-                        </div>
-
-
-
-                    </div>
-
-
-                </div>
-
-
+                <p> Coming Soon</p>
 
             </div>
         </div>
-        <?php
-        $catTree = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\programs\widgets\ColloneDroite');
-        $catTree->addParams('cats', $this->cats)
-            ->display();
-        ?>
-        <div class="ColloneClean"></div>
+
+
+
     </div>
+
+
 </div>
+
+
+
+

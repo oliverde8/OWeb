@@ -1,13 +1,7 @@
 <?php
-	$this->addHeader('2Collone.css',\OWeb\manage\Headers::css); 
+
 	$this->addHeader('articles.css',\OWeb\manage\Headers::css); 
-?>
-<div id="twoCollone">
-	<div>
-		<div class="ColloneGauche">
-			<div>
-<!-- Category Description -->
-<?php
+
 if(!isset($this->showCatHeader) || $this->showCatHeader)
 	\OWeb\manage\SubViews::getInstance()->getSubView('\Controller\articles\widgets\Category_Description')
 		->addParams('categories', $this->cats)
@@ -50,16 +44,4 @@ $nbArticleShown = $nbArticle + $this->cpage*$this->nbElementPage;
 		echo '<a href="'.\OWeb\utils\Link::getCurrentLink()->addParam("npage", $this->cpage+2).'"> Next</a>';
 	}*/
 ?>
-				</div>
-
-
-			</div>
-		</div>
-<?php
-	$catTree = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\articles\widgets\ColloneDroite');
-	$catTree->addParams('cats', $this->cats)
-			->display();
-?>
-		<div class="ColloneClean"></div>
-	</div>
 </div>

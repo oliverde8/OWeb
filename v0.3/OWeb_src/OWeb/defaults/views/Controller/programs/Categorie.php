@@ -1,24 +1,20 @@
 <?php
-
-$this->addHeader('2Collone.css', \OWeb\manage\Headers::css);
 $this->addHeader('articles.css', \OWeb\manage\Headers::css);
 $this->addHeader('onprogress.css', \OWeb\manage\Headers::css);
 $this->addHeader('programs.css', \OWeb\manage\Headers::css);
 
 ?>
 
-<div id="twoCollone">
-	<div>
-		<div class="ColloneGauche">
-			<div>
-               <p> <?php
-                    \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Category_Parents')
-                        ->addParams('cat', $this->category)
-                        ->addParams('link', new OWeb\utils\Link(array('page' => 'programs\Categorie', "catId"=>"")))
-                        ->display();
-                ?></p>
-                <h1><?= $this->category->getName() ?> </h1>
-                    <div  class="programs">
+
+<p> <?php
+    \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Category_Parents')
+        ->addParams('cat', $this->category)
+        ->addParams('link', new OWeb\utils\Link(array('page' => 'programs\Categorie', "catId"=>"")))
+        ->display();
+?></p>
+<h1><?= $this->category->getName() ?> </h1>
+    <div  class="programs">
+
 <?php
 
     $prog_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\programs\widgets\ProgramCard');
@@ -34,16 +30,6 @@ $this->addHeader('programs.css', \OWeb\manage\Headers::css);
         $box_display->display();
     }
 ?>
+        </div>
 
-                    </div>
-			</div>
-		</div>
-		<?php
-		$catTree = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\programs\widgets\ColloneDroite');
-		$catTree->addParams('cats', $this->cats)
-				->display();
-		?>
-		<div class="ColloneClean"></div>
-	</div>
-</div>
 

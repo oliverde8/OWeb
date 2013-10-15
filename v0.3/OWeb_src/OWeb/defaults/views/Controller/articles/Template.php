@@ -19,28 +19,20 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
-
-namespace Controller\programs;
-
-use Model\articles\Artciles;
-use Model\articles\Categories;
-use Model\programs\Programs;
-
-class Program extends \OWeb\types\Controller{
-
-    private $programs;
-
-    public function init()
-    {
-        $this->applyTemplateController('Controller\programs\Template');
-        $this->InitLanguageFile();
-        $this->categories = new \Model\programs\Categories();
-        $this->programs = new Programs($this->categories, new Artciles(new Categories()));
-    }
-
-    public function onDisplay()
-    {
-        $this->view->cats = $this->categories;
-        $this->view->program =  $this->programs->getprogram($this->getParam('prgId'));
-    }
-}
+$this->addHeader('2Collone.css', \OWeb\manage\Headers::css);
+?>
+<div id="twoCollone">
+    <div>
+        <div class="ColloneGauche">
+            <div>
+                <?php $this->displayController(); ?>
+            </div>
+        </div>
+        <?php
+        $catTree = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\articles\widgets\ColloneDroite');
+        $catTree->addParams('cats', \Model\articles\Categories::getInstance())
+            ->display();
+        ?>
+        <div class="ColloneClean"></div>
+    </div>
+</div>

@@ -36,6 +36,7 @@ class Categorie extends \OWeb\types\Controller{
 	private $articles;
 	
 	public function init() {
+        $this->applyTemplateController('Controller\articles\Template');
 		\OWeb\manage\Extensions::getInstance()->getExtension('bbcode\JBBCode');
 		$this->categories = new \Model\articles\Categories();
 		$this->articles = new \Model\articles\Artciles($this->categories);

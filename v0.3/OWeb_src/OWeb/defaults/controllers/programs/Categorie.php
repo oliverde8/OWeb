@@ -35,9 +35,11 @@ class Categorie  extends \OWeb\types\Controller{
     private $programs;
 	
 	public function init() {
+        $this->applyTemplateController('Controller\programs\Template');
 		$this->InitLanguageFile();
 		$this->categories = new \Model\programs\Categories();
         $this->programs = new Programs($this->categories, new Artciles(new Categories()));
+
 
 	}
 

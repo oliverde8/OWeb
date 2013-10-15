@@ -20,27 +20,17 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-namespace Controller\programs;
+namespace Controller\articles;
 
-use Model\articles\Artciles;
-use Model\articles\Categories;
-use Model\programs\Programs;
 
-class Program extends \OWeb\types\Controller{
-
-    private $programs;
+class Template extends \OWeb\types\TemplateController{
 
     public function init()
     {
-        $this->applyTemplateController('Controller\programs\Template');
-        $this->InitLanguageFile();
-        $this->categories = new \Model\programs\Categories();
-        $this->programs = new Programs($this->categories, new Artciles(new Categories()));
+
     }
 
     public function onDisplay()
     {
-        $this->view->cats = $this->categories;
-        $this->view->program =  $this->programs->getprogram($this->getParam('prgId'));
     }
 }

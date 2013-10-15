@@ -14,17 +14,7 @@
 			$lang = $this->getLang();
 		
 		echo $this->content->getContent($lang);
-	}
-?>
-		
-		
-				
-
-<?php
-	/*$catTree = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\articles\widgets\ColloneDroite');
-	$catTree->addParams('cats', $this->cats)
-			->display();*/
-?>
+	}?>
 
 	</div>
 </div>

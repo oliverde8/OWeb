@@ -35,6 +35,7 @@ class Article extends \OWeb\types\Controller{
 		\OWeb\manage\Extensions::getInstance()->getExtension('bbcode\JBBCode');
 		$this->categories = new \Model\articles\Categories();
 		$this->articles = new \Model\articles\Artciles($this->categories);
+        $this->applyTemplateController('Controller\articles\Template');
 	}
 
 	public function onDisplay() {
