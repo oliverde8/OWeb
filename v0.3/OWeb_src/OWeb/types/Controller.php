@@ -41,6 +41,7 @@ abstract class Controller extends NamedClass implements Configurable {
 	private $actions = array();
 	private $language;
 	protected $view = null;
+    private $primaryController = false;
 
     protected $templateController = null;
 
@@ -48,9 +49,10 @@ abstract class Controller extends NamedClass implements Configurable {
 
 	abstract public function onDisplay();
 
-	function __construct() {
+	function __construct($primary = false) {
 		$this->action_mode = self::ACTION_GET;
 		$this->language = new \OWeb\types\Language();
+        $this->primaryController = $primary;
 	}
 
     protected function applyTemplateController($ctr){
@@ -185,6 +187,15 @@ abstract class Controller extends NamedClass implements Configurable {
     protected function getLang() {
 		return $this->language->getLang();
 	}
+
+    /**
+     * @return boolean
+     */
+    public function isPrimaryController()
+    {
+        return $this->primaryController;
+    }
+
 
     /**
      * Displays the controllers view

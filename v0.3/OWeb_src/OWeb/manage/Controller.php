@@ -81,10 +81,10 @@ class Controller extends \OWeb\utils\Singleton{
 		}else{
 			
 			try{
-				$controller = new $name();
+				$controller = new $name(true);
 				$this->controller = $controller;
 				if(! ($controller instanceof \OWeb\types\Controller))
-					throw new \OWeb\manage\exceptions\Controller("A Controller needs to be an instance of \OWeb\Types\Controller");	
+					throw new \OWeb\manage\exceptions\Controller("A Controller needs to be an instance of \\OWeb\\Types\\Controller");
 				
 				\OWeb\manage\Events::getInstance()->sendEvent('loaded@OWeb\manage\Controller',$this->controller);
 				

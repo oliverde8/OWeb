@@ -19,23 +19,21 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
-namespace Page\OWeb\errors\http;
 
-/**
- * Description of NotFound
- *
- * @author De Cramer Oliver
- */
-class NotFound extends \OWeb\types\Controller{
+namespace Controller\OWeb;
 
-	public function init() {
-        $this->applyTemplateController('Controller\OWeb\SimpleContent');
-	}
 
-	public function onDisplay() {
-		$this->view->page_name = $this->getParam("page_name");
-	}
-	
+use OWeb\types\TemplateController;
+
+class SimpleContent extends  TemplateController{
+
+    public function init()
+    {
+
+    }
+
+    public function onDisplay()
+    {
+
+    }
 }
-
-?>

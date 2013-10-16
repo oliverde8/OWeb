@@ -29,9 +29,9 @@ $_L['desc']		= 'We are sorry about the disagreement his may cause you. And ope i
 $_L['more']		='You are crazy? Or a curious programmer? Here is the Exception messages : ';
 
 $_L['title_unknown']	= 'Ouppss!! What happened?';
-$_L['desc_unknown']		= 'We are sorry there has been a unexpected error.\n'
-                   .'The error being unexpected we have no idea what went wrong, it might just be a small glitch or a a biiiig problem.\n'
-                    .'If you a bit crazy you might want to look into the exception trace just below.';
+$_L['desc_unknown']		= "We are sorry there has been a unexpected error.\n"
+                   ."The error being unexpected we have no idea what went wrong, it might just be a small glitch or a a biiiig problem.\n"
+                    .'If you are bit crazy or a geek or just curious you might want to look into the exception trace just below.';
 
 ?>
 
