@@ -36,7 +36,6 @@ class Error extends \OWeb\types\Controller{
 		$this->view->title = $this->getParam("Title");
 		$this->view->desc = $this->getParam("Description");
 		$this->view->img = $this->getParam("img");
-		
 	}
 }
 

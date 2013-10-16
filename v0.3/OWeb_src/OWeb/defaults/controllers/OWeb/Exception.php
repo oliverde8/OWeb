@@ -20,6 +20,7 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 namespace Controller\OWeb;
+use OWeb\types\UserException;
 
 /**
  * Description of Exception
@@ -35,6 +36,7 @@ class Exception extends \OWeb\types\Controller{
 	
 	public	function onDisplay() {
 		$exception = $this->getParam("exception");
+        $this->view->userException = array();
 		$this->view->messages = array();
 		
 		if($exception instanceof \Exception){
@@ -42,8 +44,16 @@ class Exception extends \OWeb\types\Controller{
 			while ($exception->getPrevious() != null){
 				$exception = $exception->getPrevious();
 				$this->view->messages[]=$exception;
+                if($exception instanceof UserException ){
+                    $this->view->userException[] = $exception;
+                }
 			}
 		}
+        if(empty($this->view->userException)){
+            $ex = new UserException($this->l('title_unknown'));
+            $ex->setUserDescription($this->l('desc_unknown'));
+            $this->view->userException[] = $ex;
+        }
 	}
 
 }
