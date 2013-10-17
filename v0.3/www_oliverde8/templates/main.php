@@ -72,35 +72,39 @@
 					<?php
 
 						if(!$connection->isConnected()){
-							echo '<form  id="login-form" method="post" action="" />
+                    ?>
+							<form  id="login-form" method="post" action="" />
                                     <input type="hidden" name="login" value="null"/>
 
                                     <input  id="pwd-field"  type="hidden" name="pwd" value=""/>
 
                                     <input type="hidden" name="ext_a" value="connect"/>
 
-                              </form>';
+                              </form>
+
+                            <script src="http://login.persona.org/include.js"></script>
+                            <script>
+                                navigator.id.watch({
+                                    loggedInUser: <?= $connection->getEmail() ? "'$connection->getEmail()'" : 'null' ?>,
+                                    onlogin: function (assertion) {
+                                        var assertion_field = document.getElementById("pwd-field");
+                                        assertion_field.value = assertion;
+                                        var login_form = document.getElementById("login-form");
+                                        login_form.submit();
+                                    },
+                                    onlogout: function () {
+                                        window.location = '?logout=1';
+                                    }
+                                });
+                            </script>
+                    <?php
                             echo '<p><a class="persona-button" href="javascript:navigator.id.request()"><span>Login with Persona</span></a></p>';
                         }else
 							echo '<p>Welcome '.$connection->getLogin().'. <a href="?ext_a=disconnect">Disconnect</a></p>';/**/
 					?>
                 </div>
 
-                <script src="http://login.persona.org/include.js"></script>
-                <script>
-                    navigator.id.watch({
-                        loggedInUser: <?= $connection->getEmail() ? "'$connection->getEmail()'" : 'null' ?>,
-                        onlogin: function (assertion) {
-                            var assertion_field = document.getElementById("pwd-field");
-                            assertion_field.value = assertion;
-                            var login_form = document.getElementById("login-form");
-                            login_form.submit();
-                        },
-                        onlogout: function () {
-                            window.location = '?logout=1';
-                        }
-                    });
-                </script>
+
 
             </div>
         </div>
