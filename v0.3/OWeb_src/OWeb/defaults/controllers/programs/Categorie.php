@@ -23,6 +23,7 @@ namespace Controller\programs;
 use Model\articles\Artciles;
 use Model\articles\Categories;
 use Model\programs\Programs;
+use OWeb\types\UserException;
 
 /**
  * Description of Categorie
@@ -45,8 +46,22 @@ class Categorie  extends \OWeb\types\Controller{
 
 	public function onDisplay() {
 		$this->view->cats = $this->categories;
-		$this->view->category = $this->categories->getElement($this->getParam('catId'));
-        $this->view->programs = $this->programs->getPrograms($this->view->category, 0, 100, true);
+
+        try{
+		    $this->view->category = $this->categories->getElement($this->getParam('catId'));
+        }catch (\Exception $ex){
+            $userEx = new UserException($this->l('No Such Category'));
+            $userEx->setUserDescription($this->l('Maybe wrong link? or the category was deleted'));
+            throw $userEx;
+        }
+
+        try{
+            $this->view->programs = $this->programs->getPrograms($this->view->category, 0, 100, true);
+        }catch (\Exception $ex){
+            $userEx = new UserException($this->l('Empty Category'));
+            $userEx->setUserDescription($this->l('This category has no articles in it'));
+            throw $userEx;
+        }
 	}
 	
 }

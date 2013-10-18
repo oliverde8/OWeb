@@ -33,6 +33,8 @@ class Controller extends \OWeb\utils\Singleton{
 	private $controller = null;
 	
 	private $loaded = false;
+
+    private $excpetionLoaded = false;
 	
 	function __construct() {
 		$events = \OWeb\manage\Events::getInstance();
@@ -96,10 +98,17 @@ class Controller extends \OWeb\utils\Singleton{
 	}
 	
 	public function loadException($exception){
+        $templateManager = $this->controller->getTemplateController();
+
 		unset($this->controller);
 		$this->controller = null;
 		
-		return $this->loadController('Controller\OWeb\Exception');
+		$ctr =  $this->loadController('Controller\OWeb\Exception');
+        $ctr->init();
+        if($templateManager != null){
+            $ctr->applyTemplateController($templateManager);
+        }
+        return $ctr;
 	}
 	
 	/**

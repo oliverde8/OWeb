@@ -21,6 +21,8 @@
  */
 namespace OWeb\types;
 
+use OWeb\types\Controller;
+
 /**
  * Description of Language
  *
@@ -32,7 +34,12 @@ class Language {
 	private $lang = array();
 	public static $default_language;
 
-	public function init(\OWeb\types\Controller $controller) {
+
+    public function init(\OWeb\types\Controller $controller) {
+        $this->tinit(get_class($controller));
+    }
+
+	public function tinit($name) {
 
 		$settings = \OWeb\manage\Settings::getInstance()->getSetting($this);
 
@@ -40,9 +47,9 @@ class Language {
 
 		try {
 
-			$cname = $controller->get_exploded_name();
+			$cname = Controller::get_exploded_nameOf($name);
 			$path = '/' . $cname[0];
-			$path .= str_replace(".php", "", $controller->get_relative_path());
+			$path .= str_replace(".php", "", Controller::get_relative_pathOf($name));
 
 			$ext = \OWeb\manage\Extensions::getInstance()->tryGetExtension('user\connection\TypeConnection');
 			if ($ext != null && $ext->getlang() != self::$default_language) {
@@ -55,10 +62,12 @@ class Language {
 				$this->c_lang = self::$default_language;
 
 			$this->loadFile(OWEB_DEFAULT_LANG_DIR . $path . '/' . self::$default_language . '.php', self::$default_language);
-
 			$this->loadFile(OWEB_DEFAULT_LANG_DIR . '/' . self::$default_language . '.php', self::$default_language);
+
+            if(get_parent_class($name) !=  'OWeb\types\Controller')
+                $this->tinit(get_parent_class($name));
 		} catch (\Exception $ex) {
-			throw \OWeb\Exception("Language File can't ve loaded", 0, $ex);
+
 		}
 	}
 
@@ -86,6 +95,7 @@ class Language {
 	}
 
 	private function loadFile($path, $lang) {
+        //echo $path.'*';
 		if (file_exists($path)) {
 			include $path;
 			$this->lang[] = $_L;

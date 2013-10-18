@@ -55,7 +55,7 @@ abstract class Controller extends NamedClass implements Configurable {
         $this->primaryController = $primary;
 	}
 
-    protected function applyTemplateController($ctr){
+    public function applyTemplateController($ctr){
         if($ctr instanceof TemplateController){
             $this->templateController = $ctr;
         }else{
@@ -245,6 +245,14 @@ abstract class Controller extends NamedClass implements Configurable {
 
     protected function getView($path){
         return new \OWeb\types\View(get_class($this), $path, $this->language);
+    }
+
+    /**
+     * @return null
+     */
+    public function getTemplateController()
+    {
+        return $this->templateController;
     }
 
 }

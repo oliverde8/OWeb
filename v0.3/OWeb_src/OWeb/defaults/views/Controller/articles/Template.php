@@ -29,7 +29,6 @@ $this->addHeader('2Collone.css', \OWeb\manage\Headers::css);
             </div>
         </div>
         <?php
-        throw new \OWeb\Exception('Test');
         $catTree = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\articles\widgets\ColloneDroite');
         $catTree->addParams('cats', \Model\articles\Categories::getInstance())
             ->display();

@@ -31,6 +31,7 @@ class Exception extends \OWeb\types\Controller{
 	
 	public function init(){
 		$this->InitLanguageFile();
+        $this->applyTemplateController('Controller\OWeb\SimpleContent');
 	}
 	
 	

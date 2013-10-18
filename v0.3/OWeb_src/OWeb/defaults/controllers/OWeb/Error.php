@@ -30,7 +30,7 @@ class Error extends \OWeb\types\Controller{
 	
 	public function init(){
 		$this->InitLanguageFile();
-        if($this->isPrimaryController()){echo "GOGO TEmpate";
+        if($this->isPrimaryController()){
             $this->applyTemplateController('Controller\OWeb\SimpleContent');
         }
 	}

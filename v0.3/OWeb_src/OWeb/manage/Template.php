@@ -43,16 +43,16 @@ class Template {
 		$this->prepareDisplay();
 		
 		//Then display the template
-		ob_start();
+		//ob_start();
 
-		try{
+		//try{
 			//Including The template
 			include OWEB_DIR_TEMPLATES."/".$tmp.".php";
-			$foo = ob_get_contents();
+			//$foo = ob_get_contents();
 			//Clean
-			ob_end_clean();
-			echo $foo;
-		}catch(\Exception $ex){
+			//ob_end_clean();
+			//echo $foo;
+		/*}catch(\Exception $ex){
 			//Clean
 			ob_end_clean();
 			
@@ -64,21 +64,20 @@ class Template {
 			}else{
 				new Template();
 			}
-		}		
+		}		*/
 	}
 	
 	private function prepareDisplay(){
 		
 		//We save the content so that if there is an error we don't show half displayed codes
 		ob_start();
-		try{
+		try{/**/
 			\OWeb\manage\Controller::getInstance()->display();
 			
 		}catch(\Exception $e){
 			ob_end_clean();
 			ob_start();
 			$ctr = \OWeb\manage\Controller::getInstance()->loadException($e);
-			$ctr->Init();
 			$ctr->addParams("exception",$e);
 			\OWeb\manage\Controller::getInstance()->display();
 		}
