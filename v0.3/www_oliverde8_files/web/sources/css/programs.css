@@ -57,3 +57,19 @@ div.program > ul{
 div.program > ul > li > span.release_name{
     font-weight: bold;
 }
+
+div.prog_changelog span.version_title{
+    font-weight: bold;
+}
+
+div.prog_changelog span.version_date{
+    color : green;
+}
+
+div.prog_changelog span.version_dwld{
+    padding-left : 10px;
+}
+
+div.prog_changelog span.version_desc{
+
+}
