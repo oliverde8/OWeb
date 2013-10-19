@@ -42,5 +42,6 @@ class ChangeLog extends Controller{
 
     public function setVersion(Version $re){
         $this->addParams('revisions', $re->getAllRevisions());
+        return $this;
     }
 }

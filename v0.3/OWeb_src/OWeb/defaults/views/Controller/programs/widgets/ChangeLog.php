@@ -20,11 +20,36 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-foreach($this->revisions as $rev){
-    if($rev instanceof \Model\programs\Revision){;
+?>
 
-        ?>
+<div class="prog_changelog">
+    <ul>
+    <?php
 
-        <?php
+    foreach($this->revisions as $rev){
+        if($rev instanceof \Model\programs\Revision){;
+            $more = "";
+            if(is_numeric($rev->getDownloadLink())){
+                $dwld = new \Model\downloads\Download($rev->getDownloadLink());
+                $link = $dwld->getUrl();
+                $more = "(nbDownload : ".$dwld->getNbDownload().')';
+            }else{
+                $link = $rev->getDownloadLink();
+            }
+
+            ?>
+                <li>
+                    <span class="version_title"><?=$rev->getRevisionName()?> </span>
+                    <span class="version_date">(<?=date('d/m/y',$rev->getDate())?>)</span>
+                    <span class="version_dwld">  <a href="<?=$link?>">Download</a> <?=$more?> </span><br/>
+                    <span class="version_desc"><?=$rev->getDescription()?></span><br/>
+
+
+                </li>
+            <?php
+        }
     }
-}
+
+    ?>
+    </ul>
+</div>

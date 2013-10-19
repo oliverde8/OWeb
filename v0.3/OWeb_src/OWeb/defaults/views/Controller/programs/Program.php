@@ -77,8 +77,10 @@ $this->addHeader('  <script>
                 <?php
                     $galleryPath = $this->program->getGalleryPath();
                     if(!empty($galleryPath)) echo '<li><a href="#tabs_prg_gallery">Gallery</a></li>';
+
+                    $versions = $this->program->getVersions();
+                    if(!empty($versions)) echo' <li><a href="#tabs_prg_changelog">ChangeLog</a></li>';
                 ?>
-                <li><a href="#tabs_prg_changelog">ChangeLog</a></li>
             </ul>
             <div id="tabs_prg_description">
 
@@ -107,13 +109,23 @@ $this->addHeader('  <script>
 
                 echo '</div>';
             }
+
+            if(!empty($versions)){
+
+                echo '<div id="tabs_prg_changelog">';
+                $gallery_show = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\programs\widgets\ChangeLog');
+
+                foreach($versions as $ver){
+                    echo '<h3>'.$ver->getName().'</h3>';
+                    $gallery_show->setVersion($ver)
+                        ->display();
+                }
+                echo ' </div>';
+            }
             ?>
 
-            <div id="tabs_prg_changelog">
 
-                <p> Coming Soon</p>
 
-            </div>
         </div>
 
 

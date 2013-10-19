@@ -121,5 +121,13 @@ class Version {
         return $this->revisions;
     }
 
+    public function getDownload(){
+        $more = "";
+        if(is_numeric($this->getDownloadLink())){
+            return new \Model\downloads\Download($this->getDownloadLink());
+        }else{
+            $link = $this->getDownloadLink();
+        }
+    }
 
 }
