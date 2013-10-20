@@ -26,7 +26,7 @@ abstract class Singleton
 {
 	protected static $instances = array();
 
-	static function getInstance()
+	static public function getInstance()
 	{
 		$class = get_called_class();
 		if(!isset(self::$instances[$class]))
@@ -35,6 +35,16 @@ abstract class Singleton
 		}
 		return self::$instances[$class];
 	}
+
+    static protected function getInstanceNull(){
+        $class = get_called_class();
+        return isset(self::$instances[$class]) ? self::$instances[$class] : null;
+    }
+
+    static protected function setInstance(Singleton $object){
+        $class = get_called_class();
+        self::$instances[$class] = $object;
+    }
 
 	/**
 	 * Force a singleton object to be instanciated with the given instance
@@ -54,8 +64,6 @@ abstract class Singleton
 			throw new \Exception(sprintf('Object of class %s was previously instanciated', $class));
 		}
 	}
-
-	protected function __construct() {}
 
 	final protected function __clone() {}
 }

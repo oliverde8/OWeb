@@ -20,16 +20,19 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 namespace Model\programs;
+
+use Model\programs\Categories;
 use Model\articles\Artciles;
 use Model\programs\exception\ProgramNotFound;
 use OWeb\manage\Extensions;
+use OWeb\utils\Singleton;
 
 /**
  * Description of Programs
  *
  * @author oliverde8
  */
-class Programs
+class Programs extends Singleton
 {
 
     private $ext_connection;
@@ -38,6 +41,16 @@ class Programs
     private $articles;
 
     private $programs = array();
+
+    static public function getInstance(){
+        $class = self::getInstanceNull();
+
+        if($class == null){
+            $obj = new Programs(Categories::getInstance(), Artciles::getInstance());
+            self::setInstance($obj);
+            return $obj;
+        }
+    }
 
     /**
      *

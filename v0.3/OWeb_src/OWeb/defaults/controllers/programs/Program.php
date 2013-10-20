@@ -34,8 +34,8 @@ class Program extends \OWeb\types\Controller{
     {
         $this->applyTemplateController('Controller\programs\Template');
         $this->InitLanguageFile();
-        $this->categories = new \Model\programs\Categories();
-        $this->programs = new Programs($this->categories, new Artciles(new Categories()));
+        $this->categories = \Model\programs\Categories::getInstance();
+        $this->programs = Programs::getInstance();
     }
 
     public function onDisplay()

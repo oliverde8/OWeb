@@ -21,6 +21,10 @@
  */
 namespace Controller\articles;
 
+use Model\articles\Artciles;
+use Model\articles\Categories;
+use \OWeb\manage\Extensions;
+
 /**
  * Description of Page
  *
@@ -33,10 +37,10 @@ class Page extends \OWeb\types\Controller{
 	
 	
 	public function init() {
-		\OWeb\manage\Extensions::getInstance()->getExtension('bbcode\JBBCode');
+		Extensions::getInstance()->getExtension('bbcode\JBBCode');
 		$this->InitLanguageFile();
-		$this->categories = new \Model\articles\Categories();
-		$this->articles = new \Model\articles\Artciles($this->categories);
+        $this->categories = Categories::getInstance();
+        $this->articles = Artciles::getInstance($this->categories);
 	}
 
 	public function onDisplay() {

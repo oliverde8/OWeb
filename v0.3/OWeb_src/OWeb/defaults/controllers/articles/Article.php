@@ -20,6 +20,8 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 namespace Controller\articles;
+use Model\articles\Artciles;
+use Model\articles\Categories;
 
 /**
  * Description of article
@@ -30,11 +32,12 @@ class Article extends \OWeb\types\Controller{
 	
 	private $categories;
 	private $articles;
-	
-	public function init() {
+
+
+    public function init() {
 		\OWeb\manage\Extensions::getInstance()->getExtension('bbcode\JBBCode');
-		$this->categories = new \Model\articles\Categories();
-		$this->articles = new \Model\articles\Artciles($this->categories);
+		$this->categories = Categories::getInstance();
+		$this->articles = Artciles::getInstance();
         $this->applyTemplateController('Controller\articles\Template');
 	}
 
@@ -42,6 +45,14 @@ class Article extends \OWeb\types\Controller{
 		$this->view->cats = $this->categories;
 		$this->view->article = $this->articles->getArticle($this->getParam("id"));
 	}
+
+    /**
+     * Set the id of the article to show.
+     * @param int the id of the arcile this controller will show.
+     */
+    public function setArticleId($id){
+        $this->addParams('id', $id);
+    }
 }
 
 ?>

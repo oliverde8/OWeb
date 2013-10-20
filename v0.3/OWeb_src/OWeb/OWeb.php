@@ -104,6 +104,8 @@ class OWeb {
 		}else{
 			self::$instance = $this;
 		}
+
+        error_reporting(E_ALL ^ E_NOTICE ^ E_STRICT);
 		
 		//Variables d'environement
         $this->_get= $get;

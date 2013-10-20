@@ -49,7 +49,7 @@ abstract class Controller extends NamedClass implements Configurable {
 
 	abstract public function onDisplay();
 
-	function __construct($primary = false) {
+	final function __construct($primary = false) {
 		$this->action_mode = self::ACTION_GET;
 		$this->language = new \OWeb\types\Language();
         $this->primaryController = $primary;

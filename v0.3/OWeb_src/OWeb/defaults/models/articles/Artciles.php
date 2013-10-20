@@ -19,25 +19,38 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
+
 namespace Model\articles;
+
+use Model\articles\Categories;
+use OWeb\utils\Singleton;
 
 /**
  * Description of Artciles
  *
  * @author De Cramer Oliver
  */
-class Artciles {
+class Artciles extends Singleton{
 	
 	private $ext_connection;
 	private $categories;
 	
 	private $articles = array();
-	
-	function __construct(\Model\articles\Categories $cat) {
+
+
+    static public function getInstance(){
+        $class = self::getInstanceNull();
+        if($class == null){
+            $obj = new Artciles(Categories::getInstance());
+            self::setInstance($obj);
+            return $obj;
+        }
+    }
+
+	function __construct(Categories $cat) {
 		$this->ext_connection = \OWeb\manage\Extensions::getInstance()->getExtension('db\Connection');
 		$this->categories = $cat;
 	}
-	
 
 	public function getArticle($id){
 		
