@@ -24,11 +24,12 @@ namespace OWeb\manage;
 
 /**
  * Subviews are just controllers not used as pages. Any controller can be used as a SubView.
- * This class will allow you to load and use them easily. 
+ * This class will allow you to load and use them easily.
+ * You may also want to load them manually your self. 
  * 
  * notes :
- *	* SubViews wont't be y default initialized. you need to do so by calling ->init() of the Controller returned by getSubView
- *	* The same way SubViews wan't be affected by actions, you need to call ->doAction($actionName) of the Controller
+ *	* SubViews wont't be by default initialized. you need to do so by calling ->init() of the Controller returned by getSubView
+ *	* The same way SubViews wao't be affected by actions, you need to call ->doAction($actionName) of the Controller
  *
  * @author De Cramer Oliver
  */

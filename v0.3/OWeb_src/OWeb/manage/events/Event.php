@@ -22,7 +22,7 @@
 namespace OWeb\manage\events;
 
 /**
- * Description of Event
+ * The registration of a Event call
  *
  * @author De Cramer Oliver
  */
@@ -30,29 +30,56 @@ class Event {
 	
 	protected $object;
 	protected $function;
-	
-	function __construct($object, $function) {
+
+    /**
+     * The object of the function which will be called when an Event is launched
+     *
+     * @param $object
+     * @param $function
+     */
+    function __construct($object, $function) {
 		$this->object = $object;
 		$this->function = $function;
 	}
-	
-	public function setObject($object) {
+
+    /**
+     * Set the object of which the call will be done
+     *
+     * @param $object
+     */
+    public function setObject($object) {
 		$this->object = $object;
 	}
 
-	public function setFunction($function) {
+    /**
+     * Set the function that will be called
+     *
+     * @param $function
+     */
+    public function setFunction($function) {
 		$this->function = $function;
 	}
 
-	public function getObject() {
+    /**
+     * @return mixed The object of whom the function will be called
+     */
+    public function getObject() {
 		return $this->object;
 	}
 
-	public function getFunction() {
+    /**
+     * @return mixed The function that will be called
+     */
+    public function getFunction() {
 		return $this->function;
 	}
-	
-	public function doEvent($params){
+
+    /**
+     * Will make the function call with the parameters
+     *
+     * @param $params List of parameters
+     */
+    public function doEvent($params){
 		call_user_func_array(array($this->object,$this->function),$params);
 	}
 	

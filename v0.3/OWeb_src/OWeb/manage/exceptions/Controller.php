@@ -22,7 +22,7 @@
 namespace OWeb\manage\exceptions;
 
 /**
- * Description of Controller
+ * Errors that happens because of a controller. Usually errors that happens in the controller manager
  *
  * @author De Cramer Oliver
  */

@@ -57,13 +57,24 @@ class Settings extends \OWeb\utils\Singleton{
         }else
             return false;
     }
-	
-	public function getDefSettingValue($asker, $asked){
+
+    /**
+     * Recoveres the value of the setting for that class(object)
+     *
+     * @param mixed $asker The object or class that asks the Information
+     * @param $asked The name of the information to get
+     * @return mixed If information available string if not false
+     */
+    public function getDefSettingValue($asker, $asked){
 		$settings = $this->getSetting($asker);
 		return isset($settings[$asked]) ? $settings[$asked] : false;
 	}
 
-
+    /**
+     * Loads a different configuration file on top of the existing one
+     * @param $file
+     * @throws exceptions\Settings
+     */
     private function loadFile($file=OWEB_DIR_CONFIG){
 
         if(!isset($this->settings[$file])){
@@ -75,7 +86,5 @@ class Settings extends \OWeb\utils\Singleton{
 			$this->settings[$file] = $f;
         }
     }
-
-
 }
 ?>

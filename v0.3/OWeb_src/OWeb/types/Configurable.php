@@ -22,7 +22,11 @@
 
 namespace OWeb\types;
 
-
+/**
+ * Define type of all Configurable classes
+ *
+ * @package OWeb\types
+ */
 interface Configurable{
 
     public function addParams($paramName, $value);

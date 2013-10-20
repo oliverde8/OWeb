@@ -21,6 +21,8 @@
  */
 namespace OWeb\manage;
 
+use \OWeb\manage\Events;
+
 /**
  * 
  * Manages the initiation of the main controller represented in the page directory. 
@@ -45,14 +47,16 @@ class Controller extends \OWeb\utils\Singleton{
 
 	/**
 	 * Will initialize the Controller and will do the Actions to which the Controller has register
-	 * 
-	 * @todo public and change it so it uses the controller in parameter. Change also the way the event is set!!
+	 *
 	 * @param \OWeb\types\Controller $controller The controller to Initialize
 	 */
 	public function initController(\OWeb\types\Controller $controller=null){
+
+        Events::getInstance()->sendEvent('InitPrepare@OWeb\manage\Controller',$this->controller);
+
 		$this->controller->init();
 		
-		\OWeb\manage\Events::getInstance()->sendEvent('Init@OWeb\manage\Controller',$this->controller);
+		Events::getInstance()->sendEvent('Init@OWeb\manage\Controller',$this->controller);
 		
 		//gestion des Actions...
 		$get = \OWeb\OWeb::getInstance()->get_get();

@@ -45,8 +45,8 @@ class Events extends \OWeb\utils\Singleton{
 	/**
 	 * Will send and event and call the functions that has registered to that Event.
 	 * 
-	 * @param type $event The name of the Event
-	 * @param type $params The parameters array you want to send with the event.
+	 * @param String $event The name of the Event
+	 * @param Array(mixed) $params The parameters array you want to send with the event.
 	 */
 	public function sendEvent($event, $params = array()){
 		

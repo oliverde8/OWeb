@@ -49,12 +49,20 @@ abstract class Controller extends NamedClass implements Configurable {
 
 	abstract public function onDisplay();
 
-	final function __construct($primary = false) {
+    /**
+     * @param bool $primary Is this a primary controller or a subview?
+     */
+    final function __construct($primary = false) {
 		$this->action_mode = self::ACTION_GET;
 		$this->language = new \OWeb\types\Language();
         $this->primaryController = $primary;
 	}
 
+    /**
+     * Allows you to apply a Template to this controller.
+     *
+     * @param $ctr The name of the template controller or the object it self
+     */
     public function applyTemplateController($ctr){
         if($ctr instanceof TemplateController){
             $this->templateController = $ctr;

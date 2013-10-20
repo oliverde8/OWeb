@@ -36,11 +36,11 @@ use OWeb\types\Header;
  */
 class Headers extends \OWeb\utils\Singleton{
 	
-	/*
+	/**
 	 * The file you want to include is a a javasripty file, a .js. 
 	 */
 	const javascript = 0;
-	/*
+	/**
 	 * A Css
 	 */
     const css = 1;
@@ -55,9 +55,9 @@ class Headers extends \OWeb\utils\Singleton{
 	/**
 	 * Allows you to add a header to the we bpage
 	 * 
-	 * @param type $code The url to the css, js or the name of the css or js file. 
+	 * @param  $code The url to the css, js or the name of the css or js file.
 	 *						The path will be added automatically.
-	 * @param type $type The type of the Header you want to add.
+	 * @param int $type The type of the Header you want to add.
 	 */
 	public function addHeader($code, $type){
 
@@ -74,8 +74,7 @@ class Headers extends \OWeb\utils\Singleton{
         $code = md5($header->getCode());
 		$this->headers[$code] = $header;
 	}
-	
-	
+
 	private function getPath($path1, $path2){
 		if($path2[0]=='h'&&$path2[1]=='t'&&$path2[2]=='t'&&$path2[3]=='p')
 			return $path2;

@@ -22,7 +22,7 @@
 namespace OWeb\manage\exceptions;
 
 /**
- * Description of Controller
+ * Errors that happens because of a Extension. Usually errors that happens in the Extension manager
  *
  * @author De Cramer Oliver
  */

@@ -23,7 +23,7 @@ namespace OWeb\manage\exceptions;
 use OWeb\Exception;
 
 /**
- * Description of Settings
+ * Errors that happens because of a setting. Usually errors that happens in the settings manager
  *
  * @author De Cramer Oliver
  */

@@ -34,8 +34,12 @@ class Template {
 	private $content;
 	
 	private $language;
-	
-	function __construct($tmp='main') {
+
+    /**
+     *
+     * @param string $tmp The name of the template to load
+     */
+    function __construct($tmp='main') {
 		
 		$this->language = new \OWeb\types\Language();
 		
@@ -43,16 +47,16 @@ class Template {
 		$this->prepareDisplay();
 		
 		//Then display the template
-		//ob_start();
+		ob_start();
 
-		//try{
+		try{
 			//Including The template
 			include OWEB_DIR_TEMPLATES."/".$tmp.".php";
-			//$foo = ob_get_contents();
+			$foo = ob_get_contents();
 			//Clean
-			//ob_end_clean();
-			//echo $foo;
-		/*}catch(\Exception $ex){
+			ob_end_clean();
+			echo $foo;
+		}catch(\Exception $ex){
 			//Clean
 			ob_end_clean();
 			
@@ -64,10 +68,13 @@ class Template {
 			}else{
 				new Template();
 			}
-		}		*/
+		}
 	}
-	
-	private function prepareDisplay(){
+
+    /**
+     * Will get the output of the current controller to display it later on.
+     */
+    private function prepareDisplay(){
 		
 		//We save the content so that if there is an error we don't show half displayed codes
 		ob_start();
@@ -110,20 +117,40 @@ class Template {
 	public function addHeader($code, $type){
 		\OWeb\manage\Headers::getInstance()->addHeader($code, $type);
 	}
-	
-	protected function getLangString($name){
+
+    /**
+     * Get text for the current language
+     *
+     * @param string $name The name of the text you look for
+     * @return string Hopefully the text :D
+     */
+    protected function getLangString($name){
 		return $this->language->get($name);
 	}
-	
-	protected function l($name){
+
+    /**
+     * Shortcut for getLanguageString()
+     *
+     * @param string $name The name of the text you look for
+     * @return string Hopefully the text :D
+     */
+    protected function l($name){
 		return $this->language->get($name);
 	}
-	
-	protected function getLang(){
+
+    /**
+     * Get the current language
+     *
+     * @return string current language
+     */
+    protected function getLang(){
 		return $this->language->getLang();
 	}
-	
-	protected function InitLanguageFile(){
+
+    /**
+     * Initialize the current language file.
+     */
+    protected function InitLanguageFile(){
 		$this->language->initNo();
 	}
 	

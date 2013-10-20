@@ -20,6 +20,7 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 namespace OWeb\manage;
+use OWeb\types\Extension;
 
 /**
  * Will manages the Extensions of OWeb. 
@@ -42,8 +43,14 @@ class Extensions extends \OWeb\utils\Singleton{
 	function __construct() {
 		\OWeb\manage\Events::getInstance()->registerEvent('Init@OWeb', $this, 'init_extensions');
 	}
-	
-	public function tryGetExtension($ext){
+
+    /**
+     * Will just try to get an extension, if it is impossible it will return null
+     *
+     * @param String $ext The name of the extension
+     * @return Extension The exception if loaded or could be load null if not.
+     */
+    public function tryGetExtension($ext){
 		try{
 			return $this->getExtension($ext);
 		}catch(\Exception $e){
@@ -81,7 +88,7 @@ class Extensions extends \OWeb\utils\Singleton{
 	 * Will load the extension if it hasn't already been load and if it can find it.
 	 * 
 	 * @param type $ClassName The name of the extension to be loaded. 
-	 * @return \OWeb\type\Extension The extension that has been loaded
+	 * @return \OWeb\types\Extension The extension that has been loaded
 	 * @throws \OWeb\manage\exceptions\Extension
 	 */
 	protected function loadExtension($ClassName){
@@ -104,8 +111,8 @@ class Extensions extends \OWeb\utils\Singleton{
 	 * Register the extension to the Extension manager. 
 	 * It is here that we will check all the parents of the extension to Register for every parents it has.
 	 * 
-	 * @param type $extension The Extension Object
-	 * @param type $name THe name of the Extension
+	 * @param String $extension The Extension Object
+	 * @param Extension $name THe name of the Extension
 	 * @throws \OWeb\Exception	If the extension has been already loaded.
 	 */
 	protected function registerExtension($extension, $name){
@@ -134,6 +141,8 @@ class Extensions extends \OWeb\utils\Singleton{
 	 * Will initialize all extensions when Oweb has finished Initializing itself
 	 */
 	public function init_extensions(){
+        \OWeb\manage\Events::getInstance()->sendEvent('InitPrep@OWeb\manage\Etensions');
+
 		foreach ($this->obj_extension as $extension) {
 			$extension->OWeb_Init();
 		}
