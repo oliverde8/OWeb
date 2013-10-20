@@ -50,7 +50,7 @@
 
 		<span class="nextPages">
 			<?php
-				for($i=1; $i<=$dernieres; $i++){
+				for($i=1; $i<=$dernieres+1; $i++){
 					echo '<a href="'.$this->link->addParam($this->pname, $page+$i).'">';
 					echo $page+$i.'  ';
 					echo '</a>';
