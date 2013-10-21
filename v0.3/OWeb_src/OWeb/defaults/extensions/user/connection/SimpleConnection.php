@@ -32,7 +32,7 @@ class SimpleConnection extends TypeConnection{
 	protected $mail;
 
 	public function __construct() {
-		$this->addDependance("db\absConnect");
+		$this->addDependance("db\\absConnect");
 	}
 	
 	protected function connect_cookie($login, $pwd) {

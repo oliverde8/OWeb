@@ -47,7 +47,7 @@ abstract class TypeConnection extends \OWeb\types\Extension{
 		
 		$this->settings = $this->loadSettings();
 		
-		//Cokie Time Setting
+		//Cookie Time Setting
 		if(!isset($this->settings['CookieTime']))
 			$this->set_CookieTime = (3600 * 24 * 7 * 4);
 		else
