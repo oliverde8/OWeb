@@ -36,6 +36,7 @@ $carousel_id = 0;
                 }
 ?>
                 <h1>Last Updated</h1>
+
                 <?php
 
                 foreach($this->updated as $program){
@@ -47,10 +48,9 @@ $carousel_id = 0;
 				$nbT = 0;
 				while(isset($this->previews_title[$nbT])){
 				?>
-				
-				<h2>
+				<h1>
 					<?php echo $this->previews_title[$nbT]; ?>
-				</h2>
+				</h1>
 				
 				<div id="prog_carousel_<?php echo $nbT+1; ?>" class="ca-container">
 					<div class="ca-wrapper">
