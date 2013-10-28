@@ -164,6 +164,10 @@ class Program {
     function addArticle(Article $article){
         $this->desc_articles[] = $article;
     }
+	
+	public function getArticles(){
+		return $this->desc_articles;
+	}
 
     public function checkLang($lang){
         return (isset($this->vshort[$lang]));

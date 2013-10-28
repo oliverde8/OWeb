@@ -80,7 +80,18 @@ $this->addHeader('  <script>
 
                     $versions = $this->program->getVersions();
                     if(!empty($versions)) echo' <li><a href="#tabs_prg_changelog">ChangeLog</a></li>';
-                ?>
+                
+					$articles = array();
+					foreach($this->program->getArticles() as $article){
+						$article_display = 	\OWeb\manage\SubViews::getInstance()->getSubView('Controller\articles\widgets\show_article\\'.$article->getType());
+						$article_display ->addParams('article', $article)
+								->addParams('short', false)
+								->addParams('image_level', 2);
+						$id = new \OWeb\utils\IdGenerator();
+						echo '<li><a href="#tabs_prg_changelog'.$id.'">'.$article->getTitle('eng').'</a></li>';		
+						$articles[(String)$id] = $article_display;
+					}
+				?>
             </ul>
             <div id="tabs_prg_description">
 
@@ -122,6 +133,14 @@ $this->addHeader('  <script>
                 }
                 echo ' </div>';
             }
+			
+			foreach($articles as $id => $display){
+				echo '<div id="'.$id.'">';
+				$display->display();
+				echo '</div>';
+			}
+			
+
             ?>
 
 

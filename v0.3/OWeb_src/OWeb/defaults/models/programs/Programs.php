@@ -284,7 +284,7 @@ class Programs
 
                 while ($result = $sql->fetchObject()) {
                     if(isset($programs[$result->prog_id])){
-                        $programs[$result->prog_id]->addCategory($this->articles->getArticle($result->category_id));
+                        $programs[$result->prog_id]->addArticle($this->articles->getArticle($result->article_id));
                     }
                 }
             } else {
@@ -294,7 +294,8 @@ class Programs
             //Third loading versions
             $sql2 = "SELECT * FROM ".$prefix."program_version, ".$prefix."program_revision r
                         WHERE prog_id IN (".$idString.")
-                            AND id_version = r.version_id";
+                            AND id_version = r.version_id
+						ORDER BY  r.date DESC";
 
             if ($sql = $connection->query($sql2)) {
 
