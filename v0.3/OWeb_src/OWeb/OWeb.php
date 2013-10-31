@@ -31,7 +31,7 @@
 ***********************************************************************************
 * OWeb is a simple Object PHP FrameWork
 * ===============================================================================
-* Version:		              0.3a
+* Version:		              0.3.2
 * Author	                  Oliver de Cramer (oliverde8 at gmail.com)
 **********************************************************************************/
 
@@ -62,7 +62,7 @@ if(!defined('OWEB_HTML_DIR_JS')) define('OWEB_HTML_DIR_JS','sources/js');
 
 if(!defined('OWEB_HTML_URL_IMG')) define('OWEB_HTML_URL_IMG','sources/files');
 
-define('OWEB_VERSION','0.3.1');
+define('OWEB_VERSION','0.3.2');
 
 require_once OWEB_DIR_MAIN.'/autoLoader.php';
 

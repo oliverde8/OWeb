@@ -42,27 +42,53 @@ class SubViews extends \OWeb\utils\Singleton{
 	}
 	
 	/**
-	 * note : You may use multiple times the same controller as a SubView. 
+	 * Will return an instance of the Controller required as a subview. 
+	 * 
+	 * !! A controller can also be initiated throught manually with new <name> but 
+	 * it might then need manual initialisation
+	 * 
+	 * !! since OWeb 0.3.2 this will generate only Singletons. 
+	 * To get a new instance every time you may create the controller yourself
+	 * or use getNewSubView
 	 * 
 	 * @param type $name Name of the controller you want to use as a sub view.
 	 * @return \Controller The controller that was asked.
 	 * @throws \OWeb\manage\exceptions\Controller
 	 */
 	public function getSubView($name){
+		if(isset($this->subViews[$name]))
+			return $this->subViews[$name];
+		else 
+			return $this->getNewSubView($name);
+	}
+	
+	/**
+	 * Will return a new instance of the Controller required as a subview. After
+	 * having initialized it. 
+	 *  
+	 * !! A controller can also be initiated throught manually with new <name> but 
+	 * it might then need manual initialisation
+	 * 
+	 * @param type $name Name of the controller you want to use as a sub view.
+	 * @return \Controller The controller that was asked.
+	 * @throws \OWeb\manage\exceptions\Controller
+	 */
+	public function getNewSubView($name){
 		try{
 			$controller = new $name();
 
 			if(! ($controller instanceof \OWeb\types\Controller))
-				throw new \OWeb\manage\exceptions\Controller("A Controller needs to be an instance of \OWeb\Types\Controller");	
+				throw new \OWeb\manage\exceptions\Controller("The class \"".$name."\" isn't an instance of \OWeb\Types\Controller");	
 			
-			$this->subViews[] = $controller;
-			
+			if(!isset($this->subViews[$name]))
+				$this->subViews[$name] = $controller;
+				
 			\OWeb\manage\Events::getInstance()->sendEvent('loaded@OWeb\manage\SubViews',$controller);
 			$controller->init();
 			return $controller;
 			
 		}catch(\Exception $ex){
-			throw new \OWeb\manage\exceptions\Controller("The SubView couldn't be loaded due to Errors",0,$ex);
+			throw new \OWeb\manage\exceptions\Controller("The SubView : \"".$name."\"couldn't be loaded due to Errors",0,$ex);
 		}
 	}
 	
