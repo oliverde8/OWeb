@@ -1,19 +1,50 @@
 		###############################################
-		** Better Exception handling for Templates **
+		** 		   Re Arranging CSS and JS files     **
 		###############################################
-We need to catch the Errors send when a Template is showned. To be able to do this correctly we need 
-first to block the output. We will save all the ouptout in a variable and show it after. If 
-there is a error we will then show another simple template that show the error. 
+I need to rearange all the the js and css files it is a total mess. Should also add a better support for Jquery support
 
 		###############################################
-		**    Better Exception handling for Pages    **
+		**	 		   JQuery UI helpers             **
 		###############################################
-Is done but needs a debug mode to make stuff easier to debug :D
+It would be cool to have a Jquery ui code helpers for all widgets there is taking in account all the options etc. 
+
+		###############################################
+		**	 		    Value Checkers               **
+		###############################################
+It is important to be able to check the type of a value, so need to make something like this which will actually
+Check this and will be able to be extended. By default there should be the classical cherckers
+URL, email, integer, string, with min lenght etc options. 
+
+They shall return an Exception if things go wrong. The exception should be an extension of UserException 
+so that nice errors can always be shown to users
+
+		###############################################
+		**	 		    Form Generators              **
+		###############################################
+This is can only be done once the value checkers are coded. It will work quite like zend with a quite nice default visualisation. 
+They will be coded as SubControllers this way they can be replaced later on by a developper who wants to add his own impovements.
+
+		###############################################
+		**	 		 Admin Page Template             **
+		###############################################
+An admin page template that checks the usser permissions
+
+		###############################################
+		**	       Permission edition Page           **
+		###############################################
+Will allow admins to affect permissions. The permission plugin is already done. 
+
+
+####################################################################################
+####################################################################################
+LESS IMPORTANT STUFF THAT WILL BE DONE IN TIME
+####################################################################################
+####################################################################################
 
 		###############################################
 		** 		     A Simple Identified Data        **
 		###############################################
-Will work as a limited storage saving system. The main purpose is to use this when we won't to limit database acceses.
+Will work as a limited storage saving system. The main purpose is to use this when we want to limit database acceses.
 It dosen't need to be perfect, it just need to save some limited number of information for each id given. This can be used
 for a live chat purpose for exemple. It needs to be enchanced with the Permission Agent.
 
