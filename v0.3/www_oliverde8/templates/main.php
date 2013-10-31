@@ -170,9 +170,9 @@
         </div></div><!-- Fin du Contenu -->
 
 		 <div id="foot" ><div>
-			<p class="generated">Generaterd in <?php echo \OWeb\OWeb::getInstance()->get_runTime();   ?> Seconds</p>
+			<p class="generated">Generaterd in <?php echo \OWeb\OWeb::getInstance()->get_stringRuntTime(); ?> Seconds</p>
 			<p class="powered">
-				Powered by OWeb
+				Powered by OWeb <?= OWEB_VERSION ?>
 				| <a href="articles.Categorie.html?catId=9">About OWeb</a>
 				| <a href="articles.Categorie.html?catId=10">About The Website</a>
 			</p>

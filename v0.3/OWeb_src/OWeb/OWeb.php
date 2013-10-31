@@ -97,7 +97,9 @@ class OWeb {
 	private $startTime;
 	
 	public function __construct(&$get, &$post, &$files, &$cookies, &$server, $adr) {
-		$this->startTime = microtime();
+		
+		$this->get_runTime();
+		
 		//Checking if There is an older instance. If yes Exception.
 		if(self::$instance != null){
 			throw new Exception("Only 1 instance of OWeb can run.");
@@ -238,8 +240,19 @@ class OWeb {
 	}
 	
 	public function get_runTime(){
-		return microtime() - $this->startTime;
+		static $a;
+		if($a == 0){
+			$a = microtime(true);
+			return 0;
+		}
+		else return microtime(true)-$a;
 	}
+	
+	public function get_stringRuntTime($precision = 3){
+		return number_format($this->get_runTime(),$precision);
+	}
+	
+	
 	
 	public static function getInstance(){
 		return self::$instance;
