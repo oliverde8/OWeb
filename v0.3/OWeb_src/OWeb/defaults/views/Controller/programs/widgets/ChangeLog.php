@@ -31,7 +31,7 @@
             $more = "";
             if(is_numeric($rev->getDownloadLink())){
                 $dwld = new \Model\downloads\Download($rev->getDownloadLink());
-                $link = $dwld->getUrl();
+                $link = $link = "downloads.Download.html?id=".$rev->getDownloadLink();
                 $more = "(nbDownload : ".$dwld->getNbDownload().')';
             }else{
                 $link = $rev->getDownloadLink();

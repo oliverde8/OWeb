@@ -32,6 +32,7 @@ class Program extends \OWeb\types\Controller{
 
     public function init()
     {
+		\OWeb\manage\Extensions::getInstance()->getExtension('bbcode\JBBCode');
         $this->applyTemplateController('Controller\programs\Template');
         $this->InitLanguageFile();
         $this->categories = \Model\programs\Categories::getInstance();
