@@ -248,6 +248,12 @@ class OWeb {
 		else return microtime(true)-$a;
 	}
 	
+	/**
+	 * Returns the runtime in seconds.
+	 * 
+	 * @param int [=3] The require precision.
+	 * @return String The run time with te demanded precision
+	 */
 	public function get_stringRuntTime($precision = 3){
 		return number_format($this->get_runTime(),$precision);
 	}
