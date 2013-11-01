@@ -21,12 +21,14 @@
  */
 namespace OWeb\types;
 
+use \OWeb\manage\Headers;
+
 /**
  * Describe a header to include to your page.
  *
  * @author De Cramer Oliver
  */
-class header {
+class Header {
 	
 	private $code;
 	private $type;
@@ -50,13 +52,16 @@ class header {
 
         switch($this->type){
 
-            case \OWeb\manage\headers::javascript :
+            case Headers::javascript :
                 $code = '<script type="text/javascript" src="'.$this->code.'"></script>'."\n";
                 break;
-            case \OWeb\manage\headers::css :
+            case Headers::css :
                 $code = '<link href="'.$this->code.'" rel="stylesheet" type="text/css" />'."\n";
                 break;
-            default :
+			case Headers::jsCode :
+				 $code = '<script type="text/javascript" >'."\n".$this->code."\n</script>\n\n";
+				break;
+			default :
                 $code = $this->code;
         }
         return $code;

@@ -20,7 +20,9 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 namespace OWeb\manage;
+
 use OWeb\types\Header;
+use \OWeb\manage\Events;
 
 /**
  * Manages the header files included to your web page. 
@@ -40,18 +42,41 @@ class Headers extends \OWeb\utils\Singleton{
 	 * The file you want to include is a a javasripty file, a .js. 
 	 */
 	const javascript = 0;
+	const js = 0;
+	
+	/**
+	 * YOu want to include javascript code
+	 */
+	const jsCode = 3;
+	
 	/**
 	 * A Css
 	 */
     const css = 1;
+	
 	/**
 	 * You just want to add a bit of Code inside the header. This code want't be modified. 
 	 */
     const code = 2;
 	
-	//List of the headers
-	private $headers = array();
+	//List of all CSS headers
+	private $css_headers = array();
+	
+	//List of all Javascript headers
+	private $js_headers = array();
+	
+	//List of other headers
+	private $other_headers = array();
+	
+	private $eventM;
 
+	
+	function __construct() {
+		$this->eventM = Events::getInstance();
+		self::forceInstance($this);
+	}
+
+	
 	/**
 	 * Allows you to add a header to the we bpage
 	 * 
@@ -59,9 +84,14 @@ class Headers extends \OWeb\utils\Singleton{
 	 *						The path will be added automatically.
 	 * @param int $type The type of the Header you want to add.
 	 */
-	public function addHeader($code, $type){
-
-
+	public function addHeader($header, $type = -1){
+		if($header instanceof Header)
+			$this->other_headers[] = $header;
+		else
+			$this->addAndCreateHeader($header, $type);
+	}
+	
+	public function addAndCreateHeader($code, $type){
 		switch ($type){
 			case self::javascript : 
 				$code =$this->getPath(OWEB_HTML_DIR_JS, $code);
@@ -72,7 +102,35 @@ class Headers extends \OWeb\utils\Singleton{
 		}
         $header = new Header($code, $type);
         $code = md5($header->getCode());
-		$this->headers[$code] = $header;
+		
+		switch ($type) {
+			case self::jsCode : 
+			case self::javascript :
+				$this->js_headers[$code] = $header;
+				break;
+			case self::css : 
+				$this->css_headers[$code] = $header;
+				break;
+			default:
+				$this->other_headers[] = $header;
+				break;
+		}
+	}
+	
+	public function addJs($file){
+		$this->addHeader($file, self::js);
+	}
+	
+	public function addCss($file){
+		$this->addHeader($file, self::css);
+	}
+	
+	public function addJsCode($code){
+		$this->addHeader($code, self::jsCode);
+	}
+	
+	public function addCode($code){
+		$this->addHeader($code, self::code);
 	}
 
 	private function getPath($path1, $path2){
@@ -86,21 +144,57 @@ class Headers extends \OWeb\utils\Singleton{
 	 * Display the Headers that has been added.
 	 */
 	public function display(){
-		foreach ($this->headers as $h){
+		
+		$this->eventM->sendEvent('Didplay_Prepare@OWeb\manage\Headers');
+				
+		echo "\n<!--OWEB displays all CSS includes-->\n";
+		//DIsplaying all Css Headers
+		foreach ($this->css_headers as $h){
 			echo $h->getCode();
 		}
+		
+		echo "\n<!--OWEB displays all JS includes and codes-->\n";
+		
+		//Displaying Javascript Headers
+		foreach ($this->js_headers as $h){
+			echo $h->getCode();
+		}
+		
+		echo "\n<!--OWEB displays personalized header codes-->\n";
+		//Displaying all other headers
+		foreach ($this->other_headers as $h){
+			echo $h->getCode();
+		}
+		
+		$this->eventM->sendEvent('Didplay_Done@OWeb\manage\Headers');
 	}
 	
 	/**
 	 * Returns the string that the display function would display.
 	 * 
-	 * @return type The headers that has been added as a String. 
+	 * @return String The headers that has been added as a String. 
 	 */
 	public function toString(){
-		$s = "";
-		foreach ($this->headers as $h){
-			echo $s.=$h->getCode();
+		
+		$s = "\n<!--OWEB displays all CSS includes-->\n";
+		//DIsplaying all Css Headers
+		foreach ($this->css_headers as $h){
+			$s .= $h->getCode();
 		}
+		
+		echo "\n<!--OWEB displays all JS includes and codes-->\n";
+		
+		//Displaying Javascript Headers
+		foreach ($this->js_headers as $h){
+			$s .= $h->getCode();
+		}
+		
+		echo "\n<!--OWEB displays personalized header codes-->\n";
+		//Displaying all other headers
+		foreach ($this->other_headers as $h){
+			$s .= $h->getCode();
+		}
+		
 		return $s;
 	}
 	

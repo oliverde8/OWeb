@@ -52,11 +52,13 @@ class Controller extends \OWeb\utils\Singleton{
 	 */
 	public function initController(\OWeb\types\Controller $controller=null){
 
-        Events::getInstance()->sendEvent('InitPrepare@OWeb\manage\Controller',$this->controller);
+        Events::getInstance()->sendEvent('Init_Prepare@OWeb\manage\Controller',$this->controller);
 
 		$this->controller->init();
 		
-		Events::getInstance()->sendEvent('Init@OWeb\manage\Controller',$this->controller);
+		Events::getInstance()->sendEvent('Init_Done@OWeb\manage\Controller',$this->controller);
+		
+		Events::getInstance()->sendEvent('ActionDist_Prepare@OWeb\manage\Controller',$this->controller);
 		
 		//gestion des Actions...
 		$get = \OWeb\OWeb::getInstance()->get_get();
@@ -69,6 +71,8 @@ class Controller extends \OWeb\utils\Singleton{
 			$this->controller->doAction($get['action_'.$i]);
 			$i++;
 		}
+		
+		Events::getInstance()->sendEvent('ActionDist_Done@OWeb\manage\Controller',$this->controller);
 	}
 	
 	/**

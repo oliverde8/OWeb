@@ -28,10 +28,8 @@ $this->addHeader('jquery_theme/jquery.galleryview-3.0-dev.css', \OWeb\manage\Hea
 
 $gallery_id = (String)(new \OWeb\utils\IdGenerator());
 
-$js = "
-<script>
-    $(document).ready(function () {
-        $('#".$gallery_id."').galleryView({
+$js="
+	$('#".$gallery_id."').galleryView({
             panel_width: ".$this->panel_width.",
             panel_height: ".$this->panel_height.",
             panel_scale: '".$this->panel_scale."',
@@ -39,9 +37,9 @@ $js = "
             show_infobar: '".$this->show_infobar."',
             infobar_opacity: ".$this->infobar_opacity."
         });
-    });
-</script>";
-$this->addHeader($js, \OWeb\manage\Headers::code);
+";
+\OWeb\utils\js\jquery\HeaderOnReadyManager::getInstance()->add($js);
+
 
 $files = scandir(OWEB_DIR_DATA.'/'.$this->path);
 

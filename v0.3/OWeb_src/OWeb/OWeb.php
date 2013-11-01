@@ -259,7 +259,10 @@ class OWeb {
 	}
 	
 	
-	
+	/**
+	 * 
+	 * @return OWeb
+	 */
 	public static function getInstance(){
 		return self::$instance;
 	}
