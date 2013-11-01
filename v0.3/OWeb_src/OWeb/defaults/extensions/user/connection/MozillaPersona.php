@@ -45,6 +45,7 @@ class MozillaPersona extends SimpleConnection{
                 $this->createCookies($this->login, $NewPwd);
                 return true;
             }else{
+				echo "NEW";
                 //Oups new connection this is more complicated. The user doesen't yet have a Login.
                 // @TODO better login handling.
                 //We will just use mail as login, user might change it later.
@@ -52,8 +53,9 @@ class MozillaPersona extends SimpleConnection{
                 $prefix = $this->ext_db_absConnect->get_Prefix();
 
 
-                $sql = $connection->prepare("INSERT INTO ".$prefix."users(Login, pwd, e-mail) VALUES(:mail, :pwd, :mail)");
-                $sql->execute(array(':mail'=>$this->email, ':pwd'=>$this->createkey(30)));
+                $sql = $connection->prepare("INSERT INTO ".$prefix."users(Login, pwd, `e-mail`) VALUES(:login, :pwd, :mail)");
+                $sql->execute(array(':login'=>$this->email, ':mail'=>$this->email, ':pwd'=>$this->createkey(30)));
+				print_r($sql->errorInfo());
             }
 
 			return true;
