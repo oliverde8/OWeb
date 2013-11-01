@@ -76,8 +76,6 @@ $js = '
 if(!empty($this->SecondBoxContent))
      \OWeb\utils\js\jquery\HeaderOnReadyManager::getInstance()->add($js);
 
-
-$this->addHeader('jquery/jquery.js', \OWeb\manage\Headers::javascript);
 $this->addHeader('jquery/masonry.pkgd.min.js', \OWeb\manage\Headers::javascript);
 $this->addHeader('widget_box.css', \OWeb\manage\Headers::css);
 

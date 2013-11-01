@@ -24,8 +24,8 @@ $this->addHeader('articles.css', \OWeb\manage\Headers::css);
 $this->addHeader('onprogress.css', \OWeb\manage\Headers::css);
 $this->addHeader('programs.css', \OWeb\manage\Headers::css);
 $this->addHeader('jquery_theme/jquery-ui-1.9.2.custom.min.css', \OWeb\manage\Headers::css);
-$this->addHeader('jquery.js', \OWeb\manage\Headers::js);
-$this->addHeader('jquery-ui-1.9.2.custom.min', \OWeb\manage\Headers::javascript);
+$this->addHeader('jquery/jquery.js', \OWeb\manage\Headers::js);
+$this->addHeader('jquery/jquery-ui-1.9.2.custom.min', \OWeb\manage\Headers::javascript);
 
 
 $this->addHeader('  <script>

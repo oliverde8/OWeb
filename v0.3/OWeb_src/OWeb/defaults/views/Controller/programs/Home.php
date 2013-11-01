@@ -106,10 +106,4 @@ $carousel_id = 0;
 							</script>';
 				}
 				?>
-				
-
-
-<script type="text/javascript">
-	$('#tm_related').contentcarousel();
-	//$('#uni_related').contentcarousel();
-</script>
+			
