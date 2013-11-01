@@ -27,7 +27,8 @@
         <title>oliverde8 - Website</title>
 
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-        <?php
+        
+		<?php
 			$this->InitLanguageFile();
 			$this->addHeader('main.css',\OWeb\manage\Headers::css);
 			$this->addHeader('main.js',\OWeb\manage\Headers::javascript);

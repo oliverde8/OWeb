@@ -3,15 +3,14 @@
 
 $this->addHeader('articles.css', \OWeb\manage\Headers::css);
 $this->addHeader('programs.css', \OWeb\manage\Headers::css);
-$this->addHeader('onprogress.css', \OWeb\manage\Headers::css);
 
 $this->addHeader('Page.Programing.css', \OWeb\manage\Headers::css);
-$this->addHeader('jquery.jscrollpane.css', \OWeb\manage\Headers::css);
-$this->addHeader('jquery.carousel.css', \OWeb\manage\Headers::css);
+$this->addHeader('jquery_theme/jquery.jscrollpane.css', \OWeb\manage\Headers::css);
+$this->addHeader('jquery_theme/jquery.carousel.css', \OWeb\manage\Headers::css);
 
-$this->addHeader('jquery.easing.1.3.js', \OWeb\manage\Headers::javascript);
-$this->addHeader('jquery.mousewheel.js', \OWeb\manage\Headers::javascript);
-$this->addHeader('jquery.contentcarousel.js', \OWeb\manage\Headers::javascript);
+$this->addHeader('jquery/jquery.easing.1.3.js', \OWeb\manage\Headers::javascript);
+$this->addHeader('jquery/jquery.mousewheel.js', \OWeb\manage\Headers::javascript);
+$this->addHeader('jquery/jquery.contentcarousel.js', \OWeb\manage\Headers::javascript);
 
 $carousel_id = 0;
 
