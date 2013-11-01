@@ -20,22 +20,19 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-$this->addHeader('jquery_theme/jquery-ui-1.9.2.custom.min.css', \OWeb\manage\Headers::css);
-$this->addHeader('jquery/jquery-ui-1.9.2.custom.min.js', \OWeb\manage\Headers::javascript);
+$this->addHeader('2Collone.css', \OWeb\manage\Headers::css);
 
-echo '<div id="'.$this->id.'">';
-
-foreach ($this->sections as $title => $content){
-
-	echo '<h3>'.$title.'</h3>';
-	echo '<div>';
-	
-	if($content instanceof \OWeb\types\Controller)
-		$content->display();
-	else
-		echo $content;
-	
-	echo '</div>';	
-}
 ?>
+
+<div id="twoCollone">
+	<div>
+		<div>
+			<?php $this->displayController(); ?>
+		</div>
+        <div class="ColloneClean"></div>
+    </div>
 </div>
+
+
+
+?>

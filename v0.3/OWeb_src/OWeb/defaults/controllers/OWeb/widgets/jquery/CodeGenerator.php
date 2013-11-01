@@ -28,7 +28,7 @@ namespace Controller\OWeb\widgets\jquery;
  *
  * @author De Cramer Oliver
  */
-abstract class CodeGenerator extends OWeb\types\Controller{
+abstract class CodeGenerator extends \OWeb\types\Controller{
 	
 	//List of all Default values
 	private $defValues = array();
@@ -54,14 +54,27 @@ abstract class CodeGenerator extends OWeb\types\Controller{
 	}
 	
 	/**
-	 * Th id or class of the field this Jquery function must be called on
+	 * Th id or class of the field this Jquery function that must be called
 	 * 
 	 * @param String $id
 	 */
-	public function setId($id){
-		$this->id = $id;
+	public function setSelector($selector){
+		$this->id = $selector;
 	}
-
+	
+	/**
+	 * Set the name of the Jquery function to call. 
+	 * 
+	 * @param type $functionName
+	 */
+	public function setFunction($functionName){
+		$this->function = $functionName;
+	}
+	
+	public function set($selector, $functioName){
+		$this->id = $selector;
+		$this->function = $functioName;
+	}
 
 	/**
 	 * Generates the jquery code with default values as well
@@ -103,7 +116,7 @@ abstract class CodeGenerator extends OWeb\types\Controller{
 				
 				unset($necessary[$pname]);
 				
-				$code .= "\n $pname : \"$pvalue\"";
+				$code .= "\n $pname : $pvalue";
 			}
 		}
 		
@@ -117,9 +130,9 @@ abstract class CodeGenerator extends OWeb\types\Controller{
 		return $code;
 	}
 
-	public function onDisplay() {
+	public function prepareDisplay(){
 		if($this->id == null)
-			$this->id = ".".(String)(new OWeb\utils\IdGenerator ());
+			$this->id = "#".(String)(new \OWeb\utils\IdGenerator ());
 		
 		if($this->function == null){
 			$ex = new OWeb\Exception("When creating a Jquery Code Generator you need to call setCallFunction to set up the function that needs to be called");
@@ -127,10 +140,19 @@ abstract class CodeGenerator extends OWeb\types\Controller{
 			$ex->setUserDescription($this->l("Function unset Error Desc"));
 			throw $ex;
 		}
-		$this->view->jqueryCode = $this->generateJqueryCode($this->id, $function);
+		$this->view->id = str_replace('#', '', str_replace('.', '', $this->id));
 	}
 	
-
+	public function registerHeader(){
+		$this->prepareDisplay();
+		//$this->view->addHeader('jquery/jquery.js', \OWeb\manage\Headers::js);
+		\OWeb\utils\js\jquery\HeaderOnReadyManager::getInstance()->add($this->generateJqueryCode($this->id, $this->function));
+	}
+	
+	public function onDisplay() {
+		$this->registerHeader();
+	}
+	
 }
 
 ?>

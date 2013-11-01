@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Oliver de Cramer (oliverde8 at gmail.com)
  * @copyright    GNU GENERAL PUBLIC LICENSE
@@ -20,22 +21,16 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-$this->addHeader('jquery_theme/jquery-ui-1.9.2.custom.min.css', \OWeb\manage\Headers::css);
-$this->addHeader('jquery/jquery-ui-1.9.2.custom.min.js', \OWeb\manage\Headers::javascript);
+namespace Page\demo\jquery\ui;
 
-echo '<div id="'.$this->id.'">';
+/**
+ * Description of Accordion
+ *
+ * @author De Cramer Oliver
+ */
 
-foreach ($this->sections as $title => $content){
-
-	echo '<h3>'.$title.'</h3>';
-	echo '<div>';
+class Accordion extends \Controller\demo\jquery\ui\Accordion{
 	
-	if($content instanceof \OWeb\types\Controller)
-		$content->display();
-	else
-		echo $content;
-	
-	echo '</div>';	
 }
+
 ?>
-</div>

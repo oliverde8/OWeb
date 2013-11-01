@@ -23,6 +23,8 @@
 
 namespace Controller\OWeb\widgets\jquery_ui;
 
+use \Controller\OWeb\widgets\jquery\CodeGenerator as JQueryGen;
+
 /**
  * Allows the creation of a jqueryui Accordion.
  * Demo : http://jqueryui.com/accordion/
@@ -30,21 +32,34 @@ namespace Controller\OWeb\widgets\jquery_ui;
  *
  * @author De Cramer Oliver
  */
-class Accordion extends \OWeb\types\Controller{
-	
-	private $active = 0;
-	private $animate = "";
-	private $collapsible = false;
-	private $disabled = false;
-	private $event = "click";
-	private $header = "> li > :first-child,> :not(li):even";
+class Accordion extends JQueryGen{
+
+	private $sections = array();
 	
 	public function init() {
+		$this->applyTemplateController(new \Controller\demo\Template());
 		
+		$this->setFunction('accordion');
+		$this->addOption('active', 0);
+		$this->addOption('animate', '');
+		$this->addOption('collapsible', 'false');
+		$this->addOption('disabled', 'false');
+		$this->addOption('event', '"click"');
+		$this->addOption('header', '"> li > :first-child,> :not(li):even"');
+		$this->addOption('heightStyle', '"auto"');
+		$this->addOption('icons', '"header": "ui-icon-triangle-1-e", "activeHeader": "ui-icon-triangle-1-s" ');
 	}
 
+	public function addSection($title, $content){
+		$this->sections[$title] = $content;
+	}
+	
 	public function onDisplay() {
+		if(empty($this->sections))
+			return false;
 		
+		$this->view->sections = $this->sections;
+		parent::onDisplay();
 	}
 	
 }
