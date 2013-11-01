@@ -57,7 +57,7 @@ class HeaderOnReadyManager{
 	}
 	
 	public function add($code){
-		$this->headers[] = $code;
+		$this->headers[md5($code)] = $code;
 	}
 
 	/**

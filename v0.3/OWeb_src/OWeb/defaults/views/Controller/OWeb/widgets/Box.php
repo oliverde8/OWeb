@@ -26,9 +26,7 @@ if(!empty($this->clickClass)){
     $jsClass = "box_content";
 }
 
-$js = '<script type="text/javascript">
-$(document).ready(function () {
-
+$js = '
     $(".'.$jsClass.'").click(function () {
 
         if (!$(this).parent().find(".box_description_content").is(":visible")) {
@@ -58,15 +56,12 @@ $(document).ready(function () {
             itemSelector: ".box"
         });
     }
-
-});
-</script>';
+';
 
 if(!empty($this->SecondBoxContent))
-    $this->addHeader($js, \OWeb\manage\Headers::code);
+    \OWeb\utils\js\jquery\HeaderOnReadyManager::getInstance()->add($js);
 
-$js = '<script type="text/javascript">
-$(document).ready(function () {
+$js = '
 
     $(".'.$jsClass.'").mouseover(function () {
         $(this).css("background-image", "radial-gradient(#EEEEFF, white)");
@@ -76,12 +71,10 @@ $(document).ready(function () {
         $(this).css("background-image", "none");
         $("body").css("cursor", "default");
     });
-
-});
-</script>';
+';
 
 if(!empty($this->SecondBoxContent))
-    $this->addHeader($js, \OWeb\manage\Headers::code);
+     \OWeb\utils\js\jquery\HeaderOnReadyManager::getInstance()->add($js);
 
 
 $this->addHeader('masonry.pkgd.min.js', \OWeb\manage\Headers::javascript);
