@@ -160,6 +160,10 @@ abstract class Controller extends NamedClass implements Configurable {
 		else
 			return null;
 	}
+	
+	public function getParams(){
+		return $this->params;
+	}
 
 	/**
 	 * This will activate the usage of the language file
