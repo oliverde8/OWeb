@@ -37,6 +37,7 @@ class Accordion extends JQueryGen{
 	private $sections = array();
 	
 	public function init() {
+		parent::init();
 		$this->applyTemplateController(new \Controller\demo\Template());
 		
 		$this->setFunction('accordion');

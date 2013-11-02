@@ -1,7 +1,7 @@
 <?php
 
 $this->addHeader('jquery_theme/jquery-ui-1.9.2.custom.min.css',\OWeb\manage\Headers::css); 
-$this->addHeader('jquery-ui-1.9.2.custom.min.js',\OWeb\manage\Headers::javascript); 
+$this->addHeader('jquery/jquery-ui-1.9.2.custom.min.js',\OWeb\manage\Headers::javascript); 
 $this->addHeader('2Collone.css',\OWeb\manage\Headers::css); 
 ?>
 

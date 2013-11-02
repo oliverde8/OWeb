@@ -41,6 +41,12 @@ abstract class CodeGenerator extends \OWeb\types\Controller{
 	
 	private $function = null;
 	
+	
+	public function init() {
+		$this->InitLanguageFile();
+	}
+
+	
 	/**
 	 * Add an option that this code might have or must have 
 	 * 
@@ -158,8 +164,8 @@ abstract class CodeGenerator extends \OWeb\types\Controller{
 		}
 		
 		if($this->function == null){
-			$ex = new OWeb\Exception("When creating a Jquery Code Generator you need to call setCallFunction to set up the function that needs to be called");
-			$ex = new OWeb\types\UserException($this->l("Function unset Error Title"), 0, $ex);
+			$ex = new \OWeb\Exception("When creating a Jquery Code Generator you need to call setCallFunction to set up the function that needs to be called");
+			$ex = new \OWeb\types\UserException($this->l("Function unset Error Title"), 0, $ex);
 			$ex->setUserDescription($this->l("Function unset Error Desc"));
 			throw $ex;
 		}
