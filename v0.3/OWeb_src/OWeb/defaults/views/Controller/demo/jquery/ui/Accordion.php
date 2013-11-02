@@ -2,6 +2,8 @@
 
 $accordion = new Controller\OWeb\widgets\jquery_ui\Accordion();
 $accordion->init();
+$accordion->loadParams();
+$accordion->setHeightStyle('"content"');
 
 $accordion->addSection('Section 1', '<p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
     ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit

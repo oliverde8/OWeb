@@ -118,7 +118,8 @@ abstract class CodeGenerator extends \OWeb\types\Controller{
 		
 		foreach($this->getParams() as $pname => $pvalue){
 		
-			if(!isset($this->necessary[$pname]) || $this->defValues[$pname] != $pvalue){
+			if((!isset($this->necessary[$pname]) && isset($this->defValues[$pname]))
+					|| (isset($this->defValues[$pname]) && $this->defValues[$pname] != $pvalue)){
 				
 				if(!$optionsShown){
 					$code .= '{';
