@@ -52,7 +52,7 @@ div#header > div >.logo{
 	float : left;
 	position:relative;
 	left : 5px;
-	top : -1px;
+	top : 5px;
 }
 
 /***************************************************
@@ -187,7 +187,8 @@ div#foot > div > p.powered{
 h1{
 	padding-top : 15px;
 	font-size: 18px;
-	color: #229922;
+	/*color: #229922;*/
+	color: #05436B;
 	border-bottom-width: 3px;
 	border-bottom-style: double;
 	
@@ -195,12 +196,12 @@ h1{
 
 h2{
 	font-size: 16px;
-	color: #229922;
+	color: #05436B;
 }
 
 h3{
 	font-size: 14px;
-	color: #229922;
+	color: #05436B;
 }
 
 
@@ -223,7 +224,7 @@ li.articles_category_1 {
 hr{
 	height: 2px;
 	color: #229922;
-	background-color: #229922;
+	background-color: #05436B;
 }
 
 /***************************************************
