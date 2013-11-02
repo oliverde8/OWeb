@@ -143,13 +143,10 @@ div#menu ul ul {
     top: 38px;
     left: -999em;
     width: 163px;
-    padding: 5px 0 0 0;
+    padding: 5px -5px 0 0;
     background: rgb(255,255,255);
-    margin-top:-20px;
-	/* Ajout de l'ombre et la bordure arrondi */
-	box-shadow: -2px -2px 2px rgba(0,0,0,0.5);
-	-moz-box-shadow: -2px -2px 2px rgba(0,0,0,0.5);
-	-webkit-box-shadow: -2px -2px 2px rgba(0,0,0,0.5);
+    
+	margin-top:-20px;
 	
 	border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -161,11 +158,12 @@ div#menu ul ul {
 } 
 
 div#menu ul ul a {
-    padding: 0 0 0 15px;
+    padding: 0 0 0 0px;
     height: auto;
     float: none;
     display: block;
 }
+
 div#menu ul ul span {
     margin-top: 0;
     padding-right: 15px;

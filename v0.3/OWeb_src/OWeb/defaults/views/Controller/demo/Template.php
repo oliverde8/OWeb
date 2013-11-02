@@ -25,8 +25,8 @@ $this->addHeader('2Collone.css', \OWeb\manage\Headers::css);
 ?>
 
 <div id="twoCollone">
-	<div>
-		<div>
+	<div class="contenuMain">
+		<div >
 			<?php $this->displayController(); ?>
 		</div>
         <div class="ColloneClean"></div>

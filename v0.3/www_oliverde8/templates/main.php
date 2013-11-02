@@ -129,6 +129,16 @@
                     <li><a href="articles.home.html" class="OWeb_nav"><?php echo $this->l('home'); ?></a>	</li>
                     <li><a href="programs.home.html" class="OWeb_nav"><?php echo $this->l('programing'); ?></a></li>
 
+					<li><a href="#">Demos</a><ul>
+						<li>Jquery - ui<ul>
+							<li><a href="demo.jquery.ui.Accordion.html">Accordion</a></li>
+							<li>More is Coming</li>
+							</ul>
+						</li>
+						<li>More Soon
+						</li></ul>
+					</li>
+					
                     <li><a href="#"><?php echo $this->l('more'); ?></a></li>
                 </ul>
         </div></div>

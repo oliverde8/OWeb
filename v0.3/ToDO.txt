@@ -1,12 +1,3 @@
-		###############################################
-		** 		   Re Arranging CSS and JS files     **
-		###############################################
-I need to rearange all the the js and css files it is a total mess. Should also add a better support for Jquery support
-
-		###############################################
-		**	 		   JQuery UI helpers             **
-		###############################################
-It would be cool to have a Jquery ui code helpers for all widgets there is taking in account all the options etc. 
 
 		###############################################
 		**	 		    Value Checkers               **

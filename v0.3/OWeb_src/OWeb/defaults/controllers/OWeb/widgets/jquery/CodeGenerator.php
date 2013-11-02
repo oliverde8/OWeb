@@ -37,6 +37,7 @@ abstract class CodeGenerator extends \OWeb\types\Controller{
 	private $necessary = array();
 	
 	private $id = null;
+	private $class = null;
 	
 	private $function = null;
 	
@@ -54,11 +55,20 @@ abstract class CodeGenerator extends \OWeb\types\Controller{
 	}
 	
 	/**
-	 * Th id or class of the field this Jquery function that must be called
+	 * The class of the field this Jquery function that must be called on
 	 * 
-	 * @param String $id
+	 * @param String selector class
 	 */
-	public function setSelector($selector){
+	public function setClassSelector($selector){
+		$this->class = $selector;
+	}
+	
+	/**
+	 * The od of the field this Jquery function that must be called on
+	 * 
+	 * @param type selector id
+	 */
+	public function setIdSelector($selector){
 		$this->id = $selector;
 	}
 	
@@ -70,11 +80,7 @@ abstract class CodeGenerator extends \OWeb\types\Controller{
 	public function setFunction($functionName){
 		$this->function = $functionName;
 	}
-	
-	public function set($selector, $functioName){
-		$this->id = $selector;
-		$this->function = $functioName;
-	}
+
 
 	/**
 	 * Generates the jquery code with default values as well
@@ -130,9 +136,26 @@ abstract class CodeGenerator extends \OWeb\types\Controller{
 		return $code;
 	}
 
+	/**
+	 * Makes the necessary verifications to see if the Controller can be displayed. 
+	 * Will also generate the selector for the jquery call as well as the code needed 
+	 * for it in the html code
+	 * 
+	 * @return string The Jquery selector
+	 * @throws \Controller\OWeb\widgets\jquery\OWeb\Exception If the function hasn't been set up
+	 */
 	public function prepareDisplay(){
-		if($this->id == null)
-			$this->id = "#".(String)(new \OWeb\utils\IdGenerator ());
+		if($this->id == null && $this->class == null){
+			$this->id = (String)(new \OWeb\utils\IdGenerator ());
+			$displayId = 'id="'.$this->id.'"';
+			$jid = "#".$this->id;
+		}else if($this->id == null){
+			$displayId = 'class="'.$this->class.'"';
+			$jid = ".".$this->class;
+		}else{
+			$displayId = 'id="'.$this->id.'"';
+			$jid = "#".$this->id;
+		}
 		
 		if($this->function == null){
 			$ex = new OWeb\Exception("When creating a Jquery Code Generator you need to call setCallFunction to set up the function that needs to be called");
@@ -140,13 +163,15 @@ abstract class CodeGenerator extends \OWeb\types\Controller{
 			$ex->setUserDescription($this->l("Function unset Error Desc"));
 			throw $ex;
 		}
-		$this->view->id = str_replace('#', '', str_replace('.', '', $this->id));
+		$this->view->id = $displayId;
+		
+		return $jid;
 	}
 	
 	public function registerHeader(){
-		$this->prepareDisplay();
+		$jid = $this->prepareDisplay();
 		//$this->view->addHeader('jquery/jquery.js', \OWeb\manage\Headers::js);
-		\OWeb\utils\js\jquery\HeaderOnReadyManager::getInstance()->add($this->generateJqueryCode($this->id, $this->function));
+		\OWeb\utils\js\jquery\HeaderOnReadyManager::getInstance()->add($this->generateJqueryCode($jid, $this->function));
 	}
 	
 	public function onDisplay() {
