@@ -21,23 +21,46 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-namespace Controller\demo\jquery\ui;
-
 /**
- * Description of Accordion
+ * Description of Elements
  *
  * @author De Cramer Oliver
  */
-
-class Accordion extends \OWeb\types\Controller{
-	
-	public function init() {
-		$this->applyTemplateController(new \Controller\demo\Template());
-	}
-
-	public function onDisplay() {
-		
-	}
-}
-
 ?>
+
+<label <?=$this->htmlIdentifier?> for="<?=$this->name?>"><?= $this->title ?></label>
+<input <?=$this->htmlIdentifier?> type="<?=$this->type?>" name="<?=$this->name?>" value="<?=$this->val?>">
+
+<?php
+	if($this->desc != null){
+?>
+		<img <?=$this->htmlIdentifier?> src="<?= OWEB_HTML_DIR_CSS ?>/images/Helpers_Form/description.png" />
+
+		<span <?=$this->htmlIdentifier?> ><?= $this->desc ?> </span>
+
+<?php
+	}
+	
+	if(!empty($this->errMessages)){
+?>
+		<div <?=$this->htmlIdentifier?> >
+			<ul <?=$this->htmlIdentifier?> >
+				
+				<?php
+					foreach($this->errMessages as $i => $msg){
+				?>
+				
+				<li>
+					<strong><?=$msg?> </strong>
+					<?=$this->errDescriptions[$i]?>
+				</li>
+				
+				<?php
+					}
+					
+				?>
+				
+			</ul>	
+		</div>
+<?php } ?>
+

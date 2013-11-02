@@ -24,20 +24,19 @@
 namespace Controller\demo\jquery\ui;
 
 /**
- * Description of Accordion
+ * Description of AccordionForm
  *
  * @author De Cramer Oliver
  */
-
-class Accordion extends \OWeb\types\Controller{
+class AccordionForm extends \Controller\OWeb\Helpers\Form\Form{
+	//put your code here
 	
-	public function init() {
-		$this->applyTemplateController(new \Controller\demo\Template());
-	}
-
-	public function onDisplay() {
-		
-	}
+	protected function registerElements() {
+		$text = new \Controller\OWeb\Helpers\Form\Elements\Text();
+		$text->setName('name');
+		$text->setTitle('This is Title');
+		$this->addDisplayElement($text);
+	}	
 }
 
 ?>

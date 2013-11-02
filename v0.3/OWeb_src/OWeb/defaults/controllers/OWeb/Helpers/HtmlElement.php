@@ -21,23 +21,45 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-namespace Controller\demo\jquery\ui;
+namespace Controller\OWeb\Helpers;
 
 /**
- * Description of Accordion
+ * Description of HtmlElement
  *
  * @author De Cramer Oliver
  */
-
-class Accordion extends \OWeb\types\Controller{
+abstract class HtmlElement extends \OWeb\types\Controller{
 	
-	public function init() {
-		$this->applyTemplateController(new \Controller\demo\Template());
+	private $_htmlId = null;
+	private $_htmlClass = null;
+	
+	public function setHtmlId($id){
+		$this->_htmlId = $id;
 	}
-
-	public function onDisplay() {
+	
+	public function getHtmlId(){
+		return $this->_htmlId;
+	}
+	
+	public function addHtmlClass($class){
+		if($this->_htmlClass == null)
+			$this->_htmlClass='';
+		else
+			$this->_htmlClass .= ' ';
 		
+		$this->_htmlClass .= $class;
 	}
+	
+	public function generateHtmlIdentifier(){
+		$identifier = '';
+		if($this->_htmlId != null)
+			$identifier .= 'id="'.$this->_htmlId.'" ';
+		if($this->_htmlClass != null)
+			$identifier .= 'class="'.$this->_htmlClass.'" ';
+		
+		return $identifier;
+	}
+	
 }
 
 ?>

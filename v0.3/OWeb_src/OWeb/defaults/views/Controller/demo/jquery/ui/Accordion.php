@@ -1,5 +1,10 @@
 <?php
 
+$form = new Controller\demo\jquery\ui\AccordionForm();
+$form->init();
+$form->display();
+
+
 $accordion = new Controller\OWeb\widgets\jquery_ui\Accordion();
 $accordion->init();
 $accordion->loadParams();

@@ -21,22 +21,17 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-namespace Controller\demo\jquery\ui;
+namespace Controller\OWeb\Helpers\Form\Elements;
 
 /**
- * Description of Accordion
+ * Description of Text
  *
  * @author De Cramer Oliver
  */
-
-class Accordion extends \OWeb\types\Controller{
+class Text extends Elements{
 	
 	public function init() {
-		$this->applyTemplateController(new \Controller\demo\Template());
-	}
-
-	public function onDisplay() {
-		
+		$this->setType('text');
 	}
 }
 

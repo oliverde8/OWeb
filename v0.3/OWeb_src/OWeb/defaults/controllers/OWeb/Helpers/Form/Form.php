@@ -21,23 +21,49 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-namespace Controller\demo\jquery\ui;
+namespace Controller\OWeb\Helpers\Form;
 
 /**
- * Description of Accordion
+ * Description of Form
  *
  * @author De Cramer Oliver
  */
-
-class Accordion extends \OWeb\types\Controller{
+abstract class Form extends \Controller\OWeb\Helpers\HtmlElement{
+	
+	private $_displayElements;
+	private $_elements;
+	private $_isValid;
 	
 	public function init() {
-		$this->applyTemplateController(new \Controller\demo\Template());
+		$this->registerElements();
 	}
+	
+	
+	protected function validateElements(){
+		$this->_isValid = true;
+		foreach ($this->_elements as $element) {
+			$this->_isValid = $this->_isValid && $element->validate();
+		}
+	}
+	
+	public function addDisplayElement(\OWeb\types\Controller $element){
+		$this->_displayElements[] = $element;
+		if($element instanceof Controller\OWeb\Helpers\Elements\Elements)
+			$this->_elements[] = $element;
+		$element->init();
+	}
+	
+	abstract protected function registerElements();
 
-	public function onDisplay() {
-		
+	
+	public function isValid(){
+		return $this->_isValid;
 	}
+	
+	public function onDisplay() {
+		$this->view->htmlIdentifier = $this->generateHtmlIdentifier();
+		$this->view->elements = $this->_displayElements;
+	}	
 }
 
 ?>

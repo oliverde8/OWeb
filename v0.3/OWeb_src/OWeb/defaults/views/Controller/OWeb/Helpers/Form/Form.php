@@ -20,24 +20,14 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
-
-namespace Controller\demo\jquery\ui;
-
-/**
- * Description of Accordion
- *
- * @author De Cramer Oliver
- */
-
-class Accordion extends \OWeb\types\Controller{
-	
-	public function init() {
-		$this->applyTemplateController(new \Controller\demo\Template());
-	}
-
-	public function onDisplay() {
-		
-	}
-}
-
 ?>
+
+<form <?=$this->htmlIdentifier?>>
+
+<?php
+foreach ($this->elements as $element){
+	$element->display();
+}
+?>
+
+</form>
