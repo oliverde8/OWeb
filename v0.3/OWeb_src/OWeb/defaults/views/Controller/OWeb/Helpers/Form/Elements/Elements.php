@@ -26,6 +26,21 @@
  *
  * @author De Cramer Oliver
  */
+
+$js = "
+	$('span.OWebForm_input').css('display', 'block').hide();
+	$('img.OWebForm_input').click(function(){
+		if( $(this).next().is(':visible') )
+			$(this).next().fadeOut();
+		else {
+			$(this).next().fadeIn();
+		}
+	});
+
+";
+\OWeb\utils\js\jquery\HeaderOnReadyManager::getInstance()->add($js);
+
+
 ?>
 
 <label <?=$this->htmlIdentifier?> for="<?=$this->name?>"><?= $this->title ?></label>

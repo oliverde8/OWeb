@@ -41,7 +41,7 @@ class Integer extends \OWeb\utils\inputManagement\Validators{
 	
 	public function valideteValue($value) {
 		
-		if(is_int($value)){
+		if(!empty($value) && $value != null && is_int($value)){
 			$val = (int) $value;
 			
 			if($this->max != null && $val > $this->max)

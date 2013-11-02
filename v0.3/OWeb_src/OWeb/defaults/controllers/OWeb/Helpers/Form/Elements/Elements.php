@@ -96,7 +96,7 @@ abstract class Elements extends \Controller\OWeb\Helpers\HtmlElement{
 				if(!$valid)
 					$newValue = $newGeneratedValue;
 				$valid = true;
-			} catch ( OWeb\types\UserException $ex){
+			} catch ( \OWeb\types\UserException $ex){
 				$valid = $valid || false;
 				$this->_errMessages[] = $ex->getMessage();
 				$this->_errDesriptions[] = $ex->getUserDescription();

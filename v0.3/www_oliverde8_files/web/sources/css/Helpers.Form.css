@@ -1,0 +1,58 @@
+/* 
+    Document   : Helpers.Form
+    Created on : 2 nov. 2013, 15:27:56
+    Author     : oliverde8
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+form.OWebForm_input{
+	width: 500px;
+}
+
+label.OWebForm_input{
+	display:			block;
+	width:				220px;
+	float:				left;
+	font-size:			15px;
+	color:				#123456;
+	font-weight:		bold;
+	clear:				both;
+}
+
+input.OWebForm_input,
+select.OWebForm_input,
+textarea.OWebForm_input{
+	font-size:			17px;
+	border:				solid 1px #aaaaaa;
+	width:				250px;
+	background:			url(images/fondchamp.png) repeat-x ;
+}
+
+radio.OWebForm_input{
+	width:				10px;
+}
+
+img.OWebForm_input{
+	padding-top:		3px;
+	display:			block;
+	float:				right;
+	height:				20px;
+	width:				20px;
+}
+
+span.OWebForm_input{
+	display:			block;
+	border:				solid 1px orange;
+	padding:			10px;
+	background:			#fffedc;
+	margin-top:			10px;
+}
+
+div.OWebForm_input{
+	display:			block;
+	border:				solid 1px red;
+	padding:			10px;
+	background:			#ffacac;
+	margin-top:			10px;
+}

@@ -71,6 +71,7 @@ abstract class Validators extends \OWeb\types\NamedClass{
 				$this->_l->tinit(get_class($this));
 				$this->_exception = new \OWeb\types\UserException($this->_l->get('Title_'.$name).$param);
 				$this->_exception->setUserDescription($this->_l->get('Desc_'.$name));
+				throw $this->_exception;
 			}
 		}
 	}

@@ -42,6 +42,7 @@ abstract class HtmlElement extends \OWeb\types\Controller{
 	}
 	
 	public function addHtmlClass($class){
+
 		if($this->_htmlClass == null)
 			$this->_htmlClass='';
 		else
@@ -54,6 +55,7 @@ abstract class HtmlElement extends \OWeb\types\Controller{
 		$identifier = '';
 		if($this->_htmlId != null)
 			$identifier .= 'id="'.$this->_htmlId.'" ';
+		
 		if($this->_htmlClass != null)
 			$identifier .= 'class="'.$this->_htmlClass.'" ';
 		

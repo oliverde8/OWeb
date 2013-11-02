@@ -40,7 +40,7 @@ class Language {
     }
 
 	public function tinit($name) {
-
+		//echo $name.'*';
 		$settings = \OWeb\manage\Settings::getInstance()->getSetting($this);
 
 		self::$default_language = $settings['default_language'];
@@ -64,8 +64,9 @@ class Language {
 			$this->loadFile(OWEB_DEFAULT_LANG_DIR . $path . '/' . self::$default_language . '.php', self::$default_language);
 			$this->loadFile(OWEB_DEFAULT_LANG_DIR . '/' . self::$default_language . '.php', self::$default_language);
 
-            if(get_parent_class($name) !=  'OWeb\types\Controller')
-                $this->tinit(get_parent_class($name));
+			$pclass = get_parent_class($name);
+            if($pclass !=  'OWeb\types\Controller' && $pclass !="")
+                $this->tinit($pclass);
 		} catch (\Exception $ex) {
 
 		}

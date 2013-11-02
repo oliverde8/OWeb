@@ -35,6 +35,9 @@ class AccordionForm extends \Controller\OWeb\Helpers\Form\Form{
 		$text = new \Controller\OWeb\Helpers\Form\Elements\Text();
 		$text->setName('name');
 		$text->setTitle('This is Title');
+		$text->setDescription("This is a test description");
+		$text->addValidator(new \OWeb\utils\inputManagement\validators\Integer());
+		$text->validate();
 		$this->addDisplayElement($text);
 	}	
 }

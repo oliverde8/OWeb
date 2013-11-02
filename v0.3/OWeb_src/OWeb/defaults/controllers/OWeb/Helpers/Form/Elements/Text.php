@@ -31,6 +31,7 @@ namespace Controller\OWeb\Helpers\Form\Elements;
 class Text extends Elements{
 	
 	public function init() {
+		parent::init();
 		$this->setType('text');
 	}
 }
