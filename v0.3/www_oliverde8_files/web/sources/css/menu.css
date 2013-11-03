@@ -97,7 +97,6 @@ div#menu a {
     position: relative;
     height: 20px;
     line-height: 20px;
-
 }
 
 div#menu span {
@@ -122,6 +121,13 @@ div#menu > div > div.lang{
 
 div#menu > div > div.lang > div{
 	float : right;
+}
+
+div#menu > div > div.lang > div > a{
+	margin: 0px;
+	padding-top: 10px;
+	padding-left: 3px;
+	padding-right : 0px;
 }
 
 /* menu::level1 */
