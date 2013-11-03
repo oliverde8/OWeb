@@ -1,20 +1,3 @@
-
-		###############################################
-		**	 		    Value Checkers               **
-		###############################################
-It is important to be able to check the type of a value, so need to make something like this which will actually
-Check this and will be able to be extended. By default there should be the classical cherckers
-URL, email, integer, string, with min lenght etc options. 
-
-They shall return an Exception if things go wrong. The exception should be an extension of UserException 
-so that nice errors can always be shown to users
-
-		###############################################
-		**	 		    Form Generators              **
-		###############################################
-This is can only be done once the value checkers are coded. It will work quite like zend with a quite nice default visualisation. 
-They will be coded as SubControllers this way they can be replaced later on by a developper who wants to add his own impovements.
-
 		###############################################
 		**	 		 Admin Page Template             **
 		###############################################

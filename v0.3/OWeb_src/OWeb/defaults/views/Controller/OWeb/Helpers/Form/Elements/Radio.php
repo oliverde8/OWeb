@@ -54,49 +54,52 @@ $idErr->addHtmlClass('OWebForm_input_err');
 
 ?>
 
-<label <?=$id?> for="<?=$this->name?>"><?= $this->title ?></label>
+	<div <?=$this->htmlIdentifier?>>
 
-<?php
+	<label <?=$id?> for="<?=$this->name?>"><?= $this->title ?></label>
 
-foreach($this->radios as $radio){
- $checked = $radio[1] == $this->val ? 'checked' : '';
-?>
+	<?php
 
-<input <?=$idRadio?> type="<?=$this->type?>" name="<?=$this->name?>" value="<?=$radio[1]?>" <?=$checked?>> 
-<label <?=$idRadio?> ><?=$radio[0]?></label>
+	foreach($this->radios as $radio){
+	 $checked = $radio[1] == $this->val ? 'checked' : '';
+	?>
 
-<?php
+	<input <?=$idRadio?> type="<?=$this->type?>" name="<?=$this->name?>" value="<?=$radio[1]?>" <?=$checked?>> 
+	<label <?=$idRadio?> ><?=$radio[0]?></label>
 
-}
-	if($this->desc != null){
-?>
-		<img <?=$idDesc?> src="<?= OWEB_HTML_DIR_CSS ?>/images/Helpers_Form/description.png" />
+	<?php
 
-		<span <?=$idDesc?> ><?= $this->desc ?> </span>
-
-<?php
 	}
-	
-	if(!empty($this->errMessages)){
-?>
-		<div <?=$idErr?> >
-			<ul <?=$idErr?> >
-				
-				<?php
-					foreach($this->errMessages as $i => $msg){
-				?>
-				
-				<li>
-					<strong><?=$msg?> </strong>
-					<?=$this->errDescriptions[$i]?>
-				</li>
-				
-				<?php
-					}
-					
-				?>
-				
-			</ul>	
-		</div>
+		if($this->desc != null){
+	?>
+			<img <?=$idDesc?> src="<?= OWEB_HTML_DIR_CSS ?>/images/Helpers_Form/description.png" />
+
+			<span <?=$idDesc?> ><?= $this->desc ?> </span>
+
+	<?php
+		}
+
+		if(!empty($this->errMessages)){
+	?>
+			<div <?=$idErr?> >
+				<ul <?=$idErr?> >
+
+					<?php
+						foreach($this->errMessages as $i => $msg){
+					?>
+
+					<li>
+						<strong><?=$msg?> </strong>
+						<?=$this->errDescriptions[$i]?>
+					</li>
+
+					<?php
+						}
+
+					?>
+
+				</ul>	
+			</div>
 <?php } ?>
+	</div>
 

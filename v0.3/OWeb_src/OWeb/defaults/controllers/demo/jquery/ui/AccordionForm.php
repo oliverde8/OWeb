@@ -32,7 +32,7 @@ class AccordionForm extends \Controller\OWeb\Helpers\Form\Form{
 	//put your code here
 	
 	protected function registerElements() {
-		$this->action_mode = self::ACTION_POST;
+		$this->action_mode = self::ACTION_GET;
 		
 		$validatorBool = new \OWeb\utils\inputManagement\validators\Boolean();
 		

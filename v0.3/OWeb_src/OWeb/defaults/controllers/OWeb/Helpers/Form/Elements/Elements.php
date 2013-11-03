@@ -30,7 +30,7 @@ namespace Controller\OWeb\Helpers\Form\Elements;
  */
 abstract class Elements extends \Controller\OWeb\Helpers\HtmlElement{
 	
-	private $_valid;
+	private $_valid = true;
 	private $_name;
 	private $_title;
 	private $_desc = null;

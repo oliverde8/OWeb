@@ -35,7 +35,7 @@ class Accordion extends \OWeb\types\Controller{
 	private $accordion;
 	
 	public function init() {
-		$this->action_mode = self::ACTION_POST;
+		$this->action_mode = self::ACTION_GET;
 		
 		$this->applyTemplateController(new \Controller\demo\Template());
 		$this->addAction('refresh', 'doRefresh');

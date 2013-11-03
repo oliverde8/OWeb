@@ -49,3 +49,5 @@ $this->addHeader('Helpers.Form.css',\OWeb\manage\Headers::css);
 	</form>
 
 </div>
+
+<div class="ColloneClean"></div>

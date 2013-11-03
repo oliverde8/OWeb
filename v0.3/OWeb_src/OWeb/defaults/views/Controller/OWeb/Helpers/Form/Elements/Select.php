@@ -50,53 +50,56 @@ $idErr = clone $this->htmlIdentifier;
 $idErr->addHtmlClass('OWebForm_input_err');
 
 ?>
-
-<label <?=$id?> for="<?=$this->name?>"><?= $this->title ?></label>
-
-<select <?=$id?>  name="<?=$this->name?>" >
-
-<?php
-
-foreach($this->select as $select){
- $checked = $select[1] == $this->val ? 'selected' : '';
-?>
-
-<option <?=$this->htmlIdentifier?> value="<?=$select[1]?>" <?=$checked?> > <?=$select[0]?> </option>
-
-<?php
-
-}
-echo '</select>';
-
-	if($this->desc != null){
-?>
-		<img <?=$idDesc?> src="<?= OWEB_HTML_DIR_CSS ?>/images/Helpers_Form/description.png" />
-
-		<span <?=$idDesc?> ><?= $this->desc ?> </span>
-
-<?php
-	}
+<div <?=$this->htmlIdentifier?>>
 	
-	if(!empty($this->errMessages)){
-?>
-		<div <?=$idErr?> >
-			<ul <?=$idErr?> >
-				
-				<?php
-					foreach($this->errMessages as $i => $msg){
-				?>
-				
-				<li>
-					<strong><?=$msg?> </strong>
-					<?=$this->errDescriptions[$i]?>
-				</li>
-				
-				<?php
-					}
-					
-				?>
-				
-			</ul>	
-		</div>
-<?php } ?>
+	<label <?=$id?> for="<?=$this->name?>"><?= $this->title ?></label>
 
+	<select <?=$id?>  name="<?=$this->name?>" >
+
+	<?php
+
+	foreach($this->select as $select){
+	 $checked = $select[1] == $this->val ? 'selected' : '';
+	?>
+
+	<option <?=$this->htmlIdentifier?> value="<?=$select[1]?>" <?=$checked?> > <?=$select[0]?> </option>
+
+	<?php
+
+	}
+	?>
+	</select>
+	<?php
+		if($this->desc != null){
+	?>
+			<img <?=$idDesc?> src="<?= OWEB_HTML_DIR_CSS ?>/images/Helpers_Form/description.png" />
+
+			<span <?=$idDesc?> ><?= $this->desc ?> </span>
+
+	<?php
+		}
+
+		if(!empty($this->errMessages)){
+	?>
+			<div <?=$idErr?> >
+				<ul <?=$idErr?> >
+
+					<?php
+						foreach($this->errMessages as $i => $msg){
+					?>
+
+					<li>
+						<strong><?=$msg?> </strong>
+						<?=$this->errDescriptions[$i]?>
+					</li>
+
+					<?php
+						}
+
+					?>
+
+				</ul>	
+			</div>
+	<?php } ?>
+
+</div>
