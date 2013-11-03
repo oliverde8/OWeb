@@ -61,15 +61,18 @@ class Controller extends \OWeb\utils\Singleton{
 		Events::getInstance()->sendEvent('ActionDist_Prepare@OWeb\manage\Controller',$this->controller);
 		
 		//gestion des Actions...
-		$get = \OWeb\OWeb::getInstance()->get_get();
+		$source[] = \OWeb\OWeb::getInstance()->get_get();
+		$source[] = \OWeb\OWeb::getInstance()->get_post();
 		
-		if(isset($get['action']))
-			$this->controller->doAction($get['action']);
-		
-		$i=1;
-		while (isset($get['action_'.$i])){
-			$this->controller->doAction($get['action_'.$i]);
-			$i++;
+		foreach($source as $get){
+			if(isset($get['action']))
+				$this->controller->doAction($get['action']);
+
+			$i=1;
+			while (isset($get['action_'.$i])){
+				$this->controller->doAction($get['action_'.$i]);
+				$i++;
+			}
 		}
 		
 		Events::getInstance()->sendEvent('ActionDist_Done@OWeb\manage\Controller',$this->controller);

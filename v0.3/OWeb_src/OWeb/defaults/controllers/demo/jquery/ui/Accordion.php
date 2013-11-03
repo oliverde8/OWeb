@@ -35,13 +35,14 @@ class Accordion extends \OWeb\types\Controller{
 	private $accordion;
 	
 	public function init() {
+		$this->action_mode = self::ACTION_POST;
+		
 		$this->applyTemplateController(new \Controller\demo\Template());
 		$this->addAction('refresh', 'doRefresh');
 		
 		$this->form = new \Controller\demo\jquery\ui\AccordionForm();
-		$this->form->init();
+		$this->form->init();		
 		$this->form->loadParams();
-	
 		
 		$this->accordion = new \Controller\OWeb\widgets\jquery_ui\Accordion();
 		$this->accordion->init();

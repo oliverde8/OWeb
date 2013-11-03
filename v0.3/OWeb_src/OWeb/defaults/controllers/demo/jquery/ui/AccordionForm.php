@@ -32,7 +32,7 @@ class AccordionForm extends \Controller\OWeb\Helpers\Form\Form{
 	//put your code here
 	
 	protected function registerElements() {
-		$this->action_mode = self::ACTION_GET;
+		$this->action_mode = self::ACTION_POST;
 		
 		$jsString = new \OWeb\utils\inputManagement\validators\JsString();
 		
@@ -43,7 +43,7 @@ class AccordionForm extends \Controller\OWeb\Helpers\Form\Form{
 		$active->setTitle('Active');
 		$active->setDescription("Which panel is currently open.");
 		$active->addValidator(new \OWeb\utils\inputManagement\validators\Integer());
-		$active->setVal(1);
+		$active->setVal(0);
 		$this->addDisplayElement($active);
 		
 		$animate = new \Controller\OWeb\Helpers\Form\Elements\Text();
