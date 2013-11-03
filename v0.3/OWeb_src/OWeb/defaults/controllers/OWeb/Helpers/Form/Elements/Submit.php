@@ -34,6 +34,7 @@ class Submit extends Elements{
 		parent::init();
 		$this->setType('submit');
 		$this->addHtmlClass('OWebForm_input_button');
+		$this->validate();
 	}
 	
 	public function setVal($val) {

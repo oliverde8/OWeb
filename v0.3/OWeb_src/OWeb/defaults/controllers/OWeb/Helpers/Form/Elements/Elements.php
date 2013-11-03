@@ -30,7 +30,7 @@ namespace Controller\OWeb\Helpers\Form\Elements;
  */
 abstract class Elements extends \Controller\OWeb\Helpers\HtmlElement{
 	
-	
+	private $_valid;
 	private $_name;
 	private $_title;
 	private $_desc = null;
@@ -91,8 +91,10 @@ abstract class Elements extends \Controller\OWeb\Helpers\HtmlElement{
 	
 	public function validate(){
 		
-		if(empty($this->_validators))
+		if(empty($this->_validators)){
+			$this->_valid = true;
 			return true;
+		}
 		
 		$valid = false;
 		$newValue = null;
@@ -113,6 +115,8 @@ abstract class Elements extends \Controller\OWeb\Helpers\HtmlElement{
 			$this->_trueVal = $newValue;
 		else 
 			$this->_trueVal = null;
+		
+		$this->_valid = $valid;
 		
 		return $valid;
 	}
@@ -148,6 +152,7 @@ abstract class Elements extends \Controller\OWeb\Helpers\HtmlElement{
 		$this->view->errMessages = $this->_errMessages;
 		$this->view->errDescriptions = $this->_errDesriptions;
 		$this->view->val = $this->_val;
+		$this->view->valid = $this->_valid;
 	}
 }
 

@@ -40,7 +40,7 @@ abstract class Form extends \Controller\OWeb\Helpers\HtmlElement{
 	public function init() {
 		parent::init();
 		$this->registerElements();
-		$this->addHtmlClass('OWebForm_input');
+		$this->addHtmlClass('OWebForm');
 	}
 	
 	

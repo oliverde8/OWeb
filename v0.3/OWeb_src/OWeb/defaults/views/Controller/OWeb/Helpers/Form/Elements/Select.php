@@ -43,6 +43,12 @@ $js = "
 $id = clone $this->htmlIdentifier;
 $id->addHtmlClass('OWebForm_input_def');
 
+$idDesc = clone $this->htmlIdentifier;
+$idDesc->addHtmlClass('OWebForm_input_desc');
+
+$idErr = clone $this->htmlIdentifier;
+$idErr->addHtmlClass('OWebForm_input_err');
+
 ?>
 
 <label <?=$id?> for="<?=$this->name?>"><?= $this->title ?></label>
@@ -64,17 +70,17 @@ echo '</select>';
 
 	if($this->desc != null){
 ?>
-		<img <?=$this->htmlIdentifier?> src="<?= OWEB_HTML_DIR_CSS ?>/images/Helpers_Form/description.png" />
+		<img <?=$idDesc?> src="<?= OWEB_HTML_DIR_CSS ?>/images/Helpers_Form/description.png" />
 
-		<span <?=$this->htmlIdentifier?> ><?= $this->desc ?> </span>
+		<span <?=$idDesc?> ><?= $this->desc ?> </span>
 
 <?php
 	}
 	
 	if(!empty($this->errMessages)){
 ?>
-		<div <?=$this->htmlIdentifier?> >
-			<ul <?=$this->htmlIdentifier?> >
+		<div <?=$idErr?> >
+			<ul <?=$idErr?> >
 				
 				<?php
 					foreach($this->errMessages as $i => $msg){

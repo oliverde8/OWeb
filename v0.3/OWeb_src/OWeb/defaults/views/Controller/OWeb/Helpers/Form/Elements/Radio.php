@@ -43,6 +43,15 @@ $js = "
 $id = clone $this->htmlIdentifier;
 $id->addHtmlClass('OWebForm_input_def');
 
+$idRadio = clone $this->htmlIdentifier;
+$idRadio->addHtmlClass('OWebForm_input_radio');
+
+$idDesc = clone $this->htmlIdentifier;
+$idDesc->addHtmlClass('OWebForm_input_desc');
+
+$idErr = clone $this->htmlIdentifier;
+$idErr->addHtmlClass('OWebForm_input_err');
+
 ?>
 
 <label <?=$id?> for="<?=$this->name?>"><?= $this->title ?></label>
@@ -53,25 +62,25 @@ foreach($this->radios as $radio){
  $checked = $radio[1] == $this->val ? 'checked' : '';
 ?>
 
-<input <?=$this->htmlIdentifier?> type="<?=$this->type?>" name="<?=$this->name?>" value="<?=$radio[1]?>" <?=$checked?>> 
-<label <?=$this->htmlIdentifier?> ><?=$radio[0]?></label>
+<input <?=$idRadio?> type="<?=$this->type?>" name="<?=$this->name?>" value="<?=$radio[1]?>" <?=$checked?>> 
+<label <?=$idRadio?> ><?=$radio[0]?></label>
 
 <?php
 
 }
 	if($this->desc != null){
 ?>
-		<img <?=$this->htmlIdentifier?> src="<?= OWEB_HTML_DIR_CSS ?>/images/Helpers_Form/description.png" />
+		<img <?=$idDesc?> src="<?= OWEB_HTML_DIR_CSS ?>/images/Helpers_Form/description.png" />
 
-		<span <?=$this->htmlIdentifier?> ><?= $this->desc ?> </span>
+		<span <?=$idDesc?> ><?= $this->desc ?> </span>
 
 <?php
 	}
 	
 	if(!empty($this->errMessages)){
 ?>
-		<div <?=$this->htmlIdentifier?> >
-			<ul <?=$this->htmlIdentifier?> >
+		<div <?=$idErr?> >
+			<ul <?=$idErr?> >
 				
 				<?php
 					foreach($this->errMessages as $i => $msg){

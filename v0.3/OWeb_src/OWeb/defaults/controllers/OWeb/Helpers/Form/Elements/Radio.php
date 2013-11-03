@@ -31,14 +31,17 @@ namespace Controller\OWeb\Helpers\Form\Elements;
 class Radio extends Elements{
 	
 	private $radios = array();
+	private $validator;
 	
 	public function init() {
 		parent::init();
 		$this->setType('radio');
+		$this->validator = new \OWeb\utils\inputManagement\validators\ChosenValues();
 	}
 	
 	public function add($text, $value){
 		$this->radios[] = array($text, $value);
+		$this->validator->addPossibility($value);
 	}
 	
 	public function prepareDisplay() {

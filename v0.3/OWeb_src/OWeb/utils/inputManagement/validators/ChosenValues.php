@@ -21,22 +21,46 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-$_L['Title_Integer'] = 'You need to put a whole number';
-$_L['Desc_Integer'] = '';
+namespace OWeb\utils\inputManagement\validators;
 
-$_L['Title_Integer_Max'] = 'The number must be smaller then : ';
-$_L['Desc_Integer_Max'] = '';
-
-$_L['Title_Min'] = 'The number must be bigger then : ';
-$_L['Desc_Integer_Min'] = '';
-
-$_L['Title_CanBeEmpty'] = 'You might decide to let this field empty.';
-$_L['Desc_CanBeEmpty'] = '';
-
-$_L['Title_ChosenValues'] = 'You may only uuse one of this values : ';
-$_L['Desc_ChosenValues'] = '';
-
-$_L['Title_Boolean'] = 'The value must be a Boolean, True or False.';
-$_L['Desc_Boolean'] = '';
+/**
+ * Description of ChosenValues
+ *
+ * @author De Cramer Oliver
+ */
+class ChosenValues extends \OWeb\utils\inputManagement\Validators{
+	
+	public $chosen = array();
+	
+	function __construct() {
+		$this->setName('ChosenValues');
+	}
+	
+	public function valideteValue($value) {
+		$val = strtolower($value);
+		if(!isset($this->chosen[$val])){
+			$this->throwErrorMessage(null, $this->getValueList());
+		}
+		return $val;
+	}
+	
+	public function addPossibility($posible){
+		$this->chosen[strtolower($posible)] = true;
+	}
+	
+	public function addPossibilityList($list){
+		foreach($list as $value){
+			$this->addPossibility($value);
+		}
+	}
+	
+	public function getValueList(){
+		$s = '{';
+		
+		foreach ($this->chosen as $value => $v)
+			$s .=$value.',';
+		$s .= '}';
+	}
+}
 
 ?>

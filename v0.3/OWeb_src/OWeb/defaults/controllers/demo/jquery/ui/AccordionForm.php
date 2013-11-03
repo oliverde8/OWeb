@@ -34,19 +34,24 @@ class AccordionForm extends \Controller\OWeb\Helpers\Form\Form{
 	protected function registerElements() {
 		$this->action_mode = self::ACTION_POST;
 		
+		$validatorBool = new \OWeb\utils\inputManagement\validators\Boolean();
+		
 		$jsString = new \OWeb\utils\inputManagement\validators\JsString();
 		
 		$this->setAction('refresh');
 		
 		$active = new \Controller\OWeb\Helpers\Form\Elements\Text();
+		$active->init();
 		$active->setName('active');
 		$active->setTitle('Active');
 		$active->setDescription("Which panel is currently open.");
 		$active->addValidator(new \OWeb\utils\inputManagement\validators\Integer());
+		$active->addValidator(new \OWeb\utils\inputManagement\validators\CanBeEmpty());
 		$active->setVal(0);
 		$this->addDisplayElement($active);
 		
 		$animate = new \Controller\OWeb\Helpers\Form\Elements\Text();
+		$animate->init();
 		$animate->setName('animate');
 		$animate->setTitle('Animate');
 		$animate->setVal('Animate');
@@ -55,26 +60,29 @@ class AccordionForm extends \Controller\OWeb\Helpers\Form\Form{
 		//$this->addDisplayElement($animate);
 		
 		$collapsible = new \Controller\OWeb\Helpers\Form\Elements\Radio();
+		$collapsible->init();
 		$collapsible->setName('collapsible');
 		$collapsible->setTitle('Collapsible');
 		$collapsible->add("true", "true");
 		$collapsible->add("false", "false");
-		//$collapsible->addValidator($jsString);
+		$collapsible->addValidator($validatorBool);
 		$collapsible->setVal('true');
 		$collapsible->setDescription("hether all the sections can be closed at once. Allows collapsing the active section");
 		$this->addDisplayElement($collapsible);
 		
 		$disabled = new \Controller\OWeb\Helpers\Form\Elements\Radio();
+		$disabled->init();
 		$disabled->setName('disabled');
 		$disabled->setTitle('Disabled');
 		$disabled->add("true", "true");
 		$disabled->add("false", "false");
-		//$disabled->addValidator($jsString);
+		$disabled->addValidator($validatorBool);
 		$disabled->setVal('false');
 		$disabled->setDescription("Disables the accordion if set to true.");
 		$this->addDisplayElement($disabled);
 		
 		$event = new \Controller\OWeb\Helpers\Form\Elements\Text();
+		$event->init();
 		$event->setName('event');
 		$event->setTitle('Event');
 		$event->setVal('click');
@@ -83,6 +91,7 @@ class AccordionForm extends \Controller\OWeb\Helpers\Form\Form{
 		$this->addDisplayElement($event);
 		
 		$heightStyle = new \Controller\OWeb\Helpers\Form\Elements\Select();
+		$heightStyle->init();
 		$heightStyle->setName('heightStyle');
 		$heightStyle->setTitle('Height Style');
 		$heightStyle->add("Auto", "auto");
@@ -94,6 +103,7 @@ class AccordionForm extends \Controller\OWeb\Helpers\Form\Form{
 		$this->addDisplayElement($heightStyle);
 		
 		$submit = new \Controller\OWeb\Helpers\Form\Elements\Submit();
+		$submit->init();
 		$submit->setVal("Refresh");
 		$this->addDisplayElement($submit);
 	}	

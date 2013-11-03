@@ -21,22 +21,28 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-$_L['Title_Integer'] = 'You need to put a whole number';
-$_L['Desc_Integer'] = '';
+namespace OWeb\utils\inputManagement\validators;
 
-$_L['Title_Integer_Max'] = 'The number must be smaller then : ';
-$_L['Desc_Integer_Max'] = '';
-
-$_L['Title_Min'] = 'The number must be bigger then : ';
-$_L['Desc_Integer_Min'] = '';
-
-$_L['Title_CanBeEmpty'] = 'You might decide to let this field empty.';
-$_L['Desc_CanBeEmpty'] = '';
-
-$_L['Title_ChosenValues'] = 'You may only uuse one of this values : ';
-$_L['Desc_ChosenValues'] = '';
-
-$_L['Title_Boolean'] = 'The value must be a Boolean, True or False.';
-$_L['Desc_Boolean'] = '';
-
+/**
+ * Description of Empty
+ *
+ * @author De Cramer Oliver
+ */
+class Boolean extends \OWeb\utils\inputManagement\Validators{
+	
+	function __construct() {
+		$this->setName('Boolean');
+	}
+	
+	public function valideteValue($value) {
+		$val = strtolower($value);
+		if($val == 'false' || $value == '0'){
+			return 'false';
+		}else if($value == '1' || $val == 'true' ){
+			return 'true';
+		}else
+				$this->throwErrorMessage ();
+		
+	}	
+}
 ?>
