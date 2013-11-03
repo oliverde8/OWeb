@@ -101,8 +101,9 @@ class SimpleConnection extends TypeConnection{
 			setcookie($this->set_SessionName."_auth[lang]", $this->lang);
 			
 		}else if(isset($get['lang']) 
-				&& (strlen($get['lang'])==2 || strlen($get['lang'])==2) 
+				&& (strlen($get['lang'])==2 || strlen($get['lang'])==3) 
 				&& $this->lang != $get['lang']){
+
 			$this->lang = $get['lang'];
 			//Updating in Database 
 			$this->updateLangDB();
