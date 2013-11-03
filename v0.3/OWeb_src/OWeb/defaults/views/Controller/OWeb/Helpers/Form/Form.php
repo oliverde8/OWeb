@@ -25,11 +25,21 @@ $this->addHeader('Helpers.Form.css',\OWeb\manage\Headers::css);
 
 ?>
 
-<form <?=$this->htmlIdentifier?>>
-
+<form <?=$this->htmlIdentifier?> method="<?php echo $this->actionMode == OWeb\types\Controller::ACTION_GET ? 'get' : 'post' ?>">
+	
 <?php
+
+if(	$this->action != null)
+		$this->action->display();
+
+$i = 0;
 foreach ($this->elements as $element){
+	if($this->htmlIdentifier->getHtmlId() != null)
+		$element->setFormId($this->htmlIdentifier->getHtmlId(), $i);
+	
+	$element->addHtmlClass('OWebForm_input_'.$i%2);
 	$element->display();
+	$i++;
 }
 ?>
 

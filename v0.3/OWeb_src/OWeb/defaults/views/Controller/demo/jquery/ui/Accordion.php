@@ -1,14 +1,8 @@
 <?php
 
-$form = new Controller\demo\jquery\ui\AccordionForm();
-$form->init();
-$form->display();
+$this->form->display();
 
-
-$accordion = new Controller\OWeb\widgets\jquery_ui\Accordion();
-$accordion->init();
-$accordion->loadParams();
-$accordion->setHeightStyle('"content"');
+$accordion = $this->accordion;
 
 $accordion->addSection('Section 1', '<p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
     ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit

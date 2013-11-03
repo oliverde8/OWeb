@@ -27,57 +27,13 @@
  * @author De Cramer Oliver
  */
 
-$js = "
-	$('span.OWebForm_input').css('display', 'block').hide();
-	$('img.OWebForm_input').click(function(){
-		if( $(this).next().is(':visible') )
-			$(this).next().fadeOut();
-		else {
-			$(this).next().fadeIn();
-		}
-	});
-
-";
-\OWeb\utils\js\jquery\HeaderOnReadyManager::getInstance()->add($js);
-
 
 $id = clone $this->htmlIdentifier;
 $id->addHtmlClass('OWebForm_input_def');
 ?>
 
-<label <?=$id?> for="<?=$this->name?>"><?= $this->title ?></label>
+
 <input <?=$id?> type="<?=$this->type?>" name="<?=$this->name?>" value="<?=$this->val?>">
 
-<?php
-	if($this->desc != null){
-?>
-		<img <?=$this->htmlIdentifier?> src="<?= OWEB_HTML_DIR_CSS ?>/images/Helpers_Form/description.png" />
 
-		<span <?=$this->htmlIdentifier?> ><?= $this->desc ?> </span>
-
-<?php
-	}
-	
-	if(!empty($this->errMessages)){
-?>
-		<div <?=$this->htmlIdentifier?> >
-			<ul <?=$this->htmlIdentifier?> >
-				
-				<?php
-					foreach($this->errMessages as $i => $msg){
-				?>
-				
-				<li>
-					<strong><?=$msg?> </strong>
-					<?=$this->errDescriptions[$i]?>
-				</li>
-				
-				<?php
-					}
-					
-				?>
-				
-			</ul>	
-		</div>
-<?php } ?>
 

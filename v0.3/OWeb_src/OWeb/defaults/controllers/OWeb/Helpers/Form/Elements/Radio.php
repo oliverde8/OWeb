@@ -21,40 +21,32 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-namespace OWeb\utils\inputManagement\validators;
+namespace Controller\OWeb\Helpers\Form\Elements;
 
 /**
- * Description of Integer
+ * Description of Radio
  *
  * @author De Cramer Oliver
  */
-class Integer extends \OWeb\utils\inputManagement\Validators{
+class Radio extends Elements{
 	
-	public $max = null; 
+	private $radios = array();
 	
-	public $min = null;
+	public function init() {
+		parent::init();
+		$this->setType('radio');
+	}
 	
-	function __construct() {
-		$this->setName('Integer');
+	public function add($text, $value){
+		$this->radios[] = array($text, $value);
+	}
+	
+	public function prepareDisplay() {
+		parent::prepareDisplay();
+		$this->view->radios = $this->radios;
 	}
 
 	
-	public function valideteValue($value) {
-		
-		if($value != null && preg_match('/^-?\d+$/', $value)){
-			$val = (int) $value;
-			
-			if($this->max != null && $val > $this->max)
-				$this->throwErrorMessage ('Max', $this->max);
-			
-			if($this->min != null && $val < $this->min)
-				$this->throwErrorMessage ('Min', $this->min);
-			
-			return $val;
-		}else
-			$this->throwErrorMessage ();
-		
-	}
 }
 
 ?>

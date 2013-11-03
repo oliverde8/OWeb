@@ -31,12 +31,37 @@ namespace Controller\demo\jquery\ui;
 
 class Accordion extends \OWeb\types\Controller{
 	
+	private $form;
+	private $accordion;
+	
 	public function init() {
 		$this->applyTemplateController(new \Controller\demo\Template());
+		$this->addAction('refresh', 'doRefresh');
+		
+		$this->form = new \Controller\demo\jquery\ui\AccordionForm();
+		$this->form->init();
+		$this->form->loadParams();
+	
+		
+		$this->accordion = new \Controller\OWeb\widgets\jquery_ui\Accordion();
+		$this->accordion->init();
+	}
+	
+	public function doRefresh(){
+		$this->form->validateElements();
+		
+		if($this->form->isValid()){
+			foreach($this->form->getElements() as $element){
+				$this->accordion->addParams($element->getName(), $element->getVal());
+			}
+		}
 	}
 
 	public function onDisplay() {
 		
+		$this->view->form = $this->form;
+		
+		$this->view->accordion = $this->accordion;
 	}
 }
 

@@ -66,7 +66,8 @@
         <div id="header">
 
             <div>
-                <div class="logo"></div>
+                <div class="logo">				
+				</div>
 
                 <!-- Login Panel -->
                 <div class="login_panel ">

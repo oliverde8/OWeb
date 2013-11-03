@@ -36,6 +36,7 @@ abstract class Elements extends \Controller\OWeb\Helpers\HtmlElement{
 	private $_desc = null;
 	private $_type;
 	private $_val = null;
+	private $_trueVal = null;
 	
 	private $_validators = array();
 	
@@ -44,6 +45,7 @@ abstract class Elements extends \Controller\OWeb\Helpers\HtmlElement{
 
 	
 	public function init() {
+		parent::init();
 		$this->addHtmlClass('OWebForm_input');
 	}
 	
@@ -88,6 +90,10 @@ abstract class Elements extends \Controller\OWeb\Helpers\HtmlElement{
 	}
 	
 	public function validate(){
+		
+		if(empty($this->_validators))
+			return true;
+		
 		$valid = false;
 		$newValue = null;
 		foreach ($this->_validators as $validator) {
@@ -104,11 +110,15 @@ abstract class Elements extends \Controller\OWeb\Helpers\HtmlElement{
 		}
 		
 		if($valid)
-			$this->setVal($newValue);
+			$this->_trueVal = $newValue;
+		else 
+			$this->_trueVal = null;
+		
+		return $valid;
 	}
 	
 	public function getVal(){
-		return $this->_val;
+		return $this->_trueVal == null ? $this->_val : $this->_trueVal;
 	}
 	
 	public function setVal($val){
@@ -119,8 +129,18 @@ abstract class Elements extends \Controller\OWeb\Helpers\HtmlElement{
 		return $this->_errMessages;
 	}
 	
+	public function setFormId($id, $nb){
+		$this->addHtmlClass($id.'_'.$nb);
+	}
+	
+	public function prepareDisplay(){
+		
+	}
+
+
 	public final function onDisplay(){
-		$this->view->htmlIdentifier = $this->generateHtmlIdentifier();
+		$this->prepareDisplay();
+		$this->view->htmlIdentifier = $this->getIdentifier();
 		$this->view->title = $this->_title;
 		$this->view->type = $this->_type;
 		$this->view->desc = $this->_desc;

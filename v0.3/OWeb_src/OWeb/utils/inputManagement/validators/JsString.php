@@ -24,37 +24,17 @@
 namespace OWeb\utils\inputManagement\validators;
 
 /**
- * Description of Integer
+ * Description of JsString
  *
  * @author De Cramer Oliver
  */
-class Integer extends \OWeb\utils\inputManagement\Validators{
+class JsString extends \OWeb\utils\inputManagement\Validators{
 	
-	public $max = null; 
 	
-	public $min = null;
-	
-	function __construct() {
-		$this->setName('Integer');
-	}
-
 	
 	public function valideteValue($value) {
-		
-		if($value != null && preg_match('/^-?\d+$/', $value)){
-			$val = (int) $value;
-			
-			if($this->max != null && $val > $this->max)
-				$this->throwErrorMessage ('Max', $this->max);
-			
-			if($this->min != null && $val < $this->min)
-				$this->throwErrorMessage ('Min', $this->min);
-			
-			return $val;
-		}else
-			$this->throwErrorMessage ();
-		
-	}
+		return '"'.$value.'"';
+	}	
 }
 
 ?>

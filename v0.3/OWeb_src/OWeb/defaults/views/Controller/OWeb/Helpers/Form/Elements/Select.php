@@ -40,15 +40,28 @@ $js = "
 ";
 \OWeb\utils\js\jquery\HeaderOnReadyManager::getInstance()->add($js);
 
-
 $id = clone $this->htmlIdentifier;
 $id->addHtmlClass('OWebForm_input_def');
+
 ?>
 
 <label <?=$id?> for="<?=$this->name?>"><?= $this->title ?></label>
-<input <?=$id?> type="<?=$this->type?>" name="<?=$this->name?>" value="<?=$this->val?>">
+
+<select <?=$id?>  name="<?=$this->name?>" >
 
 <?php
+
+foreach($this->select as $select){
+ $checked = $select[1] == $this->val ? 'selected' : '';
+?>
+
+<option <?=$this->htmlIdentifier?> value="<?=$select[1]?>" <?=$checked?> > <?=$select[0]?> </option>
+
+<?php
+
+}
+echo '</select>';
+
 	if($this->desc != null){
 ?>
 		<img <?=$this->htmlIdentifier?> src="<?= OWEB_HTML_DIR_CSS ?>/images/Helpers_Form/description.png" />

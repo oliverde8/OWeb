@@ -105,31 +105,36 @@ abstract class CodeGenerator extends \OWeb\types\Controller{
 			$pvalue = $this->getParam($pname);
 			if($pvalue == null)
 				$pvalue = $this->defValues[$pname];
-			
-			if(!$optionsShown){
-				$code .= '{';
-				$optionsShown = true;
-			}else
-				$code .=',';
+			if(!empty($pvalue) && $pvalue != ""){
 
-			$code .= "\n $pname : \"$pvalue\"";
+				if(!$optionsShown){
+					$code .= '{';
+					$optionsShown = true;
+				}else
+					$code .=',';
+
+				$code .= "\n $pname : \"$pvalue\"";
+			}
 
 		}
 		
 		foreach($this->getParams() as $pname => $pvalue){
 		
 			if((!isset($this->necessary[$pname]) && isset($this->defValues[$pname]))
-					|| (isset($this->defValues[$pname]) && $this->defValues[$pname] != $pvalue)){
+					|| (isset($this->defValues[$pname]) && strtoupper($this->defValues[$pname]) != strtoupper($pvalue) )){
 				
-				if(!$optionsShown){
-					$code .= '{';
-					$optionsShown = true;
-				}else
-					$code .=',';
+				if(!empty($pvalue) && $pvalue != ""){
 				
-				unset($necessary[$pname]);
-				
+					if(!$optionsShown){
+						$code .= '{';
+						$optionsShown = true;
+					}else
+						$code .=',';
+
+					unset($necessary[$pname]);
+
 				$code .= "\n $pname : $pvalue";
+				}
 			}
 		}
 		

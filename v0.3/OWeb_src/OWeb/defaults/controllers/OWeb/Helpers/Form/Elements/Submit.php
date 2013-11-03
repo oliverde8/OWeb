@@ -21,39 +21,24 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-namespace OWeb\utils\inputManagement\validators;
+namespace Controller\OWeb\Helpers\Form\Elements;
 
 /**
- * Description of Integer
+ * Description of Text
  *
  * @author De Cramer Oliver
  */
-class Integer extends \OWeb\utils\inputManagement\Validators{
+class Submit extends Elements{
 	
-	public $max = null; 
-	
-	public $min = null;
-	
-	function __construct() {
-		$this->setName('Integer');
+	public function init() {
+		parent::init();
+		$this->setType('submit');
+		$this->addHtmlClass('OWebForm_input_button');
 	}
-
 	
-	public function valideteValue($value) {
-		
-		if($value != null && preg_match('/^-?\d+$/', $value)){
-			$val = (int) $value;
-			
-			if($this->max != null && $val > $this->max)
-				$this->throwErrorMessage ('Max', $this->max);
-			
-			if($this->min != null && $val < $this->min)
-				$this->throwErrorMessage ('Min', $this->min);
-			
-			return $val;
-		}else
-			$this->throwErrorMessage ();
-		
+	public function setVal($val) {
+		if($this->getVal() == null)
+			parent::setVal($val);
 	}
 }
 

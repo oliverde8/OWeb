@@ -30,27 +30,35 @@ namespace Controller\OWeb\Helpers\Form;
  */
 abstract class Form extends \Controller\OWeb\Helpers\HtmlElement{
 	
-	private $_displayElements;
-	private $_elements;
+	private $_formId;
+	private $_displayElements = array();
+	private $_elements = array();
+	
 	private $_isValid;
+	private $_action = null;
 	
 	public function init() {
+		parent::init();
 		$this->registerElements();
 		$this->addHtmlClass('OWebForm_input');
 	}
 	
 	
-	protected function validateElements(){
+	public function validateElements(){
 		$this->_isValid = true;
 		foreach ($this->_elements as $element) {
-			$this->_isValid = $this->_isValid && $element->validate();
+			$element->setVal($this->getParam($element->getName()));
+			
+			$valid = $element->validate();			
+			$this->_isValid = $this->_isValid && $valid;
 		}
 	}
 	
 	public function addDisplayElement(\OWeb\types\Controller $element){
 		$this->_displayElements[] = $element;
-		if($element instanceof Controller\OWeb\Helpers\Elements\Elements)
+		if($element instanceof \Controller\OWeb\Helpers\Form\Elements\Elements){
 			$this->_elements[] = $element;
+		}
 		$element->init();
 	}
 	
@@ -61,10 +69,27 @@ abstract class Form extends \Controller\OWeb\Helpers\HtmlElement{
 		return $this->_isValid;
 	}
 	
+	public function setFormId($id){
+
+	}
+	
+	public function setAction($actionName){
+		$this->_action = new Elements\Hidden();
+		$this->_action->setName('action');
+		$this->_action->setVal($actionName);
+		$this->_action->init();
+	}
+	
 	public function onDisplay() {
-		$this->view->htmlIdentifier = $this->generateHtmlIdentifier();
+		$this->view->htmlIdentifier = $this->getIdentifier();
 		$this->view->elements = $this->_displayElements;
-	}	
+		$this->view->actionMode = $this->action_mode;
+		$this->view->action = $this->_action;
+	}
+	
+	public function getElements(){
+		return $this->_elements;
+	}
 }
 
 ?>

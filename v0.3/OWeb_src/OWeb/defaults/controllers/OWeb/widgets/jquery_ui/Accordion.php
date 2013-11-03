@@ -79,7 +79,7 @@ class Accordion extends JQueryGen{
 	 * 
 	 * @return \Controller\OWeb\widgets\jquery_ui\Accordion
 	 */
-	public function setAnimate($val = ''){
+	public function setAnimate($val = '{}'){
 		$this->addParams('animate', $val);
 		return $this;
 	}

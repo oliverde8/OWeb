@@ -11,6 +11,11 @@ form.OWebForm_input{
 }
 
 label.OWebForm_input{
+	width:				10px;
+	height:				20px;
+}
+
+label.OWebForm_input_def{
 	display:			block;
 	width:				220px;
 	float:				left;
@@ -20,17 +25,24 @@ label.OWebForm_input{
 	clear:				both;
 }
 
-input.OWebForm_input,
-select.OWebForm_input,
-textarea.OWebForm_input{
+input.OWebForm_input{
+	width:				10px;
+	font-size:			17px;
+	height:				20px;
+}
+
+input.OWebForm_input_def,
+select.OWebForm_input_def,
+textarea.OWebForm_input_def{
+	margin-top :		0px;
 	font-size:			17px;
 	border:				solid 1px #aaaaaa;
 	width:				250px;
 	background:			url(images/fondchamp.png) repeat-x ;
 }
 
-radio.OWebForm_input{
-	width:				10px;
+input.OWebForm_input_button{
+	width:				100px;
 }
 
 img.OWebForm_input{
@@ -45,6 +57,7 @@ span.OWebForm_input{
 	display:			block;
 	border:				solid 1px orange;
 	padding:			10px;
+	margin-bottom: 		10px;
 	background:			#fffedc;
 	margin-top:			10px;
 }
@@ -55,4 +68,5 @@ div.OWebForm_input{
 	padding:			10px;
 	background:			#ffacac;
 	margin-top:			10px;
+	margin-bottom: 		10px;
 }
