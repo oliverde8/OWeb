@@ -24,7 +24,7 @@
 namespace Controller\OWeb\Helpers\Form\Elements;
 
 /**
- * Description of Text
+ * A Input element of type Text
  *
  * @author De Cramer Oliver
  */

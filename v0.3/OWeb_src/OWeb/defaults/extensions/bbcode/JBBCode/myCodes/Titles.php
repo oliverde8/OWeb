@@ -62,7 +62,6 @@ class Titles extends \Extension\bbcode\JBBCode\CodeDefinition{
 			return "<h4 id=\"$tag\">".$content."</h5>";
 		}
 	}
-	
 }
 
 ?>

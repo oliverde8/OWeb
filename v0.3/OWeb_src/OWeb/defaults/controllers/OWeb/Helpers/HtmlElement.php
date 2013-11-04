@@ -28,7 +28,8 @@ namespace Controller\OWeb\Helpers;
  *
  * @author De Cramer Oliver
  */
-abstract class HtmlElement extends \OWeb\types\Controller{
+abstract class HtmlElement extends \OWeb\types\Controller
+								implements \OWeb\utils\html\HtmlIdentified{
 	
 	private $identifier;
 	
@@ -36,18 +37,33 @@ abstract class HtmlElement extends \OWeb\types\Controller{
 		$this->identifier = new \OWeb\utils\HtmlElementIdentifier();
 	}
 	
+	/**
+	 * Setting the id of this html tag
+	 * 
+	 * @param String the id
+	 */
 	public function setHtmlId($id){
 		$this->identifier->setHtmlId($id);
 	}
 	
+	/**
+	 * @return String the id of this Html tag
+	 */
 	public function getHtmlId(){
 		return $this->identifier->getHtmlId();
 	}
 	
+	/**
+	 * Add's a class to this Html Tag. 
+	 * @param String the class name to add to this Html tag
+	 */
 	public function addHtmlClass($class){
 		$this->identifier->addHtmlClass($class);
 	}
 	
+	/**
+	 * @return String The identifier is generated into a string for html use
+	 */
 	public function getIdentifier(){
 		return $this->identifier;
 	}

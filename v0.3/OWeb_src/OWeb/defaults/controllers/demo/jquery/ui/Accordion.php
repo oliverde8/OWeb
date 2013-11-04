@@ -28,7 +28,6 @@ namespace Controller\demo\jquery\ui;
  *
  * @author De Cramer Oliver
  */
-
 class Accordion extends \OWeb\types\Controller{
 	
 	private $form;
@@ -37,20 +36,28 @@ class Accordion extends \OWeb\types\Controller{
 	public function init() {
 		$this->action_mode = self::ACTION_GET;
 		
+		//Applying special template
 		$this->applyTemplateController(new \Controller\demo\Template());
 		$this->addAction('refresh', 'doRefresh');
 		
+		//Creating the form
 		$this->form = new \Controller\demo\jquery\ui\AccordionForm();
 		$this->form->init();		
 		$this->form->loadParams();
 		
+		//Creating the accordion
 		$this->accordion = new \Controller\OWeb\widgets\jquery_ui\Accordion();
 		$this->accordion->init();
 	}
 	
+	/**
+	 * If form returned an action
+	 */
 	public function doRefresh(){
+		//Validating elements.  Should be already done but let's say on the safe side
 		$this->form->validateElements();
 		
+		//If valid apply values to the accordion
 		if($this->form->isValid()){
 			foreach($this->form->getElements() as $element){
 				$this->accordion->addParams($element->getName(), $element->getVal());
@@ -59,9 +66,7 @@ class Accordion extends \OWeb\types\Controller{
 	}
 
 	public function onDisplay() {
-		
 		$this->view->form = $this->form;
-		
 		$this->view->accordion = $this->accordion;
 	}
 }

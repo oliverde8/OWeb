@@ -30,11 +30,32 @@ namespace Controller\OWeb\Helpers\Form;
  */
 abstract class Form extends \Controller\OWeb\Helpers\HtmlElement{
 	
+	/**
+	 * The id of the form, it will be applied to the sub elements as well. 
+	 * @var String
+	 */
 	private $_formId;
+	
+	/**
+	 * List of all elements that needs to be displayed
+	 * @var Array(\OWeb\types\Controller) 
+	 */
 	private $_displayElements = array();
+	/**
+	 * List of all Form elements. 
+	 * @var Array(Controller\OWeb\Helpers\Form\Elements\Elements)
+	 */
 	private $_elements = array();
 	
-	private $_isValid;
+	/**
+	 * Is all the elements of this Form valid
+	 * @var Boolean
+	 */
+	private $_isValid = null;
+	/**
+	 * Name of the action to be sent.
+	 * @var String
+	 */
 	private $_action = null;
 	
 	public function init() {
@@ -43,7 +64,10 @@ abstract class Form extends \Controller\OWeb\Helpers\HtmlElement{
 		$this->addHtmlClass('OWebForm');
 	}
 	
-	
+	/**
+	 * Will run a check on all elements to check if their values are correct. 
+	 * Will also parse the values of the elements to whom parser validators are applied.
+	 */
 	public function validateElements(){
 		$this->_isValid = true;
 		foreach ($this->_elements as $element) {
@@ -54,25 +78,62 @@ abstract class Form extends \Controller\OWeb\Helpers\HtmlElement{
 		}
 	}
 	
+	/**
+	 * Add a display element to the Form. If this element is also a Form Element
+	 * then it will automatically be added to the list of form elements.
+	 * 
+	 * @param \OWeb\types\Controller $element The element to add
+	 */
 	public function addDisplayElement(\OWeb\types\Controller $element){
 		$this->_displayElements[] = $element;
 		if($element instanceof \Controller\OWeb\Helpers\Form\Elements\Elements){
 			$this->_elements[] = $element;
 		}
-		$element->init();
+		//$element->init();
 	}
 	
+	/**
+	 * Adds an Form Element to the Form without adding it to the Display List.
+	 * 
+	 * @param \Controller\OWeb\Helpers\Form\Elements\Elements $element
+	 */
+	public function addElement(\Controller\OWeb\Helpers\Form\Elements\Elements $element){
+		$this->_elements[] = $element;
+		//$element->init();
+	}
+	
+	/**
+	 * You will register all your elements to the form at this stage of the code.
+	 */
 	abstract protected function registerElements();
 
-	
+	/**
+	 * Is all the elements in this Form has valid values? 
+	 * If all elements haven't been calidated yet
+	 * 
+	 * @return Boolean
+	 */
 	public function isValid(){
+		if($this->_isValid == null)
+			$this->validateElements();
 		return $this->_isValid;
 	}
 	
+	/**
+	 * The id of the form, it will be applied to the sub elements as well.
+	 * 
+	 * @param String $id
+	 */
 	public function setFormId($id){
-
+		$this->_action = $id;
 	}
 	
+	/**
+	 * Set the action of the form. 
+	 * It will generate a hidden element with name action and the desired action name
+	 * 
+	 * @param type $actionName
+	 */
 	public function setAction($actionName){
 		$this->_action = new Elements\Hidden();
 		$this->_action->setName('action');
@@ -87,6 +148,10 @@ abstract class Form extends \Controller\OWeb\Helpers\HtmlElement{
 		$this->view->action = $this->_action;
 	}
 	
+	/**
+	 * 
+	 * @return Array(Controller\OWeb\Helpers\Form\Elements\Elements)
+	 */
 	public function getElements(){
 		return $this->_elements;
 	}

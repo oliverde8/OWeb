@@ -24,7 +24,7 @@
 namespace Controller\OWeb\Helpers\Form\Elements;
 
 /**
- * Description of Radio
+ * A list of Radio buttons. WIth this you create multiple radio buttons for the same input name
  *
  * @author De Cramer Oliver
  */
@@ -39,6 +39,12 @@ class Radio extends Elements{
 		$this->validator = new \OWeb\utils\inputManagement\validators\ChosenValues();
 	}
 	
+	/**
+	 * Adds a new Radio button to this Element
+	 * 
+	 * @param type $text Text to show next to the Radio element
+	 * @param type $value The value of the Radio element
+	 */
 	public function add($text, $value){
 		$this->radios[] = array($text, $value);
 		$this->validator->addPossibility($value);
