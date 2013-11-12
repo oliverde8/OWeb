@@ -33,6 +33,8 @@
 			$this->addHeader('main.css',\OWeb\manage\Headers::css);
 			$this->addHeader('main.js',\OWeb\manage\Headers::javascript);
 			$this->addHeader('menu.css',\OWeb\manage\Headers::css);
+			$this->addHeader('topSlide.css',\OWeb\manage\Headers::css);
+			$this->addHeader('topSlide.js',\OWeb\manage\Headers::js);
 
 			$this->headers();
 		?>
@@ -62,6 +64,24 @@
 
     <body>
 
+		<div id="slideDownIcons" style="left : 0px; top: 10px">
+			<div class="faceBookTwitter2">
+				<a href="https://github.com/oliverde8/" >
+					<img id="slideDownIcons_twitter" 
+						class="slideDownIcons" 
+						src="<?= OWEB_HTML_URL_IMG ?>/git_icon.png" alt=""/>
+				</a>
+				<a href="https://www.ohloh.net/accounts/oliverde8" >
+					<img id="slideDownIcons_twitter" 
+						class="slideDownIcons" 
+						src="<?= OWEB_HTML_URL_IMG ?>/ohloh_icon.png" alt=""/>
+				</a>
+			</div>
+			<div class="faceBookTwitter2">
+				
+			</div>
+		</div>
+		
         <!-- Le Header -->
         <div id="header">
 
