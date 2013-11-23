@@ -98,7 +98,7 @@ class Artciles {
 		}
 	}
 	
-	public function getNbCategoryArticles(\Model\articles\CategorieElement $cat, $rec = true){
+	public function getNbCategoryArticles(\Model\articles\CategorieElement $cat, $rec = true, $pusblished=true){
 		
 		try{
 			$connection = $this->ext_connection->get_Connection();
@@ -110,22 +110,25 @@ class Artciles {
 				
 				$sql = "SELECT COUNT(*) as nb
 						FROM " . $prefix . "article_article aa
-						WHERE id_article IN (SELECT acm.article_id 
+						WHERE (id_article IN (SELECT acm.article_id 
 														FROM " . $prefix . "article_category_more acm 
 														WHERE acm.category_id = ".$cat->getId()." )
 								OR category_id = ".$cat->getId()."
 								OR id_article IN (SELECT acm.article_id 
 														FROM " . $prefix . "article_category_more acm 
 														WHERE acm.category_id IN ($cat_parents))
-								OR category_id IN ($cat_parents)";
+								OR category_id IN ($cat_parents))"
+								." AND published = ".$pusblished ? '1' : '0';
 				//return;
 			}else
 				$sql = "SELECT COUNT(*) as nb
 						FROM " . $prefix . "article_article aa
-						WHERE id_article IN (SELECT acm.article_id 
+						WHERE (id_article IN (SELECT acm.article_id 
 													FROM " . $prefix . "article_category_more acm 
 													WHERE acm.category_id = ".$cat->getId()." )
-							OR category_id = ".$cat->getId()."";
+							OR category_id = ".$cat->getId().")"
+							. " AND published = ".$pusblished ? '1' : '0';
+			
 			
 			if($sql = $connection->query($sql)){
 
@@ -138,7 +141,7 @@ class Artciles {
 		}
 	}
 	
-	public function getCategoryArticles(\Model\articles\CategorieElement $cat, $start, $nbElement, $rec = true){
+	public function getCategoryArticles(\Model\articles\CategorieElement $cat, $start, $nbElement, $rec = true, $pusblished=true){
 		
 		try{
 			$connection = $this->ext_connection->get_Connection();
@@ -150,30 +153,32 @@ class Artciles {
 				
 				$sql = "SELECT id_article
 						FROM " . $prefix . "article_article aa
-						WHERE id_article IN (SELECT acm.article_id 
+						WHERE (id_article IN (SELECT acm.article_id 
 														FROM " . $prefix . "article_category_more acm 
 														WHERE acm.category_id = ".$cat->getId()." )
 								OR category_id = ".$cat->getId()."
 								OR id_article IN (SELECT acm.article_id 
 														FROM " . $prefix . "article_category_more acm 
 														WHERE acm.category_id IN ($cat_parents))
-								OR category_id IN ($cat_parents)
+								OR category_id IN ($cat_parents))"
+								. " AND published = ".($pusblished ? '1' : '0')."
 						ORDER BY pdate DESC
 						LIMIT $start, $nbElement";
 				//return;
 			}else
 				$sql = "SELECT id_article
 						FROM " . $prefix . "article_article aa
-						WHERE id_article IN (SELECT acm.article_id 
+						WHERE (id_article IN (SELECT acm.article_id 
 													FROM " . $prefix . "article_category_more acm 
 													WHERE acm.category_id = ".$cat->getId()." )
-							OR category_id = ".$cat->getId()."
+							OR category_id = ".$cat->getId()
+							. ") AND published = ".($pusblished ? '1' : '0')."		
 						ORDER BY pdate DESC
 						LIMIT $start, $nbElement";
 			
 			//$sql = $connection->prepare($sql);
             $article_ids = "";
-
+			
             if($sql = $connection->query($sql)){
 				while($result = $sql->fetchObject()){
 					$article_ids .= $result->id_article." ,";

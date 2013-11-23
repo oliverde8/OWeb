@@ -73,12 +73,12 @@ class ElementNode extends Node {
     public function getAttribute() {
         return $this->attribute;
     }
-    
-    /**
-     * Returns all the children of this element.
-     * 
-     * @return an array of this node's child nodes
-     */
+	
+	/**
+	 * Returns all the children of this element.
+	 * 
+	 * @return array(ElementNode)this node's child nodes
+	 */
     public function getChildren() {
         return $this->children;
     }

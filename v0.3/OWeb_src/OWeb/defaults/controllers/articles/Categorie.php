@@ -52,13 +52,13 @@ class Categorie extends \OWeb\types\Controller{
 		else 
 			$page--;
 
-        try{
+        //try{
 		    $this->view->articles = $this->articles->getCategoryArticles($this->view->mcat, $this->nbElementPage*$page, $this->nbElementPage);
 		    $this->view->nbArticle = $this->articles->getNbCategoryArticles($this->view->mcat);
-        }catch (ArticleNotFound $ex){
+        /*}catch (ArticleNotFound $ex){
             $this->view->articles = array();
             $this->view->nbArticle = 0;
-        }
+        }*/
 		$this->view->cpage = $page;
 		$this->view->nbElementPage = $this->nbElementPage;
 	}
