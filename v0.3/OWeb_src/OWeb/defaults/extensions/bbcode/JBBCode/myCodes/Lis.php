@@ -19,35 +19,30 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
-namespace Extension\bbcode;
+namespace Extension\bbcode\JBBCode\myCodes;
+
 /**
- * Description of JBBCode
+ * Description of Titles
  *
  * @author oliverde8
  */
-class JBBCode extends \OWeb\types\Extension{
+class Lis extends \Extension\bbcode\JBBCode\CodeDefinition{
 	
-	private $parser = null;
+	public function __construct()
+    {
+        parent::__construct();
+        $this->setTagName("list");
+		$this->setParseContent(true);
+    }
 	
-	protected function init() {
+	public function asHtml( \Extension\bbcode\JBBCode\ElementNode $el ){		
+		$content = "<ul>";
+        foreach( $el->getChildren() as $child )
+            $content .= $child->getAsHTML();
 		
+		return $content.'</ul>';
 	}
 	
-	protected function getNewParser(){
-		$parser = new JBBCode\Parser();
-		if($this->parser == null)
-			$this->parser = $parser;
-		
-		$parser->addCodeDefinition(new \Extension\bbcode\JBBCode\myCodes\Titles());
-		$parser->addCodeDefinition(new \Extension\bbcode\JBBCode\myCodes\Lis());
-		$parser->addCodeDefinition(new \Extension\bbcode\JBBCode\myCodes\ListItem());
-		
-		return $parser;
-	}
-	
-	public function getParser(){
-		return $this->parser == null ? $this->getNewParser() : $this->parser;
-	}
 }
 
 ?>
