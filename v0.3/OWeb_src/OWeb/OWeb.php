@@ -144,10 +144,8 @@ class OWeb {
 		//Settings loaded, starting the mode ...
 		if(isset($this->_get['mode'])){
 			switch (strtoupper($this->_get['mode'])) {
-				case 'APPI':
-					/*
-					 * @todo !! APPI mode & EXT mode
-					 */
+				case 'API':
+					$this->mode = new \OWeb\manage\modes\API();
 					break;
 				case 'CTRACTION':
 					$this->mode = new \OWeb\manage\modes\CtrAction();

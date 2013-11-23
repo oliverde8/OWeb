@@ -65,7 +65,7 @@ class HeaderOnReadyManager{
 	 */
 	public function makeAdd(){		
 		if(OWEB_DEBUG > 0)
-			$code .= $this->makeAddDebug ();
+			$code .= $this->makeAddNormal ();
 		else
 			$code .= $this->makeAddNormal ();
 		
@@ -95,9 +95,13 @@ class HeaderOnReadyManager{
 	 * @return string
 	 */
 	public function makeAddNormal(){
-		$s = '$( document ).ready(function() {'."\n";
+		$s = "var oweb_ready = function (){";
 		foreach ($this->headers as $code)
 			$s .= $code."\n\n";
+		$s .= "}\n\n";
+		
+		$s .= '$( document ).ready(function() {'."\n";
+		$s .= "oweb_ready(); \n";
 		$s .= "\n});\n\n";
 		
 		return $s;

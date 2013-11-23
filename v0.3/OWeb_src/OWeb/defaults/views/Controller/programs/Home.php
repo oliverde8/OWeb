@@ -34,6 +34,7 @@ $carousel_id = 0;
                     $box_display->display();
                 }
 ?>
+				<div class="ColloneClean"></div>
                 <h1>Last Updated</h1>
 
                 <?php

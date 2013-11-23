@@ -76,6 +76,14 @@ class Headers extends \OWeb\utils\Singleton{
 		self::forceInstance($this);
 	}
 
+	public function reset(){
+		unset($this->css_headers);
+		unset($this->js_headers);
+		unset($this->other_headers);
+		$this->css_headers = array();
+		$this->js_headers = array();
+		$this->other_headers = array();
+	}
 	
 	/**
 	 * Allows you to add a header to the we bpage
@@ -149,21 +157,21 @@ class Headers extends \OWeb\utils\Singleton{
 				
 		echo "\n<!--OWEB displays all CSS includes-->\n";
 		//DIsplaying all Css Headers
-		foreach ($this->css_headers as $h){
-			echo $h->getCode();
+		foreach ($this->css_headers as $id => $h){
+			echo $h->getCode($id);
 		}
 		
 		echo "\n<!--OWEB displays all JS includes and codes-->\n";
 		
 		//Displaying Javascript Headers
-		foreach ($this->js_headers as $h){
-			echo $h->getCode();
+		foreach ($this->js_headers as $id => $h){
+			echo $h->getCode($id);
 		}
 		
 		echo "\n<!--OWEB displays personalized header codes-->\n";
 		//Displaying all other headers
-		foreach ($this->other_headers as $h){
-			echo $h->getCode();
+		foreach ($this->other_headers as $id => $h){
+			echo $h->getCode($id);
 		}
 		
 		$this->eventM->sendEvent('Didplay_Done@OWeb\manage\Headers');
@@ -178,24 +186,38 @@ class Headers extends \OWeb\utils\Singleton{
 		
 		$s = "\n<!--OWEB displays all CSS includes-->\n";
 		//DIsplaying all Css Headers
-		foreach ($this->css_headers as $h){
-			$s .= $h->getCode();
+		foreach ($this->css_headers as $id => $h){
+			$s .= $h->getCode($id);
 		}
 		
-		echo "\n<!--OWEB displays all JS includes and codes-->\n";
+		$s .=  "\n<!--OWEB displays all JS includes and codes-->\n";
 		
 		//Displaying Javascript Headers
-		foreach ($this->js_headers as $h){
-			$s .= $h->getCode();
+		foreach ($this->js_headers as $id => $h){
+			$s .= $h->getCode($id);
 		}
 		
-		echo "\n<!--OWEB displays personalized header codes-->\n";
+		$s .=  "\n<!--OWEB displays personalized header codes-->\n";
 		//Displaying all other headers
-		foreach ($this->other_headers as $h){
-			$s .= $h->getCode();
+		foreach ($this->other_headers as $id => $h){
+			$s .= $h->getCode($id);
 		}
 		
 		return $s;
+	}
+	
+	public function getAllHeaders(){
+		$all = array();
+		foreach ($this->css_headers as $id => $h){
+			$all[$id] = $h->getCode($id);
+		}
+		foreach ($this->js_headers as $id => $h){
+			$all[$id] = $h->getCode($id);
+		}
+		foreach ($this->other_headers as $id => $h){
+			$all[$id] = $h->getCode($id);
+		}
+		return $all;
 	}
 	
 }

@@ -41,6 +41,8 @@ class Template {
      */
     function __construct($tmp='main') {
 		
+		\OWeb\manage\Events::getInstance()->sendEvent('DisplayTemplate_Start@OWeb\manage\Template');
+		
 		$this->language = new \OWeb\types\Language();
 		
 		//First we prepare the page
@@ -56,6 +58,9 @@ class Template {
 			//Clean
 			ob_end_clean();
 			echo $foo;
+			
+			\OWeb\manage\Events::getInstance()->sendEvent('DisplayTemplate_End@OWeb\manage\Template');
+			
 		}catch(\Exception $ex){
 			//Clean
 			ob_end_clean();
@@ -66,6 +71,7 @@ class Template {
 				$ctr->addParams("exception",$ex);
 				\OWeb\manage\Controller::getInstance()->display();
 			}else{
+				\OWeb\manage\Events::getInstance()->sendEvent('DisplayTemplate_Fail@OWeb\manage\Template');
 				new Template();
 			}
 		}
@@ -76,12 +82,14 @@ class Template {
      */
     private function prepareDisplay(){
 		
+		\OWeb\manage\Events::getInstance()->sendEvent('PrepareContent_Start@OWeb\manage\Template');
+		
 		//We save the content so that if there is an error we don't show half displayed codes
 		ob_start();
 		try{/**/
-			\OWeb\manage\Controller::getInstance()->display();
-			
+			\OWeb\manage\Controller::getInstance()->display();			
 		}catch(\Exception $e){
+			\OWeb\manage\Events::getInstance()->sendEvent('PrepareContent_Fail@OWeb\manage\Template');
 			ob_end_clean();
 			ob_start();
 			$ctr = \OWeb\manage\Controller::getInstance()->loadException($e);
@@ -89,7 +97,12 @@ class Template {
 			\OWeb\manage\Controller::getInstance()->display();
 		}
 		
+		\OWeb\manage\Events::getInstance()->sendEvent('PrepareContent_Succ@OWeb\manage\Template');
+		
 		$this->content = ob_get_contents();
+		
+		\OWeb\manage\Events::getInstance()->sendEvent('PrepareContent_End@OWeb\manage\Template');
+		
 		ob_end_clean();
 	}
 	

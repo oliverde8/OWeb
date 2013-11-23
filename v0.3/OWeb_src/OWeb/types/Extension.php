@@ -31,9 +31,9 @@ use OWeb\types\extension\Depandence;
  */
 abstract class Extension extends \OWeb\utils\Singleton{
 
-	private $actions;
-	private $evenments;
 	private $dependence;
+	private $params = array();
+	private $actions = array();
 	
 	abstract protected function init();
 	
@@ -71,6 +71,51 @@ abstract class Extension extends \OWeb\utils\Singleton{
 	protected function addDependance($plugin_name) {
 		$dep = new Depandence($plugin_name);
 		$this->dependence[] = $dep;
+	}
+	
+	/**
+     * Registers an action that the controller might do
+     *
+     * @param $action string the name of the action
+     * @param $nom_func The function to call when the action is executed
+     */
+    protected function addAction($action, $nom_func) {
+		$this->actions[$action] = $nom_func;
+	}
+
+    /**
+     * Resets all actions
+     */
+    protected function resetActionsAll() {
+		$this->actions = array();
+	}
+
+    /**
+     * Removes an action from the action list
+     *
+     * @param $actionName string The action name to be removed
+     */
+    protected function removeAction($actionName) {
+		if (isset($this->actions[$actionName]))
+			unset($this->actions[$actionName]);
+	}
+
+    /**
+     * Executes the action
+     * This will call the function registered earlier
+     *
+     * @param $actionName String the name of the action to execute
+     */
+    public function doAction($actionName) {
+		if(isset($this->actions[$actionName]))
+			return call_user_func_array(array($this, $this->actions[$actionName]), array());
+	}
+	
+	 /**
+     * Automatically loads parameters throught PHP get and Post variables
+     */
+    public function loadParams() {
+		$this->params = \OWeb\OWeb::getInstance()->get_get();
 	}
 }
 

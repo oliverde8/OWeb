@@ -48,18 +48,18 @@ class Header {
 	 * 
 	 * @return type The code of the Header
 	 */
-	public function getCode(){
+	public function getCode($id=""){
 
         switch($this->type){
 
             case Headers::javascript :
-                $code = '<script type="text/javascript" src="'.$this->code.'"></script>'."\n";
+                $code = '<script id="'.$id.'" type="text/javascript" src="'.$this->code.'"></script>'."\n";
                 break;
             case Headers::css :
-                $code = '<link href="'.$this->code.'" rel="stylesheet" type="text/css" />'."\n";
+                $code = '<link id="'.$id.'" href="'.$this->code.'" rel="stylesheet" type="text/css" />'."\n";
                 break;
 			case Headers::jsCode :
-				 $code = '<script type="text/javascript" >'."\n".$this->code."\n</script>\n\n";
+				 $code = '<script id="'.$id.'" type="text/javascript" >'."\n".$this->code."\n</script>\n\n";
 				break;
 			default :
                 $code = $this->code;

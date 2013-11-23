@@ -26,10 +26,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>oliverde8 - Website</title>
 
+		
+		<script>
+			
+		</script>
+		
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
         
 		<?php
 			$this->InitLanguageFile();
+			$this->addHeader('jquery_theme/jquery-ui-1.9.2.custom.min.css', \OWeb\manage\Headers::css);
+			$this->addHeader('jquery/jquery-ui-1.9.2.custom.min.js', \OWeb\manage\Headers::javascript);
 			$this->addHeader('main.css',\OWeb\manage\Headers::css);
 			$this->addHeader('main.js',\OWeb\manage\Headers::javascript);
 			$this->addHeader('menu.css',\OWeb\manage\Headers::css);
@@ -54,12 +61,21 @@
 			  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 			  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 			})();
-		  </script>
-
+		</script>
+		
         <?php
         }
         ?>
-
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$(".slideRightIcons").click(function(){
+					alert($( this ).data("animation"));
+					oweb_dynamicJsLoader_animName = $( this ).data("animation");
+				});
+			});			
+		</script>
+		
     </head>
 
     <body>
@@ -76,9 +92,6 @@
 						class="slideDownIcons" 
 						src="<?= OWEB_HTML_URL_IMG ?>/ohloh_icon.png" alt=""/>
 				</a>
-			</div>
-			<div class="faceBookTwitter2">
-				
 			</div>
 		</div>
 		

@@ -72,16 +72,18 @@ class Extensions extends \OWeb\utils\Singleton{
 		if (isset($this->extensions[$name])) {
 			return $this->extensions[$name];
 		}
-		else if($this->notInit){
-			try{
-				$extension = $this->loadExtension($name);
-			}catch(\Exception $exception){
-				throw new \OWeb\manage\exceptions\Extension("YOu can't get this extension. It hasn't been already loaded and can't be loaded now",0,$exception);
+
+		try{
+			$extension = $this->loadExtension($name);
+			if(!$this->notInit){
+				$extension->OWeb_Init();
 			}
-			return $extension;
-		}else{
-			throw new \OWeb\manage\exceptions\Extension("You cant load a extension after initialisation completed");
+			
+		}catch(\Exception $exception){
+			throw new \OWeb\manage\exceptions\Extension("YOu can't get this extension. It hasn't been already loaded and can't be loaded now",0,$exception);
 		}
+		return $extension;
+
 	}
 	
 	/**

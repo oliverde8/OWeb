@@ -105,7 +105,8 @@ abstract class Controller extends NamedClass implements Configurable {
      * @param $actionName String the name of the action to execute
      */
     public function doAction($actionName) {
-		call_user_func_array(array($this, $this->actions[$actionName]), array());
+		if(isset($this->actions[$actionName]))
+			return call_user_func_array(array($this, $this->actions[$actionName]), array());
 	}
 
     /**

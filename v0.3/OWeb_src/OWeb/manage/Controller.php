@@ -52,6 +52,8 @@ class Controller extends \OWeb\utils\Singleton{
 	 */
 	public function initController(\OWeb\types\Controller $controller=null){
 
+		if($this->controller == null) return;
+		
         Events::getInstance()->sendEvent('Init_Prepare@OWeb\manage\Controller',$this->controller);
 
 		$this->controller->init();
