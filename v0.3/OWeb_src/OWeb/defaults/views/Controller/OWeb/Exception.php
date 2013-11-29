@@ -8,16 +8,12 @@ $this->addHeader('2Collone.css',\OWeb\manage\Headers::css);
 
 <?php 
 	$h='
-		 <script>
-    $(function() {
         $( "#exception_trace" ).accordion({
             collapsible: true,
 			 heightStyle: "content",
 			 active : "false"
-        });
-    });
-    </script>';
-	$this->addHeader($h,\OWeb\manage\Headers::code);
+        });';
+	\OWeb\utils\js\jquery\HeaderOnReadyManager::getInstance()->add($h);
 ?>
 
 <?php

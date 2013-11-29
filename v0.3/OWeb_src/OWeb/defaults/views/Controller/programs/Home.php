@@ -102,9 +102,7 @@ $carousel_id = 0;
 				
 				<?php
 					$nbT++;
-					echo '<script type="text/javascript">
-								$(\'#prog_carousel_'.$nbT.'\').contentcarousel();
-							</script>';
+					\OWeb\utils\js\jquery\HeaderOnReadyManager::getInstance()->add('$(\'#prog_carousel_'.$nbT.'\').contentcarousel();');
 				}
 				?>
 			

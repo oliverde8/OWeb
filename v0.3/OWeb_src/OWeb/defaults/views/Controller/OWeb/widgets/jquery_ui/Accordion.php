@@ -20,9 +20,6 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-$this->addHeader('jquery_theme/jquery-ui-1.9.2.custom.min.css', \OWeb\manage\Headers::css);
-$this->addHeader('jquery/jquery-ui-1.9.2.custom.min.js', \OWeb\manage\Headers::javascript);
-
 echo '<div '.$this->id.'>';
 
 foreach ($this->sections as $title => $content){

@@ -27,11 +27,8 @@ $this->addHeader('jquery_theme/jquery-ui-1.9.2.custom.min.css', \OWeb\manage\Hea
 $this->addHeader('jquery/jquery-ui-1.9.2.custom.min.js', \OWeb\manage\Headers::javascript);
 
 
-$this->addHeader('  <script>
-  $(function() {
-    $( ".Description > .tabs" ).tabs();
-  });
-  </script>', \OWeb\manage\Headers::code);
+\OWeb\utils\js\jquery\HeaderOnReadyManager::getInstance()->add('
+    $( ".Description > .tabs" ).tabs();', \OWeb\manage\Headers::code);
 ?>
 
 

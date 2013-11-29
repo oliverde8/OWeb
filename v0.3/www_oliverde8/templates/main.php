@@ -35,8 +35,8 @@
         
 		<?php
 			$this->InitLanguageFile();
-			$this->addHeader('jquery_theme/jquery-ui-1.9.2.custom.min.css', \OWeb\manage\Headers::css);
-			$this->addHeader('jquery/jquery-ui-1.9.2.custom.min.js', \OWeb\manage\Headers::javascript);
+			$this->addHeader('jquery_theme/jquery-ui-1.10.3.custom.min.css', \OWeb\manage\Headers::css);
+			$this->addHeader('jquery/jquery-ui-1.10.3.custom.min.js', \OWeb\manage\Headers::javascript);
 			$this->addHeader('main.css',\OWeb\manage\Headers::css);
 			$this->addHeader('main.js',\OWeb\manage\Headers::javascript);
 			$this->addHeader('menu.css',\OWeb\manage\Headers::css);

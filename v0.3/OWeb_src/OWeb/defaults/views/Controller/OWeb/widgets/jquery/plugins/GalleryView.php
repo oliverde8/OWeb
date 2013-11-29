@@ -21,7 +21,6 @@
  */
 
 
-$this->addHeader('jquery/jquery.js', \OWeb\manage\Headers::javascript);
 $this->addHeader('jquery/jquery.timers-1.2.js', \OWeb\manage\Headers::javascript);
 $this->addHeader('jquery/jquery.easing.1.3.js', \OWeb\manage\Headers::javascript);
 $this->addHeader('jquery/jquery.galleryview-3.0-dev.js', \OWeb\manage\Headers::javascript);

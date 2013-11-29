@@ -5,7 +5,11 @@ $this->addHeader('syntaxHighlighter/shCore.js', \OWeb\manage\Headers::javascript
 $this->addHeader('syntaxHighlighter/shBrushJScript.js', \OWeb\manage\Headers::js);
 $this->addHeader('syntaxHighlighter/shBrushPhp.js', \OWeb\manage\Headers::js);
 //$this->addHeader('syntaxHighlighter/shAutoloader.js', \OWeb\manage\Headers::javascript);
-$this->addHeader('shLoader.js', \OWeb\manage\Headers::javascript);
+
+\OWeb\utils\js\jquery\HeaderOnReadyManager::getInstance()->add("SyntaxHighlighter.config.bloggerMode = true;
+SyntaxHighlighter.defaults['toolbar'] = true;
+SyntaxHighlighter.all();");
+
 $this->addHeader('syntaxHighlighter/shCoreDefault.css', \OWeb\manage\Headers::css);
 
 $this->form->display();
