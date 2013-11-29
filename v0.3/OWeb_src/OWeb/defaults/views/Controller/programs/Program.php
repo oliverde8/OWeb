@@ -23,8 +23,6 @@
 $this->addHeader('articles.css', \OWeb\manage\Headers::css);
 $this->addHeader('onprogress.css', \OWeb\manage\Headers::css);
 $this->addHeader('programs.css', \OWeb\manage\Headers::css);
-$this->addHeader('jquery_theme/jquery-ui-1.9.2.custom.min.css', \OWeb\manage\Headers::css);
-$this->addHeader('jquery/jquery-ui-1.9.2.custom.min.js', \OWeb\manage\Headers::javascript);
 
 
 \OWeb\utils\js\jquery\HeaderOnReadyManager::getInstance()->add(

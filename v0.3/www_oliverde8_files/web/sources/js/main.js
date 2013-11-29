@@ -6,8 +6,6 @@ $(document).ready(function(){
 	
 	ResizeAndPositionElements();
 	
-	
-	
 	 $(window).resize(function(){
 		ResizeAndPositionElements();
 	});
@@ -15,7 +13,6 @@ $(document).ready(function(){
 });
 
 function ResizeAndPositionElements(){
-	
 	$('#contenuFull > div > div').attr(
 		'style','min-height: '+ ($(window).height()-$('#header').height() - 90)+'px'
 	);

@@ -17,7 +17,7 @@ body a{
 	font-weight:		bold;
 	text-decoration:	none;
 	color:				#789abc;
-	font-size: 11px;
+	font-size:			11px;
 }
 a:hover{
 	color: #0105AA;	
@@ -110,6 +110,10 @@ div#contenuFull{
 	font-size: 12px;
 	clear: both;
 	width : 100%;
+}
+
+div#contenuFull a{
+	font-size: 12px;
 }
 
 div#contenuFull > div > div{
@@ -213,6 +217,7 @@ h3{
 
 
 li {
+	padding: 5px;
 	margin-left: -25px;
 	padding-left: 0px;
 	padding-right: 0px;

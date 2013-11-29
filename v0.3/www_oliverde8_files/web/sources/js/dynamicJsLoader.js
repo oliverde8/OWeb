@@ -81,12 +81,13 @@ var oweb_dynamicJsLoader = function(){
 							history.pushState(state, title, link);
 						}
 						
-						$('#contenuFull').show('drop');
-						
-						if ( typeof oweb_ready == 'function' ) {
-							oweb_ready(); 
-						}
-						oweb_dynamicJsLoader();
+						$('#contenuFull').show('drop', function(){
+							if ( typeof oweb_ready == 'function' ) {
+								oweb_ready(); 
+								ResizeAndPositionElements();
+							}
+							oweb_dynamicJsLoader();
+						});	
 						
 					});
 				}
@@ -97,7 +98,6 @@ var oweb_dynamicJsLoader = function(){
 	}
 
 	$('a').click(function(){
-		$('a').unbind( "click" );
 		return OWeb_ChangePage($(this).attr('href'), true);
 	});
 

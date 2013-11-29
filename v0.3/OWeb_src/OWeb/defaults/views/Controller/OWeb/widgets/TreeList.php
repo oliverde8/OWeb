@@ -6,10 +6,10 @@ function drawTree($elements,$ctr, $depth=0){
 		if(isset($ctr->classes[$depth]))
 			$class .= " ".$ctr->classes[$depth];
 		
-		echo '<ul class="'.$class.'">';
+		echo '<ul class="oweb_tree_element '.$class.'">';
 		foreach($elements as $elem){ 
 		if ($elem->isVisible() || $ctr->showHidden){
-			echo '<li class="'.$class.'">';?>
+			echo '<li class="oweb_tree_element '.$class.'">';?>
 				<p>
 					<?php 
 					if($ctr->link != null){

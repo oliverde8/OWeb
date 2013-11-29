@@ -35,6 +35,8 @@ class Template {
 	
 	private $language;
 
+	private $content_heads = "";
+	
     /**
      *
      * @param string $tmp The name of the template to load
@@ -104,6 +106,9 @@ class Template {
 		\OWeb\manage\Events::getInstance()->sendEvent('PrepareContent_End@OWeb\manage\Template');
 		
 		ob_end_clean();
+		
+		$this->content_heads = \OWeb\manage\Headers::getInstance()->toString();
+		\OWeb\manage\Headers::getInstance()->reset();
 	}
 	
 	/**
@@ -111,6 +116,7 @@ class Template {
 	 */
 	public function headers(){
 		\OWeb\manage\Headers::getInstance()->display();
+		echo $this->content_heads;
 	}
 	
 	/**

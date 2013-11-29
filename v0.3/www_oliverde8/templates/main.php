@@ -43,6 +43,8 @@
 			$this->addHeader('topSlide.css',\OWeb\manage\Headers::css);
 			$this->addHeader('topSlide.js',\OWeb\manage\Headers::js);
 
+			\OWeb\utils\js\jquery\HeaderOnReadyManager::getInstance()->add('ResizeAndPositionElements();');
+			
 			$this->headers();
 		?>
 
