@@ -21,9 +21,7 @@
  */
 
 $this->addHeader('2Collone.css', \OWeb\manage\Headers::css);
-
 ?>
-
 <div id="twoCollone">
 	<div>
 		<div class="ColloneGauche">
@@ -39,7 +37,3 @@ $this->addHeader('2Collone.css', \OWeb\manage\Headers::css);
         <div class="ColloneClean"></div>
     </div>
 </div>
-
-
-
-?>

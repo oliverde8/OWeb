@@ -27,17 +27,19 @@ $this->addHeader('jquery_theme/jquery-ui-1.9.2.custom.min.css', \OWeb\manage\Hea
 $this->addHeader('jquery/jquery-ui-1.9.2.custom.min.js', \OWeb\manage\Headers::javascript);
 
 
-\OWeb\utils\js\jquery\HeaderOnReadyManager::getInstance()->add('
-    $( ".Description > .tabs" ).tabs();', \OWeb\manage\Headers::code);
+\OWeb\utils\js\jquery\HeaderOnReadyManager::getInstance()->add(
+		'$( ".Description > .tabs" ).tabs();', \OWeb\manage\Headers::code);
 ?>
 
 
-<p> <?php
+<p> 
+	<?php
     \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Category_Parents')
         ->addParams('cat', $this->program->getCategory())
         ->addParams('link', new OWeb\utils\Link(array('page' => 'programs\Categorie', "catId"=>"")))
         ->display();
-    ?></p>
+    ?>
+	</p>
 <h1><?= $this->program->getName() ?> </h1>
 
 
