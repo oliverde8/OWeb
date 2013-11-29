@@ -101,7 +101,9 @@ $this->addHeader('  <script>
                     else{
 
                         $article_show = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\articles\widgets\show_article\Def');
-                        $article_show->s('article', $this->program->getDesc_article());
+                        $article_show->addParams('article', $this->program->getDesc_article())
+								->addParams('short', false)
+								->addParams('image_level', 2);
                         $article_show->display();
 
                     }
