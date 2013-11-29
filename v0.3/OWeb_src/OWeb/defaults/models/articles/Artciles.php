@@ -164,7 +164,7 @@ class Artciles extends Singleton{
 			if($rec && !empty($cs)){
 				$cat_parents = $cat->getRecuriveChildrensIds();
 				
-				$sql = "SELECT id_article
+				$sql2 = "SELECT id_article
 						FROM " . $prefix . "article_article aa
 						WHERE (id_article IN (SELECT acm.article_id 
 														FROM " . $prefix . "article_category_more acm 
@@ -179,7 +179,7 @@ class Artciles extends Singleton{
 						LIMIT $start, $nbElement";
 				//return;
 			}else
-				$sql = "SELECT id_article
+				$sql2 = "SELECT id_article
 						FROM " . $prefix . "article_article aa
 						WHERE (id_article IN (SELECT acm.article_id 
 													FROM " . $prefix . "article_category_more acm 
@@ -192,7 +192,7 @@ class Artciles extends Singleton{
 			//$sql = $connection->prepare($sql);
             $article_ids = "";
 			
-            if($sql = $connection->query($sql)){
+            if($sql = $connection->query($sql2)){
 				while($result = $sql->fetchObject()){
 					$article_ids .= $result->id_article." ,";
 				}
@@ -200,13 +200,16 @@ class Artciles extends Singleton{
 				$article_ids = substr($article_ids, 0, strlen($article_ids)-1);
 			}
 			
-			$sql = "SELECT * 
+			if($article_ids == "")
+				return array();
+			
+			$sql2 = "SELECT * 
 						FROM " . $prefix . "article_article aa, " . $prefix . "article_content ac
 						WHERE ac.article_id = id_article 
 							AND id_article IN ($article_ids)
 					ORDER BY pdate DESC";
 			
-			if($sql = $connection->query($sql)){
+			if($sql = $connection->query($sql2)){
 				
 				$articles = array();
 				while($result = $sql->fetchObject()){
@@ -232,18 +235,18 @@ class Artciles extends Singleton{
 					}
 				}	
 				
-				$sql = "SELECT * FROM " . $prefix . "article_category_more
+				$sql2 = "SELECT * FROM " . $prefix . "article_category_more
 								WHERE article_id IN ( $article_ids) ";
-				if($sql = $connection->query($sql)){
+				if($sql = $connection->query($sql2)){
 					while($result = $sql->fetchObject()){
 						if(!$articles[$result->article_id]->isDone())
 							$articles[$result->article_id]->addCategorie($this->categories->getElement($result->category_id));
 					}
 				}
 				
-				$sql = "SELECT * FROM " . $prefix . "article_attribute
+				$sql2 = "SELECT * FROM " . $prefix . "article_attribute
 								WHERE article_id IN ( $article_ids) ";
-				if($sql = $connection->query($sql)){
+				if($sql = $connection->query($sql2)){
 					while($result = $sql->fetchObject()){
 						if(!$articles[$result->article_id]->isDone())
 							$articles[$result->article_id]->addAttribute($result->name, $result->value);
@@ -256,7 +259,7 @@ class Artciles extends Singleton{
 
 				return $articles;
 			}else{
-				throw new \Model\articles\exception\ArticleNotFound("Couldn't get Articles of Category : ".$cat->getId()." . SQL ERROR2", 0);
+				throw new \Model\articles\exception\ArticleNotFound("Couldn't get Articles of Category : ".$cat->getId()." . SQL ERROR2".$sql2, 0);
 			}
 			
 		}catch(\Exception $ex){
