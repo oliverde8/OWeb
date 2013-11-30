@@ -2,11 +2,9 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/defaults/models/programs/Programs.php</file>
-        <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/defaults/views/Controller/programs/Program.php</file>
-        <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/defaults/models/programs/Program.php</file>
-        <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/defaults/views/Controller/articles/Article.php</file>
-        <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/defaults/models/articles/Article.php</file>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group name="Mine">
+            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/defaults/models/programs/Programs.php</file>
+        </group>
     </open-files>
 </project-private>

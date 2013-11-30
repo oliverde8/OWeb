@@ -116,28 +116,33 @@ class Programs
             $connection = $this->ext_connection->get_Connection();
             $prefix = $this->ext_connection->get_prefix();
 
-            $sql2 = "SELECT DISTINCT id_prog
+            $sql2 = "SELECT id_prog
                         FROM ".$prefix."program p, ".$prefix."program_version v, ".$prefix."program_revision r
                         WHERE p.id_prog = v.prog_id
                         AND v.id_version = r.version_id
-                        ORDER BY r.date DESC
-                        LIMIT $start, $nbElement";
+                        ORDER BY r.date DESC";
 
             if ($sql = $connection->query($sql2)) {
-
+				$added = array();
                 $programs = array();
-                while ($result = $sql->fetchObject()) {
-                    $programs[] = $result->id_prog;
+				$i = 0;
+				$result = $sql->fetchObject();
+                while ($result  && $i < $start+$nbElement ) {
+					if(!isset($added[$result->id_prog]) && $i >= $start){
+						$programs[] = $result->id_prog;
+						$added[$result->id_prog] = true;
+						$i++;
+					}
+					$result = $sql->fetchObject();
                 }
 
                 return $this->getProgramsArray($programs);
-
             }else{
-                throw new ProgramNotFound("Couldn't get Latest Updated Programs : " . $cat->getId() . " . SQL ERROR2 => ".$sql2, 0);
+                throw new ProgramNotFound("Couldn't get Latest Updated Programs : SQL ERROR2 => ".$sql2, 0);
             }
 
         }catch (\Exception $ex) {
-            throw new ProgramNotFound("Couldn't get Newest Program : " . $cat->getId() . " . SQL ERROR", 0, $ex);
+            throw new ProgramNotFound("Couldn't get  Latest Updated  Program : SQL ERROR", 0, $ex);
         }
         return array();
     }
