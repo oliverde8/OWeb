@@ -40,6 +40,7 @@ namespace OWeb;
 if(!defined('OWEB_DEBUG'))define('OWEB_DEBUG', "1");
 
 if(!defined('OWEB_DIR_MAIN'))define('OWEB_DIR_MAIN', "../OWeb_src/OWeb");
+if(!defined('OWEB_CONFIG'))define('OWEB_CONFIG_DIR', "../OWeb_src/confing");
 if(!defined('OWEB_CONFIG'))define('OWEB_CONFIG', "config.ini");
 if(!defined('OWEB_DIR_LANG'))define('OWEB_DIR_LANG', "lang");
 if(!defined('OWEB_DEFAULT_LANG_DIR'))define('OWEB_DEFAULT_LANG_DIR', "../OWeb_src/lang");

@@ -22,8 +22,9 @@
 
 namespace OWeb\utils;
 
-abstract class Singleton
-{
+use \OWeb\types\NamedClass;
+
+abstract class Singleton extends NamedClass{
 	protected static $instances = array();
 
 	static public function getInstance()

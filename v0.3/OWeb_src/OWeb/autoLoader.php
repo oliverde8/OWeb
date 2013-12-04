@@ -21,7 +21,7 @@
  */
 namespace OWeb;
 
-require_once OWEB_DIR_MAIN.'/utils/Singleton.php';
+//require_once OWEB_DIR_MAIN.'/utils/Singleton.php';
 
 require_once OWEB_DIR_MAIN.'/Exception.php';
 
@@ -30,7 +30,7 @@ require_once OWEB_DIR_MAIN.'/Exception.php';
  *
  * @author De Cramer Oliver
  */
-class autoLoader extends \OWeb\utils\Singleton{
+class autoLoader{
 	
 	private $nameSpaces = array();
 	

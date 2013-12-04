@@ -38,12 +38,13 @@ class Connection extends absConnect{
 	 */
 	protected function startConnection() {
 		
-		$this->reglages = $this->loadSettings();
-		$this->prefix = $this->reglages['prefix'];
+		$this->initSettings();
 		
-		$con = $this->reglages['connection.type'] . ':host=' . $this->reglages['connection.host'] . ';dbname=' . $this->reglages['connection.dbname']."";
+		$this->prefix = $this->settings['prefix'];
+		
+		$con = $this->settings['connection.type'] . ':host=' . $this->settings['connection.host'] . ';dbname=' . $this->settings['connection.dbname']."";
 		try{
-			$this->connection = new \PDO($con, $this->reglages['authontification.user'], $this->reglages['authontification.password'], array(\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8") );
+			$this->connection = new \PDO($con, $this->settings['authontification.user'], $this->settings['authontification.password'], array(\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8") );
 		}catch(\Exception $ex){
 			throw new \OWeb\Exception("Couldn't connect to DB : ".$con, 0, $ex);
 		}

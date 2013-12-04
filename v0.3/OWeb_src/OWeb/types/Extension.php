@@ -32,8 +32,12 @@ use OWeb\types\extension\Depandence;
 abstract class Extension extends \OWeb\utils\Singleton{
 
 	private $dependence;
+	
 	private $params = array();
+	
 	private $actions = array();
+	
+	protected $settings = array();
 	
 	abstract protected function init();
 	
@@ -61,11 +65,6 @@ abstract class Extension extends \OWeb\utils\Singleton{
 	
 	public function add_Event($Nomevent, $fonction) {
 		\OWeb\manage\Events::getInstance()->registerEvent($Nomevent, $this, $fonction);
-	}
-	
-	protected function loadSettings($fichier = "") {
-		$reglage = \OWeb\manage\Settings::getInstance();
-		return $reglage->getSetting($this, $fichier);
 	}
 	
 	protected function addDependance($plugin_name) {
@@ -116,6 +115,27 @@ abstract class Extension extends \OWeb\utils\Singleton{
      */
     public function loadParams() {
 		$this->params = \OWeb\OWeb::getInstance()->get_get();
+	}
+	
+		/**
+	 * Thiw will activate the usage f the configuration files. 
+	 */
+	protected function initSettings(){
+		$this->initRecSettings(get_class($this));
+	}
+	
+	
+	private function initRecSettings($name){
+		$settingManager = \OWeb\manage\Settings::getInstance();
+		echo $name."-";
+		$this->settings = array_merge($this->settings, 
+				$settingManager->getSetting($name, $this->get_exploded_nameOf($name)));
+		
+		$parent = get_parent_class($name);
+		echo $parent.'*';
+		
+		if ($parent != 'OWeb\types\Extension')
+			$this->initRecSettings($parent);
 	}
 }
 

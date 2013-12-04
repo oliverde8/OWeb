@@ -37,14 +37,20 @@ abstract class Controller extends NamedClass implements Configurable {
 	const ACTION_CUSTOM = 4;
 
 	protected $action_mode;
+	
 	private $params = array();
 	private $actions = array();
+	
 	private $language;
+	
 	protected $view = null;
-    private $primaryController = false;
+    
+	private $primaryController = false;
 
     protected $templateController = null;
 
+	protected $settings = array();
+	
 	abstract public function init();
 
 	abstract public function onDisplay();
@@ -174,6 +180,24 @@ abstract class Controller extends NamedClass implements Configurable {
 		$this->language->init($this);
 	}
 
+	/**
+	 * Thiw will activate the usage f the configuration files. 
+	 */
+	protected function initSettings(){
+		$this->initRecSettings(get_class($this));
+	}
+	
+	
+	private function initRecSettings($name){
+		$settingManager = \OWeb\manage\Settings::getInstance();
+		
+		$this->settings = array_merge($this->settings, $settingManager->getSetting($name, $this->get_exploded_nameOf($name)));
+		
+		$parent = get_parent_class($asker);
+		if ($ctr != '\OWeb\types\Controller')
+			$this->initRecSettings($parent);
+	}
+	
     /**
      * If LanguageFile is initialised then this will return the text in the current language
      *

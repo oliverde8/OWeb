@@ -32,8 +32,6 @@ abstract class TypeConnection extends \OWeb\types\Extension{
 	const TYPE_SESSION = 2;
 	const TYPE_COOKIE = 3;
 	
-	private $settings;
-	
 	protected $set_CookieTime;
 	protected $set_SessionName = 'OWeb_Session025';
 	
@@ -44,8 +42,7 @@ abstract class TypeConnection extends \OWeb\types\Extension{
 	
 	
 	protected function init() {
-		
-		$this->settings = $this->loadSettings();
+		$this->initSettings();
 		
 		//Cookie Time Setting
 		if(!isset($this->settings['CookieTime']))

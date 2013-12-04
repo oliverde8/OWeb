@@ -32,30 +32,56 @@ namespace OWeb\manage;
  */
 class Settings extends \OWeb\utils\Singleton{
 
-
-    private $settings;
+	private $setting_files = array();
+	
+    private $file_settings;
+	
+	private $class_setings;
+	
 
 	/**
 	 * The Setting array for you, in the default file or the file you asked it to check
 	 * 
 	 * @param String $asker The namen or Object of the one who asks for the settings
-	 * @param string $file THe file in which it hopes to get the settings. By default the default file
 	 * @return array()
 	 */
-    public function getSetting($asker="", $file=""){
-		 
-		 if(empty($file))
-			 $file = OWEB_CONFIG;
-
-		$this->loadFile($file);
-
-        if(!\is_string($asker))
-            $asker = \get_class($asker);
+    public function getSetting($asker, $explodedName = null){
 		
-        if(isset($this->settings[$file][$asker])){
-            return $this->settings[$file][$asker];
-        }else
-            return false;
+		if(is_string($asker))
+			$name = $asker;
+		else if(is_object($asker))
+			$name = get_class($asker);
+		
+        if(!isset($this->class_setings[$name])){   
+			$fileMain = OWEB_CONFIG;
+			
+			//Loading the default file first.
+			if(!isset($this->file_settings[$fileMain]))
+				$this->file_settings[$fileMain] = $this->loadFile($fileMain);
+
+			$this->loadSecondaryFiles();
+			
+			if($explodedName == null)
+				if($asker instanceof \OWeb\types\NamedClass)
+					$explodedName = $asker->get_exploded_name();
+				else if(is_object($asker))
+					$explodedName = explode('\\', $name);
+			
+			$file = OWEB_CONFIG_DIR;
+			for($i = 0; $i < sizeof($explodedName); $i++){
+				$file .= '/'.$explodedName[$i];
+			}
+			$file .= '.ini';
+			
+			if(!isset($this->file_settings[$file]))
+				$this->file_settings[$file] = $this->loadFile($file);
+			
+			if(!isset($this->file_settings[$fileMain][$name]))
+				$this->file_settings[$fileMain][$name] = array();
+			
+			$this->class_setings[$name] = array_merge($this->file_settings[$file],$this->file_settings[$fileMain][$name]);
+		}
+        return $this->class_setings[$name];
     }
 
     /**
@@ -67,7 +93,7 @@ class Settings extends \OWeb\utils\Singleton{
      */
     public function getDefSettingValue($asker, $asked){
 		$settings = $this->getSetting($asker);
-		return isset($settings[$asked]) ? $settings[$asked] : false;
+		return isset($settings[$asked]) ? $settings[$asked] : null;
 	}
 
     /**
@@ -75,16 +101,24 @@ class Settings extends \OWeb\utils\Singleton{
      * @param $file
      * @throws exceptions\Settings
      */
-    private function loadFile($file=OWEB_DIR_CONFIG){
-
-        if(!isset($this->settings[$file])){
+    private function loadFile($file){
+		
+		$f = array();
+		if(file_exists($file))
 			try{
 				$f = parse_ini_file($file, true);
 			}catch(\Exception $ex){
 				throw new \OWeb\manage\exceptions\Settings("Failed to load Settings file : '$file'", 0, $ex);
 			}
-			$this->settings[$file] = $f;
-        }
+		return $f;
+        
     }
+	
+	private function loadSecondaryFiles(){
+		foreach($this->setting_files as $file){
+			if(!isset($this->file_settings[$file]))
+				$this->file_settings[$file] = $this->loadFile($file);
+		}
+	}
 }
 ?>
