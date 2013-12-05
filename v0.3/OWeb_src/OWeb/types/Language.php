@@ -30,90 +30,53 @@ use OWeb\types\Controller;
  */
 class Language {
 
-	private $c_lang;
-	private $lang = array();
 	public static $default_language;
-
-
-    public function init(\OWeb\types\Controller $controller) {
-        $this->tinit(get_class($controller));
-    }
-
-	public function tinit($name) {
-		//echo $name.'*';
-		$settings = \OWeb\manage\Settings::getInstance()->getSetting($this);
-
-		self::$default_language = $settings['default_language'];
-
-		try {
-
-			$cname = Controller::get_exploded_nameOf($name);
-			$path = '/' . $cname[0];
-			$path .= str_replace(".php", "", Controller::get_relative_pathOf($name));
-
-			$ext = \OWeb\manage\Extensions::getInstance()->tryGetExtension('user\connection\TypeConnection');
-			if ($ext != null && $ext->getlang() != self::$default_language) {
-				$this->c_lang = $ext->getlang();
-
-				$this->loadFile(OWEB_DEFAULT_LANG_DIR . '/' . $path . '/' . $this->c_lang . '.php', $this->c_lang);
-				$this->loadFile(OWEB_DEFAULT_LANG_DIR . '/' . $this->c_lang . '.php', $this->c_lang);
-			}
-			else
-				$this->c_lang = self::$default_language;
-
-			$this->loadFile(OWEB_DEFAULT_LANG_DIR . $path . '/' . self::$default_language . '.php', self::$default_language);
-			$this->loadFile(OWEB_DEFAULT_LANG_DIR . '/' . self::$default_language . '.php', self::$default_language);
-
-			$pclass = get_parent_class($name);
-            if($pclass !=  'OWeb\types\Controller' && $pclass !="")
-                $this->tinit($pclass);
-		} catch (\Exception $ex) {
-
-		}
+	public static $user_language;
+	
+	private $def_languageTexts;
+	private $user_languageTexts;
+	
+	private $otherLanguages;
+	
+	function __construct() {
+		$this->def_languageTexts = new \SplDoublyLinkedList();
+		$this->user_languageTexts = new \SplDoublyLinkedList();
+		$this->otherLanguages = new \SplDoublyLinkedList();
 	}
-
-	public function initNo() {
-		$settings = \OWeb\manage\Settings::getInstance()->getSetting($this);
-
-		self::$default_language = $settings['default_language'];
-
-		try {
-			
-			$ext = \OWeb\manage\Extensions::getInstance()->tryGetExtension('user\connection\TypeConnection');
-			if ($ext != null && $ext->getlang() != self::$default_language) {
-				$this->c_lang = $ext->getlang();
-				
-				$this->loadFile(OWEB_DEFAULT_LANG_DIR . '/' . $this->c_lang . '.php', $this->c_lang);
-			}else
-				$this->c_lang = self::$default_language;
-			
-
-			$this->loadFile(OWEB_DEFAULT_LANG_DIR . '/' . self::$default_language . '.php', self::$default_language);
-			
-		} catch (\Exception $ex) {
-			throw \OWeb\Exception("Language File can't ve loaded", 0, $ex);
-		}
+	
+	public function addDefLanguageText(array $text){
+		$this->def_languageTexts->push($text);
 	}
-
-	private function loadFile($path, $lang) {
-        //echo $path.'*';
-		if (file_exists($path)) {
-			include $path;
-			$this->lang[] = $_L;
-		}
+	
+	public function addUserLanguageText(array $text){
+		$this->user_languageTexts->push($text);
 	}
-
-	public function get($name) {
-
-		foreach ($this->lang as $lang) {
-			if (isset($lang[$name]))
-				return $lang[$name];
+	
+	public function merge(Language $otherLang){
+		$this->otherLanguages->push($otherLang);
+	}
+	
+	public function get($name, $sendNull = false) {
+		for ($this->user_languageTexts->rewind(); $this->user_languageTexts->valid(); $this->user_languageTexts->next()) {
+			$current = $this->user_languageTexts->current();
+			if(isset($current[$name]))
+				return $current[$name];
 		}
-		return "Unknown Text";
+		for ($this->def_languageTexts->rewind(); $this->def_languageTexts->valid(); $this->def_languageTexts->next()) {
+			$current = $this->def_languageTexts->current();
+			if(isset($current[$name]))
+				return $current[$name];
+		}
+		for ($this->otherLanguages->rewind(); $this->otherLanguages->valid(); $this->otherLanguages->next()) {
+			$val = $this->otherLanguages->current()->get($name, true);
+			if($val != null)
+				return $val;
+		}
+		return $sendNull ? null : $name;
 	}
 
 	public function getLang() {
-		return $this->c_lang;
+		return self::$user_language;
 	}
 
 }

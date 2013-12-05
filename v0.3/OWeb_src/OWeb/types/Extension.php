@@ -127,14 +127,13 @@ abstract class Extension extends \OWeb\utils\Singleton{
 	
 	private function initRecSettings($name){
 		$settingManager = \OWeb\manage\Settings::getInstance();
-		echo $name."-";
+
 		$this->settings = array_merge($this->settings, 
 				$settingManager->getSetting($name, $this->get_exploded_nameOf($name)));
 		
 		$parent = get_parent_class($name);
-		echo $parent.'*';
 		
-		if ($parent != 'OWeb\types\Extension')
+		if ($parent != 'OWeb\types\Extension' && $parent != '\OWeb\types\Extension')
 			$this->initRecSettings($parent);
 	}
 }

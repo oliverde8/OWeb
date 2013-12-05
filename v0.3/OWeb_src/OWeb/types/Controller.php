@@ -176,10 +176,10 @@ abstract class Controller extends NamedClass implements Configurable {
 	 * This will activate the usage of the language file
      * This means the controller will support multi language.
 	 */
-	protected function InitLanguageFile() {
+	/*protected function InitLanguageFile() {
 		$this->language->init($this);
 	}
-
+*/
 	/**
 	 * Thiw will activate the usage f the configuration files. 
 	 */
@@ -190,12 +190,39 @@ abstract class Controller extends NamedClass implements Configurable {
 	
 	private function initRecSettings($name){
 		$settingManager = \OWeb\manage\Settings::getInstance();
+		$this->settings = array_merge($this->settings, 
+				$settingManager->getSetting($name, $this->get_exploded_nameOf($name)));
 		
-		$this->settings = array_merge($this->settings, $settingManager->getSetting($name, $this->get_exploded_nameOf($name)));
+		$parent = get_parent_class($name);
 		
-		$parent = get_parent_class($asker);
-		if ($ctr != '\OWeb\types\Controller')
+		if ($parent != 'OWeb\types\Controller' && $parent != '\OWeb\types\Controller')
 			$this->initRecSettings($parent);
+	}
+	
+		/**
+	 * Thiw will activate the usage f the configuration files. 
+	 */
+	protected function InitLanguageFile(){
+		$this->language = new Language();
+		$this->InitRecLanguageFile(get_class($this));
+	}
+	
+	
+	private function InitRecLanguageFile($name, Language $lang = null){
+		$$lManager = \OWeb\manage\Languages::getInstance();
+		$l = $$lManager->getLanguage($name, $this->get_exploded_nameOf($name));
+		
+		if($lang == null){
+			$this->language = clone $l;
+			$lang = $this->language;
+		}else{
+			$lang->merge($l);
+		}
+		
+		$parent = get_parent_class($name);
+		
+		if ($parent != 'OWeb\types\Controller' && $parent != '\OWeb\types\Controller')
+			$this->InitRecLanguageFile($parent, $lang);
 	}
 	
     /**

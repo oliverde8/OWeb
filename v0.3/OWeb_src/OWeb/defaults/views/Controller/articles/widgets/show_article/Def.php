@@ -1,10 +1,9 @@
 <?php
 
 if(!$this->article->checkLang($this->getLang()))
-	$lang = \OWeb\types\Language::$default_language;
+	$lang = \OWeb\manage\Languages::getDefLang();
 else 
 	$lang = $this->getLang();
-
 
 $img_found = false;
 $img_url = "";

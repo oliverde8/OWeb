@@ -170,7 +170,7 @@ class Template {
      * Initialize the current language file.
      */
     protected function InitLanguageFile(){
-		$this->language->initNo();
+		$this->language = Languages::getInstance()->getLanguage($this);
 	}
 	
 }
