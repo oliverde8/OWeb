@@ -135,7 +135,7 @@ class Languages extends \OWeb\utils\Singleton{
      */
     private function loadFile($file){
 		
-		if(isset($this->file_languages[$file])){
+		if(isset($this->file_languages[$file]) ){
 			return $this->file_languages[$file];
 		}else{
 			$f = array();

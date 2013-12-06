@@ -19,7 +19,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
-namespace OWeb\manage\modes;
+namespace Extension\core\modes;
 
 if (!defined('OWEB_DIR_FAPI')) define('OWEB_DIR_FAPI', "fapi");
 
@@ -28,10 +28,13 @@ if (!defined('OWEB_DIR_FAPI')) define('OWEB_DIR_FAPI', "fapi");
  *
  * @author De Cramer Oliver
  */
-class CtrAction extends AbsMode
-{
+class CtrAction extends \OWeb\types\extension implements ModeInterface{
+	
+	public function init(){
+		
+	}
 
-    public function init()
+    public function initMode()
     {
         //On va charger le controleur.
         $man_ctr = \OWeb\manage\Controller::getInstance();

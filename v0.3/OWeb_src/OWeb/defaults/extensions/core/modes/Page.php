@@ -19,19 +19,20 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
-namespace OWeb\manage\modes;
+namespace Extension\core\modes;
 
 /**
  * Description of Page
  *
  * @author De Cramer Oliver
  */
-class Page extends AbsMode
-{
+class Page extends \OWeb\types\Extension implements ModeInterface{
 
+	public function init(){
+		
+	}
 
-    public function init()
-    {
+    public function initMode(){
         //On va charger le controleur.
         $man_ctr = \OWeb\manage\Controller::getInstance();
 

@@ -146,19 +146,19 @@ class OWeb {
 		if(isset($this->_get['mode'])){
 			switch (strtoupper($this->_get['mode'])) {
 				case 'API':
-					$this->mode = new \OWeb\manage\modes\API();
+					$this->mode = $this->manage_extensions->getExtension("core\modes\Api");
 					break;
 				case 'CTRACTION':
-					$this->mode = new \OWeb\manage\modes\CtrAction();
+					$this->mode = $this->manage_extensions->getExtension("core\modes\Api");
 					break;
 				case 'PAGE':
 				default:
-					$this->mode = new \OWeb\manage\modes\Page();
+					$this->mode = $this->manage_extensions->getExtension("core\modes\Page");
 			}
 		}else{
-			$this->mode = new \OWeb\manage\modes\Page();
+			$this->mode = $this->manage_extensions->getExtension("core\modes\Page");
 		}
-		$this->mode->init();
+		$this->mode->initMode();
 		
 		//Initialasation of OWeb DONE. 
 		$this->manage_events->sendEvent('Init@OWeb');

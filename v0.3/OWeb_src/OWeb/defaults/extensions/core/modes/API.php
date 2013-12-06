@@ -21,18 +21,18 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-namespace OWeb\manage\modes;
+namespace Extension\core\modes;
 
 /**
  * Description of API
  *
  * @author De Cramer Oliver
  */
-class API extends AbsMode{
+class API extends \OWeb\types\Extension implements ModeInterface{
 	
 	private $extension;
 	
-	public function init() {
+	public function initMode() {
 		
 		$ext_man = \OWeb\manage\Extensions::getInstance();
 
@@ -99,7 +99,10 @@ class API extends AbsMode{
 		
 		echo json_encode($result);	
 	}
-	
+
+	public function init() {
+		
+	}
 }
 
 ?>

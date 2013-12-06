@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="Mine">
-            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/OWeb.php</file>
-            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/manage/Settings.php</file>
-            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/lang/fr.php</file>
-            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/types/Language.php</file>
-            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/manage/Languages.php</file>
-            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/defaults/extensions/db/Connection.php</file>
-            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/types/Controller.php</file>
+            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/defaults/controllers/articles/Article.php</file>
+            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/defaults/controllers/articles/Categorie.php</file>
+            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/defaults/controllers/articles/Page.php</file>
+            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/www_oliverde8/pages/Page.php</file>
         </group>
     </open-files>
 </project-private>
