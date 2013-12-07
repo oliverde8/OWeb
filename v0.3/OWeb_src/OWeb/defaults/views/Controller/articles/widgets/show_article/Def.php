@@ -9,7 +9,7 @@ $img_found = false;
 $img_url = "";
 $img_class = "";
 
-$parser = $this->ext_bbCode->getParser();
+$parser = $this->getBB();
 
 if($this->short){
 	$content = substr(strip_tags ($this->article->getContent($lang)), 0, 1000);

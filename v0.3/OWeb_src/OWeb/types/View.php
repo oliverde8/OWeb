@@ -30,7 +30,7 @@ class View {
 	
 	private $__name;
 	private $__language;
-	private $__dependence;
+	protected $__dependence;
 	
 	private $__path;
 	
@@ -40,6 +40,7 @@ class View {
 		$this->__path = $path;
 		 
 		 $this->__language = $language;
+		 $this->__dependence = new \SplDoublyLinkedList();
 	}
 	
 	protected function getLangString($name){
@@ -51,18 +52,18 @@ class View {
 	}
 	
 	public function setDependences($dependences){
-		$this->__dependence == $dependences;
+		$this->__dependence = $dependences;
 	}
 	
-	public function __call($name, $arguments){		
+	public function __call($name, $arguments){	
         for($this->__dependence->rewind(); $this->__dependence->valid(); $this->__dependence->next()){
 			$current = $this->__dependence->current();
 			$alias = $current->getAlias($name);
 			if($alias != null){
-				$current->$alias($arguments);
-				return;
+				return $current->$alias($arguments);
 			}
 		}
+		die();
 		throw new \OWeb\Exception("The function: " . $name." doesen't exist and couldn't be find in any extension to whom the plugin depends",0);
     }
 	

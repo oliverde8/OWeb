@@ -35,7 +35,7 @@ class Def extends \Controller\articles\Module{
 	
 	public function init() {
 		parent::init();
-		$this->ext_bbCode = \OWeb\manage\Extensions::getInstance()->getExtension('bbcode\JBBCode');
+		$this->addDependance('bbcode\JBBCode');
 		$this->myNum = self::$num;
 		self::$num++;
 	}
@@ -54,7 +54,6 @@ class Def extends \Controller\articles\Module{
 		}
 		
 		$this->view->num = $this->getParam("article")->getId();
-		$this->view->ext_bbCode = $this->ext_bbCode;
 		$this->view->article = $this->getParam("article");
 		
 		

@@ -20,7 +20,7 @@ $link->addParam('page', 'articles\Article')
 	
 	<div>
 		<p class="date">
-			<?php echo $date_day.'<br/>'.$date_month.'<br/>'.$date_year; ?>
+			<?php echo $date_day.'<br/>'.$this->l($date_month).'<br/>'.$date_year; ?>
 		</p>
 		
 		<h2>

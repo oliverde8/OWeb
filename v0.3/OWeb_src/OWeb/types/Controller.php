@@ -128,8 +128,7 @@ abstract class Controller extends NamedClass implements Configurable {
 			$current = $this->dependence->current();
 			$alias = $current->getAlias($name);
 			if($alias != null){
-				$current->$alias($arguments);
-				return;
+				return $current->$alias($arguments);
 			}
 		}
 		throw new \OWeb\Exception("The function: " . $name." doesen't exist and couldn't be find in any extension to whom the plugin depends",0);
