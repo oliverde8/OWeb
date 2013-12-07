@@ -26,7 +26,7 @@ namespace OWeb\types;
  *
  * @author De Cramer Oliver
  */
-class View {
+class View implements InterfaceExtensionDependable{
 	
 	private $__name;
 	private $__language;
@@ -55,15 +55,19 @@ class View {
 		$this->__dependence = $dependences;
 	}
 	
+	public function getDependences() {
+		return $this->__dependence;
+	}
+	
 	public function __call($name, $arguments){	
         for($this->__dependence->rewind(); $this->__dependence->valid(); $this->__dependence->next()){
 			$current = $this->__dependence->current();
 			$alias = $current->getAlias($name);
 			if($alias != null){
-				return $current->$alias($arguments);
+				//print_r($arguments);
+				return call_user_func_array(array($current, $alias), $arguments);
 			}
 		}
-		die();
 		throw new \OWeb\Exception("The function: " . $name." doesen't exist and couldn't be find in any extension to whom the plugin depends",0);
     }
 	

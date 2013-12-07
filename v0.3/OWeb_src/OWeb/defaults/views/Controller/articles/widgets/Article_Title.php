@@ -10,7 +10,7 @@ $date_year = date("Y", $this->article->getDate());
 $date_day = date("d", $this->article->getDate());
 $date_month = date("M", $this->article->getDate());
 
-$link = new \OWeb\utils\Link();
+$link = $this->url();
 $link->addParam('page', 'articles\Article')
 	->addParam('id', $this->article->getId());
 

@@ -31,7 +31,7 @@ use \OWeb\manage\Extensions;
  *
  * @author De Cramer Oliver
  */
-abstract class Controller extends NamedClass implements Configurable {
+abstract class Controller extends NamedClass implements Configurable, InterfaceExtensionDependable {
 
 	const ACTION_GET = 1;
 	const ACTION_POST = 2;
@@ -67,6 +67,7 @@ abstract class Controller extends NamedClass implements Configurable {
 		$this->language = new \OWeb\types\Language();
         $this->primaryController = $primary;
 		$this->dependence = new \SplDoublyLinkedList();
+		$this->addDependance('core\url\Generator');
 	}
 	
 	final function initController(){
@@ -128,11 +129,15 @@ abstract class Controller extends NamedClass implements Configurable {
 			$current = $this->dependence->current();
 			$alias = $current->getAlias($name);
 			if($alias != null){
-				return $current->$alias($arguments);
+				return call_user_func_array(array($current, $alias), $arguments);
 			}
 		}
 		throw new \OWeb\Exception("The function: " . $name." doesen't exist and couldn't be find in any extension to whom the plugin depends",0);
     }
+	
+	public function getDependences() {
+		return $this->dependence;
+	}
 	
     /**
      * Resets all actions

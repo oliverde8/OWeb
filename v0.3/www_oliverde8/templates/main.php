@@ -147,8 +147,9 @@
         </div>
 
 		<?php
-			$link_fr = \OWeb\utils\Link::getCurrentLink()->addParam('lang', 'fr');
-			$link_eng = \OWeb\utils\Link::getCurrentLink()->addParam('lang', 'eng');
+			$link_fr = $this->CurrentUrl()->addParam('lang', 'fr');
+			$link_eng = $this->CurrentUrl()->addParam('lang', 'eng');
+			
 			$img_fr = OWEB_HTML_URL_IMG.'/flags/fr.png';
 			$img_eng = OWEB_HTML_URL_IMG.'/flags/gb.png';
 		?>

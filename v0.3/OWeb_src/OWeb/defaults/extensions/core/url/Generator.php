@@ -19,27 +19,43 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
-namespace OWeb\utils\link;
+namespace Extension\core\url;
 
 /**
- * Description of Default
+ * Description of Generator
  *
  * @author De Cramer Oliver
  */
-class Default_generator implements \OWeb\utils\link\Generator{
+class Generator extends \OWeb\types\extension{
+
+	public function init(){
+		$this->addAlias("url", "getLink");
+		$this->addAlias("CurrentUrl", "getCurrentUrl");
+		$this->addAlias("generateUrl", "generate_LinkString");
+	}
 	
-	public function generate_LinkString($array) {
+	public function generate_LinkString($params) {
+		
 		$link = "";
-		if(isset($array['page'])){
-			$link = str_replace("\\", '.', $array['page']).'.html';
-			unset($array['page']);
+		if(isset($params['page'])){
+			$link = str_replace("\\", '.', $params['page']).'.html';
+			unset($params['page']);
 		}
 		
 		$link .= "?"; 
-		foreach($array as $name => $value){
+		foreach($params as $name => $value){
 			$link .="$name=$value&";
 		}
 		return substr($link, 0, strlen($link)-1);
 	}
+	
+	public function getLink($params=array()){
+		return new Link($params);
+	}
+	
+	public function getCurrentUrl(){
+		return clone Link::getCurrentLink();
+	}
 }
+
 ?>

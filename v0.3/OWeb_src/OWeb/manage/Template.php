@@ -29,7 +29,7 @@ namespace OWeb\manage;
  *
  * @author De Cramer Oliver
  */
-class Template {
+class Template extends \OWeb\types\ExtensionDependable{
 	
 	private $content;
 	
@@ -42,8 +42,10 @@ class Template {
      * @param string $tmp The name of the template to load
      */
     function __construct($tmp='main') {
-		
+		parent::__construct();
 		\OWeb\manage\Events::getInstance()->sendEvent('DisplayTemplate_Start@OWeb\manage\Template');
+		
+		$this->addDependance('core\url\Generator');
 		
 		$this->language = new \OWeb\types\Language();
 		

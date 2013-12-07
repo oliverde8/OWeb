@@ -32,19 +32,11 @@ $nbArticleShown = $nbArticle + $this->cpage*$this->nbElementPage;
 <?php
 
 	\OWeb\manage\SubViews::getInstance()->getSubView('\Controller\OWeb\widgets\MultiPage')
-				->addParams('link',\OWeb\utils\Link::getCurrentLink())
+				->addParams('link',$this->CurrentUrl())
 				->addParams('cpage',$this->cpage)
 				->addParams('pname','npage')
 				->addParams('lpage',$this->nbArticle/$this->nbElementPage)
 				->display();
 
-
-	/*if($this->cpage>0){
-		echo '<a href="'.\OWeb\utils\Link::getCurrentLink()->addParam("npage", $this->cpage).'"> << Previous</a>';
-	}
-	
-	if($nbArticleShown < $this->nbArticle){
-		echo '<a href="'.\OWeb\utils\Link::getCurrentLink()->addParam("npage", $this->cpage+2).'"> Next</a>';
-	}*/
 ?>
 </div>

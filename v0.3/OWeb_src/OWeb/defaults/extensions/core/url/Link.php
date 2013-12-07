@@ -19,17 +19,45 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
-namespace OWeb\utils\link;
+namespace Extension\core\url;
+
 
 /**
- * Description of Generator
+ * Description of Link
  *
  * @author De Cramer Oliver
  */
-interface Generator {
-
-	public function generate_LinkString($array);	
+class Link extends \OWeb\types\ExtensionDependable{
 	
+	private static $currentLink = null;
+	
+	private $params = array();
+	
+	function __construct($params=array()) {
+		parent::__construct();
+		$this->addDependance("core\url\Generator");
+		
+		$this->params = $params;
+	}
+
+	public function removeParam($paramName){
+		if(isset($this->params[$paramName]))
+			unset($this->params[$paramName]);
+		return $this;
+	}
+	
+	public function addParam($paramName, $value){
+		$this->params[$paramName] = $value;
+		return $this;
+	}
+	
+	public function __toString() {
+		return $this->generateUrl($this->params);
+	}
+	
+	public static function getCurrentLink(){
+		return new Link(\OWeb\OWeb::getInstance()->get_get());
+	}
 }
 
 ?>

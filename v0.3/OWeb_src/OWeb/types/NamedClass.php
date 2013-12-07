@@ -27,14 +27,11 @@ namespace OWeb\types;
  *
  * @author De Cramer Oliver
  */
-abstract class NamedClass {
+abstract class NamedClass{
 	
 	private static $_exploded_name;
-	
 	private static $_full_path;
-	
 	private static $_relative_path;
-	
 	private static $_start_path;
 	
 	public function get_exploded_name() {

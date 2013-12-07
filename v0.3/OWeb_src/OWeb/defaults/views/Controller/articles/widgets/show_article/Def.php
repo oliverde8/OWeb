@@ -64,7 +64,7 @@ switch($this->image_level){
 }
 
 
-$link = new \OWeb\utils\Link();
+$link = $this->url();
 $link->addParam('page', 'articles\Article')
 	->addParam('id', $this->article->getId());
 
