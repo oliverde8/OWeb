@@ -26,11 +26,7 @@ namespace Controller\articles\widgets;
  *
  * @author oliverde8
  */
-class Article_tree extends \OWeb\types\Controller{
-	
-	public function init() {
-		$this->InitLanguageFile();
-	}
+class Article_tree extends \Controller\articles\Module{
 
 	public function onDisplay() {
 		$this->view->values = $this->getParam("values");

@@ -26,7 +26,7 @@ namespace Controller\articles\widgets\show_article;
  *
  * @author De Cramer Oliver
  */
-class Def extends \OWeb\types\Controller{
+class Def extends \Controller\articles\Module{
 	
 	static $num = 0;
 	
@@ -34,8 +34,8 @@ class Def extends \OWeb\types\Controller{
 	private $ext_bbCode;
 	
 	public function init() {
+		parent::init();
 		$this->ext_bbCode = \OWeb\manage\Extensions::getInstance()->getExtension('bbcode\JBBCode');
-		$this->InitLanguageFile();
 		$this->myNum = self::$num;
 		self::$num++;
 	}

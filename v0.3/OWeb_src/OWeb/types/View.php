@@ -30,6 +30,7 @@ class View {
 	
 	private $__name;
 	private $__language;
+	private $__dependence;
 	
 	private $__path;
 	
@@ -48,6 +49,22 @@ class View {
 	protected function l($name){
 		return $this->__language->get($name);
 	}
+	
+	public function setDependences($dependences){
+		$this->__dependence == $dependences;
+	}
+	
+	public function __call($name, $arguments){		
+        for($this->__dependence->rewind(); $this->__dependence->valid(); $this->__dependence->next()){
+			$current = $this->__dependence->current();
+			$alias = $current->getAlias($name);
+			if($alias != null){
+				$current->$alias($arguments);
+				return;
+			}
+		}
+		throw new \OWeb\Exception("The function: " . $name." doesen't exist and couldn't be find in any extension to whom the plugin depends",0);
+    }
 	
 	protected function getLang(){
 		return $this->__language->getLang();

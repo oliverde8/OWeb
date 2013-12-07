@@ -28,14 +28,14 @@ use Model\articles\Categories;
  *
  * @author De Cramer Oliver
  */
-class Article extends \OWeb\types\Controller{
+class Article extends Module{
 	
 	private $categories;
 	private $articles;
 
 
     public function init() {
-		\OWeb\manage\Extensions::getInstance()->getExtension('bbcode\JBBCode');
+		parent::init();
 		$this->categories = Categories::getInstance();
 		$this->articles = Artciles::getInstance();
         $this->applyTemplateController('Controller\articles\Template');

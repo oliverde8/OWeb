@@ -134,7 +134,7 @@ abstract class TypeConnection extends \OWeb\types\Extension{
 	}
 	
 	public function getDefaultLanguage(){
-		$settings = \OWeb\manage\Settings::getInstance()->getSetting('OWeb\types\Language');
+		$settings = \OWeb\manage\Settings::getInstance()->getSetting('OWeb\manage\Languages');
 		return $settings['default_language'];
 	}
 	

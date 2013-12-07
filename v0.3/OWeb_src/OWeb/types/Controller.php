@@ -20,7 +20,9 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 namespace OWeb\types;
+
 use OWeb\manage\SubViews;
+use \OWeb\manage\Extensions;
 
 /**
  * Is among the main bricks of OWeb,
@@ -37,6 +39,8 @@ abstract class Controller extends NamedClass implements Configurable {
 	const ACTION_CUSTOM = 4;
 
 	protected $action_mode;
+
+	protected $dependence;
 	
 	private $params = array();
 	private $actions = array();
@@ -62,6 +66,11 @@ abstract class Controller extends NamedClass implements Configurable {
 		$this->action_mode = self::ACTION_GET;
 		$this->language = new \OWeb\types\Language();
         $this->primaryController = $primary;
+		$this->dependence = new \SplDoublyLinkedList();
+	}
+	
+	final function initController(){
+		$this->init();
 	}
 
     /**
@@ -72,6 +81,14 @@ abstract class Controller extends NamedClass implements Configurable {
     public function applyTemplateController($ctr){
         if($ctr instanceof TemplateController){
             $this->templateController = $ctr;
+			
+			array_merge($this->settings, $this->templateController->getSettings());
+			
+			$lang = $this->templateController->getLanguageStrings();
+			if($lang != null)
+				if($this->language == null)
+					$this->language = new Language ();
+				$this->language->merge($lang);
         }else{
             $this->templateController = SubViews::getInstance()->getSubView($ctr);
         }
@@ -87,6 +104,37 @@ abstract class Controller extends NamedClass implements Configurable {
 		$this->actions[$action] = $nom_func;
 	}
 
+	
+	protected function addDependance($extension_name) {
+		try{
+			if(is_object($extension_name)){
+				$ext= $extension_name;
+				$extension_name = get_class($extension_name);
+			}else
+				$ext = Extensions::getInstance()->getExtension($extension_name);
+			
+			if (!$ext) {
+				throw new \OWeb\Exception("");
+			}else {				
+				$this->dependence->push($ext);
+			}
+		}catch (\OWeb\Exception $exception){
+			throw new \OWeb\Exception("The extension: " . $extension_name." Couldn't be loaded. L'The controller " . get_class($this) . " needs it to work",0, $exception);
+		}
+	}
+	
+	public function __call($name, $arguments){		
+        for($this->dependence->rewind(); $this->dependence->valid(); $this->dependence->next()){
+			$current = $this->dependence->current();
+			$alias = $current->getAlias($name);
+			if($alias != null){
+				$current->$alias($arguments);
+				return;
+			}
+		}
+		throw new \OWeb\Exception("The function: " . $name." doesen't exist and couldn't be find in any extension to whom the plugin depends",0);
+    }
+	
     /**
      * Resets all actions
      */
@@ -199,18 +247,25 @@ abstract class Controller extends NamedClass implements Configurable {
 			$this->initRecSettings($parent);
 	}
 	
+	public function getSettings(){
+		return $this->settings;
+	}
+	
 		/**
 	 * Thiw will activate the usage f the configuration files. 
 	 */
 	protected function InitLanguageFile(){
-		$this->language = new Language();
+		if($this->language == null)
+			$this->language = new Language();
+
 		$this->InitRecLanguageFile(get_class($this));
 	}
 	
 	
 	private function InitRecLanguageFile($name, Language $lang = null){
-		$$lManager = \OWeb\manage\Languages::getInstance();
-		$l = $$lManager->getLanguage($name, $this->get_exploded_nameOf($name));
+		$lManager = \OWeb\manage\Languages::getInstance();
+
+		$l = $lManager->getLanguage($name, $this->get_exploded_nameOf($name));
 		
 		if($lang == null){
 			$this->language = clone $l;
@@ -223,6 +278,10 @@ abstract class Controller extends NamedClass implements Configurable {
 		
 		if ($parent != 'OWeb\types\Controller' && $parent != '\OWeb\types\Controller')
 			$this->InitRecLanguageFile($parent, $lang);
+	}
+	
+	public function getLanguageStrings(){
+		return $this->language;
 	}
 	
     /**
@@ -292,6 +351,8 @@ abstract class Controller extends NamedClass implements Configurable {
 		}
 		//First we create the Default view
 		$this->view = $this->getView($path);
+		
+		$this->view->setDependences($this->dependence);
 
 		//Second we ask our controller to prepare anything needed to be show in the page
 		$this->onDisplay();
@@ -303,8 +364,9 @@ abstract class Controller extends NamedClass implements Configurable {
     public function display(){
         if($this->templateController == null)
             $this->forceDisplay();
-        else
+        else{
             $this->templateController->templatedisplay($this);
+		}
     }
 
     protected function getView($path){

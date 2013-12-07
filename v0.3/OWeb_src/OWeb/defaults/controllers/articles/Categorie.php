@@ -31,7 +31,7 @@ use Model\articles\exception\ArticleNotFound;
  *
  * @author De Cramer Oliver
  */
-class Categorie extends \OWeb\types\Controller{
+class Categorie extends Module{
 	
 	private $nbElementPage = 10;
 	
@@ -39,8 +39,9 @@ class Categorie extends \OWeb\types\Controller{
 	private $articles;
 	
 	public function init() {
-        $this->applyTemplateController('Controller\articles\Template');
-		Extensions::getInstance()->getExtension('bbcode\JBBCode');
+		parent::init();
+		$this->applyTemplateController('Controller\articles\Template');
+		
 		$this->categories = Categories::getInstance();
 		$this->articles = Artciles::getInstance();
 	}

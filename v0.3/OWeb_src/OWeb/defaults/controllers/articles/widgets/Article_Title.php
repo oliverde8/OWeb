@@ -26,11 +26,7 @@ namespace Controller\articles\widgets;
  *
  * @author De Cramer Oliver
  */
-class Article_Title extends \OWeb\types\Controller{
-	
-	public function init() {
-		$this->InitLanguageFile();
-	}
+class Article_Title extends \Controller\articles\Module{
 
 	public function onDisplay() {
 		$this->view->article = $this->getParam("article");

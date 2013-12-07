@@ -30,7 +30,7 @@ class JBBCode extends \OWeb\types\Extension{
 	private $parser = null;
 	
 	protected function init() {
-		
+		$this->addAlias('getBB', 'getParser');
 	}
 	
 	protected function getNewParser(){

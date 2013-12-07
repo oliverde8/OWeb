@@ -30,7 +30,7 @@ class Connection extends absConnect{
 
 	
 	protected function init() {
-		
+		parent::init();
 	}
 	
 	/*

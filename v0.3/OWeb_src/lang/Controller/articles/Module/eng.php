@@ -20,8 +20,21 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
+$_L['No Such Category']	= 'This article category doesn\'t exist';
+
+$_L['Maybe wrong link? or the category was deleted']	=
+        'This link might be wrong or the category you are trying to access has been deleted.';
+
+$_L['Empty Category'] = 'This category has no article to show';
+$_L['This category has no articles in it'] = 'You have stumbled on an empty category.'
+                                            .'You might want to try a different category';
+
 $_L['by']	= 'By';
 
+$_L['readMore']	= 'Read More & Comment';
 
-?>
+$_L['tableOfContent'] = 'Table of Contenent';
 
+$_L['pros_cons']	= 'Pros & Cons';
+
+$_L['Categories']	= 'Categories';

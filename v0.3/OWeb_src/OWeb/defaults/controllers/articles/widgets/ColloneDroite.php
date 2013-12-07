@@ -26,7 +26,7 @@ namespace Controller\articles\widgets;
  *
  * @author De Cramer Oliver
  */
-class ColloneDroite extends \OWeb\types\Controller {
+class ColloneDroite extends \Controller\articles\Module{
 	
 	
 	public function init() {

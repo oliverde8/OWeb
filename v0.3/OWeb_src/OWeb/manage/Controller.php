@@ -56,7 +56,7 @@ class Controller extends \OWeb\utils\Singleton{
 		
         Events::getInstance()->sendEvent('Init_Prepare@OWeb\manage\Controller',$this->controller);
 
-		$this->controller->init();
+		$this->controller->initController();
 		
 		Events::getInstance()->sendEvent('Init_Done@OWeb\manage\Controller',$this->controller);
 		

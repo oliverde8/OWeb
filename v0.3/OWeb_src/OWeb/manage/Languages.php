@@ -69,7 +69,7 @@ class Languages extends \OWeb\utils\Singleton{
 			
 			$ext = \OWeb\manage\Extensions::getInstance()->tryGetExtension('user\connection\TypeConnection');
 			
-			if($explodedName == null)
+			if($explodedName == null){
 				if($asker instanceof \OWeb\types\NamedClass){
 					$cname = \OWeb\types\NamedClass::get_exploded_nameOf($name);
 					$path = '/' . $cname[0];
@@ -80,8 +80,12 @@ class Languages extends \OWeb\utils\Singleton{
 					for($i = 0; $i < sizeof($explodedName); $i++){
 						$path .= '/'.$explodedName[$i];
 					}
-					$path .= '.';
 				}
+			}else{
+				for($i = 0; $i < sizeof($explodedName); $i++){
+					$path .= '/'.$explodedName[$i];
+				}
+			}
 			
 			$langObj = new \OWeb\types\Language();
 			$this->class_languages[$name] = $langObj;
@@ -97,7 +101,7 @@ class Languages extends \OWeb\utils\Singleton{
 				\OWeb\types\Language::$user_language = $this->c_lang;
 				
 				$langObj->addUserLanguageText(
-						$this->loadFile(OWEB_DEFAULT_LANG_DIR . '/' . $path . '/' . $this->c_lang . '.php', $this->c_lang));
+						$this->loadFile(OWEB_DEFAULT_LANG_DIR . $path . '/' . $this->c_lang . '.php', $this->c_lang));
 				$langObj->addUserLanguageText(
 						$this->loadFile(OWEB_DEFAULT_LANG_DIR . '/' . $this->c_lang . '.php', $this->c_lang));
 			}

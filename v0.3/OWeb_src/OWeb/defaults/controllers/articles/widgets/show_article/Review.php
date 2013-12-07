@@ -26,13 +26,13 @@ namespace Controller\articles\widgets\show_article;
  *
  * @author De Cramer Oliver
  */
-class Review extends \OWeb\types\Controller{
+class Review extends \Controller\articles\Module{
 	
 	private $ext_bbCode;
 	
 	public function init() {
+		parent::init();
 		$this->ext_bbCode = \OWeb\manage\Extensions::getInstance()->getExtension('bbcode\JBBCode');
-		$this->InitLanguageFile();
 	}
 
 	public function onDisplay() {

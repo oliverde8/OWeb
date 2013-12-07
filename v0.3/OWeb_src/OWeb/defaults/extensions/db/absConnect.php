@@ -34,6 +34,10 @@ abstract class absConnect extends \OWeb\types\Extension{
 	
 	abstract public function get_Connection();
 	
+	protected function init() {
+		$this->addAlias("getDb", "get_Connection");
+	}
+	
 	public function get_prefix(){
 		return $this->prefix;
 	}

@@ -127,14 +127,14 @@ class OWeb {
 		//Initialize headers manager
 		$this->manage_headers = \OWeb\manage\Headers::getInstance();
 		
+				//Initialize Extension manager
+		$this->manage_extensions = \OWeb\manage\Extensions::getInstance();
+		
 		//Initialize Controller manager
 		$this->manage_controllers = \OWeb\manage\Controller::getInstance();
 		
 		//Initialize SubView manager
 		$this->manage_subViews = \OWeb\manage\SubViews::getInstance();
-		
-		//Initialize Extension manager
-		$this->manage_extensions = \OWeb\manage\Extensions::getInstance();
 		
 		//Initialize Setting Manager
 		$this->manage_settings = \OWeb\manage\Settings::getInstance();

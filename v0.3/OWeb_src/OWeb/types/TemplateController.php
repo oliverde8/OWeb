@@ -27,6 +27,7 @@ abstract class TemplateController extends Controller{
 
     private $ctrToShow;
 
+	
     protected function getView($path){
         return new \OWeb\types\TemplateView(get_class($this), $path, $this->getLang(), $this->ctrToShow);
     }

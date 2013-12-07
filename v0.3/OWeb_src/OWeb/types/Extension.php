@@ -37,6 +37,8 @@ abstract class Extension extends \OWeb\utils\Singleton{
 	
 	private $actions = array();
 	
+	private $aliases = array();
+	
 	protected $settings = array();
 	
 	abstract protected function init();
@@ -135,6 +137,14 @@ abstract class Extension extends \OWeb\utils\Singleton{
 		
 		if ($parent != 'OWeb\types\Extension' && $parent != '\OWeb\types\Extension')
 			$this->initRecSettings($parent);
+	}
+	
+	public function addAlias($aliasName, $funcName){
+		$this->aliases[$aliasName] = $funcName;
+	}
+	
+	public function getAlias($name){
+		return isset($this->aliases[$name]) ? $this->aliases[$name] : null;
 	}
 }
 

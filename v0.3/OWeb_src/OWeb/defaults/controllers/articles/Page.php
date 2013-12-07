@@ -29,16 +29,16 @@ use \OWeb\manage\Extensions;
  *
  * @author De Cramer Oliver
  */
-class Page extends \OWeb\types\Controller{
+class Page extends Module{
 	
 	private $categories;
 	private $articles;
 	
 	
 	public function init() {
+		parent::init();
 		$this->applyTemplateController('Controller\articles\Template');
-		Extensions::getInstance()->getExtension('bbcode\JBBCode');
-		$this->InitLanguageFile();
+
         $this->categories = Categories::getInstance();
         $this->articles = \Model\articles\Artciles::getInstance();
 	}

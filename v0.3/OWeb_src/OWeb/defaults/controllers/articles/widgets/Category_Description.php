@@ -26,12 +26,7 @@ namespace Controller\articles\widgets;
  *
  * @author De Cramer Oliver
  */
-class Category_Description extends \OWeb\types\Controller {
-	
-	
-	public function init() {
-		
-	}
+class Category_Description extends \Controller\articles\Module{
 
 	public function onDisplay() {
 		$this->categories = $this->getParam("categories");
