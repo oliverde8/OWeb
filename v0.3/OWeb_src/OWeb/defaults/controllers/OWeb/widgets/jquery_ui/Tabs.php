@@ -100,18 +100,6 @@ class Tabs extends JQueryGen{
 	}
 	
 	/**
-	 * Selector for the header element, applied via .find() on the main accordion element.
-	 * Content panels must be the sibling immediately after their associated headers.
-	 * 
-	 * @param String $val
-	 * @return \Controller\OWeb\widgets\jquery_ui\Tabs
-	 */
-	public function setHeader($val = '"> li > :first-child,> :not(li):even"'){
-		$this->addParams('header', $val);
-		return $this;
-	}
-	
-	/**
 	 * Controls the height of the accordion and each panel. Possible values:
 	 * 
 	 * @param String $val
@@ -127,7 +115,7 @@ class Tabs extends JQueryGen{
 	}
 	
 	/**
-	 * Controls the height of the accordion and each panel. Possible values:
+	 * If and how to animate the hiding of the panel.
 	 * 
 	 * @param Boolean or Number or String or Object $val
 	 *		Boolean : When set to false, no animation will be used and the panel will be hidden immediately. 

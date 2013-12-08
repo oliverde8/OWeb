@@ -67,8 +67,7 @@ abstract class Validators extends \OWeb\types\NamedClass{
 			throw $this->_exception;
 		else{
 			if($this->_l == null){
-				$this->_l = new \OWeb\types\Language();
-				$this->_l->tinit(get_class($this));
+				$this->InitLanguageFile();
 				$this->_exception = new \OWeb\types\UserException($this->_l->get('Title_'.$name).$param);
 				$this->_exception->setUserDescription($this->_l->get('Desc_'.$name));
 				throw $this->_exception;
@@ -78,6 +77,32 @@ abstract class Validators extends \OWeb\types\NamedClass{
 	
 	protected function setName($name){
 		$this->_name = $name;
+	}
+	
+	protected function InitLanguageFile(){
+		if($this->_l == null)
+			$this->_l = new \OWeb\types\Language ();
+
+		$this->InitRecLanguageFile(get_class($this));
+	}
+	
+	
+	private function InitRecLanguageFile($name, \OWeb\types\Language $lang = null){
+		$lManager = \OWeb\manage\Languages::getInstance();
+
+		$l = $lManager->getLanguage($name, $this->get_exploded_nameOf($name));
+		
+		if($lang == null){
+			$this->_l = clone $l;
+			$lang = $this->_l;
+		}else{
+			$lang->merge($l);
+		}
+		
+		$parent = get_parent_class($name);
+		
+		if ($parent != '\OWeb\types\NamedClass' && $parent != 'OWeb\types\NamedClass')
+			$this->InitRecLanguageFile($parent, $lang);
 	}
 }
 

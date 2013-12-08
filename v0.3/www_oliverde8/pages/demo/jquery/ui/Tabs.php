@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Oliver de Cramer (oliverde8 at gmail.com)
  * @copyright    GNU GENERAL PUBLIC LICENSE
@@ -20,28 +21,16 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-echo '<div '.$this->id.'>';
+namespace Page\demo\jquery\ui;
 
+/**
+ * Description of Accordion
+ *
+ * @author De Cramer Oliver
+ */
 
-$ids = array();
-echo '<ul>';
-foreach ($this->sections as $title => $content){
-	$ids[$title] = new OWeb\utils\IdGenerator(str_replace(' ','', trim($title)));
-
-	echo '<li><a href="#'.$ids[$title].'" >'.$title.'</a></li>';
+class Accordion extends \Controller\demo\jquery\ui\Accordion{
+	
 }
-echo '</ul>';
 
-foreach ($this->sections as $title => $content){
-	
-	echo '<div id="'.$ids[$title].'">';
-	
-	if($content instanceof \OWeb\types\Controller)
-		$content->display();
-	else
-		echo $content;
-	
-	echo '</div>';	
-}
 ?>
-</div>
