@@ -25,13 +25,18 @@ namespace OWeb\utils;
 
 class IdGenerator {
 
-    private static $lastGenerated = 0;
+    private static $lastGenerated = array();
 
     protected $id;
 
-    function __construct(){
-        self::$lastGenerated++;
-        $this->id = 'OWebId_'.self::$lastGenerated;
+    function __construct($name='OWebId_'){
+		if(isset(self::$lastGenerated[$name])){
+			self::$lastGenerated[$name]++;
+			$this->id = $name.self::$lastGenerated;
+		}else{
+			self::$lastGenerated[$name] = 0;
+			$this->id = $name;
+		}
     }
 
     function __toString(){

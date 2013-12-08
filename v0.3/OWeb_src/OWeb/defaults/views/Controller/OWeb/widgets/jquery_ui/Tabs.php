@@ -20,23 +20,28 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-namespace Controller\programs\widgets;
+echo '<div '.$this->id.'>';
 
 
-use Model\programs\Revision;
-use Model\programs\Version;
-use OWeb\types\Controller;
+$ids = array();
+echo '<ul>';
+foreach ($this->sections as $title => $content){
+	$ids[$title] = new OWeb\utils\IdGenerator(trim($title));
 
-class ChangeLog extends \Controller\programs\Module{
-
-    public function onDisplay()
-    {
-
-        $this->view->revisions = $this->getParam('revisions');
-    }
-
-    public function setVersion(Version $re){
-        $this->addParams('revisions', $re->getAllRevisions());
-        return $this;
-    }
+	echo '<li><a href="#'.$ids[$title].'" >'.$title.'</a></li>';
 }
+echo '</ul>';
+
+foreach ($this->sections as $title => $content){
+	
+	echo '<div id="'.$ids[$title].'">';
+	
+	if($content instanceof \OWeb\types\Controller)
+		$content->display();
+	else
+		echo $content;
+	
+	echo '</div>';	
+}
+?>
+</div>

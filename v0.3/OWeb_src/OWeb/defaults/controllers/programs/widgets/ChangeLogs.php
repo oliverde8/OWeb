@@ -27,16 +27,15 @@ use Model\programs\Revision;
 use Model\programs\Version;
 use OWeb\types\Controller;
 
-class ChangeLog extends \Controller\programs\Module{
+class ChangeLogs extends \Controller\programs\Module{
 
     public function onDisplay()
     {
-
-        $this->view->revisions = $this->getParam('revisions');
+        $this->view->versions = $this->getParam('versions');
     }
 
-    public function setVersion(Version $re){
-        $this->addParams('revisions', $re->getAllRevisions());
+    public function setVersions($versions){
+        $this->addParams('versions', $versions);
         return $this;
     }
 }

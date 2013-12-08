@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Oliver de Cramer (oliverde8 at gmail.com)
  * @copyright    GNU GENERAL PUBLIC LICENSE
@@ -20,5 +21,20 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
+namespace Controller\programs;
 
-$_L['noRelease']	= 'There is No Realeses of this program available';
+/**
+ * Description of Module
+ *
+ * @author De Cramer Oliver
+ */
+abstract class Module extends \OWeb\types\Controller{
+	
+	public function init() {
+		$this->InitLanguageFile();
+		$this->initSettings();
+	}
+
+}
+
+?>

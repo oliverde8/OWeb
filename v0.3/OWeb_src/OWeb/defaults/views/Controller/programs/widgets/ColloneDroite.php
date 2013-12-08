@@ -7,7 +7,7 @@
 			$catTree->addParams('tree', $this->cats)
 							->addParams('class','articles_category')
 							->addParams('classes',array('articles_category_1'))
-							->addParams('link',  new OWeb\utils\Link(array('page' => 'programs\Categorie', "catId"=>"")));
+							->addParams('link',  $this->url(array('page' => 'programs\Categorie', "catId"=>"")));
 							//->addParams('link', 'test'); 
 			$catTree->display();
 ?>

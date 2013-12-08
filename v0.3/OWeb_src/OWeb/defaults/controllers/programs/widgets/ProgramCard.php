@@ -25,12 +25,7 @@ namespace Controller\programs\widgets;
 
 use OWeb\types\Controller;
 
-class ProgramCard extends Controller {
-
-    public function init()
-    {
-
-    }
+class ProgramCard extends \Controller\programs\Module {
 
     public function onDisplay(){
         $this->view->program = $this->getParam('prog');

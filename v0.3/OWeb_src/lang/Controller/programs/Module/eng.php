@@ -27,3 +27,10 @@ $_L['Maybe wrong link? or the category was deleted']	=
 $_L['Empty Category'] = 'This category has no programs to show';
 $_L['This category has no articles in it'] = 'You have stumbled on an empty category.'
                                             .'You might want to try a different category';
+
+$_L['noRelease']	= 'There is No Realeses of this program available';
+$_L['No Realeses']	= 'No Realeses';
+$_L['Name']	= 'Name';
+$_L['Last Version']	= 'Last Version';
+$_L['Last Update']	= 'Last Update';
+$_L['Publish Date']	= 'Publish Date';

@@ -26,15 +26,15 @@ use Model\articles\Artciles;
 use Model\articles\Categories;
 use Model\programs\Programs;
 
-class Program extends \OWeb\types\Controller{
+class Program extends Module{
 
     private $programs;
 
     public function init()
     {
+		parent::init();
 		\OWeb\manage\Extensions::getInstance()->getExtension('bbcode\JBBCode');
         $this->applyTemplateController('Controller\programs\Template');
-        $this->InitLanguageFile();
         $this->categories = \Model\programs\Categories::getInstance();
         $this->programs = Programs::getInstance();
     }

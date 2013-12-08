@@ -19,7 +19,6 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
-
 $this->addHeader('articles.css', \OWeb\manage\Headers::css);
 $this->addHeader('onprogress.css', \OWeb\manage\Headers::css);
 $this->addHeader('programs.css', \OWeb\manage\Headers::css);
@@ -32,121 +31,86 @@ $this->addHeader('programs.css', \OWeb\manage\Headers::css);
 
 <p> 
 	<?php
-    \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Category_Parents')
-        ->addParams('cat', $this->program->getCategory())
-        ->addParams('link', new OWeb\utils\Link(array('page' => 'programs\Categorie', "catId"=>"")))
-        ->display();
-    ?>
-	</p>
+	\OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Category_Parents')
+			->addParams('cat', $this->program->getCategory())
+			->addParams('link',
+					$this->url(array('page' => 'programs\Categorie', "catId" => "")))
+			->display();
+	?>
+</p>
 <h1><?= $this->program->getName() ?> </h1>
 
 
 <div  class="program_info">
 
-    <?php
-    $prog_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\programs\widgets\ProgramCard');
+	<?php
+	$prog_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\programs\widgets\ProgramCard');
 
-    $box_program = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Box');
-    $box_program->addParams('ctr', $prog_display)
-        ->addParams('SecondBoxHeight', 500)
-        ->addParams('Html Class', 'programBox');
-    $prog_display->addParams('prog', $this->program);
-    $box_program->display();
+	$box_program = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Box');
+	$box_program->addParams('ctr', $prog_display)
+			->addParams('SecondBoxHeight', 500)
+			->addParams('Html Class', 'programBox');
+	$prog_display->addParams('prog', $this->program);
+	$box_program->display();
 
 
 
-    $box_download = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Box');
-    $dwld_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\programs\widgets\Downloads');
-    $dwld_display->addParams('prog', $this->program);
-    $box_download->addParams('ctr', $dwld_display)
-        ->addParams('Html Class', 'DwldBox');
-    $box_download->display();
-    ?>
+	$box_download = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\OWeb\widgets\Box');
+	$dwld_display = \OWeb\manage\SubViews::getInstance()->getSubView('Controller\programs\widgets\Downloads');
+	$dwld_display->addParams('prog', $this->program);
+	$box_download->addParams('ctr', $dwld_display)
+			->addParams('Html Class', 'DwldBox');
+	$box_download->display();
+	?>
 
 
     <div class="ColloneClean"></div>
 
     <div class="Description">
 
-        <div class="tabs">
-            <ul>
-                <li><a href="#tabs_prg_description">Description</a></li>
-                <?php
-                    $galleryPath = $this->program->getGalleryPath();
-                    if(!empty($galleryPath)) echo '<li><a href="#tabs_prg_gallery">Gallery</a></li>';
+		<?php
+		$tabs_display = new Controller\OWeb\widgets\jquery_ui\Tabs();
+		$tabs_display->init();
+		
+		//Adding Program description
+		if ($this->program->getDesc_article() == null)
+			$tabs_display->addSection($this->l('Description'),
+					$this->program->getShortDescription('eng'));
+		else {
+			$article_show = new \Controller\articles\widgets\show_article\Def();
+			$article_show->init();
+			$article_show->addParams('article', $this->program->getDesc_article())
+					->addParams('short', false)
+					->addParams('image_level', 2);
+			$tabs_display->addSection($this->l('Description'), $article_show);
+		}
 
-                    $versions = $this->program->getVersions();
-                    if(!empty($versions)) echo' <li><a href="#tabs_prg_changelog">ChangeLog</a></li>';
-                
-					$articles = array();
-					foreach($this->program->getArticles() as $article){
-						$article_display = 	\OWeb\manage\SubViews::getInstance()->getSubView('Controller\articles\widgets\show_article\\'.$article->getType());
-						$article_display ->addParams('article', $article)
-								->addParams('short', false)
-								->addParams('image_level', 2);
-						$id = new \OWeb\utils\IdGenerator();
-						echo '<li><a href="#tabs_prg_changelog'.$id.'">'.$article->getTitle('eng').'</a></li>';		
-						$articles[(String)$id] = $article_display;
-					}
-				?>
-            </ul>
-            <div id="tabs_prg_description">
+		if (!empty($galleryPath)) {
+			$gallery_show = new Controller\OWeb\widgets\jquery\plugins\GalleryView();
+			$gallery_show->init();
+			$gallery_show->addParams('path', $galleryPath);
+			$tabs_display->addSection($this->l('Gallery'), $gallery_show);
+		}
 
-                <?php
-                    if($this->program->getDesc_article() == null)
-                        echo '<p>'.$this->program->getShortDescription('eng').'</p>';
-                    else{
-
-                        $article_show = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\articles\widgets\show_article\Def');
-                        $article_show->addParams('article', $this->program->getDesc_article())
-								->addParams('short', false)
-								->addParams('image_level', 2);
-                        $article_show->display();
-
-                    }
-
-                ?>
-
-            </div>
-
-            <?php
-            if(!empty($galleryPath)){
-                echo '<div id="tabs_prg_gallery">';
-
-                    $gallery_show = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\OWeb\widgets\jquery\plugins\GalleryView');
-                    $gallery_show->addParams('path', $galleryPath);
-                    $gallery_show->display();
-
-                echo '</div>';
-            }
-
-            if(!empty($versions)){
-
-                echo '<div id="tabs_prg_changelog">';
-                $gallery_show = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\programs\widgets\ChangeLog');
-
-                foreach($versions as $ver){
-                    echo '<h3>'.$ver->getName().'</h3>';
-                    $gallery_show->setVersion($ver)
-                        ->display();
-                }
-                echo ' </div>';
-            }
-			
-			foreach($articles as $id => $display){
-				echo '<div id="'.$id.'">';
-				$display->display();
-				echo '</div>';
-			}
-			
-
-            ?>
-
-
-
-        </div>
-
-
+		$versions = $this->program->getVersions();
+		if (!empty($versions)) {
+			$logs_show = new Controller\programs\widgets\ChangeLogs();
+			$logs_show->setVersions($versions);
+			$tabs_display->addSection($this->l('ChangeLog'), $logs_show);
+		}
+		
+		foreach ($this->program->getArticles() as $article) {
+			$type = 'Controller\articles\widgets\show_article\\' . $article->getType();
+			$article_display = new $type();
+			$article_display->init();
+			$article_display->addParams('article', $article)
+							->addParams('short', false)
+							->addParams('image_level', 2);
+			$tabs_display->addSection($article->getTitle('eng'), $article_display);
+		}
+		
+		$tabs_display->display();
+		?>
 
     </div>
 

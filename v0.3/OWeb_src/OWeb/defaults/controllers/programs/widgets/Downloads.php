@@ -25,12 +25,7 @@ namespace Controller\programs\widgets;
 
 use OWeb\types\Controller;
 
-class Downloads extends Controller{
-
-    public function init()
-    {
-        $this->InitLanguageFile();
-    }
+class Downloads extends \Controller\programs\Module{
 
     public function onDisplay()
     {

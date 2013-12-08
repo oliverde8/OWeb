@@ -30,14 +30,14 @@ use OWeb\types\UserException;
  *
  * @author oliverde8
  */
-class Categorie  extends \OWeb\types\Controller{
+class Categorie  extends Module{
 	
 	private $categories;
     private $programs;
 	
 	public function init() {
+		parent::init();
         $this->applyTemplateController('Controller\programs\Template');
-		$this->InitLanguageFile();
 		$this->categories = \Model\programs\Categories::getInstance();
         $this->programs = Programs::getInstance();
 

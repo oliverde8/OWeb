@@ -26,12 +26,7 @@ namespace Controller\programs\widgets;
  *
  * @author De Cramer Oliver
  */
-class ColloneDroite extends \OWeb\types\Controller {
-	
-	
-	public function init() {
-		
-	}
+class ColloneDroite extends \Controller\programs\Module{
 
 	public function onDisplay() {
 		$this->view->cats = $this->getParam("cats");

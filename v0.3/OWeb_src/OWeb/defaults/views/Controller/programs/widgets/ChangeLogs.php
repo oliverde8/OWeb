@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Oliver de Cramer (oliverde8 at gmail.com)
  * @copyright    GNU GENERAL PUBLIC LICENSE
@@ -19,24 +20,12 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
+$changeLog = \OWeb\manage\SubViews::getInstance()->getSubView('\Controller\programs\widgets\ChangeLog');
 
-namespace Controller\programs\widgets;
-
-
-use Model\programs\Revision;
-use Model\programs\Version;
-use OWeb\types\Controller;
-
-class ChangeLog extends \Controller\programs\Module{
-
-    public function onDisplay()
-    {
-
-        $this->view->revisions = $this->getParam('revisions');
-    }
-
-    public function setVersion(Version $re){
-        $this->addParams('revisions', $re->getAllRevisions());
-        return $this;
-    }
+foreach ($this->versions as $ver) {
+	echo '<h3>' . $ver->getName() . '</h3>';
+	$changeLog->setVersion($ver)
+			->display();
 }
+
+?>

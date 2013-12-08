@@ -3,7 +3,7 @@
 	$this->addHeader('2Collone.css',\OWeb\manage\Headers::css); 
 	$this->addHeader('articles.css',\OWeb\manage\Headers::css); 
 	
-	$link = \OWeb\utils\Link::getCurrentLink();
+	$link = $this->CurrentUrl();
 	$link->addParam("mode", "CtrAction")
 		->addParam("action", "dwld");
 	header("Refresh: 10; $link");

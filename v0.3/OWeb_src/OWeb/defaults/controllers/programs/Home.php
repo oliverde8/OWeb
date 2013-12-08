@@ -33,15 +33,15 @@ use OWeb\manage\Extensions;
  *
  * @author oliverde8
  */
-class Home extends \OWeb\types\Controller{
+class Home extends Module{
 	
 	
 	private $categories;
 	private $programs;
 	
 	public function init() {
+		parent::init();
         $this->applyTemplateController('Controller\programs\Template');
-		$this->InitLanguageFile();
 		$this->categories = Categories::getInstance();
 		$this->programs = new \Model\programs\Programs($this->categories, new \Model\articles\Artciles(new \Model\articles\Categories()));
 	}
