@@ -169,7 +169,7 @@
 					<li><a href="#">Demos</a><ul>
 						<li>Jquery - ui<ul>
 							<li><a href="demo.jquery.ui.Accordion.html">Accordion</a></li>
-							<li>More is Coming</li>
+							<li><a href="demo.jquery.ui.Tabs.html">Tabs</a></li>
 							</ul>
 						</li>
 						<li>More Soon

@@ -29,7 +29,7 @@ namespace Page\demo\jquery\ui;
  * @author De Cramer Oliver
  */
 
-class Accordion extends \Controller\demo\jquery\ui\Accordion{
+class Tabs extends \Controller\demo\jquery\ui\Tabs{
 	
 }
 
