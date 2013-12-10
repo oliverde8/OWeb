@@ -35,7 +35,7 @@ class Def extends \Controller\articles\Module{
 	
 	public function init() {
 		parent::init();
-		$this->addDependance('bbcode\JBBCode');
+		$this->addDependance('bbcode\SBBCodeParser');
 		$this->myNum = self::$num;
 		self::$num++;
 	}

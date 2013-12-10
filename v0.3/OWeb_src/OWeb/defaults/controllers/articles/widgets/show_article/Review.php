@@ -32,7 +32,7 @@ class Review extends \Controller\articles\Module{
 	
 	public function init() {
 		parent::init();
-		$this->ext_bbCode = \OWeb\manage\Extensions::getInstance()->getExtension('bbcode\JBBCode');
+		$this->ext_bbCode = \OWeb\manage\Extensions::getInstance()->getExtension('bbcode\SBBCodeParser');
 	}
 
 	public function onDisplay() {

@@ -9,16 +9,12 @@ $img_found = false;
 $img_url = "";
 $img_class = "";
 
-$parser = $this->getBB();
-
 if($this->short){
 	$content = substr(strip_tags ($this->article->getContent($lang)), 0, 1000);
 	$img_class = "article_image_short";
-	$parser->parse($content);
-	$content = $parser->getAsText();
+	$content = $this->getBBText($content);
 }else{
-	$parser->parse($this->article->getContent($lang));
-	$content = $parser->getAsHtml();
+	$content = $this->getBBHtml($this->article->getContent($lang), false, false);
 }
 
 
@@ -89,7 +85,7 @@ $link->addParam('page', 'articles\Article')
 					if(!$this->short){ 
 						
 						\OWeb\manage\SubViews::getInstance()->getSubView('\Controller\articles\widgets\Article_tree')
-															->addParams('values', \Extension\bbcode\JBBCode\myCodes\Titles::$tree)
+															->addParams('values', \Extension\bbcode\SBBCodeParser::$tree)
 															->display();
 						echo $content;
 						echo '</p>';

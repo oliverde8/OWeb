@@ -1,0 +1,3 @@
+[submodule "v0.3/OWeb_src/OWeb/defaults/extensions/bbcode/SBBCodeParser"]
+	path = v0.3/OWeb_src/OWeb/defaults/extensions/bbcode/SBBCodeParser
+	url = https://github.com/samclarke/SBBCodeParser.git
