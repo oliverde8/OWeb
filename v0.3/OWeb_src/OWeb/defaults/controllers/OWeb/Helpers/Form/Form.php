@@ -93,19 +93,14 @@ abstract class Form extends \Controller\OWeb\Helpers\HtmlElement{
 			if($element instanceof Elements\InterfaceElementHolder){
 				$isCollection = $element instanceof Elements\Collection;
 				
-				if(!isset($values[$element->getName()])  || (isset($values[$element->getName()]) && !is_array($values[$element->getName()])))
+				$newVals = array();
+				if(isset($values[$element->getName()])&& is_array($values[$element->getName()]))
 					$newVals = $values[$element->getName()];
 				
-				echo "Step1 : \n ";
-				print_r($values[$element->getName()]);
-				echo "\n";
 				
-				if($isCollection && is_array($newVals) && isset($newVals[$i]))
+				if($collection && isset($newVals[$i]))
 					$newVals = $newVals[$i];
 						
-				echo "Step2 : \n ";
-				print_r($values[$element->getName()]);
-				echo "\n";
 				
 				$this->recValidateElements($element->getAllElements(), $newVals, $isCollection);
 			}
