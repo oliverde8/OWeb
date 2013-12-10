@@ -24,7 +24,6 @@
 $this->addHeader('Helpers.Form.css',\OWeb\manage\Headers::css); 
 
 ?>
-
 <div <?=$this->htmlIdentifier?>>
 
 	<form <?=$this->htmlIdentifier?> method="<?php echo $this->actionMode == OWeb\types\Controller::ACTION_GET ? 'get' : 'post' ?>">

@@ -28,7 +28,7 @@ namespace Controller\OWeb\Helpers\Form\Elements;
  *
  * @author De Cramer Oliver
  */
-class Text extends Elements{
+class Text extends AbstractElement{
 	
 	public function init() {
 		parent::init();

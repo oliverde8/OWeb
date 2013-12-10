@@ -28,7 +28,7 @@ namespace Controller\OWeb\Helpers\Form\Elements;
  *
  * @author De Cramer Oliver
  */
-class Radio extends Elements{
+class Radio extends AbstractElement{
 	
 	private $radios = array();
 	private $validator;

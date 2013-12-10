@@ -28,7 +28,7 @@ namespace Controller\OWeb\Helpers\Form\Elements;
  *
  * @author De Cramer Oliver
  */
-class Hidden extends Elements{
+class Hidden extends AbstractElement{
 	
 	public function init() {
 		parent::init();

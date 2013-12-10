@@ -70,11 +70,46 @@ abstract class Form extends \Controller\OWeb\Helpers\HtmlElement{
 	 */
 	public function validateElements(){
 		$this->_isValid = true;
-		foreach ($this->_elements as $element) {
-			$element->setVal($this->getParam($element->getName()));
+		$values = $this->getParams();
+		
+		$this->recValidateElements($this->_elements, $values);
+	}
+	
+	private function recValidateElements($elements, $values, $collection = false){
+		
+		$i = 0;
+		
+		foreach ($elements as $element) {
+			if(isset($values[$element->getName()]) && !is_array($values[$element->getName()]))
+				$element->setVal($values[$element->getName()]);
 			
 			$valid = $element->validate();			
 			$this->_isValid = $this->_isValid && $valid;
+			
+			echo "For : ".$element->getName();
+			print_r($values[$element->getName()]);
+			echo "\n\n";
+			
+			if($element instanceof Elements\InterfaceElementHolder){
+				$isCollection = $element instanceof Elements\Collection;
+				
+				if(!isset($values[$element->getName()])  || (isset($values[$element->getName()]) && !is_array($values[$element->getName()])))
+					$newVals = $values[$element->getName()];
+				
+				echo "Step1 : \n ";
+				print_r($values[$element->getName()]);
+				echo "\n";
+				
+				if($isCollection && is_array($newVals) && isset($newVals[$i]))
+					$newVals = $newVals[$i];
+						
+				echo "Step2 : \n ";
+				print_r($values[$element->getName()]);
+				echo "\n";
+				
+				$this->recValidateElements($element->getAllElements(), $newVals, $isCollection);
+			}
+			$i++;
 		}
 	}
 	
@@ -86,7 +121,7 @@ abstract class Form extends \Controller\OWeb\Helpers\HtmlElement{
 	 */
 	public function addDisplayElement(\OWeb\types\Controller $element){
 		$this->_displayElements[] = $element;
-		if($element instanceof \Controller\OWeb\Helpers\Form\Elements\Elements){
+		if($element instanceof \Controller\OWeb\Helpers\Form\Elements\AbstractElement){
 			$this->_elements[] = $element;
 		}
 		//$element->init();
@@ -95,9 +130,9 @@ abstract class Form extends \Controller\OWeb\Helpers\HtmlElement{
 	/**
 	 * Adds an Form Element to the Form without adding it to the Display List.
 	 * 
-	 * @param \Controller\OWeb\Helpers\Form\Elements\Elements $element
+	 * @param \Controller\OWeb\Helpers\Form\Elements\AbstractElement $element
 	 */
-	public function addElement(\Controller\OWeb\Helpers\Form\Elements\Elements $element){
+	public function addElement(\Controller\OWeb\Helpers\Form\Elements\AbstractElement $element){
 		$this->_elements[] = $element;
 		//$element->init();
 	}

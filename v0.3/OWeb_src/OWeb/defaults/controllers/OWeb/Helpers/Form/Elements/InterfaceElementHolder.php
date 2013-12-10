@@ -24,37 +24,15 @@
 namespace Controller\OWeb\Helpers\Form\Elements;
 
 /**
- * A Input element of type Select
+ * Description of InterfaceElementHolder
  *
  * @author De Cramer Oliver
  */
-class Select extends AbstractElement{
+interface InterfaceElementHolder {
 	
-	private $select = array();
-	private $validator;
+	public function add(AbstractElement $element);
 	
-	public function init() {
-		parent::init();
-		$this->setType('');
-		$this->validator = new \OWeb\utils\inputManagement\validators\ChosenValues();
-	}
-	
-	/**
-	 * Adds a value to the list of possiblities
-	 * 
-	 * @param type $text The text to be shown for this value
-	 * @param type $value The actual value.
-	 */
-	public function add($text, $value){
-		$this->select[] = array($text, $value);
-		$this->validator->addPossibility($value);
-	}
-	
-	public function prepareDisplay() {
-		parent::prepareDisplay();
-		$this->view->select = $this->select;
-	}
-
+	public function getAllElements();
 	
 }
 

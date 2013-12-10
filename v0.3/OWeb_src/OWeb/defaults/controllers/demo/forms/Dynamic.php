@@ -21,41 +21,39 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-namespace Controller\OWeb\Helpers\Form\Elements;
+namespace Controller\demo\forms;
 
 /**
- * A Input element of type Select
+ * Description of Dynamic
  *
  * @author De Cramer Oliver
  */
-class Select extends AbstractElement{
+class Dynamic extends \OWeb\types\Controller{
 	
-	private $select = array();
-	private $validator;
+	private $form;
 	
 	public function init() {
-		parent::init();
-		$this->setType('');
-		$this->validator = new \OWeb\utils\inputManagement\validators\ChosenValues();
-	}
-	
-	/**
-	 * Adds a value to the list of possiblities
-	 * 
-	 * @param type $text The text to be shown for this value
-	 * @param type $value The actual value.
-	 */
-	public function add($text, $value){
-		$this->select[] = array($text, $value);
-		$this->validator->addPossibility($value);
-	}
-	
-	public function prepareDisplay() {
-		parent::prepareDisplay();
-		$this->view->select = $this->select;
+		$this->action_mode = self::ACTION_GET;
+		$this->applyTemplateController(new \Controller\demo\Template());
+		$this->addAction('refresh', 'doRefresh');
+		
+		$this->form = new DynamicForm();
+		$this->form->init();
+		$this->form->loadParams();
 	}
 
+	public function doRefresh(){
+		//Validating elements.  Should be already done but let's say on the safe side
+		$this->form->validateElements();
+		print_r(\OWeb\OWeb::getInstance()->get_get());
+	}
 	
+	
+	public function onDisplay() {
+		$this->view->form = $this->form;
+	}
+
+//put your code here
 }
 
 ?>

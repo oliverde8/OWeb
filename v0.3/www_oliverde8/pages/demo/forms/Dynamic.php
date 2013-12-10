@@ -21,41 +21,15 @@
  *  along with this program.  If not, see {http://www.gnu.org/licenses/}.
  */
 
-namespace Controller\OWeb\Helpers\Form\Elements;
+namespace Page\demo\forms;
 
 /**
- * A Input element of type Select
+ * Description of Dynamic
  *
  * @author De Cramer Oliver
  */
-class Select extends AbstractElement{
-	
-	private $select = array();
-	private $validator;
-	
-	public function init() {
-		parent::init();
-		$this->setType('');
-		$this->validator = new \OWeb\utils\inputManagement\validators\ChosenValues();
-	}
-	
-	/**
-	 * Adds a value to the list of possiblities
-	 * 
-	 * @param type $text The text to be shown for this value
-	 * @param type $value The actual value.
-	 */
-	public function add($text, $value){
-		$this->select[] = array($text, $value);
-		$this->validator->addPossibility($value);
-	}
-	
-	public function prepareDisplay() {
-		parent::prepareDisplay();
-		$this->view->select = $this->select;
-	}
-
-	
+class Dynamic extends \Controller\demo\forms\Dynamic{
+	//put your code here
 }
 
 ?>

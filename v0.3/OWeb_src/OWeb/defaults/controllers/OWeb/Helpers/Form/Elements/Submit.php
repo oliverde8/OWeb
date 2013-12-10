@@ -28,7 +28,7 @@ namespace Controller\OWeb\Helpers\Form\Elements;
  *
  * @author De Cramer Oliver
  */
-class Submit extends Elements{
+class Submit extends AbstractElement{
 	
 	public function init() {
 		parent::init();

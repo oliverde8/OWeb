@@ -28,7 +28,7 @@ namespace Controller\OWeb\Helpers\Form\Elements;
  *
  * @author De Cramer Oliver
  */
-abstract class Elements extends \Controller\OWeb\Helpers\HtmlElement{
+abstract class AbstractElement extends \Controller\OWeb\Helpers\HtmlElement{
 	
 	/**
 	 * Is this Element valid
@@ -95,7 +95,7 @@ abstract class Elements extends \Controller\OWeb\Helpers\HtmlElement{
 	 * Set the type of the input element
 	 * @param String $type
 	 */
-	public function setType($type){
+	protected function setType($type){
 		$this->_type = $type;
 	}
 	
