@@ -88,6 +88,7 @@ abstract class AbstractElement extends \Controller\OWeb\Helpers\HtmlElement{
 	
 	public function init() {
 		parent::init();
+		$this->applyTemplateController(new \Controller\OWeb\Helpers\Form\ElementTemplate());
 		$this->addHtmlClass('OWebForm_input');
 	}
 	
@@ -270,6 +271,9 @@ abstract class AbstractElement extends \Controller\OWeb\Helpers\HtmlElement{
 
 	public final function onDisplay(){
 		$this->prepareDisplay();
+		
+		$template = $this->getTemplateController();
+				
 		$this->view->htmlIdentifier = $this->getIdentifier();
 		$this->view->title = $this->_title;
 		$this->view->type = $this->_type;
@@ -279,6 +283,18 @@ abstract class AbstractElement extends \Controller\OWeb\Helpers\HtmlElement{
 		$this->view->errDescriptions = $this->_errDesriptions;
 		$this->view->val = $this->_val;
 		$this->view->valid = $this->_valid;
+		
+		if($template != null){
+			$template->view->htmlIdentifier = $this->view->htmlIdentifier;
+			$template->view->title = $this->_title;
+			$template->view->type = $this->_type;
+			$template->view->desc = $this->_desc;
+			$template->view->name = $this->_name;
+			$template->view->errMessages = $this->_errMessages;
+			$template->view->errDescriptions = $this->_errDesriptions;
+			$template->view->val = $this->_val;
+			$template->view->valid = $this->_valid;
+		}
 	}
 }
 

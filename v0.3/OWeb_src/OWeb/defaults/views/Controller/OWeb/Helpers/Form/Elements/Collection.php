@@ -26,67 +26,24 @@
  *
  * @author De Cramer Oliver
  */
-
-
-
 $id = clone $this->htmlIdentifier;
 $id->addHtmlClass('OWebForm_input_def');
-
-$idDesc = clone $this->htmlIdentifier;
-$idDesc->addHtmlClass('OWebForm_input_desc');
-
-$idErr = clone $this->htmlIdentifier;
-$idErr->addHtmlClass('OWebForm_input_err');
 ?>
-
-<div <?=$this->htmlIdentifier?>>
 	
 <h2 <?=$id?> for="<?=$this->name?>"><?= $this->title ?></h2>
 <?php
 
-	$i = 0;
-	foreach($this->items as $item){
-		if(!empty($this->name)){
-			$oldName = $item->getName();
-			$item->setName($this->name.'['.$oldName.']['.$i.']');
-		}
-		$item->display();
-		if(!empty($this->name)){
-			$item->setName($oldName);
-		}
-		$i++;
+$i = 0;
+foreach($this->items as $item){
+	if(!empty($this->name)){
+		$oldName = $item->getName();
+		$item->setName($this->name.'['.$oldName.']['.$i.']');
 	}
-
-	if($this->desc != null){
-?>
-		<img <?=$idDesc?> src="<?= OWEB_HTML_DIR_CSS ?>/images/Helpers_Form/description.png" />
-
-		<span <?=$idDesc?>  ><?= $this->desc ?> </span>
-
-<?php
+	$item->display();
+	if(!empty($this->name)){
+		$item->setName($oldName);
 	}
-	
-	if(!$this->valid){
-?>
-		<div <?=$idErr?> >
-			<ul <?=$$idErr?> >
-				
-				<?php
-					foreach($this->errMessages as $i => $msg){
-				?>
-				
-				<li>
-					<strong><?=$msg?> </strong>
-					<?=$this->errDescriptions[$i]?>
-				</li>
-				
-				<?php
-					}
-					
-				?>
-				
-			</ul>	
-		</div>
-<?php } ?>
+	$i++;
+}
 
-</div>
+

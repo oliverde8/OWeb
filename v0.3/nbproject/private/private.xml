@@ -4,9 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="ESD"/>
         <group name="Mine">
-            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/defaults/views/Controller/demo/forms/Dynamic.php</file>
-            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/defaults/controllers/demo/forms/Dynamic.php</file>
-            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/defaults/controllers/demo/forms/DynamicForm.php</file>
+            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/defaults/extensions/bbcode/SBBCodeParser/classes/Node/Text.php</file>
+            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/defaults/extensions/bbcode/JBBCode/myCodes/Titles.php</file>
+            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/defaults/extensions/bbcode/SBBCodeParser/SBBCodeParser.php</file>
+            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/defaults/extensions/bbcode/SBBCodeParser/classes/Node/Container.php</file>
+            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/defaults/extensions/bbcode/SBBCodeParser.php</file>
+            <file>file:/C:/wamp/www/oliverde8/oliverde8/OWeb/v0.3/OWeb_src/OWeb/defaults/views/Controller/articles/widgets/show_article/Def.php</file>
         </group>
     </open-files>
 </project-private>

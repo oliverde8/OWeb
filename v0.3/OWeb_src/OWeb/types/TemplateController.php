@@ -36,6 +36,14 @@ abstract class TemplateController extends Controller{
 
     }
 
+	public function getCtrToShow() {
+		return $this->ctrToShow;
+	}
+
+	public function setCtrToShow($ctrToShow) {
+		$this->ctrToShow = $ctrToShow;
+	}
+	
     public function templatedisplay($ctr){
         $this->ctrToShow = $ctr;
         $this->forceDisplay();

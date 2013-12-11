@@ -26,20 +26,11 @@
  *
  * @author De Cramer Oliver
  */
-
-
-
 $id = clone $this->htmlIdentifier;
 $id->addHtmlClass('OWebForm_input_def');
 
-$idDesc = clone $this->htmlIdentifier;
-$idDesc->addHtmlClass('OWebForm_input_desc');
 
-$idErr = clone $this->htmlIdentifier;
-$idErr->addHtmlClass('OWebForm_input_err');
 ?>
-
-<div <?=$this->htmlIdentifier?>>
 
 <fieldset <?=$this->htmlIdentifier?>>
 	
@@ -89,4 +80,4 @@ $idErr->addHtmlClass('OWebForm_input_err');
 		</div>
 <?php } ?>
 </fieldset>
-</div>
+

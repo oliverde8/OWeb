@@ -47,13 +47,15 @@ abstract class Controller extends NamedClass implements Configurable, InterfaceE
 	
 	private $language;
 	
-	protected $view = null;
+	public $view = null;
     
 	private $primaryController = false;
 
     protected $templateController = null;
 
 	protected $settings = array();
+	
+	protected $viewReady = false;
 	
 	abstract public function init();
 
@@ -324,13 +326,8 @@ abstract class Controller extends NamedClass implements Configurable, InterfaceE
     }
 
 
-    /**
-     * Displays the controllers view
-     *
-     * @param null $ctr The name the controller that made the call. It might be an parent controller
-     * @throws \OWeb\manage\exceptions\Controller
-     */
-    public function forceDisplay($ctr = null) {
+	
+	public function prepareView($ctr = null){
 		if ($ctr == null)
 			$ctr = get_class($this);
 
@@ -347,28 +344,47 @@ abstract class Controller extends NamedClass implements Configurable, InterfaceE
 		} else {
 			if ($ctr != '\OWeb\types\Controller') {
                 //Well this controller doesn't have a View let's see if the parent has a nice view to display
-				$this->forceDisplay(get_parent_class($ctr));
+				$this->prepareView(get_parent_class($ctr));
 				return;
 			} else {
 				throw new \OWeb\manage\exceptions\Controller('Couldn\'t Find View of controller in : \'' . $path1 . $path . '\' , \'' . $path2 . $path . '\'.');
 			}
 		}
+		
+		$this->viewReady = true;
+		
 		//First we create the Default view
 		$this->view = $this->getView($path);
 		
 		$this->view->setDependences($this->dependence);
-
+		
 		//Second we ask our controller to prepare anything needed to be show in the page
 		$this->onDisplay();
-
+	}
+	
+    /**
+     * Displays the controllers view
+     *
+     * @param null $ctr The name the controller that made the call. It might be an parent controller
+     * @throws \OWeb\manage\exceptions\Controller
+     */
+    public function forceDisplay($ctr = null) {
+		if(!$this->viewReady){
+			$this->prepareView($ctr);
+		}
 		//Maintenant on fait l'affichage
 		$this->view->display();
 	}
 
-    public function display(){
-        if($this->templateController == null)
-            $this->forceDisplay();
-        else{
+    public function display($ctr = null){
+		
+        if($this->templateController == null){
+			$this->prepareView($ctr);
+            $this->forceDisplay($ctr);
+		}else{
+			$this->templateController->setCtrToShow($this);
+			$this->templateController->prepareView();
+			$this->prepareView();
             $this->templateController->templatedisplay($this);
 		}
     }
