@@ -21,8 +21,6 @@
  */
 namespace Extension\core\modes;
 
-if (!defined('OWEB_DIR_FAPI')) define('OWEB_DIR_FAPI', "fapi");
-
 /**
  * Description of Page
  *

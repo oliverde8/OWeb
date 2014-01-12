@@ -85,6 +85,7 @@ $this->addHeader('programs.css', \OWeb\manage\Headers::css);
 			$tabs_display->addSection($this->l('Description'), $article_show);
 		}
 
+		$galleryPath = $this->program->getGalleryPath();
 		if (!empty($galleryPath)) {
 			$gallery_show = new Controller\OWeb\widgets\jquery\plugins\GalleryView();
 			$gallery_show->init();

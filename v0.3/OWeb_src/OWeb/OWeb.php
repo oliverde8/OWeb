@@ -149,7 +149,7 @@ class OWeb {
 					$this->mode = $this->manage_extensions->getExtension("core\modes\Api");
 					break;
 				case 'CTRACTION':
-					$this->mode = $this->manage_extensions->getExtension("core\modes\Api");
+					$this->mode = $this->manage_extensions->getExtension("core\modes\CtrAction");
 					break;
 				case 'PAGE':
 				default:
